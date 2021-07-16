@@ -11,12 +11,12 @@ from codelists import *
 
 def make_variable(code):
     return {
-        f"snomed_{code}": (
+        f"eth_{code}": (
             patients.with_these_clinical_events(
                 codelist([code], system="snomed"),
                 on_or_after="2010-01-01",
                 returning="number_of_matches_in_period",
-                include_date_of_match=True,
+                include_date_of_match=False,
                 date_format="YYYY-MM-DD",
                 return_expectations={
                     "incidence": 0.1,
@@ -82,13 +82,6 @@ study = StudyDefinition(
         return_expectations={"incidence": 0.50},
     ),
 
-    first_ethnicity_date=patients.with_these_clinical_events(
-        ethnicity_codes,
-        returning="date",
-        date_format="YYYY-MM-DD",
-        find_first_match_in_period=True,
-        return_expectations={"incidence": 0.1, "date": {"earliest": "2010-01-01"}},
-    ),
     **loop_over_codes(ethnicity_codes),
     first_ethnicity_code=patients.with_these_clinical_events(
         ethnicity_codes,
