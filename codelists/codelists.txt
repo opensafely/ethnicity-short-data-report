@@ -1,2 +1,1 @@
-
-opensafely/ethnicity-uk-categories/3d6551e9/
+opensafely/ethnicity-uk-categories/3d6551e9

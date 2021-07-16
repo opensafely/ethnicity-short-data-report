@@ -9,6 +9,7 @@ from cohortextractor import (
 
 from codelists import *
 
+## STUDY POPULATION
 
 
 def make_variable(code):
@@ -16,7 +17,7 @@ def make_variable(code):
         f"snomed_{code}": (
             patients.with_these_clinical_events(
                 codelist([code], system="snomed"),
-                on_or_after=pandemic_start,
+                on_or_after=2010-01-01,
                 returning="number_of_matches_in_period",
                 include_date_of_match=True,
                 date_format="YYYY-MM-DD",
