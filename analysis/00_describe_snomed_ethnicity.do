@@ -47,7 +47,9 @@ merge 1:1 snomedcode using ./output/opensafely-ethnicity-uk-categories_formerge.
 
 gen include=0
 replace include=1 if _merge==3
+replace include=0 if snomedcode_count==0
 tab include
+drop code
 save ./output/snomed_ethnicity_counts.dta, replace
 
 log close
