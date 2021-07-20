@@ -1,0 +1,599 @@
+code,term,snomedcode
+10008004,Ewe,10008004
+10117001,Finns,10117001
+1024701000000100,Ethnicity not stated,1024701000000100
+10292001,Guamians,10292001
+1036211000000100,Slovak Roma,1036211000000100
+1036251000000100,Czech Roma,1036251000000100
+1036281000000100,Hungarian Roma,1036281000000100
+1036301000000100,Polish Roma,1036301000000100
+1036321000000100,Romanian Roma,1036321000000100
+1036341000000100,Roma,1036341000000100
+1036361000000100,Bulgarian Roma,1036361000000100
+10432001,Onge,10432001
+107691000000105,Caribbean - ethnic category 2001 census,107691000000105
+108342005,South Asian AND/OR Australian aborigine,108342005
+110401000000103,Turkish - ethnic category 2001 census,110401000000103
+110751000000108,Indian or British Indian - ethnic category 2001 census,110751000000108
+110761000000106,English - ethnic category 2001 census,110761000000106
+110771000000104,Black and White - ethnic category 2001 census,110771000000104
+110781000000102,Sinhalese - ethnic category 2001 census,110781000000102
+110791000000100,Black British - ethnic category 2001 census,110791000000100
+110831000000107,Hindu - ethnic category 2001 census,110831000000107
+113169009,Armenians,113169009
+113170005,Aymara,113170005
+113171009,Coushatta,113171009
+11794009,Kenyans,11794009
+12556008,Tamils,12556008
+13233008,Flathead,13233008
+1340002,Malays,1340002
+13440006,Tanganyikans,13440006
+139955009,O/E - ethnic group,139955009
+139960008,O/E - ethnic group NOS,139960008
+14045001,Caucasian,14045001
+14176005,Danes,14176005
+14470009,Tutsi,14470009
+1451003,Greeks,1451003
+14999008,Welsh,14999008
+15086000,African American,15086000
+154159009,Ethnic groups (census),154159009
+154160004,White - ethnic group,154160004
+154161000,White British,154161000
+154162007,White Irish,154162007
+154163002,Other white ethnic group,154163002
+154164008,Black Caribbean,154164008
+154165009,Black African,154165009
+154166005,"Black, other, non-mixed origin",154166005
+154167001,Black British,154167001
+154168006,Black Caribbean &/or W.I. &/or Guyana,154168006
+154169003,Black N African &/or Arab &/or Iranian,154169003
+154170002,Black - other African country,154170002
+154171003,Black E Afric Asia &/or Indo-Caribb,154171003
+154172005,Black Indian sub-continent,154172005
+154173000,Black - other Asian,154173000
+154174006,Black Black - other,154174006
+154175007,"Black - other, mixed",154175007
+154176008,Other Black - Black/White orig,154176008
+154177004,Other Black - Black/Asian orig,154177004
+154178009,Indian,154178009
+154179001,Pakistani,154179001
+154180003,Bangladeshi,154180003
+154181004,Chinese,154181004
+154182006,Other ethnic non-mixed (NMO),154182006
+154183001,Brit. ethnic minor. spec.(NMO),154183001
+154184007,Brit. ethnic minor. unsp (NMO),154184007
+154185008,Caribbean I. &/or W.I. &/or Guyana (NMO),154185008
+154186009,N African Arab &/or Iranian (NMO),154186009
+154187000,Other African countries (NMO),154187000
+154188005,E Afric Asian &/or Indo-Carib (NMO),154188005
+154189002,Indian sub-continent (NMO),154189002
+154190006,Other Asian (NMO),154190006
+154191005,Irish (NMO),154191005
+154192003,Greek &/or Greek Cypriot (NMO),154192003
+154193008,Turkish &/or Turkish Cypriot (NMO),154193008
+154194002,Other European (NMO),154194002
+154195001,Other ethnic NEC (NMO),154195001
+154196000,"Other ethnic, mixed origin",154196000
+154197009,"Other ethnic, Black/White orig",154197009
+154198004,"Other ethnic, Asian/White orig",154198004
+154199007,"Other ethnic, mixed white orig",154199007
+154200005,"Other ethnic, other mixed orig",154200005
+154201009,Black Caribbean and White,154201009
+154202002,Black African and White,154202002
+154203007,Vietnamese,154203007
+154204001,Ethnic group not given - patient refused,154204001
+154205000,Ethnic group not recorded,154205000
+154206004,Other black ethnic group,154206004
+154207008,Other Asian ethnic group,154207008
+154208003,Irish traveller,154208003
+154209006,Other ethnic group,154209006
+154210001,Ethnic groups (census) NOS,154210001
+154211002,Ethnicity and other related nationality data,154211002
+154212009,New Zealand ethnic groups,154212009
+154213004,New Zealand European,154213004
+154214005,Other European in New Zealand,154214005
+154215006,New Zealand Maori,154215006
+154216007,Samoan,154216007
+154217003,Cook Island Maori,154217003
+154218008,Tongan,154218008
+154219000,Niuean,154219000
+154220006,Tokelauan,154220006
+154221005,Fijian,154221005
+154222003,Other Pacific ethnic group,154222003
+154223008,South East Asian,154223008
+154224002,Chinese,154224002
+154225001,Indian,154225001
+154226000,Other Asian,154226000
+154227009,Other New Zealand ethnic group,154227009
+154229007,New Zealand ethnic group NOS,154229007
+15801006,Kapingas,15801006
+160531006,Race: West indian,160531006
+162730000,On examination - ethnic group,162730000
+162731001,On examination - Europeanoid,162731001
+162732008,On examination - Negroid,162732008
+162734009,On examination - Australoid,162734009
+162735005,On examination - ethnic group NOS,162735005
+17095009,Norwegians,17095009
+17789004,Papuans,17789004
+18167009,Black African,18167009
+18575005,Oceanian,18575005
+18583004,Estonians,18583004
+185983003,Ethnic group (1991 census) (United Kingdom),185983003
+185984009,White - ethnic group,185984009
+185985005,White British,185985005
+185986006,White Irish,185986006
+185987002,Other white ethnic group,185987002
+185988007,Black Caribbean,185988007
+185989004,"Black, other, non-mixed origin",185989004
+185990008,Black British,185990008
+185991007,Black Caribbean &/or W.I. &/or Guyana,185991007
+185992000,Black N African &/or Arab &/or Iranian,185992000
+185993005,Black - other African country,185993005
+185994004,Black E Afric Asia &/or Indo-Caribb,185994004
+185995003,Black Indian sub-continent,185995003
+185996002,Black - other Asian,185996002
+185997006,Black Black - other,185997006
+185998001,"Black - other, mixed",185998001
+185999009,Other Black - Black/White orig,185999009
+186000006,Other Black - Black/Asian orig,186000006
+186001005,Indian (East Indian),186001005
+186002003,Pakistani,186002003
+186003008,Bangladeshi,186003008
+186004002,Chinese,186004002
+186005001,Other ethnic non-mixed (NMO),186005001
+186006000,British ethnic minority specified (NMO),186006000
+186007009,British ethnic minority unspecified (NMO),186007009
+186008004,Caribbean I. &/or W.I. &/or Guyana (NMO),186008004
+186009007,N African Arab &/or Iranian (NMO),186009007
+186010002,Other African countries (NMO),186010002
+186011003,E Afric Asian &/or Indo-Carib (NMO),186011003
+186012005,Indian sub-continent (NMO),186012005
+186013000,Other Asian (NMO),186013000
+186014006,Irish (NMO),186014006
+186015007,Greek &/or Greek Cypriot (NMO),186015007
+186016008,Turkish &/or Turkish Cypriot (NMO),186016008
+186017004,Other European (NMO),186017004
+186018009,Other ethnic NEC (NMO),186018009
+186019001,"Other ethnic, mixed origin",186019001
+186020007,"Other ethnic, Black/White origin",186020007
+186021006,"Other ethnic, Asian/White origin",186021006
+186022004,"Other ethnic, mixed white origin",186022004
+186023009,"Other ethnic, other mixed origin",186023009
+186024003,Black Caribbean and White,186024003
+186025002,Black African and White,186025002
+186026001,Vietnamese,186026001
+186027005,Ethnic group not given - patient refused,186027005
+186028000,Ethnic group not recorded,186028000
+186029008,Other black ethnic group,186029008
+186030003,Other Asian ethnic group,186030003
+186031004,Irish traveller,186031004
+186032006,Other ethnic group,186032006
+186033001,Ethnic groups (census) NOS,186033001
+186034007,Ethnicity / related nationality data,186034007
+186035008,New Zealand ethnic groups,186035008
+186036009,New Zealand European,186036009
+186037000,Other European in New Zealand,186037000
+186039002,New Zealand Maori,186039002
+186040000,Cook Island Maori,186040000
+186041001,Niuean,186041001
+186042008,Tokelauan,186042008
+186043003,Other Pacific ethnic group,186043003
+186044009,South East Asian,186044009
+186045005,Indian,186045005
+186046006,Other Asian,186046006
+186047002,Other New Zealand ethnic group,186047002
+186048007,New Zealand ethnic group NOS,186048007
+18664001,Xavante,18664001
+19085009,Saipanese,19085009
+1919006,Egyptians,1919006
+19434008,French,19434008
+20140003,Hawaiians,20140003
+20291009,Lacandon,20291009
+20449009,Javanese,20449009
+21047009,Aleuts,21047009
+21868006,Madagascans,21868006
+21993009,Indonesians,21993009
+22007004,Shoshone,22007004
+23517005,Polynesians,23517005
+23534002,Melanesians,23534002
+23922002,Batutsi,23922002
+24812003,Mongol,24812003
+25750005,Admiralty Islanders,25750005
+25804004,English,25804004
+26215007,South Asian Aborigine,26215007
+2688009,Tristan da Cunhans,2688009
+268914005,On examination - Mongoloid origin,268914005
+270460000,Black Caribbean/West India/Guyana,270460000
+270461001,Black N African/Arab/Iranian,270461001
+270462008,Black East African Asian/Indo-Caribbean,270462008
+270463003,Caribbean I./W.I./Guyana (NMO),270463003
+270464009,N African Arab/Iranian (NMO),270464009
+270465005,E Afric Asian/Indo-Carib (NMO),270465005
+270466006,Greek/Greek Cypriot (NMO),270466006
+270467002,Turkish/Turkish Cypriot (NMO),270467002
+2720008,Hututu,2720008
+27301002,Paez,27301002
+275586009,Black North African,275586009
+275587000,Black Arab,275587000
+275588005,Black Iranian,275588005
+275589002,Black East African Asian,275589002
+275590006,Black Indo-Caribbean,275590006
+275591005,Caribbean Island (NMO),275591005
+275592003,West Indian (NMO),275592003
+275593008,Guyana (NMO),275593008
+275594002,North African Arab (NMO),275594002
+275595001,Iranian (NMO),275595001
+275596000,East African Asian (NMO),275596000
+275597009,Indo-Caribbean (NMO),275597009
+275599007,Greek (NMO),275599007
+275600005,Greek Cypriot (NMO),275600005
+275601009,Turkish (NMO),275601009
+275602002,Turkish Cypriot (NMO),275602002
+27683006,Ainu,27683006
+27700004,Iraqi,27700004
+28409002,Spaniards,28409002
+2852001,Bhutanese,2852001
+28562006,Poles,28562006
+286009,Czech,286009
+28796001,Siamese,28796001
+28821007,Easter Islanders,28821007
+29343004,Bulgarian,29343004
+296841000000102,Yemeni,296841000000102
+309643000,Black West Indian,309643000
+309644006,Black Guyana,309644006
+312859007,Vietnamese,312859007
+312860002,Ethnic group not given - patient refused,312860002
+312861003,Ethnic group not recorded,312861003
+315236000,White British,315236000
+315237009,White Irish,315237009
+315238004,Other white ethnic group,315238004
+315239007,Mixed ethnic census group,315239007
+315240009,Black - ethnic group,315240009
+315279003,Other black ethnic group,315279003
+315280000,Asian - ethnic group,315280000
+315281001,Other Asian ethnic group,315281001
+315282008,Other ethnic group,315282008
+315283003,Irish traveller,315283003
+315634007,Black Caribbean and White,315634007
+315635008,Black African and White,315635008
+31637002,Italians,31637002
+32045009,Georgians,32045009
+32513008,Dyaks,32513008
+32873005,Bloods,32873005
+33182009,Trukese,33182009
+3353005,Pueblo,3353005
+33897005,Chinese,33897005
+34334001,New Caledonians,34334001
+35007000,Utes,35007000
+36329002,Slovak,36329002
+364699009,Ethnic group,364699009
+365455004,Ethnic groups (1991 census) (United Kingdom),365455004
+365456003,Finding of ethnicity / related nationality data,365456003
+367505005,Caucasian (living organism),367505005
+3698008,Micronesians,3698008
+372148003,Ethnic group,372148003
+37474002,Ghanaians,37474002
+37843006,Fulani,37843006
+38144004,Athabascans,38144004
+3818007,Senegalese,3818007
+38361009,Koreans,38361009
+38750003,Bororo,38750003
+39007007,Black Jews,39007007
+393199009,Gypsies,393199009
+394149000,Gypsies,394149000
+394635008,Gypsies,394635008
+39764005,Bantu,39764005
+397731000,Ethnic group finding,397731000
+398089004,Ethnic background,398089004
+401213008,White Scottish,401213008
+401214002,Other white British ethnic group,401214002
+40165009,Buriats,40165009
+40182006,Gypsies,40182006
+4073004,Palauans,4073004
+41076003,Mozambiquans,41076003
+41121000000107,Other white British ethnic group,41121000000107
+413465009,Afro-Caribbean,413465009
+413466005,Afro-Caucasian,413466005
+413569000,Arab,413569000
+414152003,European,414152003
+414551003,Japanese,414551003
+414661004,Melanesian,414661004
+414978006,Oriental,414978006
+41798002,Caroline Islanders,41798002
+42632009,Andamanese,42632009
+4299001,Marathas,4299001
+43056000,Cuna,43056000
+43481000000100,Other white British ethnic group,43481000000100
+43608005,Australian Aborigines,43608005
+43890005,Dieguenos,43890005
+44460002,Turks,44460002
+445343003,Romanian,445343003
+44881000000100,White Scottish,44881000000100
+44891000000103,Other white British ethnic group,44891000000103
+45465003,Basques,45465003
+46110004,Somalis,46110004
+46723002,Badagas,46723002
+47250000,Bruneians,47250000
+47327008,Mexican Indians,47327008
+48118002,Yapese,48118002
+48294008,Solomon Islanders,48294008
+48375000,Seminole,48375000
+48393004,Ethnic group finding,48393004
+48679001,Bogobos,48679001
+49202008,Gilbertese,49202008
+494131000000105,White British - ethnic category 2001 census,494131000000105
+494161000000100,White Irish - ethnic category 2001 census,494161000000100
+50405005,Senoi,50405005
+51750002,Hottentot,51750002
+51827000,Oriental Jews,51827000
+518701000000103,Romanian,518701000000103
+518721000000107,Bulgarian,518721000000107
+519681000000108,Czech,519681000000108
+52075006,Congolese,52075006
+53195006,Kirghiz,53195006
+53460002,Serbs,53460002
+55990000,Inca,55990000
+56056003,Belgians,56056003
+57405008,Chenchu,57405008
+57539009,Navaho,57539009
+58047002,Barundi,58047002
+583481000000105,Other ethnic NEC (NMO),583481000000105
+583491000000107,Ethnic groups (census) NOS,583491000000107
+591311000000105,On examination - ethnic group NOS,591311000000105
+592491000000104,Other New Zealand ethnic group,592491000000104
+592501000000105,New Zealand ethnic group NOS,592501000000105
+59366001,Ibo,59366001
+59487007,Syrians,59487007
+59597001,Marshallese,59597001
+60157000,Ellice Islanders,60157000
+62598008,Venezuelan Indians,62598008
+63457007,Maya,63457007
+6373008,Choco,6373008
+63732001,New Hebrideans,63732001
+63736003,Taiwanese,63736003
+64483007,Indians (Hindi-speaking),64483007
+64693008,Hungarian,64693008
+651601000000100,Black Black - other,651601000000100
+65776006,Blackfeet,65776006
+661731000000107,Other Pacific ethnic group,661731000000107
+661741000000103,Other Asian,661741000000103
+66406004,Huasteco,66406004
+666871000000107,Other ethnic group,666871000000107
+668681000000107,Other white ethnic group,668681000000107
+66920001,Amerind,66920001
+67165000,Lapps,67165000
+67439005,Msutu,67439005
+67931002,Aztec,67931002
+68486007,Austrians,68486007
+69865008,Fijian,69865008
+69983001,Irani,69983001
+704385002,Punjabi,704385002
+704386001,Orang asli,704386001
+704387005,Kadazan,704387005
+704388000,Melanau,704388000
+704389008,Murut,704389008
+704390004,Bajau,704390004
+704391000,Bidayuh,704391000
+704392007,Iban,704392007
+710011000000101,Slovak,710011000000101
+71176007,Pygmies,71176007
+718021000000105,Portuguese,718021000000105
+718131000000106,Nepali,718131000000106
+718958002,Roma,718958002
+718959005,Czech Roma,718959005
+718960000,Romanian Roma,718960000
+718961001,Slovak Roma,718961001
+718962008,Bulgarian Roma,718962008
+718963003,Hungarian Roma,718963003
+718964009,Polish Roma,718964009
+71949006,Chippewa,71949006
+72201005,Hobe,72201005
+72248007,Kikuyu,72248007
+72337002,Brazilian Indians,72337002
+72809004,Icelanders,72809004
+733078003,Ukrainian,733078003
+733446001,Canadian,733446001
+735001008,Scandinavian,735001008
+73524008,Caingang,73524008
+73736004,Maori,73736004
+74159009,Melanuans,74159009
+74302004,Apache,74302004
+75301003,Mapuche,75301003
+75326007,Labradors,75326007
+75704009,Toba,75704009
+76253004,Zulu,76253004
+763726001,Refusal by patient to provide information about ethnic group,763726001
+76460008,Yanomama,76460008
+76574004,Swiss,76574004
+76768002,Filipinos,76768002
+76775001,Ugandans,76775001
+76883002,Huichol,76883002
+7695005,Germans,7695005
+77502007,Atacamenos,77502007
+77686000,Kwakiutl,77686000
+77711000000105,Other white British ethnic group,77711000000105
+79434006,Quechua,79434006
+80208004,Portuguese,80208004
+80528001,Xosa,80528001
+81035008,Pakistani (Urduspeakers),81035008
+8124001,West Africans,8124001
+81283004,Todas,81283004
+81403004,Swedes,81403004
+81560001,Tongan,81560001
+81653003,Pehuenches,81653003
+81846005,Naiars,81846005
+82121000000108,Other white British ethnic group,82121000000108
+82174001,Shona,82174001
+83365001,Thais,83365001
+83584002,Luo,83584002
+83939006,Irula,83939006
+85163001,Russians,85163001
+85371009,Bushmen,85371009
+85515006,Eskimo,85515006
+86275006,Samoan,86275006
+86461000000107,Sri Lankan - ethnic category 2001 census,86461000000107
+870448005,Khoikhoi,870448005
+87323008,Nez Percé,87323008
+88790004,Abyssinians (Amharas),88790004
+88839008,Sudanese,88839008
+88911000000101,Irish Traveller - ethnic category 2001 census,88911000000101
+88921000000107,Traveller - ethnic category 2001 census,88921000000107
+88931000000109,Gypsy/Romany - ethnic category 2001 census,88931000000109
+88934004,Nigerians,88934004
+88941000000100,Polish - ethnic category 2001 census,88941000000100
+88951000000102,Baltic States (Estonian or Latvian or Lithuanian) - ethnic category 2001 census,88951000000102
+88961000000104,Commonwealth of (Russian) Independent States - ethnic category 2001 census,88961000000104
+88971000000106,Albanian - ethnic category 2001 census,88971000000106
+88981000000108,Serbian - ethnic category 2001 census,88981000000108
+88991000000105,Jewish - ethnic category 2001 census,88991000000105
+89001000000105,Arab - ethnic category 2001 census,89001000000105
+89011000000107,Iranian - ethnic category 2001 census,89011000000107
+89021000000101,South and Central American - ethnic category 2001 census,89021000000101
+89026003,Alacaluf,89026003
+89031000000104,Muslim - ethnic category 2001 census,89031000000104
+90027003,Arabs,90027003
+90348007,Ghashgai,90348007
+90822005,Gambians,90822005
+91066000,Tatars,91066000
+91191002,Oraons,91191002
+91488008,New Britons,91488008
+9158000,Liberians,9158000
+92381000000106,Ethnic category - 2001 census,92381000000106
+92391000000108,British or mixed British - ethnic category 2001 census,92391000000108
+92401000000106,Irish - ethnic category 2001 census,92401000000106
+92411000000108,Other White background - ethnic category 2001 census,92411000000108
+92421000000102,White and Black Caribbean - ethnic category 2001 census,92421000000102
+92431000000100,White and Black African - ethnic category 2001 census,92431000000100
+92441000000109,White and Asian - ethnic category 2001 census,92441000000109
+92451000000107,Other Mixed background - ethnic category 2001 census,92451000000107
+92461000000105,Pakistani or British Pakistani - ethnic category 2001 census,92461000000105
+92471000000103,Bangladeshi or British Bangladeshi - ethnic category 2001 census,92471000000103
+92481000000101,Other Asian background - ethnic category 2001 census,92481000000101
+92491000000104,African - ethnic category 2001 census,92491000000104
+92501000000105,Other Black background - ethnic category 2001 census,92501000000105
+92511000000107,Chinese - ethnic category 2001 census,92511000000107
+92521000000101,Other - ethnic category 2001 census,92521000000101
+92531000000104,Ethnic category not stated - 2001 census,92531000000104
+92541000000108,Scottish - ethnic category 2001 census,92541000000108
+92551000000106,Welsh - ethnic category 2001 census,92551000000106
+92561000000109,Northern Irish - ethnic category 2001 census,92561000000109
+92571000000102,Cornish - ethnic category 2001 census,92571000000102
+92581000000100,Black and Asian - ethnic category 2001 census,92581000000100
+92591000000103,Black and Chinese - ethnic category 2001 census,92591000000103
+92601000000109,Chinese and White - ethnic category 2001 census,92601000000109
+92611000000106,Asian and Chinese - ethnic category 2001 census,92611000000106
+92621000000100,Other Mixed or Mixed unspecified - ethnic category 2001 census,92621000000100
+92631000000103,Mixed Asian - ethnic category 2001 census,92631000000103
+92641000000107,Punjabi - ethnic category 2001 census,92641000000107
+92651000000105,Kashmiri - ethnic category 2001 census,92651000000105
+92661000000108,East African Asian - ethnic category 2001 census,92661000000108
+92671000000101,Tamil - ethnic category 2001 census,92671000000101
+92681000000104,British Asian - ethnic category 2001 census,92681000000104
+92691000000102,Caribbean Asian - ethnic category 2001 census,92691000000102
+92701000000102,Other Asian or Asian unspecified - ethnic category 2001 census,92701000000102
+92711000000100,Somali - ethnic category 2001 census,92711000000100
+92721000000106,Mixed Black - ethnic category 2001 census,92721000000106
+92731000000108,Nigerian - ethnic category 2001 census,92731000000108
+92741000000104,Other Black or Black unspecified - ethnic category 2001 census,92741000000104
+92751000000101,Vietnamese - ethnic category 2001 census,92751000000101
+92761000000103,Japanese - ethnic category 2001 census,92761000000103
+92771000000105,Filipino - ethnic category 2001 census,92771000000105
+92781000000107,Malaysian - ethnic category 2001 census,92781000000107
+92791000000109,Cypriot (part not stated) - ethnic category 2001 census,92791000000109
+93921000000101,Ulster Scots - ethnic category 2001 census,93921000000101
+93931000000104,Greek - ethnic category 2001 census,93931000000104
+93941000000108,Greek Cypriot - ethnic category 2001 census,93941000000108
+93951000000106,Turkish Cypriot - ethnic category 2001 census,93951000000106
+93961000000109,Italian - ethnic category 2001 census,93961000000109
+93981000000100,Kosovan - ethnic category 2001 census,93981000000100
+93991000000103,Bosnian - ethnic category 2001 census,93991000000103
+94001000000108,Croatian - ethnic category 2001 census,94001000000108
+94011000000105,Other republics which made up the former Yugoslavia - ethnic category 2001 census,94011000000105
+94021000000104,Mixed Irish and other White - ethnic category 2001 census,94021000000104
+94031000000102,Other mixed White - ethnic category 2001 census,94031000000102
+94041000000106,Other White European or European unspecified or Mixed European - ethnic category 2001 census,94041000000106
+94051000000109,Other White or White unspecified - ethnic category 2001 census,94051000000109
+94061000000107,North African - ethnic category 2001 census,94061000000107
+94071000000100,"Middle Eastern (excluding Israeli, Iranian and Arab) - ethnic category 2001 census",94071000000100
+94081000000103,Israeli - ethnic category 2001 census,94081000000103
+94091000000101,Kurdish - ethnic category 2001 census,94091000000101
+94101000000109,Moroccan - ethnic category 2001 census,94101000000109
+94111000000106,Latin American - ethnic category 2001 census,94111000000106
+94121000000100,Multi-ethnic islands: Mauritian or Seychellois or Maldivian or St Helena - ethnic category 2001 census,94121000000100
+94131000000103,Buddhist - ethnic category 2001 census,94131000000103
+94141000000107,Sikh - ethnic category 2001 census,94141000000107
+94151000000105,Any other group - ethnic category 2001 census,94151000000105
+9533000,Dutch,9533000
+976551000000109,Ethnic category - 2011 census,976551000000109
+976571000000100,Ethnic category - 2011 census England and Wales,976571000000100
+976591000000101,Ethnic category - 2011 census Northern Ireland,976591000000101
+976611000000109,Ethnic category - 2011 census Scotland,976611000000109
+976631000000101,White: English or Welsh or Scottish or Northern Irish or British - England and Wales ethnic category 2011 census,976631000000101
+976651000000108,White: Irish - England and Wales ethnic category 2011 census,976651000000108
+976671000000104,White: Gypsy or Irish Traveller - England and Wales ethnic category 2011 census,976671000000104
+976691000000100,White: any other White background - England and Wales ethnic category 2011 census,976691000000100
+976711000000103,Mixed multiple ethnic groups: White and Black Caribbean - England and Wales ethnic category 2011 census,976711000000103
+976721000000109,Mixed multiple ethnic groups: white and black Caribbean - England and Wales ethnic category 2011 census ,976721000000109
+976731000000106,Mixed multiple ethnic groups: White and Black African - England and Wales ethnic category 2011 census,976731000000106
+976741000000102,Mixed multiple ethnic groups: white and black African - England and Wales ethnic category 2011 census ,976741000000102
+976751000000104,Mixed multiple ethnic groups: White and Asian - England and Wales ethnic category 2011 census,976751000000104
+976761000000101,Mixed multiple ethnic groups: white and Asian - England and Wales ethnic category 2011 census ,976761000000101
+976771000000108,Mixed multiple ethnic groups: any other Mixed or multiple ethnic background - England and Wales ethnic category 2011 census,976771000000108
+976781000000105,Mixed multiple ethnic groups: any other Mixed or  Multiple ethnic background - England and Wales ethnic category 2011 census ,976781000000105
+976791000000107,Asian or Asian British: Indian - England and Wales ethnic category 2011 census,976791000000107
+976811000000108,Asian or Asian British: Pakistani - England and Wales ethnic category 2011 census,976811000000108
+976831000000100,Asian or Asian British: Bangladeshi - England and Wales ethnic category 2011 census,976831000000100
+976851000000107,Asian or Asian British: Chinese - England and Wales ethnic category 2011 census,976851000000107
+976871000000103,Asian or Asian British: any other Asian background - England and Wales ethnic category 2011 census,976871000000103
+976891000000104,Black or African or Caribbean or Black British: African - England and Wales ethnic category 2011 census,976891000000104
+976911000000101,Black or African or Caribbean or Black British: Caribbean - England and Wales ethnic category 2011 census,976911000000101
+976931000000109,Black or African or Caribbean or Black British: other Black or African or Caribbean background - England and Wales ethnic category 2011 census,976931000000109
+976951000000102,Other ethnic group: Arab - England and Wales ethnic category 2011 census,976951000000102
+976961000000104,Other ethnic group: Arab - England and Wales ethnic category 2011 census ,976961000000104
+976971000000106,Other ethnic group: any other ethnic group - England and Wales ethnic category 2011 census,976971000000106
+976981000000108,Other ethnic group: any other ethnic group - England and Wales ethnic category 2011 census ,976981000000108
+977351000000100,White - Northern Ireland ethnic category 2011 census,977351000000100
+977371000000109,Irish Traveller - Northern Ireland ethnic category 2011 census,977371000000109
+977391000000108,Mixed multiple ethnic groups: White and Black Caribbean - Northern Ireland ethnic category 2011 census,977391000000108
+977401000000106,Mixed multiple ethnic groups: white and black Caribbean - Northern Ireland ethnic category 2011 census ,977401000000106
+977411000000108,Mixed multiple ethnic groups: White and Black African - Northern Ireland ethnic category 2011 census,977411000000108
+977421000000102,Mixed multiple ethnic groups: white and black African - Northern Ireland ethnic category 2011 census ,977421000000102
+977431000000100,Mixed multiple ethnic groups: White and Asian - Northern Ireland ethnic category 2011 census,977431000000100
+977441000000109,Mixed multiple ethnic groups: white and Asian - Northern Ireland ethnic category 2011 census ,977441000000109
+977551000000106,Mixed multiple ethnic groups: any other Mixed or multiple ethnic background - Northern Ireland ethnic category 2011 census,977551000000106
+977561000000109,Mixed multiple ethnic groups: any other Mixed or Multiple ethnic background - Northern Ireland ethnic category 2011 census ,977561000000109
+977591000000103,Asian or Asian British: Indian - Northern Ireland ethnic category 2011 census,977591000000103
+977711000000100,Asian or Asian British: Pakistani - Northern Ireland ethnic category 2011 census,977711000000100
+977731000000108,Asian or Asian British: Bangladeshi - Northern Ireland ethnic category 2011 census,977731000000108
+977751000000101,Asian or Asian British: Chinese - Northern Ireland ethnic category 2011 census,977751000000101
+977771000000105,Asian or Asian British: any other Asian background - Northern Ireland ethnic category 2011 census,977771000000105
+977791000000109,Black or African or Caribbean or Black British: African - Northern Ireland ethnic category 2011 census,977791000000109
+977811000000105,Black or African or Caribbean or Black British: Caribbean - Northern Ireland ethnic category 2011 census,977811000000105
+977831000000102,Black or African or Caribbean or Black British: other Black or African or Caribbean background - Northern Ireland ethnic category 2011 census,977831000000102
+977851000000109,Other ethnic group: Arab - Northern Ireland ethnic category 2011 census,977851000000109
+977861000000107,Other ethnic group: Arab - Northern Ireland ethnic category 2011 census ,977861000000107
+977871000000100,Other ethnic group: any other ethnic group - Northern Ireland ethnic category 2011 census,977871000000100
+977881000000103,Other ethnic group: any other ethnic group - Northern Ireland ethnic category 2011 census ,977881000000103
+977911000000103,White: Scottish - Scotland ethnic category 2011 census,977911000000103
+977931000000106,White: other British - Scotland ethnic category 2011 census,977931000000106
+977951000000104,White: Irish - Scotland ethnic category 2011 census,977951000000104
+977971000000108,White: Gypsy or Irish Traveller - Scotland ethnic category 2011 census,977971000000108
+978011000000101,White: Polish - Scotland ethnic category 2011 census,978011000000101
+978031000000109,White: any other White ethnic group - Scotland ethnic category 2011 census,978031000000109
+978041000000100,White: any other white ethnic group - Scotland ethnic category 2011 census ,978041000000100
+978051000000102,Mixed or multiple ethnic groups: any Mixed or multiple ethnic group - Scotland ethnic category 2011 census,978051000000102
+978061000000104,Mixed or multiple ethnic groups: any Mixed or Multiple ethnic group - Scotland ethnic category 2011 census ,978061000000104
+978071000000106,"Asian or Asian Scottish or Asian British: Pakistani, Pakistani Scottish or Pakistani British - Scotland ethnic category 2011 census",978071000000106
+978111000000100,"Asian or Asian Scottish or Asian British: Indian, Indian Scottish or Indian British - Scotland ethnic category 2011 census",978111000000100
+978171000000105,"Asian or Asian Scottish or Asian British: Bangladeshi, Bangladeshi Scottish or Bangladeshi British - Scotland ethnic category 2011 census",978171000000105
+978191000000109,Asian or Asian Scottish or Asian British: Chinese - Scotland ethnic category 2011 census,978191000000109
+978211000000108,Asian or Asian Scottish or Asian British: any other Asian group - Scotland ethnic category 2011 census,978211000000108
+978231000000100,"African: African, African Scottish or African British - Scotland ethnic category 2011 census",978231000000100
+978251000000107,African: any other African - Scotland ethnic category 2011 census,978251000000107
+978271000000103,"Caribbean or Black: Caribbean, Caribbean Scottish or Caribbean British - Scotland ethnic category 2011 census",978271000000103
+978341000000102,"Caribbean or Black: Black, Black Scottish or Black British - Scotland ethnic category 2011 census",978341000000102
+978361000000101,Caribbean or Black: any other Black or Caribbean group - Scotland ethnic category 2011 census,978361000000101
+978381000000105,"Other ethnic group: Arab, Arab Scottish or Arab British - Scotland ethnic category 2011 census",978381000000105
+978391000000107,"Other ethnic group: Arab, Arab Scottish or Arab British - Scotland ethnic category 2011 census ",978391000000107
+978401000000105,Other ethnic group: any other ethnic group - Scotland ethnic category 2011 census,978401000000105
+978411000000107,Other ethnic group: any other ethnic group - Scotland ethnic category 2011 census ,978411000000107

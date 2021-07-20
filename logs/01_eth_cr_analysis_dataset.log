@@ -1,0 +1,75 @@
+--------------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  /Users/lsh152058/Desktop/GitHub/ethnicity-short-data-report/logs/01_eth_c
+> r_analysis_dataset.log
+  log type:  text
+ opened on:  20 Jul 2021, 18:18:32
+
+. 
+. clear
+
+. import delimited ./output/input.csv
+(604 vars, 1,000 obs)
+
+. 
+end of do-file
+
+. do "/var/folders/jg/zvg1wn090ps86p3lwtn901140000gn/T//SD58791.000000"
+
+. order patient_id
+
+. 
+end of do-file
+
+. bro
+
+. do "/var/folders/jg/zvg1wn090ps86p3lwtn901140000gn/T//SD58791.000000"
+
+. collapse (count) eth_*
+
+. 
+end of do-file
+
+. bro
+
+. do "/Users/lsh152058/Desktop/GitHub/ethnicity-short-data-report/analysis/00_d
+> escribe_snomed_ethnicity.do"
+
+. /*===========================================================================
+> ===
+> DO FILE NAME:                   00_describe_snomed_ethnicity
+> PROJECT:                                Ethnciity short data report
+> DATE:                                   20 July 2021
+> AUTHOR:                                 R  Mathur 
+> DESCRIPTION OF FILE:    generate counts of each ethnicity SNOMED code in TPP 
+> DATASETS USED:                  input.csv
+> 
+> DATASETS CREATED:               none
+> OTHER OUTPUT:                   logfiles, printed to folder $Logdir
+> USER-INSTALLED ADO:      
+>   (place .ado file(s) in analysis folder)                                    
+>                            
+> =============================================================================
+> =*/
+. sysdir set PLUS ./analysis/adofiles
+
+. adopath + ./analysis/adofiles
+  [1]  (BASE)      "/Applications/Stata/ado/base/"
+  [2]  (SITE)      "/Applications/Stata/ado/site/"
+  [3]              "."
+  [4]  (PERSONAL)  "/Users/lsh152058/Documents/Stata/ado/personal/"
+  [5]  (PLUS)      "./analysis/adofiles/"
+  [6]  (OLDPLACE)  "~/ado/"
+  [7]              "./analysis/adofiles"
+
+. sysdir
+   STATA:  /Applications/Stata/
+    BASE:  /Applications/Stata/ado/base/
+    SITE:  /Applications/Stata/ado/site/
+    PLUS:  ./analysis/adofiles/
+PERSONAL:  /Users/lsh152058/Documents/Stata/ado/personal/
+OLDPLACE:  ~/ado/
+
+. 
+. * Open a log file
+. cap log close
