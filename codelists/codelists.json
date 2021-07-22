@@ -1,10 +1,10 @@
 {
   "files": {
-    "opensafely-ethnicity-uk-categories.csv": {
-      "id": "opensafely/ethnicity-uk-categories/3d6551e9",
-      "url": "https://codelists.opensafely.org/codelist/opensafely/ethnicity-uk-categories/3d6551e9/",
-      "downloaded_at": "2021-07-16 16:33:30.728153Z",
-      "sha": "3007941887f371a244d157cf8dae8183e5adbe28"
+    "opensafely-ethnicity-uk-categories-.csv": {
+      "id": "opensafely/ethnicity-uk-categories//516dea7b",
+      "url": "https://codelists.opensafely.org/codelist/opensafely/ethnicity-uk-categories//516dea7b/",
+      "downloaded_at": "2021-07-22 10:34:38.355435Z",
+      "sha": "69e849415f9c8da54e607f861534b689fa6da48c"
     }
   }
 }

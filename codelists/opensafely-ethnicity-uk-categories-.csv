@@ -188,8 +188,11 @@ code,term
 1919006,Egyptians
 19434008,French
 20140003,Hawaiians
+202171000000101,Patient ethnicity unknown
 20291009,Lacandon
 20449009,Javanese
+207971000000101,Patient ethnicity unknown
+207981000000104,Patient ethnicity unknown
 21047009,Aleuts
 21868006,Madagascans
 21993009,Indonesians
@@ -265,6 +268,7 @@ code,term
 33897005,Chinese
 34334001,New Caledonians
 35007000,Utes
+354441000000105,Ethnicity - National Public Health Classification
 36329002,Slovak
 364699009,Ethnic group
 365455004,Ethnic groups (1991 census) (United Kingdom)
@@ -282,6 +286,7 @@ code,term
 393199009,Gypsies
 394149000,Gypsies
 394635008,Gypsies
+397607002,"Perioperative plan of care consistent with patient value system, lifestyle, ethnicity, and culture"
 39764005,Bantu
 397731000,Ethnic group finding
 398089004,Ethnic background
@@ -306,6 +311,7 @@ code,term
 43481000000100,Other white British ethnic group
 43608005,Australian Aborigines
 43890005,Dieguenos
+443225003,Ethnicity of caregiver
 44460002,Turks
 445343003,Romanian
 44881000000100,White Scottish
@@ -323,6 +329,9 @@ code,term
 49202008,Gilbertese
 494131000000105,White British - ethnic category 2001 census
 494161000000100,White Irish - ethnic category 2001 census
+503391000000104,Ethnicity of carer
+503401000000101,Ethnicity of carer 
+503411000000104,Ethnicity of carer 
 50405005,Senoi
 51750002,Hottentot
 51827000,Oriental Jews
@@ -390,7 +399,10 @@ code,term
 72201005,Hobe
 72248007,Kikuyu
 72337002,Brazilian Indians
+723621000000103,Ethnicity
 72809004,Icelanders
+728721000000100,Carer from Black and minority ethnic group
+728731000000103,Carer from Black and Minority Ethnic group 
 733078003,Ukrainian
 733446001,Canadian
 735001008,Scandinavian
