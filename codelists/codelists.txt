@@ -1,1 +1,1 @@
-opensafely/ethnicity-uk-categories//516dea7b
+opensafely/ethnicity-uk-categories/516dea7b

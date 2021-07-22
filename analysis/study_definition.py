@@ -48,7 +48,7 @@ study = StudyDefinition(
     },
 
     # STUDY POPULATION
-   population=patients.registered_with_one_practice_on("2021-07-01"),
+   population=patients.registered_with_one_practice_between("2021-07-01","2021-07-01"),
 
     ## DEMOGRAPHIC COVARIATES
     # AGE
