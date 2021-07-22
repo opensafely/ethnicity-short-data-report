@@ -20,9 +20,9 @@ cap log close
 log using ./logs/00_describe_snomed_ethnicity, replace t
 
 *create stata version of codelists for merginng
-import delimited ./codelists/opensafely-ethnicity-uk-categories_formerge.csv, clear
-format snomedcode %20.0f
-tostring snomedcode, replace format(%20.0g)
+import delimited ./codelists/opensafely-ethnicity-uk-categories-.csv, clear
+format code %20.0f
+tostring code, gen(snomedcode) format(%20.0g)
 save ./output/opensafely-ethnicity-uk-categories_formerge.dta, replace
 
 clear
