@@ -5,8 +5,18 @@ expectations:
 
 actions:
 
-  generate_study_population:
+  generate_cohorts:
     run: cohortextractor:latest generate_cohort --study-definition study_definition
     outputs:
       highly_sensitive:
         cohort: output/input.csv
+
+  initial_counts:
+    run: stata-mp:latest analysis/00_describe_snomed_ethnicity.do
+    needs: [generate_cohorts]
+    outputs:
+      highly_sensitive:
+        data: output/snomed_ethnicity_counts.dta
+      moderately_sensitive:
+        log: logs/00_describe_snomed_ethnicity.log
+
