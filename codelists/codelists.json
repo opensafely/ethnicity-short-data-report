@@ -1,3 +1,10 @@
 {
-  "files": {}
+  "files": {
+    "opensafely-ethnicity-uk-categories.csv": {
+      "id": "opensafely/ethnicity-uk-categories/516dea7b",
+      "url": "https://codelists.opensafely.org/codelist/opensafely/ethnicity-uk-categories/516dea7b/",
+      "downloaded_at": "2021-07-22 10:42:48.357490Z",
+      "sha": "69e849415f9c8da54e607f861534b689fa6da48c"
+    }
+  }
 }
