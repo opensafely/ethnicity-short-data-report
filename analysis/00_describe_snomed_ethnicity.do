@@ -19,14 +19,14 @@ sysdir
 cap log close
 log using ./logs/00_describe_snomed_ethnicity, replace t
 
-*create stata version of codelists for merginng
+*create stata version of codelists for merging
 import delimited ./codelists/opensafely-ethnicity-uk-categories.csv, clear
 format code %20.0f
 tostring code, gen(snomedcode) format(%20.0g)
 save ./output/opensafely-ethnicity-uk-categories_formerge.dta, replace
 
 clear
-import delimited ./output/input.csv
+import delimited ./output/input.csv, clear
 
 
 order patient_id
