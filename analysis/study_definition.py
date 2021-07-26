@@ -19,7 +19,7 @@ def make_variable(code):
                 include_date_of_match=False,
                 date_format="YYYY-MM-DD",
                 return_expectations={
-                    "incidence": 0.1,
+                    "incidence": 0.4,
                     "int": {"distribution": "normal", "mean": 3, "stddev": 1},
                 },
             )
