@@ -2,7 +2,7 @@
       name:  <unnamed>
        log:  /workspace/logs/00_trim_snomed_codelist.log
   log type:  text
- opened on:   2 Sep 2021, 18:26:38
+ opened on:   2 Sep 2021, 18:41:12
 
 . 
 . import delimited ./codelists/opensafely-ethnicity-uk-categories.csv, clear
@@ -99,5 +99,5 @@ file ./codelists/group10.csv saved
       name:  <unnamed>
        log:  /workspace/logs/00_trim_snomed_codelist.log
   log type:  text
- closed on:   2 Sep 2021, 18:26:39
+ closed on:   2 Sep 2021, 18:41:15
 -------------------------------------------------------------------------------
