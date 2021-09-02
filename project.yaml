@@ -22,10 +22,10 @@ actions:
         log: logs/00_trim_snomed_codelist.log
 
   generate_cohort1:
-    run: cohortextractor:latest generate_cohort --study-definition study_definition_1
+    run: cohortextractor:latest generate_cohort --study-definition study_definition
     outputs:
       highly_sensitive:
-        cohort: output/input_1.csv
+        cohort: output/input.csv
 
   generate_cohort2:
     run: cohortextractor:latest generate_cohort --study-definition study_definition_2
@@ -52,7 +52,7 @@ actions:
         cohort: output/input_5.csv
 
   generate_cohort6:
-    run: cohortextractor:latest generate_cohort --study-definition study_definition_
+    run: cohortextractor:latest generate_cohort --study-definition study_definition_6
     outputs:
       highly_sensitive:
         cohort: output/input_6.csv
