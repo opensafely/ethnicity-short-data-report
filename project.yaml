@@ -4,19 +4,89 @@ expectations:
   population_size: 1000
 
 actions:
-
-  generate_cohorts:
-    run: cohortextractor:latest generate_cohort --study-definition study_definition
+  split_codelist:
+    run: stata-mp:latest analysis/00_trim_snomed_codelist.do
     outputs:
       highly_sensitive:
-        cohort: output/input.csv
+        data1: codelists/group1.csv
+        data2: codelists/group2.csv
+        data3: codelists/group3.csv
+        data4: codelists/group4.csv
+        data5: codelists/group5.csv
+        data6: codelists/group6.csv
+        data7: codelists/group7.csv
+        data8: codelists/group8.csv
+        data9: codelists/group9.csv
+        data10: codelists/group10.csv
+      moderately_sensitive:
+        log: logs/00_trim_snomed_codelist.log
+
+  generate_cohort1:
+    run: cohortextractor:latest generate_cohort --study-definition study_definition1
+    outputs:
+      highly_sensitive:
+        cohort: output/input1.csv
+
+  generate_cohort2:
+    run: cohortextractor:latest generate_cohort --study-definition study_definition2
+    outputs:
+      highly_sensitive:
+        cohort: output/input2.csv
+  
+  generate_cohort3:
+    run: cohortextractor:latest generate_cohort --study-definition study_definition3
+    outputs:
+      highly_sensitive:
+        cohort: output/input3.csv
+
+  generate_cohort4:
+    run: cohortextractor:latest generate_cohort --study-definition study_definition4
+    outputs:
+      highly_sensitive:
+        cohort: output/input4.csv
+
+  generate_cohort5:
+    run: cohortextractor:latest generate_cohort --study-definition study_definition5
+    outputs:
+      highly_sensitive:
+        cohort: output/input5.csv
+
+  generate_cohort6:
+    run: cohortextractor:latest generate_cohort --study-definition study_definition6
+    outputs:
+      highly_sensitive:
+        cohort: output/input6.csv
+
+  generate_cohort7:
+    run: cohortextractor:latest generate_cohort --study-definition study_definition7
+    outputs:
+      highly_sensitive:
+        cohort: output/input7.csv
+
+  generate_cohort8:
+    run: cohortextractor:latest generate_cohort --study-definition study_definition8
+    outputs:
+      highly_sensitive:
+        cohort: output/input8.csv
+
+  generate_cohort9:
+    run: cohortextractor:latest generate_cohort --study-definition study_definition9
+    outputs:
+      highly_sensitive:
+        cohort: output/input9.csv
+
+  generate_cohort10:
+    run: cohortextractor:latest generate_cohort --study-definition study_definition10
+    outputs:
+      highly_sensitive:
+        cohort: output/input10.csv
 
   initial_counts:
-    run: stata-mp:latest analysis/00_describe_snomed_ethnicity.do
-    needs: [generate_cohorts]
+    run: stata-mp:latest analysis/01_describe_snomed_ethnicity.do
+    needs: [generate_cohort1, generate_cohort2, generate_cohort3, generate_cohort4, generate_cohort5, generate_cohort6, generate_cohort7, generate_cohort8, generate_cohort9, generate_cohort10]
     outputs:
       highly_sensitive:
         data: output/snomed_ethnicity_counts.dta
       moderately_sensitive:
-        log: logs/00_describe_snomed_ethnicity.log
+        log: logs/01_describe_snomed_ethnicity.log
 

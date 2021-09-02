@@ -1,6 +1,6 @@
 /*==============================================================================
 DO FILE NAME:			00_describe_snomed_ethnicity
-PROJECT:				Ethnciity short data report
+PROJECT:				Ethnicity short data report
 DATE: 					20 July 2021
 AUTHOR:					R  Mathur 
 DESCRIPTION OF FILE:	generate counts of each ethnicity SNOMED code in TPP 
@@ -26,7 +26,19 @@ tostring code, gen(snomedcode) format(%20.0g)
 save ./output/opensafely-ethnicity-uk-categories_formerge.dta, replace
 
 clear
-import delimited ./output/input.csv, clear
+
+*import csv for each group and save as dta
+forvalues i=1/10 {
+	cap import delimited ./output/input`i'.csv, clear
+	save ./output/input`i'.dta, replace
+}
+
+*append all 10 files
+use ./output/input1.dta
+
+forvalues i=2/10 {
+	cap append using ./output/input`i'.dta
+}
 
 
 order patient_id

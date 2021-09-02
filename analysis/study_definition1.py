@@ -69,13 +69,13 @@ study = StudyDefinition(
     ),
 
     ethnicity=patients.with_these_clinical_events(
-        ethnicity_codes,
+        group1,
         return_expectations={"incidence": 0.50},
     ),
 
-    **loop_over_codes(ethnicity_codes),
+    **loop_over_codes(group1),
     first_ethnicity_code=patients.with_these_clinical_events(
-        ethnicity_codes,
+        group1,
         returning="code",
         find_first_match_in_period=True,
         return_expectations={

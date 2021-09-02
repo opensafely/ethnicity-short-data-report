@@ -11,6 +11,11 @@ OTHER OUTPUT: 			logfiles, printed to folder $Logdir
 USER-INSTALLED ADO: 	 
   (place .ado file(s) in analysis folder)								
 ==============================================================================*/
+
+* Open a log file
+cap log close
+log using ./logs/00_trim_snomed_codelist, replace t
+
 import delimited ./codelists/opensafely-ethnicity-uk-categories.csv, clear
 save ./codelists/opensafely-ethnicity-uk-categories.dta, replace
 
@@ -25,6 +30,10 @@ tab group
  preserve 
  foreach i of num 1/10 {
          keep if group == `i'
-         save ./codelists/group`i'.dta
+		 drop group
+		 tostring code, replace
+         export delimited ./codelists/group`i'.csv, replace novarnames
          restore, preserve 
  }
+
+ log close
