@@ -17,7 +17,7 @@ sysdir
 
 * Open a log file
 cap log close
-log using ./logs/00_describe_snomed_ethnicity, replace t
+log using ./logs/01_describe_snomed_ethnicity, replace t
 
 *create stata version of codelists for merging
 import delimited ./codelists/opensafely-ethnicity-uk-categories.csv, clear
@@ -28,13 +28,13 @@ save ./output/opensafely-ethnicity-uk-categories_formerge.dta, replace
 clear
 
 *import csv for each group and save as dta
-forvalues i=1/10 {
+forvalues i=2/10 {
 	cap import delimited ./output/input_`i'.csv, clear
 	save ./output/input`i'.dta, replace
 }
 
 *append all 10 files
-use ./output/input1.dta
+import delimited using ./output/input.csv, clear
 
 forvalues i=2/10 {
 	cap append using ./output/input`i'.dta
