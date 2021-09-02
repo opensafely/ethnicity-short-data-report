@@ -41,6 +41,7 @@ def loop_over_codes(code_list):
 # Defines both the study population and points to the important covariates
 
 study = StudyDefinition(
+
     default_expectations={
         "date": {"earliest": "1970-01-01", "latest": "today"},
         "rate": "uniform",
@@ -69,13 +70,13 @@ study = StudyDefinition(
     ),
 
     ethnicity=patients.with_these_clinical_events(
-        group1,
+        group3,
         return_expectations={"incidence": 0.50},
     ),
 
-    **loop_over_codes(group1),
+    **loop_over_codes(group3),
     first_ethnicity_code=patients.with_these_clinical_events(
-        group1,
+        group3,
         returning="code",
         find_first_match_in_period=True,
         return_expectations={
