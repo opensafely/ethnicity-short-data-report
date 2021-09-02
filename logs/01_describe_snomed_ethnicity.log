@@ -2,7 +2,7 @@
       name:  <unnamed>
        log:  /workspace/logs/01_describe_snomed_ethnicity.log
   log type:  text
- opened on:   2 Sep 2021, 18:39:32
+ opened on:   2 Sep 2021, 18:48:02
 
 . 
 . *create stata version of codelists for merging
@@ -217,5 +217,5 @@ file ./output/snomed_ethnicity_counts.dta saved
       name:  <unnamed>
        log:  /workspace/logs/01_describe_snomed_ethnicity.log
   log type:  text
- closed on:   2 Sep 2021, 18:39:44
+ closed on:   2 Sep 2021, 18:48:18
 -------------------------------------------------------------------------------
