@@ -29,7 +29,7 @@ clear
 
 *import csv for each group and save as dta
 forvalues i=1/10 {
-	cap import delimited ./output/input`i'.csv, clear
+	cap import delimited ./output/input_`i'.csv, clear
 	save ./output/input`i'.dta, replace
 }
 
