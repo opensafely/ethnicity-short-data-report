@@ -2,7 +2,7 @@
       name:  <unnamed>
        log:  /workspace/logs/01_describe_snomed_ethnicity.log
   log type:  text
- opened on:   2 Sep 2021, 18:48:02
+ opened on:   3 Sep 2021, 09:23:54
 
 . 
 . *create stata version of codelists for merging
@@ -26,23 +26,14 @@ file ./output/opensafely-ethnicity-uk-categories_formerge.dta saved
   2.         cap import delimited ./output/input_`i'.csv, clear
   3.         save ./output/input`i'.dta, replace
   4. }
-(note: file ./output/input2.dta not found)
 file ./output/input2.dta saved
-(note: file ./output/input3.dta not found)
 file ./output/input3.dta saved
-(note: file ./output/input4.dta not found)
 file ./output/input4.dta saved
-(note: file ./output/input5.dta not found)
 file ./output/input5.dta saved
-(note: file ./output/input6.dta not found)
 file ./output/input6.dta saved
-(note: file ./output/input7.dta not found)
 file ./output/input7.dta saved
-(note: file ./output/input8.dta not found)
 file ./output/input8.dta saved
-(note: file ./output/input9.dta not found)
 file ./output/input9.dta saved
-(note: file ./output/input10.dta not found)
 file ./output/input10.dta saved
 
 . 
@@ -212,10 +203,13 @@ snomedcode was double now str16
 (note: file ./output/snomed_ethnicity_counts.dta not found)
 file ./output/snomed_ethnicity_counts.dta saved
 
-. 
+. export delimited using ./output/snomed_ethnicity_counts.csv, replace
+(note: file ./output/snomed_ethnicity_counts.csv not found)
+file ./output/snomed_ethnicity_counts.csv saved
+
 . log close
       name:  <unnamed>
        log:  /workspace/logs/01_describe_snomed_ethnicity.log
   log type:  text
- closed on:   2 Sep 2021, 18:48:18
+ closed on:   3 Sep 2021, 09:24:36
 -------------------------------------------------------------------------------
