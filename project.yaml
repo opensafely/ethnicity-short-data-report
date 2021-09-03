@@ -87,6 +87,7 @@ actions:
     outputs:
       highly_sensitive:
         data: output/snomed_ethnicity_counts.dta
+        table: output/snomed_ethnicity_counts.csv
       moderately_sensitive:
         log: logs/01_describe_snomed_ethnicity.log
 
