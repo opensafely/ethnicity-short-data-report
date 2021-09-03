@@ -63,5 +63,5 @@ replace include=0 if snomedcode_count==0
 tab include
 drop code
 save ./output/snomed_ethnicity_counts.dta, replace
-
+export delimited using ./output/snomed_ethnicity_counts.csv, replace
 log close
