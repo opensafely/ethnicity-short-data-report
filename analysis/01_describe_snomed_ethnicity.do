@@ -29,22 +29,23 @@ clear
 
 *import csv for each group and save as dta
 forvalues i=2/10 {
-	cap import delimited ./output/input_`i'.csv, clear
+	 import delimited ./output/input_`i'.csv, clear
+	 gen group=`i'
 	save ./output/input`i'.dta, replace
 }
 
 *append all 10 files
 import delimited using ./output/input.csv, clear
-
+gen group=1
 forvalues i=2/10 {
-	cap append using ./output/input`i'.dta
+	 append using ./output/input`i'.dta
 }
 
 
 order patient_id
-
+tab group
 *collapse count of each ethnicity code 
-collapse (sum) eth_*
+collapse (sum) eth_* 
 
 *reshape long
 gen ethnicity=1
