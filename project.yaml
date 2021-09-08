@@ -84,9 +84,8 @@ actions:
   initial_counts:
     run: stata-mp:latest analysis/01_describe_snomed_ethnicity.do
     needs: [generate_cohort1, generate_cohort2, generate_cohort3, generate_cohort4, generate_cohort5, generate_cohort6, generate_cohort7, generate_cohort8, generate_cohort9, generate_cohort10]
-    outputs:
-      highly_sensitive:
-        table: output/snomed_ethnicity_counts.csv
+    outputs:      
       moderately_sensitive:
         log: logs/01_describe_snomed_ethnicity.log
+        table: output/snomed_ethnicity_counts.csv
 
