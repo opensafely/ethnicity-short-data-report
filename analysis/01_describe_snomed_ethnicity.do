@@ -28,41 +28,51 @@ save ./output/opensafely-ethnicity-uk-categories_formerge.dta, replace
 clear
 
 *import csv for each group and save as dta
+import delimited using ./output/input.csv, clear
+gen group=1
+save ./output/input1.dta, replace
+
 forvalues i=2/10 {
 	 import delimited ./output/input_`i'.csv, clear
 	 gen group=`i'
 	save ./output/input`i'.dta, replace
 }
 
-*append all 10 files
-import delimited using ./output/input.csv, clear
-gen group=1
-forvalues i=2/10 {
-	 append using ./output/input`i'.dta
+forvalues i=1/10 {
+	use ./output/input`i'.dta, clear
+	
+	*collapse count of each ethnicity code 
+	collapse (sum) eth_* (min) group
+
+	*reshape long
+	gen ethnicity=1
+	reshape long eth_ , i(ethnicity) j(snomedcode)
+	ren eth_ snomedcode_count
+
+	format snomedcode %20.0f
+	tostring snomedcode, replace format(%20.0g)
+
+	*merge with codelist for descriptors
+	merge 1:1 snomedcode using ./output/opensafely-ethnicity-uk-categories_formerge.dta, keep(match)
+
+	gen include=0
+	replace include=1 if _merge==3
+	replace include=0 if snomedcode_count==0
+	tab include
+	drop code
+	save ./output/snomed_ethnicity_count_`i'.dta, replace
 }
 
+*append all 10 files
+use ./output/snomed_ethnicity_count_1.dta
+forvalues i=2/10 {
+	 append using ./output/snomed_ethnicity_count_`i'.dta
+}
 
-order patient_id
+gsort -include snomedcode
+
+order snomedcode
 tab group
-*collapse count of each ethnicity code 
-collapse (sum) eth_* 
-
-*reshape long
-gen ethnicity=1
-reshape long eth_, i(ethnicity) j(snomedcode)
-ren eth_ snomedcode_count
-
-format snomedcode %20.0f
-tostring snomedcode, replace format(%20.0g)
-
-*merge with codelist for descriptors
-merge 1:1 snomedcode using ./output/opensafely-ethnicity-uk-categories_formerge.dta
-
-gen include=0
-replace include=1 if _merge==3
-replace include=0 if snomedcode_count==0
 tab include
-drop code
-save ./output/snomed_ethnicity_counts.dta, replace
 export delimited using ./output/snomed_ethnicity_counts.csv, replace
 log close

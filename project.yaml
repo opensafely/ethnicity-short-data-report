@@ -86,7 +86,6 @@ actions:
     needs: [generate_cohort1, generate_cohort2, generate_cohort3, generate_cohort4, generate_cohort5, generate_cohort6, generate_cohort7, generate_cohort8, generate_cohort9, generate_cohort10]
     outputs:
       highly_sensitive:
-        data: output/snomed_ethnicity_counts.dta
         table: output/snomed_ethnicity_counts.csv
       moderately_sensitive:
         log: logs/01_describe_snomed_ethnicity.log
