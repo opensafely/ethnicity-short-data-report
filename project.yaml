@@ -89,3 +89,10 @@ actions:
         log: logs/01_describe_snomed_ethnicity.log
         table: output/snomed_ethnicity_counts.csv
 
+  categorize_ethnicity:
+    run: stata-mp:latest analysis/02_attach_ethnicity_categories.do
+    needs: [generate_cohort1, generate_cohort2, generate_cohort3, generate_cohort4, generate_cohort5, generate_cohort6, generate_cohort7, generate_cohort8, generate_cohort9, generate_cohort10, initial_counts]
+    outputs:      
+      moderately_sensitive:
+        log: logs/02_attach_ethnicity_categories.log
+        table: output/snomed_ethnicity_codelist_forupload_Oct19.csv

@@ -8,6 +8,12 @@ ethnicity_codes = codelist_from_csv(
     column="code",
 )
 
+ethnicity_categories = codelist_from_csv(
+    "codelists/user-rohini-mathur-ethnicity-2021.csv",
+    system="snomed",
+    column="snomedcode",
+)
+
 group1 = codelist_from_csv(
     "codelists/user-rohini-mathur-ethnicity_group1.csv",
     system="snomed",
