@@ -1,0 +1,109 @@
+version: '3.0'
+
+expectations:
+  population_size: 1000
+
+
+
+actions:
+  split_codelist:
+    run: r:latest analysis/00_trim_snomed_codelist.r
+    outputs:
+      highly_sensitive:
+        data1: codelists/group_1.csv
+        data2: codelists/group_2.csv
+        data3: codelists/group_3.csv
+        data4: codelists/group_4.csv
+        data5: codelists/group_5.csv
+        data6: codelists/group_6.csv
+        data7: codelists/group_7.csv
+        data8: codelists/group_8.csv
+        data9: codelists/group_9.csv
+        data10: codelists/group_10.csv
+
+  generate_cohort1:
+    run: cohortextractor:latest generate_cohort --study-definition study_definition
+    outputs:
+      highly_sensitive:
+        cohort: output/input.csv
+
+  generate_cohort2:
+    run: cohortextractor:latest generate_cohort --study-definition study_definition_2
+    outputs:
+      highly_sensitive:
+        cohort: output/input_2.csv
+  
+  generate_cohort3:
+    run: cohortextractor:latest generate_cohort --study-definition study_definition_3
+    outputs:
+      highly_sensitive:
+        cohort: output/input_3.csv
+
+  generate_cohort4:
+    run: cohortextractor:latest generate_cohort --study-definition study_definition_4
+    outputs:
+      highly_sensitive:
+        cohort: output/input_4.csv
+
+  generate_cohort5:
+    run: cohortextractor:latest generate_cohort --study-definition study_definition_5
+    outputs:
+      highly_sensitive:
+        cohort: output/input_5.csv
+
+  generate_cohort6:
+    run: cohortextractor:latest generate_cohort --study-definition study_definition_6
+    outputs:
+      highly_sensitive:
+        cohort: output/input_6.csv
+
+  generate_cohort7:
+    run: cohortextractor:latest generate_cohort --study-definition study_definition_7
+    outputs:
+      highly_sensitive:
+        cohort: output/input_7.csv
+
+  generate_cohort8:
+    run: cohortextractor:latest generate_cohort --study-definition study_definition_8
+    outputs:
+      highly_sensitive:
+        cohort: output/input_8.csv
+
+  generate_cohort9:
+    run: cohortextractor:latest generate_cohort --study-definition study_definition_9
+    outputs:
+      highly_sensitive:
+        cohort: output/input_9.csv
+
+  generate_cohort10:
+    run: cohortextractor:latest generate_cohort --study-definition study_definition_10
+    outputs:
+      highly_sensitive:
+        cohort: output/input_10.csv
+
+  initial_counts:
+    run: r:latest analysis/01_describe_snomed_ethnicity.r
+    needs: [generate_cohort1, generate_cohort2, generate_cohort3, generate_cohort4, generate_cohort5, generate_cohort6, generate_cohort7, generate_cohort8, generate_cohort9, generate_cohort10,split_codelist]
+    outputs:      
+      moderately_sensitive:
+        table: output/R_snomed_ethnicity_counts.csv
+
+  generate_study_population:
+    run: cohortextractor:latest generate_cohort --study-definition study_definition_sdr --index-date-range "2019-01-01 to 2019-12-01 by month" --output-dir=output/data --output-format feather
+    outputs:
+      highly_sensitive:
+        cohort: output/data/input*.feather
+
+  preprocess_inputs:
+    run: python:latest python analysis/preprocess_inputs.py --output-format feather
+    needs: [join_ethnicity_all_patients]
+    outputs:
+      highly_sensitive:
+        cohort_with_duration: output/data/input_all.feather
+
+  generate_report_single:
+    run: jupyter:latest jupyter nbconvert /workspace/notebooks/report_single_definition.ipynb --execute --to html --template basic --output-dir=/workspace/output --ExecutePreprocessor.timeout=86400 --no-input
+    needs: [preprocess_inputs]
+    outputs:
+      moderately_sensitive:
+        notebook: output/report_single_definition.html
