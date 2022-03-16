@@ -65,6 +65,180 @@
       "url": "https://codelists.opensafely.org/codelist/user/rohini-mathur/ethnicity_group10/3414e735/",
       "downloaded_at": "2021-09-02 17:11:58.335285Z",
       "sha": "88643e94e4a2df0dd29c224598c4b589ef62f7c2"
+    },
+    "primis-covid19-vacc-uptake-eth2001.csv": {
+      "id": "primis-covid19-vacc-uptake/eth2001/v1",
+      "url": "https://codelists.opensafely.org/codelist/primis-covid19-vacc-uptake/eth2001/v1/",
+      "downloaded_at": "2022-03-16 15:32:18.007769Z",
+      "sha": "36e4eacba898e6ec72da8ff66e8c673bfd9aa8e4"
+    },
+    "primis-covid19-vacc-uptake-non_eth2001.csv": {
+      "id": "primis-covid19-vacc-uptake/non_eth2001/v1",
+      "url": "https://codelists.opensafely.org/codelist/primis-covid19-vacc-uptake/non_eth2001/v1/",
+      "downloaded_at": "2022-03-16 15:32:18.251704Z",
+      "sha": "b8581424b9305f70148f1bbccc0d3e4703847df7"
+    },
+    "primis-covid19-vacc-uptake-eth_notgiptref.csv": {
+      "id": "primis-covid19-vacc-uptake/eth_notgiptref/v1",
+      "url": "https://codelists.opensafely.org/codelist/primis-covid19-vacc-uptake/eth_notgiptref/v1/",
+      "downloaded_at": "2022-03-16 15:32:18.483854Z",
+      "sha": "6245c85e4bd44c0c3aa573325cf55891efee45db"
+    },
+    "primis-covid19-vacc-uptake-eth_notstated.csv": {
+      "id": "primis-covid19-vacc-uptake/eth_notstated/v1",
+      "url": "https://codelists.opensafely.org/codelist/primis-covid19-vacc-uptake/eth_notstated/v1/",
+      "downloaded_at": "2022-03-16 15:32:18.675506Z",
+      "sha": "a8997e1807a07d8f56e34ba3d0b95ee0082fec82"
+    },
+    "primis-covid19-vacc-uptake-eth_norecord.csv": {
+      "id": "primis-covid19-vacc-uptake/eth_norecord/v1",
+      "url": "https://codelists.opensafely.org/codelist/primis-covid19-vacc-uptake/eth_norecord/v1/",
+      "downloaded_at": "2022-03-16 15:32:18.893116Z",
+      "sha": "ca003bb021a14e704a6e81c139536ef459673da4"
+    },
+    "opensafely-ethnicity.csv": {
+      "id": "opensafely/ethnicity/2020-04-27",
+      "url": "https://codelists.opensafely.org/codelist/opensafely/ethnicity/2020-04-27/",
+      "downloaded_at": "2022-03-16 15:32:19.071173Z",
+      "sha": "3d2f3998b71863a80b24d60f6f4282e14191ae13"
+    },
+    "primis-covid19-vacc-uptake-bmi.csv": {
+      "id": "primis-covid19-vacc-uptake/bmi/v1",
+      "url": "https://codelists.opensafely.org/codelist/primis-covid19-vacc-uptake/bmi/v1/",
+      "downloaded_at": "2022-03-16 15:34:06.288629Z",
+      "sha": "6e96c04ee1a647905be2b410fa2c33d770576bf0"
+    },
+    "opensafely-height-snomed.csv": {
+      "id": "opensafely/height-snomed/3b4a3891",
+      "url": "https://codelists.opensafely.org/codelist/opensafely/height-snomed/3b4a3891/",
+      "downloaded_at": "2022-03-16 15:34:06.489831Z",
+      "sha": "22988f25528e7ebcbcd079afe54c39c883bcf63c"
+    },
+    "opensafely-weight-snomed.csv": {
+      "id": "opensafely/weight-snomed/5459abc6",
+      "url": "https://codelists.opensafely.org/codelist/opensafely/weight-snomed/5459abc6/",
+      "downloaded_at": "2022-03-16 15:34:06.679293Z",
+      "sha": "66c5fa2b4fc41bd55982e97ba2a30b148136b2dd"
+    },
+    "primis-covid19-vacc-uptake-ast.csv": {
+      "id": "primis-covid19-vacc-uptake/ast/v1",
+      "url": "https://codelists.opensafely.org/codelist/primis-covid19-vacc-uptake/ast/v1/",
+      "downloaded_at": "2022-03-16 15:34:06.929629Z",
+      "sha": "04dd8e518c2dcd43e54a109afed396f836549d62"
+    },
+    "opensafely-chronic-cardiac-disease-snomed.csv": {
+      "id": "opensafely/chronic-cardiac-disease-snomed/2020-04-08",
+      "url": "https://codelists.opensafely.org/codelist/opensafely/chronic-cardiac-disease-snomed/2020-04-08/",
+      "downloaded_at": "2022-03-16 15:34:07.200324Z",
+      "sha": "9af634a364f09123c83d6da9a694642ccd3075be"
+    },
+    "primis-covid19-vacc-uptake-chd_cov.csv": {
+      "id": "primis-covid19-vacc-uptake/chd_cov/v1.2.1",
+      "url": "https://codelists.opensafely.org/codelist/primis-covid19-vacc-uptake/chd_cov/v1.2.1/",
+      "downloaded_at": "2022-03-16 15:34:07.415178Z",
+      "sha": "31d1504f602925d7c9ff9be3c838212d492086db"
+    },
+    "opensafely-chronic-kidney-disease-snomed.csv": {
+      "id": "opensafely/chronic-kidney-disease-snomed/2020-04-14",
+      "url": "https://codelists.opensafely.org/codelist/opensafely/chronic-kidney-disease-snomed/2020-04-14/",
+      "downloaded_at": "2022-03-16 15:34:07.623349Z",
+      "sha": "5facf34dc24ff71032df5399b43adcd36997d670"
+    },
+    "opensafely-chronic-liver-disease-snomed.csv": {
+      "id": "opensafely/chronic-liver-disease-snomed/2020-06-02",
+      "url": "https://codelists.opensafely.org/codelist/opensafely/chronic-liver-disease-snomed/2020-06-02/",
+      "downloaded_at": "2022-03-16 15:34:07.871773Z",
+      "sha": "996796d695797fe151821c2e01be26d7d3bfb77c"
+    },
+    "opensafely-chronic-respiratory-disease-snomed.csv": {
+      "id": "opensafely/chronic-respiratory-disease-snomed/2020-04-10",
+      "url": "https://codelists.opensafely.org/codelist/opensafely/chronic-respiratory-disease-snomed/2020-04-10/",
+      "downloaded_at": "2022-03-16 15:34:08.116706Z",
+      "sha": "ee3ce0c4fd016cbfc4a253f6e3678b430c472e02"
+    },
+    "opensafely-haematological-cancer-snomed.csv": {
+      "id": "opensafely/haematological-cancer-snomed/2020-04-15",
+      "url": "https://codelists.opensafely.org/codelist/opensafely/haematological-cancer-snomed/2020-04-15/",
+      "downloaded_at": "2022-03-16 15:34:08.410502Z",
+      "sha": "c87e49e8d2965bc489f9baba670783f15ce73896"
+    },
+    "opensafely-lung-cancer-snomed.csv": {
+      "id": "opensafely/lung-cancer-snomed/2020-04-15",
+      "url": "https://codelists.opensafely.org/codelist/opensafely/lung-cancer-snomed/2020-04-15/",
+      "downloaded_at": "2022-03-16 15:34:08.634068Z",
+      "sha": "f0debdf1c968242fa8790cd0b773662b8e169f43"
+    },
+    "opensafely-cancer-excluding-lung-and-haematological-snomed.csv": {
+      "id": "opensafely/cancer-excluding-lung-and-haematological-snomed/2020-04-15",
+      "url": "https://codelists.opensafely.org/codelist/opensafely/cancer-excluding-lung-and-haematological-snomed/2020-04-15/",
+      "downloaded_at": "2022-03-16 15:34:08.961405Z",
+      "sha": "d43aff12fcb3b404c635e24f964ba2a368c96c98"
+    },
+    "opensafely-dementia-snomed.csv": {
+      "id": "opensafely/dementia-snomed/2020-04-22",
+      "url": "https://codelists.opensafely.org/codelist/opensafely/dementia-snomed/2020-04-22/",
+      "downloaded_at": "2022-03-16 15:34:09.159730Z",
+      "sha": "3f412d7c633312b105a0f909858e08b391f1ad46"
+    },
+    "opensafely-diabetes-snomed.csv": {
+      "id": "opensafely/diabetes-snomed/2020-04-15",
+      "url": "https://codelists.opensafely.org/codelist/opensafely/diabetes-snomed/2020-04-15/",
+      "downloaded_at": "2022-03-16 15:34:09.525650Z",
+      "sha": "c255576081fb4ee8c4daf71445d54b0f1ef0a10e"
+    },
+    "opensafely-housebound.csv": {
+      "id": "opensafely/housebound/5bc77310",
+      "url": "https://codelists.opensafely.org/codelist/opensafely/housebound/5bc77310/",
+      "downloaded_at": "2022-03-16 15:34:09.777770Z",
+      "sha": "4408752ee525151741ce050f1a20c51cd5c0116a"
+    },
+    "opensafely-hypertension-snomed.csv": {
+      "id": "opensafely/hypertension-snomed/2020-04-28",
+      "url": "https://codelists.opensafely.org/codelist/opensafely/hypertension-snomed/2020-04-28/",
+      "downloaded_at": "2022-03-16 15:34:10.015714Z",
+      "sha": "5d5471bb6a8a01e362b191b3eb8e80c2febeb1da"
+    },
+    "primis-covid19-vacc-uptake-learndis.csv": {
+      "id": "primis-covid19-vacc-uptake/learndis/v1",
+      "url": "https://codelists.opensafely.org/codelist/primis-covid19-vacc-uptake/learndis/v1/",
+      "downloaded_at": "2022-03-16 15:34:10.275341Z",
+      "sha": "41f81fcb9fadb082a77cadd6cf60614d7c8d860f"
+    },
+    "primis-covid19-vacc-uptake-sev_obesity.csv": {
+      "id": "primis-covid19-vacc-uptake/sev_obesity/v1.2",
+      "url": "https://codelists.opensafely.org/codelist/primis-covid19-vacc-uptake/sev_obesity/v1.2/",
+      "downloaded_at": "2022-03-16 15:34:10.494254Z",
+      "sha": "dfe3662bed703c590d1449e604e892cdd7a360c1"
+    },
+    "opensafely-learning-disabilities.csv": {
+      "id": "opensafely/learning-disabilities/2020-07-06",
+      "url": "https://codelists.opensafely.org/codelist/opensafely/learning-disabilities/2020-07-06/",
+      "downloaded_at": "2022-03-16 15:34:10.982495Z",
+      "sha": "ab5b5f60e8525af5898ec1066fc820501b8e5e29"
+    },
+    "opensafely-systolic-blood-pressure-qof.csv": {
+      "id": "opensafely/systolic-blood-pressure-qof/3572b5fb",
+      "url": "https://codelists.opensafely.org/codelist/opensafely/systolic-blood-pressure-qof/3572b5fb/",
+      "downloaded_at": "2022-03-16 15:34:11.205962Z",
+      "sha": "f2bc461e351499f4e5573a6f94e760b99979491e"
+    },
+    "opensafely-structured-medication-review-nhs-england.csv": {
+      "id": "opensafely/structured-medication-review-nhs-england/5459205f",
+      "url": "https://codelists.opensafely.org/codelist/opensafely/structured-medication-review-nhs-england/5459205f/",
+      "downloaded_at": "2022-03-16 15:34:11.411314Z",
+      "sha": "7bd4843c423ef7618c6d8f27164dc0939f2c9a9a"
+    },
+    "opensafely-nhs-england-care-homes-residential-status.csv": {
+      "id": "opensafely/nhs-england-care-homes-residential-status/3712ef13",
+      "url": "https://codelists.opensafely.org/codelist/opensafely/nhs-england-care-homes-residential-status/3712ef13/",
+      "downloaded_at": "2022-03-16 15:34:11.570242Z",
+      "sha": "357b2af4841e574f7d43bfeff143b39cdfed6997"
+    },
+    "user-anna-schultze-cancer.csv": {
+      "id": "user/anna-schultze/cancer/27f4f62d",
+      "url": "https://codelists.opensafely.org/codelist/user/anna-schultze/cancer/27f4f62d/",
+      "downloaded_at": "2022-03-16 15:34:11.780256Z",
+      "sha": "d67366767153ca644159a1b322aaf379845e55fe"
     }
   }
 }
