@@ -1,0 +1,26 @@
+{
+    "id": "2C1898AD",
+    "path": "~/GitHub/ethnicity-short-data-report/analysis/00_trim_snomed_codelist.r",
+    "project_path": "analysis/00_trim_snomed_codelist.r",
+    "type": "r_source",
+    "hash": "569535990",
+    "contents": "",
+    "dirty": true,
+    "created": 1647364476640.0,
+    "source_on_save": false,
+    "relative_order": 1,
+    "properties": {
+        "source_window_id": "",
+        "Source": "Source",
+        "cursorPosition": "13,0",
+        "scrollLine": "1"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1647432621,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1647432701890,
+    "read_only": false,
+    "read_only_alternatives": []
+}
