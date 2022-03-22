@@ -2,7 +2,7 @@ library('tidyverse')
 library('sf')
 
 files=dir(here::here("output"),pattern = "input")
-
+print(files)
 dataInp <- files %>%
   map(function(x)
     # # import data
