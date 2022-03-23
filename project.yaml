@@ -84,5 +84,5 @@ actions:
     needs: [split_codelist,generate_cohort1, generate_cohort2, generate_cohort3, generate_cohort4, generate_cohort5, generate_cohort6, generate_cohort7, generate_cohort8, generate_cohort9, generate_cohort10]
     outputs:      
       moderately_sensitive:
-        table: output/R_snomed_ethnicity_counts.csv
+        table: output/for_release/snomed_ethnicity_counts.csv
 
