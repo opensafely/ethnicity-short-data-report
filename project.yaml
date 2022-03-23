@@ -5,21 +5,19 @@ expectations:
 
 actions:
   split_codelist:
-    run: stata-mp:latest analysis/00_trim_snomed_codelist.do
+    run: r:latest analysis/00_trim_snomed_codelist.r
     outputs:
       highly_sensitive:
-        data1: codelists/group1.csv
-        data2: codelists/group2.csv
-        data3: codelists/group3.csv
-        data4: codelists/group4.csv
-        data5: codelists/group5.csv
-        data6: codelists/group6.csv
-        data7: codelists/group7.csv
-        data8: codelists/group8.csv
-        data9: codelists/group9.csv
-        data10: codelists/group10.csv
-      moderately_sensitive:
-        log: logs/00_trim_snomed_codelist.log
+        data1: codelists/group_1.csv
+        data2: codelists/group_2.csv
+        data3: codelists/group_3.csv
+        data4: codelists/group_4.csv
+        data5: codelists/group_5.csv
+        data6: codelists/group_6.csv
+        data7: codelists/group_7.csv
+        data8: codelists/group_8.csv
+        data9: codelists/group_9.csv
+        data10: codelists/group_10.csv
 
   generate_cohort1:
     run: cohortextractor:latest generate_cohort --study-definition study_definition
@@ -82,10 +80,9 @@ actions:
         cohort: output/input_10.csv
 
   initial_counts:
-    run: stata-mp:latest analysis/01_describe_snomed_ethnicity.do
-    needs: [generate_cohort1, generate_cohort2, generate_cohort3, generate_cohort4, generate_cohort5, generate_cohort6, generate_cohort7, generate_cohort8, generate_cohort9, generate_cohort10]
+    run: r:latest analysis/01_describe_snomed_ethnicity.r
+    needs: [split_codelist,generate_cohort1, generate_cohort2, generate_cohort3, generate_cohort4, generate_cohort5, generate_cohort6, generate_cohort7, generate_cohort8, generate_cohort9, generate_cohort10]
     outputs:      
       moderately_sensitive:
-        log: logs/01_describe_snomed_ethnicity.log
-        table: output/snomed_ethnicity_counts.csv
+        table: output/for_release/snomed_ethnicity_counts.csv
 
