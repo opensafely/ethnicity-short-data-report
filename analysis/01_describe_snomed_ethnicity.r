@@ -31,6 +31,7 @@ data <- files2 %>%
   inner_join(dataInp,by="snomedcode") %>% 
   ### remove unused codes
   filter(snomedcode_count!=0) %>%
-  arrange(as.numeric(group)) 
+  arrange(as.numeric(group)) %>%
+  select("snomedcode","term")
 
 write_csv(data,here::here("output","R_snomed_ethnicity_counts.csv"))   
