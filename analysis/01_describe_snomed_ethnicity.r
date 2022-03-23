@@ -34,4 +34,4 @@ data <- files2 %>%
   arrange(as.numeric(group)) %>%
   select("snomedcode","term")
 
-write_csv(data,here::here("output","R_snomed_ethnicity_counts.csv"))   
+write_csv(data,here::here("output","for_release","snomed_ethnicity_counts.csv"))   
