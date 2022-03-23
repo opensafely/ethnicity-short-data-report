@@ -34,4 +34,5 @@ data <- files2 %>%
   arrange(as.numeric(group)) %>%
   select("snomedcode","term")
 
+fs::dir_create(here::here("output", "for_release"))
 write_csv(data,here::here("output","for_release","snomed_ethnicity_counts.csv"))   
