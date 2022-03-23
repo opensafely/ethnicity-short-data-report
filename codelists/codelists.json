@@ -65,12 +65,6 @@
       "url": "https://codelists.opensafely.org/codelist/user/rohini-mathur/ethnicity_group10/3414e735/",
       "downloaded_at": "2021-09-02 17:11:58.335285Z",
       "sha": "88643e94e4a2df0dd29c224598c4b589ef62f7c2"
-    },
-    "opensafely-ethnicity.csv": {
-      "id": "opensafely/ethnicity/2020-04-27",
-      "url": "https://codelists.opensafely.org/codelist/opensafely/ethnicity/2020-04-27/",
-      "downloaded_at": "2022-03-23 09:43:45.281084Z",
-      "sha": "3d2f3998b71863a80b24d60f6f4282e14191ae13"
     }
   }
 }
