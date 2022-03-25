@@ -36,6 +36,7 @@ data <- files2 %>%
 write_csv(data,here::here("output","unredacted","snomed_ethnicity_counts.csv"))   
 
 data <- data %>%
+  filter(snomedcode_count!=0) %>%
   mutate(snomedcode_count=case_when(snomedcode_count<5 ~ as.integer(5),
                                     T ~ snomedcode_count))
 
