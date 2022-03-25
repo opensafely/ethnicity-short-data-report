@@ -7,3 +7,5 @@ output/*
 metadata/*
 venv/
 .Rproj.user
+.Rhistory
+ethnicity-short-data-report.Rproj
