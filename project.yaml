@@ -85,4 +85,4 @@ actions:
     outputs:      
       moderately_sensitive:
         table: output/for_release/snomed_ethnicity_counts.csv
-
+        table_unredact: output/unredacted/snomed_ethnicity_counts.csv
