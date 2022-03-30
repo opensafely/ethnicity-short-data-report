@@ -1,0 +1,68 @@
+---
+title: "Factors associated with COVID-19 vaccine coverage in chronic kidney disease patients"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE)
+## Import libraries
+library('here')
+library('tidyverse')
+library('gtsummary')
+library('kableExtra')
+
+```
+
+# All Patients ever registered
+## Category
+
+```{r full_SNOMED, echo=FALSE}
+read_rds(here("output", "tables", "full_SNOMED.rds"))
+```
+
+## Category compared
+
+```{r full_ethnicity_compare, echo=FALSE}
+theme_gtsummary_compact()
+read_rds(here("output", "tables", "full_ethnicity_compare.rds"))
+```
+
+## Missingness
+
+```{r full_missing, echo=FALSE}
+read_rds(here("output", "tables", "full_missing.rds"))
+```
+
+  
+## Missingness comparison
+
+```{r full_missing_compare, echo=FALSE}
+read_rds(here("output", "tables", "full_missing_compare.rds"))
+```
+
+# Patients registered as of 2022/01/01 
+
+
+```{r reg_SNOMED, echo=FALSE}
+read_rds(here("output", "tables", "reg_SNOMED.rds"))
+```
+
+## Category compared
+
+```{r reg_ethnicity_compare, echo=FALSE}
+theme_gtsummary_compact()
+read_rds(here("output", "tables", "reg_ethnicity_compare.rds"))
+```
+
+## Missingness
+
+```{r reg_missing, echo=FALSE}
+read_rds(here("output", "tables", "reg_missing.rds"))
+```
+
+  
+## Missingness comparison
+
+```{r reg_missing_compare, echo=FALSE}
+read_rds(here("output", "tables", "reg_missing_compare.rds"))
+```

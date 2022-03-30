@@ -3,25 +3,33 @@ version: '3.0'
 expectations:
   population_size: 1000
 
-
-
 actions:
   generate_study_population:
-    run: cohortextractor:latest generate_cohort --study-definition study_definition_sdr --index-date-range "2019-01-01 to 2019-12-01 by month" --output-dir=output/data --output-format feather
+    run: cohortextractor:latest generate_cohort --study-definition study_definition --output-dir=output --output-format feather
     outputs:
       highly_sensitive:
-        cohort: output/data/input*.feather
+        cohort: output/data/input.feather
 
-  preprocess_inputs:
-    run: python:latest python analysis/preprocess_inputs.py --output-format feather
+  generate_tables:
+    run: r:latest analysis/counts.r
     needs: [generate_study_population]
-    outputs:
-      highly_sensitive:
-        cohort_with_duration: output/data/input_all.feather
+    outputs:      
+      moderately_sensitive:
+        table1: output/tables/full_SNOMED.rds
+        table2: output/tables/full_ethnicity_compare.rds
+        table3: output/tables/full_missing.rds
+        table4: output/tables/full_missing_compare.rds
+        table5: output/tables/reg_SNOMED.rds
+        table6: output/tables/reg_ethnicity_compare.rds
+        table7: output/tables/reg_missing.rds
+        table8: output/tables/reg_missing_compare.rds
 
-  generate_report_multi:
-    run: jupyter:latest jupyter nbconvert /workspace/notebooks/report_multi_definition.ipynb --execute --to html --template basic --output-dir=/workspace/output --ExecutePreprocessor.timeout=86400 --no-input
-    needs: [preprocess_inputs]
+  rmd_report:
+    run: r:latest -e 'rmarkdown::render("analysis/ethnicity.Rmd",  knit_root_dir = "/workspace",  output_dir = "/workspace/output/report", output_format = c("html_document","rmarkdown::github_document")   )'
+    needs:
+    - generate_tables
+
     outputs:
       moderately_sensitive:
-        notebook: output/report_multi_definition.html
+        html: output/report/ethnicity.html
+        md: output/report/ethnicity.md
