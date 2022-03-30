@@ -2,7 +2,7 @@ from cohortextractor import (
     patients,
 )
 from codelists import *
-from datetime import date, timedelta
+from config import *
 
 clinical_variables = dict(
     # ----
@@ -18,7 +18,7 @@ clinical_variables = dict(
                     "category": {
                         "ratios": {"1": 0.2, "2": 0.2, "3": 0.2, "4": 0.2, "5": 0.2}
                     },
-                    "incidence": 1,
+                    "incidence": 0.75,
                 },
             ),  
 
@@ -45,6 +45,7 @@ clinical_variables = dict(
                         "5": 0.1,
                     }
                 },
+                "incidence": 0.75,
             },
             eth2001=patients.with_these_clinical_events(
                 eth2001,
@@ -275,4 +276,6 @@ demographic_variables = dict(
             },
         },
     ),
+    # registered
+    registered= patients.registered_as_of(index_date),
 )
