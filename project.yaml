@@ -25,11 +25,11 @@ actions:
         table8: output/tables/reg_missing_compare.rds
 
   rmd_report:
-    run: r:latest -e 'rmarkdown::render("analysis/ethnicity.Rmd",  knit_root_dir = "/workspace",  output_dir = "/workspace/output/report", output_format = c("html_document","rmarkdown::github_document")   )'
+    run: r:latest -e 'rmarkdown::render("analysis/ethnicity.Rmd",  knit_root_dir = "/workspace",  output_dir = "/workspace/notebook", output_format = c("html_document","rmarkdown::github_document")   )'
     needs:
     - generate_tables
 
     outputs:
       moderately_sensitive:
-        html: output/report/ethnicity.html
-        md: output/report/ethnicity.md
+        html: notebook/ethnicity.html
+        md: notebook/ethnicity.md
