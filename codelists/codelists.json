@@ -239,6 +239,36 @@
       "url": "https://codelists.opensafely.org/codelist/user/anna-schultze/cancer/27f4f62d/",
       "downloaded_at": "2022-03-16 15:34:11.780256Z",
       "sha": "d67366767153ca644159a1b322aaf379845e55fe"
+    },
+    "user-candrews-other.csv": {
+      "id": "user/candrews/other/03b30041",
+      "url": "https://codelists.opensafely.org/codelist/user/candrews/other/03b30041/",
+      "downloaded_at": "2022-03-30 15:14:50.175510Z",
+      "sha": "ce2666bb4b56bea25f89eb29f936bbf0ccba5c9e"
+    },
+    "user-candrews-asian.csv": {
+      "id": "user/candrews/asian/1cc27376",
+      "url": "https://codelists.opensafely.org/codelist/user/candrews/asian/1cc27376/",
+      "downloaded_at": "2022-03-30 15:14:50.371725Z",
+      "sha": "77d01bc94bc6bb2b781038db8786a9da540303ab"
+    },
+    "user-candrews-black.csv": {
+      "id": "user/candrews/black/35d1e6ab",
+      "url": "https://codelists.opensafely.org/codelist/user/candrews/black/35d1e6ab/",
+      "downloaded_at": "2022-03-30 15:14:50.596031Z",
+      "sha": "3604ca2b191f3461a7f2075c5d52922ea7d5eb55"
+    },
+    "user-candrews-mixed.csv": {
+      "id": "user/candrews/mixed/67f0cd15",
+      "url": "https://codelists.opensafely.org/codelist/user/candrews/mixed/67f0cd15/",
+      "downloaded_at": "2022-03-30 15:14:50.838253Z",
+      "sha": "00a2333310fbf97a084dcbda1d70ae844e8fa6e8"
+    },
+    "user-candrews-white.csv": {
+      "id": "user/candrews/white/0100404b",
+      "url": "https://codelists.opensafely.org/codelist/user/candrews/white/0100404b/",
+      "downloaded_at": "2022-03-30 15:14:51.056368Z",
+      "sha": "4d41e79e73f9632d316452e89e13452a7616b678"
     }
   }
 }

@@ -39,3 +39,8 @@ opensafely/systolic-blood-pressure-qof/3572b5fb
 opensafely/structured-medication-review-nhs-england/5459205f
 opensafely/nhs-england-care-homes-residential-status/3712ef13
 user/anna-schultze/cancer/27f4f62d 
+user/candrews/other/03b30041
+user/candrews/asian/1cc27376
+user/candrews/black/35d1e6ab
+user/candrews/mixed/67f0cd15
+user/candrews/white/0100404b

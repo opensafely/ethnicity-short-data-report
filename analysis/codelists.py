@@ -199,3 +199,35 @@ sev_obesity_codes = codelist_from_csv(
     system="snomed",
     column="code",
 )
+
+
+##### custom ethnicity
+white = codelist_from_csv(
+    "codelists/user-candrews-white.csv",
+    system="ctv3",
+    column="code",
+)
+
+black = codelist_from_csv(
+    "codelists/user-candrews-black.csv",
+    system="ctv3",
+    column="code",
+)
+
+asian = codelist_from_csv(
+    "codelists/user-candrews-asian.csv",
+    system="ctv3",
+    column="code",
+)
+
+other = codelist_from_csv(
+    "codelists/user-candrews-other.csv",
+    system="ctv3",
+    column="code",
+)
+
+mixed = codelist_from_csv(
+    "codelists/user-candrews-mixed.csv",
+    system="ctv3",
+    column="code",
+)

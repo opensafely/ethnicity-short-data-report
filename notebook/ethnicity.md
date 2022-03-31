@@ -1,4 +1,4 @@
-Factors associated with COVID-19 vaccine coverage in chronic kidney disease patients
+Ethnicity in OpenSAFELY-TPP: A short data report
 ================
 
 All Patients ever registered
@@ -12,7 +12,7 @@ Category
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#alsalphpve .gt_table {
+#sjzdrdwnoa .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -37,7 +37,7 @@ Category
   border-left-color: #D3D3D3;
 }
 
-#alsalphpve .gt_heading {
+#sjzdrdwnoa .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -49,7 +49,7 @@ Category
   border-right-color: #D3D3D3;
 }
 
-#alsalphpve .gt_title {
+#sjzdrdwnoa .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -59,7 +59,7 @@ Category
   border-bottom-width: 0;
 }
 
-#alsalphpve .gt_subtitle {
+#sjzdrdwnoa .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -69,13 +69,13 @@ Category
   border-top-width: 0;
 }
 
-#alsalphpve .gt_bottom_border {
+#sjzdrdwnoa .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#alsalphpve .gt_col_headings {
+#sjzdrdwnoa .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -90,7 +90,7 @@ Category
   border-right-color: #D3D3D3;
 }
 
-#alsalphpve .gt_col_heading {
+#sjzdrdwnoa .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -110,7 +110,7 @@ Category
   overflow-x: hidden;
 }
 
-#alsalphpve .gt_column_spanner_outer {
+#sjzdrdwnoa .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -122,15 +122,15 @@ Category
   padding-right: 4px;
 }
 
-#alsalphpve .gt_column_spanner_outer:first-child {
+#sjzdrdwnoa .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#alsalphpve .gt_column_spanner_outer:last-child {
+#sjzdrdwnoa .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#alsalphpve .gt_column_spanner {
+#sjzdrdwnoa .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -142,7 +142,7 @@ Category
   width: 100%;
 }
 
-#alsalphpve .gt_group_heading {
+#sjzdrdwnoa .gt_group_heading {
   padding: 1px;
   color: #333333;
   background-color: #FFFFFF;
@@ -164,7 +164,7 @@ Category
   vertical-align: middle;
 }
 
-#alsalphpve .gt_empty_group_heading {
+#sjzdrdwnoa .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -179,15 +179,15 @@ Category
   vertical-align: middle;
 }
 
-#alsalphpve .gt_from_md > :first-child {
+#sjzdrdwnoa .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#alsalphpve .gt_from_md > :last-child {
+#sjzdrdwnoa .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#alsalphpve .gt_row {
+#sjzdrdwnoa .gt_row {
   padding-top: 1px;
   padding-bottom: 1px;
   padding-left: 5px;
@@ -206,7 +206,7 @@ Category
   overflow-x: hidden;
 }
 
-#alsalphpve .gt_stub {
+#sjzdrdwnoa .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -218,7 +218,7 @@ Category
   padding-left: 12px;
 }
 
-#alsalphpve .gt_summary_row {
+#sjzdrdwnoa .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -228,7 +228,7 @@ Category
   padding-right: 5px;
 }
 
-#alsalphpve .gt_first_summary_row {
+#sjzdrdwnoa .gt_first_summary_row {
   padding-top: 1px;
   padding-bottom: 1px;
   padding-left: 5px;
@@ -238,7 +238,7 @@ Category
   border-top-color: #D3D3D3;
 }
 
-#alsalphpve .gt_grand_summary_row {
+#sjzdrdwnoa .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -248,7 +248,7 @@ Category
   padding-right: 5px;
 }
 
-#alsalphpve .gt_first_grand_summary_row {
+#sjzdrdwnoa .gt_first_grand_summary_row {
   padding-top: 1px;
   padding-bottom: 1px;
   padding-left: 5px;
@@ -258,11 +258,11 @@ Category
   border-top-color: #D3D3D3;
 }
 
-#alsalphpve .gt_striped {
+#sjzdrdwnoa .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#alsalphpve .gt_table_body {
+#sjzdrdwnoa .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -271,7 +271,7 @@ Category
   border-bottom-color: #D3D3D3;
 }
 
-#alsalphpve .gt_footnotes {
+#sjzdrdwnoa .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -285,13 +285,13 @@ Category
   border-right-color: #D3D3D3;
 }
 
-#alsalphpve .gt_footnote {
+#sjzdrdwnoa .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding: 1px;
 }
 
-#alsalphpve .gt_sourcenotes {
+#sjzdrdwnoa .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -305,41 +305,41 @@ Category
   border-right-color: #D3D3D3;
 }
 
-#alsalphpve .gt_sourcenote {
+#sjzdrdwnoa .gt_sourcenote {
   font-size: 90%;
   padding: 1px;
 }
 
-#alsalphpve .gt_left {
+#sjzdrdwnoa .gt_left {
   text-align: left;
 }
 
-#alsalphpve .gt_center {
+#sjzdrdwnoa .gt_center {
   text-align: center;
 }
 
-#alsalphpve .gt_right {
+#sjzdrdwnoa .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#alsalphpve .gt_font_normal {
+#sjzdrdwnoa .gt_font_normal {
   font-weight: normal;
 }
 
-#alsalphpve .gt_font_bold {
+#sjzdrdwnoa .gt_font_bold {
   font-weight: bold;
 }
 
-#alsalphpve .gt_font_italic {
+#sjzdrdwnoa .gt_font_italic {
   font-style: italic;
 }
 
-#alsalphpve .gt_super {
+#sjzdrdwnoa .gt_super {
   font-size: 65%;
 }
 
-#alsalphpve .gt_footnote_marks {
+#sjzdrdwnoa .gt_footnote_marks {
   font-style: italic;
   font-size: 65%;
 }
@@ -353,11 +353,11 @@ Category
       </th>
     </tr>
     <tr>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1"><strong>Asian</strong> N =<br>87 (12%)<sup class="gt_footnote_marks">1</sup></th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1"><strong>Black</strong> N =<br>109 (15%)<sup class="gt_footnote_marks">1</sup></th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1"><strong>Mixed</strong> N =<br>207 (29%)<sup class="gt_footnote_marks">1</sup></th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1"><strong>Other</strong> N =<br>99 (14%)<sup class="gt_footnote_marks">1</sup></th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1"><strong>White</strong> N =<br>204 (29%)<sup class="gt_footnote_marks">1</sup></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1"><strong>Asian</strong> N =<br>80 (11%)<sup class="gt_footnote_marks">1</sup></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1"><strong>Black</strong> N =<br>111 (16%)<sup class="gt_footnote_marks">1</sup></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1"><strong>Mixed</strong> N =<br>196 (28%)<sup class="gt_footnote_marks">1</sup></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1"><strong>Other</strong> N =<br>116 (16%)<sup class="gt_footnote_marks">1</sup></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1"><strong>White</strong> N =<br>202 (29%)<sup class="gt_footnote_marks">1</sup></th>
     </tr>
 
 </thead>
@@ -372,67 +372,67 @@ Category
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">0-19</td>
-      <td class="gt_row gt_center">4 (4.6%)</td>
+      <td class="gt_row gt_center">12 (15%)</td>
       <td class="gt_row gt_center">13 (12%)</td>
-      <td class="gt_row gt_center">33 (16%)</td>
-      <td class="gt_row gt_center">11 (11%)</td>
+      <td class="gt_row gt_center">23 (12%)</td>
+      <td class="gt_row gt_center">8 (6.9%)</td>
       <td class="gt_row gt_center">26 (13%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">20-29</td>
-      <td class="gt_row gt_center">14 (16%)</td>
-      <td class="gt_row gt_center">11 (10%)</td>
-      <td class="gt_row gt_center">22 (11%)</td>
-      <td class="gt_row gt_center">10 (10%)</td>
-      <td class="gt_row gt_center">18 (8.8%)</td>
+      <td class="gt_row gt_center">13 (16%)</td>
+      <td class="gt_row gt_center">10 (9.0%)</td>
+      <td class="gt_row gt_center">33 (17%)</td>
+      <td class="gt_row gt_center">13 (11%)</td>
+      <td class="gt_row gt_center">28 (14%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">30-39</td>
-      <td class="gt_row gt_center">10 (11%)</td>
-      <td class="gt_row gt_center">16 (15%)</td>
-      <td class="gt_row gt_center">24 (12%)</td>
-      <td class="gt_row gt_center">13 (13%)</td>
-      <td class="gt_row gt_center">37 (18%)</td>
+      <td class="gt_row gt_center">7 (8.8%)</td>
+      <td class="gt_row gt_center">22 (20%)</td>
+      <td class="gt_row gt_center">19 (9.7%)</td>
+      <td class="gt_row gt_center">17 (15%)</td>
+      <td class="gt_row gt_center">20 (9.9%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">40-49</td>
-      <td class="gt_row gt_center">9 (10%)</td>
-      <td class="gt_row gt_center">14 (13%)</td>
-      <td class="gt_row gt_center">23 (11%)</td>
-      <td class="gt_row gt_center">9 (9.1%)</td>
-      <td class="gt_row gt_center">24 (12%)</td>
+      <td class="gt_row gt_center">7 (8.8%)</td>
+      <td class="gt_row gt_center">11 (9.9%)</td>
+      <td class="gt_row gt_center">15 (7.7%)</td>
+      <td class="gt_row gt_center">14 (12%)</td>
+      <td class="gt_row gt_center">33 (16%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">50-59</td>
-      <td class="gt_row gt_center">15 (17%)</td>
-      <td class="gt_row gt_center">13 (12%)</td>
-      <td class="gt_row gt_center">26 (13%)</td>
-      <td class="gt_row gt_center">9 (9.1%)</td>
-      <td class="gt_row gt_center">29 (14%)</td>
+      <td class="gt_row gt_center">10 (12%)</td>
+      <td class="gt_row gt_center">15 (14%)</td>
+      <td class="gt_row gt_center">23 (12%)</td>
+      <td class="gt_row gt_center">15 (13%)</td>
+      <td class="gt_row gt_center">23 (11%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">60-69</td>
-      <td class="gt_row gt_center">9 (10%)</td>
-      <td class="gt_row gt_center">18 (17%)</td>
-      <td class="gt_row gt_center">30 (14%)</td>
-      <td class="gt_row gt_center">17 (17%)</td>
-      <td class="gt_row gt_center">34 (17%)</td>
+      <td class="gt_row gt_center">8 (10%)</td>
+      <td class="gt_row gt_center">10 (9.0%)</td>
+      <td class="gt_row gt_center">26 (13%)</td>
+      <td class="gt_row gt_center">15 (13%)</td>
+      <td class="gt_row gt_center">30 (15%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">70-79</td>
-      <td class="gt_row gt_center">16 (18%)</td>
-      <td class="gt_row gt_center">16 (15%)</td>
-      <td class="gt_row gt_center">23 (11%)</td>
-      <td class="gt_row gt_center">17 (17%)</td>
-      <td class="gt_row gt_center">20 (9.8%)</td>
+      <td class="gt_row gt_center">14 (18%)</td>
+      <td class="gt_row gt_center">17 (15%)</td>
+      <td class="gt_row gt_center">32 (16%)</td>
+      <td class="gt_row gt_center">18 (16%)</td>
+      <td class="gt_row gt_center">17 (8.4%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">80+</td>
-      <td class="gt_row gt_center">10 (11%)</td>
-      <td class="gt_row gt_center">8 (7.3%)</td>
-      <td class="gt_row gt_center">26 (13%)</td>
-      <td class="gt_row gt_center">13 (13%)</td>
-      <td class="gt_row gt_center">16 (7.8%)</td>
+      <td class="gt_row gt_center">9 (11%)</td>
+      <td class="gt_row gt_center">13 (12%)</td>
+      <td class="gt_row gt_center">25 (13%)</td>
+      <td class="gt_row gt_center">16 (14%)</td>
+      <td class="gt_row gt_center">25 (12%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="font-weight: bold;">sex</td>
@@ -444,19 +444,19 @@ Category
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">Female</td>
-      <td class="gt_row gt_center">41 (47%)</td>
-      <td class="gt_row gt_center">49 (45%)</td>
-      <td class="gt_row gt_center">104 (50%)</td>
-      <td class="gt_row gt_center">48 (48%)</td>
-      <td class="gt_row gt_center">119 (58%)</td>
+      <td class="gt_row gt_center">44 (55%)</td>
+      <td class="gt_row gt_center">50 (45%)</td>
+      <td class="gt_row gt_center">94 (48%)</td>
+      <td class="gt_row gt_center">58 (50%)</td>
+      <td class="gt_row gt_center">98 (49%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">Male</td>
-      <td class="gt_row gt_center">46 (53%)</td>
-      <td class="gt_row gt_center">60 (55%)</td>
-      <td class="gt_row gt_center">103 (50%)</td>
-      <td class="gt_row gt_center">51 (52%)</td>
-      <td class="gt_row gt_center">85 (42%)</td>
+      <td class="gt_row gt_center">36 (45%)</td>
+      <td class="gt_row gt_center">61 (55%)</td>
+      <td class="gt_row gt_center">102 (52%)</td>
+      <td class="gt_row gt_center">58 (50%)</td>
+      <td class="gt_row gt_center">104 (51%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="font-weight: bold;">region</td>
@@ -467,76 +467,76 @@ Category
       <td class="gt_row gt_center"></td>
     </tr>
     <tr>
-      <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">South East</td>
-      <td class="gt_row gt_center">8 (15%)</td>
-      <td class="gt_row gt_center">18 (26%)</td>
-      <td class="gt_row gt_center">17 (13%)</td>
-      <td class="gt_row gt_center">11 (18%)</td>
-      <td class="gt_row gt_center">20 (16%)</td>
+      <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">London</td>
+      <td class="gt_row gt_center">9 (17%)</td>
+      <td class="gt_row gt_center">18 (22%)</td>
+      <td class="gt_row gt_center">26 (20%)</td>
+      <td class="gt_row gt_center">14 (18%)</td>
+      <td class="gt_row gt_center">22 (17%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">North West</td>
-      <td class="gt_row gt_center">4 (7.4%)</td>
-      <td class="gt_row gt_center">6 (8.6%)</td>
-      <td class="gt_row gt_center">19 (14%)</td>
-      <td class="gt_row gt_center">5 (8.3%)</td>
-      <td class="gt_row gt_center">11 (8.9%)</td>
+      <td class="gt_row gt_center">6 (12%)</td>
+      <td class="gt_row gt_center">7 (8.8%)</td>
+      <td class="gt_row gt_center">11 (8.6%)</td>
+      <td class="gt_row gt_center">10 (13%)</td>
+      <td class="gt_row gt_center">18 (14%)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">South East</td>
+      <td class="gt_row gt_center">10 (19%)</td>
+      <td class="gt_row gt_center">15 (19%)</td>
+      <td class="gt_row gt_center">25 (20%)</td>
+      <td class="gt_row gt_center">21 (27%)</td>
+      <td class="gt_row gt_center">21 (16%)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">North East</td>
+      <td class="gt_row gt_center">7 (13%)</td>
+      <td class="gt_row gt_center">8 (10%)</td>
+      <td class="gt_row gt_center">12 (9.4%)</td>
+      <td class="gt_row gt_center">7 (9.0%)</td>
+      <td class="gt_row gt_center">12 (9.2%)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">East Midlands</td>
+      <td class="gt_row gt_center">8 (15%)</td>
+      <td class="gt_row gt_center">5 (6.2%)</td>
+      <td class="gt_row gt_center">15 (12%)</td>
+      <td class="gt_row gt_center">6 (7.7%)</td>
+      <td class="gt_row gt_center">15 (12%)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">West Midlands</td>
+      <td class="gt_row gt_center">4 (7.7%)</td>
+      <td class="gt_row gt_center">9 (11%)</td>
+      <td class="gt_row gt_center">14 (11%)</td>
+      <td class="gt_row gt_center">4 (5.1%)</td>
+      <td class="gt_row gt_center">12 (9.2%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">Yorkshire and the Humber</td>
       <td class="gt_row gt_center">8 (15%)</td>
-      <td class="gt_row gt_center">7 (10%)</td>
-      <td class="gt_row gt_center">12 (8.9%)</td>
-      <td class="gt_row gt_center">10 (17%)</td>
-      <td class="gt_row gt_center">9 (7.3%)</td>
-    </tr>
-    <tr>
-      <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">West Midlands</td>
-      <td class="gt_row gt_center">6 (11%)</td>
-      <td class="gt_row gt_center">6 (8.6%)</td>
-      <td class="gt_row gt_center">17 (13%)</td>
-      <td class="gt_row gt_center">7 (12%)</td>
-      <td class="gt_row gt_center">10 (8.1%)</td>
-    </tr>
-    <tr>
-      <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">North East</td>
-      <td class="gt_row gt_center">3 (5.6%)</td>
-      <td class="gt_row gt_center">4 (5.7%)</td>
-      <td class="gt_row gt_center">10 (7.4%)</td>
-      <td class="gt_row gt_center">6 (10%)</td>
-      <td class="gt_row gt_center">10 (8.1%)</td>
-    </tr>
-    <tr>
-      <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">East Midlands</td>
-      <td class="gt_row gt_center">7 (13%)</td>
-      <td class="gt_row gt_center">11 (16%)</td>
-      <td class="gt_row gt_center">20 (15%)</td>
-      <td class="gt_row gt_center">3 (5.0%)</td>
-      <td class="gt_row gt_center">15 (12%)</td>
+      <td class="gt_row gt_center">10 (12%)</td>
+      <td class="gt_row gt_center">12 (9.4%)</td>
+      <td class="gt_row gt_center">7 (9.0%)</td>
+      <td class="gt_row gt_center">14 (11%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">East of England</td>
-      <td class="gt_row gt_center">8 (15%)</td>
-      <td class="gt_row gt_center">8 (11%)</td>
-      <td class="gt_row gt_center">11 (8.1%)</td>
-      <td class="gt_row gt_center">4 (6.7%)</td>
-      <td class="gt_row gt_center">13 (11%)</td>
-    </tr>
-    <tr>
-      <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">London</td>
-      <td class="gt_row gt_center">10 (19%)</td>
-      <td class="gt_row gt_center">10 (14%)</td>
-      <td class="gt_row gt_center">29 (21%)</td>
-      <td class="gt_row gt_center">14 (23%)</td>
-      <td class="gt_row gt_center">35 (28%)</td>
+      <td class="gt_row gt_center">0 (0%)</td>
+      <td class="gt_row gt_center">8 (10%)</td>
+      <td class="gt_row gt_center">13 (10%)</td>
+      <td class="gt_row gt_center">9 (12%)</td>
+      <td class="gt_row gt_center">16 (12%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">Unknown</td>
-      <td class="gt_row gt_center">33</td>
-      <td class="gt_row gt_center">39</td>
+      <td class="gt_row gt_center">28</td>
+      <td class="gt_row gt_center">31</td>
+      <td class="gt_row gt_center">68</td>
+      <td class="gt_row gt_center">38</td>
       <td class="gt_row gt_center">72</td>
-      <td class="gt_row gt_center">39</td>
-      <td class="gt_row gt_center">81</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="font-weight: bold;">IMD</td>
@@ -547,44 +547,44 @@ Category
       <td class="gt_row gt_center"></td>
     </tr>
     <tr>
-      <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">200</td>
-      <td class="gt_row gt_center">20 (23%)</td>
-      <td class="gt_row gt_center">18 (17%)</td>
-      <td class="gt_row gt_center">55 (27%)</td>
-      <td class="gt_row gt_center">21 (21%)</td>
-      <td class="gt_row gt_center">37 (18%)</td>
+      <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">100</td>
+      <td class="gt_row gt_center">15 (19%)</td>
+      <td class="gt_row gt_center">23 (21%)</td>
+      <td class="gt_row gt_center">38 (19%)</td>
+      <td class="gt_row gt_center">22 (19%)</td>
+      <td class="gt_row gt_center">25 (12%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">400</td>
-      <td class="gt_row gt_center">13 (15%)</td>
-      <td class="gt_row gt_center">19 (17%)</td>
-      <td class="gt_row gt_center">29 (14%)</td>
-      <td class="gt_row gt_center">18 (18%)</td>
-      <td class="gt_row gt_center">42 (21%)</td>
-    </tr>
-    <tr>
-      <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">500</td>
-      <td class="gt_row gt_center">17 (20%)</td>
-      <td class="gt_row gt_center">22 (20%)</td>
-      <td class="gt_row gt_center">32 (15%)</td>
-      <td class="gt_row gt_center">23 (23%)</td>
-      <td class="gt_row gt_center">54 (26%)</td>
+      <td class="gt_row gt_center">24 (30%)</td>
+      <td class="gt_row gt_center">23 (21%)</td>
+      <td class="gt_row gt_center">41 (21%)</td>
+      <td class="gt_row gt_center">24 (21%)</td>
+      <td class="gt_row gt_center">37 (18%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">300</td>
-      <td class="gt_row gt_center">17 (20%)</td>
-      <td class="gt_row gt_center">29 (27%)</td>
-      <td class="gt_row gt_center">40 (19%)</td>
-      <td class="gt_row gt_center">20 (20%)</td>
-      <td class="gt_row gt_center">31 (15%)</td>
+      <td class="gt_row gt_center">13 (16%)</td>
+      <td class="gt_row gt_center">19 (17%)</td>
+      <td class="gt_row gt_center">34 (17%)</td>
+      <td class="gt_row gt_center">22 (19%)</td>
+      <td class="gt_row gt_center">51 (25%)</td>
     </tr>
     <tr>
-      <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">100</td>
-      <td class="gt_row gt_center">20 (23%)</td>
+      <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">500</td>
+      <td class="gt_row gt_center">12 (15%)</td>
       <td class="gt_row gt_center">21 (19%)</td>
-      <td class="gt_row gt_center">51 (25%)</td>
-      <td class="gt_row gt_center">17 (17%)</td>
-      <td class="gt_row gt_center">40 (20%)</td>
+      <td class="gt_row gt_center">44 (22%)</td>
+      <td class="gt_row gt_center">26 (22%)</td>
+      <td class="gt_row gt_center">41 (20%)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">200</td>
+      <td class="gt_row gt_center">16 (20%)</td>
+      <td class="gt_row gt_center">25 (23%)</td>
+      <td class="gt_row gt_center">39 (20%)</td>
+      <td class="gt_row gt_center">22 (19%)</td>
+      <td class="gt_row gt_center">48 (24%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="font-weight: bold;">Dementia</td>
@@ -596,19 +596,19 @@ Category
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">False</td>
-      <td class="gt_row gt_center">85 (98%)</td>
-      <td class="gt_row gt_center">108 (99%)</td>
-      <td class="gt_row gt_center">206 (100%)</td>
-      <td class="gt_row gt_center">98 (99%)</td>
-      <td class="gt_row gt_center">200 (98%)</td>
+      <td class="gt_row gt_center">78 (98%)</td>
+      <td class="gt_row gt_center">110 (99%)</td>
+      <td class="gt_row gt_center">196 (100%)</td>
+      <td class="gt_row gt_center">115 (99%)</td>
+      <td class="gt_row gt_center">199 (99%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">True</td>
-      <td class="gt_row gt_center">2 (2.3%)</td>
+      <td class="gt_row gt_center">2 (2.5%)</td>
       <td class="gt_row gt_center">1 (0.9%)</td>
-      <td class="gt_row gt_center">1 (0.5%)</td>
-      <td class="gt_row gt_center">1 (1.0%)</td>
-      <td class="gt_row gt_center">4 (2.0%)</td>
+      <td class="gt_row gt_center">0 (0%)</td>
+      <td class="gt_row gt_center">1 (0.9%)</td>
+      <td class="gt_row gt_center">3 (1.5%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="font-weight: bold;">diabetes</td>
@@ -620,19 +620,19 @@ Category
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">False</td>
-      <td class="gt_row gt_center">86 (99%)</td>
-      <td class="gt_row gt_center">109 (100%)</td>
-      <td class="gt_row gt_center">205 (99%)</td>
-      <td class="gt_row gt_center">98 (99%)</td>
-      <td class="gt_row gt_center">200 (98%)</td>
+      <td class="gt_row gt_center">80 (100%)</td>
+      <td class="gt_row gt_center">109 (98%)</td>
+      <td class="gt_row gt_center">193 (98%)</td>
+      <td class="gt_row gt_center">115 (99%)</td>
+      <td class="gt_row gt_center">201 (100%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">True</td>
-      <td class="gt_row gt_center">1 (1.1%)</td>
       <td class="gt_row gt_center">0 (0%)</td>
-      <td class="gt_row gt_center">2 (1.0%)</td>
-      <td class="gt_row gt_center">1 (1.0%)</td>
-      <td class="gt_row gt_center">4 (2.0%)</td>
+      <td class="gt_row gt_center">2 (1.8%)</td>
+      <td class="gt_row gt_center">3 (1.5%)</td>
+      <td class="gt_row gt_center">1 (0.9%)</td>
+      <td class="gt_row gt_center">1 (0.5%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="font-weight: bold;">hypertension</td>
@@ -644,19 +644,19 @@ Category
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">False</td>
-      <td class="gt_row gt_center">87 (100%)</td>
-      <td class="gt_row gt_center">107 (98%)</td>
-      <td class="gt_row gt_center">205 (99%)</td>
-      <td class="gt_row gt_center">99 (100%)</td>
-      <td class="gt_row gt_center">201 (99%)</td>
+      <td class="gt_row gt_center">79 (99%)</td>
+      <td class="gt_row gt_center">110 (99%)</td>
+      <td class="gt_row gt_center">196 (100%)</td>
+      <td class="gt_row gt_center">115 (99%)</td>
+      <td class="gt_row gt_center">200 (99%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">True</td>
+      <td class="gt_row gt_center">1 (1.2%)</td>
+      <td class="gt_row gt_center">1 (0.9%)</td>
       <td class="gt_row gt_center">0 (0%)</td>
-      <td class="gt_row gt_center">2 (1.8%)</td>
+      <td class="gt_row gt_center">1 (0.9%)</td>
       <td class="gt_row gt_center">2 (1.0%)</td>
-      <td class="gt_row gt_center">0 (0%)</td>
-      <td class="gt_row gt_center">3 (1.5%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="font-weight: bold;">learning_disability</td>
@@ -668,19 +668,19 @@ Category
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">False</td>
-      <td class="gt_row gt_center">86 (99%)</td>
-      <td class="gt_row gt_center">109 (100%)</td>
-      <td class="gt_row gt_center">204 (99%)</td>
-      <td class="gt_row gt_center">99 (100%)</td>
-      <td class="gt_row gt_center">203 (100%)</td>
+      <td class="gt_row gt_center">80 (100%)</td>
+      <td class="gt_row gt_center">111 (100%)</td>
+      <td class="gt_row gt_center">194 (99%)</td>
+      <td class="gt_row gt_center">115 (99%)</td>
+      <td class="gt_row gt_center">200 (99%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">True</td>
-      <td class="gt_row gt_center">1 (1.1%)</td>
       <td class="gt_row gt_center">0 (0%)</td>
-      <td class="gt_row gt_center">3 (1.4%)</td>
       <td class="gt_row gt_center">0 (0%)</td>
-      <td class="gt_row gt_center">1 (0.5%)</td>
+      <td class="gt_row gt_center">2 (1.0%)</td>
+      <td class="gt_row gt_center">1 (0.9%)</td>
+      <td class="gt_row gt_center">2 (1.0%)</td>
     </tr>
 
 </tbody>
@@ -712,7 +712,7 @@ Category compared
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#bxztjsujyt .gt_table {
+#nvihidyuyk .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -737,7 +737,7 @@ Category compared
   border-left-color: #D3D3D3;
 }
 
-#bxztjsujyt .gt_heading {
+#nvihidyuyk .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -749,7 +749,7 @@ Category compared
   border-right-color: #D3D3D3;
 }
 
-#bxztjsujyt .gt_title {
+#nvihidyuyk .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -759,7 +759,7 @@ Category compared
   border-bottom-width: 0;
 }
 
-#bxztjsujyt .gt_subtitle {
+#nvihidyuyk .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -769,13 +769,13 @@ Category compared
   border-top-width: 0;
 }
 
-#bxztjsujyt .gt_bottom_border {
+#nvihidyuyk .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#bxztjsujyt .gt_col_headings {
+#nvihidyuyk .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -790,7 +790,7 @@ Category compared
   border-right-color: #D3D3D3;
 }
 
-#bxztjsujyt .gt_col_heading {
+#nvihidyuyk .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -810,7 +810,7 @@ Category compared
   overflow-x: hidden;
 }
 
-#bxztjsujyt .gt_column_spanner_outer {
+#nvihidyuyk .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -822,15 +822,15 @@ Category compared
   padding-right: 4px;
 }
 
-#bxztjsujyt .gt_column_spanner_outer:first-child {
+#nvihidyuyk .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#bxztjsujyt .gt_column_spanner_outer:last-child {
+#nvihidyuyk .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#bxztjsujyt .gt_column_spanner {
+#nvihidyuyk .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -842,7 +842,7 @@ Category compared
   width: 100%;
 }
 
-#bxztjsujyt .gt_group_heading {
+#nvihidyuyk .gt_group_heading {
   padding: 1px;
   color: #333333;
   background-color: #FFFFFF;
@@ -864,7 +864,7 @@ Category compared
   vertical-align: middle;
 }
 
-#bxztjsujyt .gt_empty_group_heading {
+#nvihidyuyk .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -879,15 +879,15 @@ Category compared
   vertical-align: middle;
 }
 
-#bxztjsujyt .gt_from_md > :first-child {
+#nvihidyuyk .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#bxztjsujyt .gt_from_md > :last-child {
+#nvihidyuyk .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#bxztjsujyt .gt_row {
+#nvihidyuyk .gt_row {
   padding-top: 1px;
   padding-bottom: 1px;
   padding-left: 5px;
@@ -906,7 +906,7 @@ Category compared
   overflow-x: hidden;
 }
 
-#bxztjsujyt .gt_stub {
+#nvihidyuyk .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -918,7 +918,7 @@ Category compared
   padding-left: 12px;
 }
 
-#bxztjsujyt .gt_summary_row {
+#nvihidyuyk .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -928,7 +928,7 @@ Category compared
   padding-right: 5px;
 }
 
-#bxztjsujyt .gt_first_summary_row {
+#nvihidyuyk .gt_first_summary_row {
   padding-top: 1px;
   padding-bottom: 1px;
   padding-left: 5px;
@@ -938,7 +938,7 @@ Category compared
   border-top-color: #D3D3D3;
 }
 
-#bxztjsujyt .gt_grand_summary_row {
+#nvihidyuyk .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -948,7 +948,7 @@ Category compared
   padding-right: 5px;
 }
 
-#bxztjsujyt .gt_first_grand_summary_row {
+#nvihidyuyk .gt_first_grand_summary_row {
   padding-top: 1px;
   padding-bottom: 1px;
   padding-left: 5px;
@@ -958,11 +958,11 @@ Category compared
   border-top-color: #D3D3D3;
 }
 
-#bxztjsujyt .gt_striped {
+#nvihidyuyk .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#bxztjsujyt .gt_table_body {
+#nvihidyuyk .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -971,7 +971,7 @@ Category compared
   border-bottom-color: #D3D3D3;
 }
 
-#bxztjsujyt .gt_footnotes {
+#nvihidyuyk .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -985,13 +985,13 @@ Category compared
   border-right-color: #D3D3D3;
 }
 
-#bxztjsujyt .gt_footnote {
+#nvihidyuyk .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding: 1px;
 }
 
-#bxztjsujyt .gt_sourcenotes {
+#nvihidyuyk .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1005,41 +1005,41 @@ Category compared
   border-right-color: #D3D3D3;
 }
 
-#bxztjsujyt .gt_sourcenote {
+#nvihidyuyk .gt_sourcenote {
   font-size: 90%;
   padding: 1px;
 }
 
-#bxztjsujyt .gt_left {
+#nvihidyuyk .gt_left {
   text-align: left;
 }
 
-#bxztjsujyt .gt_center {
+#nvihidyuyk .gt_center {
   text-align: center;
 }
 
-#bxztjsujyt .gt_right {
+#nvihidyuyk .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#bxztjsujyt .gt_font_normal {
+#nvihidyuyk .gt_font_normal {
   font-weight: normal;
 }
 
-#bxztjsujyt .gt_font_bold {
+#nvihidyuyk .gt_font_bold {
   font-weight: bold;
 }
 
-#bxztjsujyt .gt_font_italic {
+#nvihidyuyk .gt_font_italic {
   font-style: italic;
 }
 
-#bxztjsujyt .gt_super {
+#nvihidyuyk .gt_super {
   font-size: 65%;
 }
 
-#bxztjsujyt .gt_footnote_marks {
+#nvihidyuyk .gt_footnote_marks {
   font-style: italic;
   font-size: 65%;
 }
@@ -1056,16 +1056,16 @@ Category compared
       </th>
     </tr>
     <tr>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1"><strong>Asian</strong> N =<br>87 (12%)<sup class="gt_footnote_marks">1</sup></th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1"><strong>Black</strong> N =<br>109 (15%)<sup class="gt_footnote_marks">1</sup></th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1"><strong>Mixed</strong> N =<br>207 (29%)<sup class="gt_footnote_marks">1</sup></th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1"><strong>Other</strong> N =<br>99 (14%)<sup class="gt_footnote_marks">1</sup></th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1"><strong>White</strong> N =<br>204 (29%)<sup class="gt_footnote_marks">1</sup></th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1"><strong>Asian</strong> N =<br>157 (21%)<sup class="gt_footnote_marks">1</sup></th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1"><strong>Black</strong> N =<br>134 (18%)<sup class="gt_footnote_marks">1</sup></th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1"><strong>Mixed</strong> N =<br>166 (22%)<sup class="gt_footnote_marks">1</sup></th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1"><strong>Other</strong> N =<br>138 (18%)<sup class="gt_footnote_marks">1</sup></th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1"><strong>White</strong> N =<br>155 (21%)<sup class="gt_footnote_marks">1</sup></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1"><strong>Asian</strong> N =<br>80 (11%)<sup class="gt_footnote_marks">1</sup></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1"><strong>Black</strong> N =<br>111 (16%)<sup class="gt_footnote_marks">1</sup></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1"><strong>Mixed</strong> N =<br>196 (28%)<sup class="gt_footnote_marks">1</sup></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1"><strong>Other</strong> N =<br>116 (16%)<sup class="gt_footnote_marks">1</sup></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1"><strong>White</strong> N =<br>202 (29%)<sup class="gt_footnote_marks">1</sup></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1"><strong>Asian</strong> N =<br>149 (20%)<sup class="gt_footnote_marks">1</sup></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1"><strong>Black</strong> N =<br>144 (19%)<sup class="gt_footnote_marks">1</sup></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1"><strong>Mixed</strong> N =<br>146 (19%)<sup class="gt_footnote_marks">1</sup></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1"><strong>Other</strong> N =<br>159 (21%)<sup class="gt_footnote_marks">1</sup></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1"><strong>White</strong> N =<br>152 (20%)<sup class="gt_footnote_marks">1</sup></th>
     </tr>
 
 </thead>
@@ -1085,107 +1085,107 @@ Category compared
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">0-19</td>
-      <td class="gt_row gt_center">4 (4.6%)</td>
+      <td class="gt_row gt_center">12 (15%)</td>
       <td class="gt_row gt_center">13 (12%)</td>
-      <td class="gt_row gt_center">33 (16%)</td>
-      <td class="gt_row gt_center">11 (11%)</td>
+      <td class="gt_row gt_center">23 (12%)</td>
+      <td class="gt_row gt_center">8 (6.9%)</td>
       <td class="gt_row gt_center">26 (13%)</td>
+      <td class="gt_row gt_center">9 (6.0%)</td>
+      <td class="gt_row gt_center">18 (12%)</td>
+      <td class="gt_row gt_center">15 (10%)</td>
+      <td class="gt_row gt_center">19 (12%)</td>
       <td class="gt_row gt_center">23 (15%)</td>
-      <td class="gt_row gt_center">12 (9.0%)</td>
-      <td class="gt_row gt_center">16 (9.6%)</td>
-      <td class="gt_row gt_center">18 (13%)</td>
-      <td class="gt_row gt_center">20 (13%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">20-29</td>
-      <td class="gt_row gt_center">14 (16%)</td>
-      <td class="gt_row gt_center">11 (10%)</td>
-      <td class="gt_row gt_center">22 (11%)</td>
-      <td class="gt_row gt_center">10 (10%)</td>
-      <td class="gt_row gt_center">18 (8.8%)</td>
-      <td class="gt_row gt_center">16 (10%)</td>
-      <td class="gt_row gt_center">13 (9.7%)</td>
-      <td class="gt_row gt_center">15 (9.0%)</td>
-      <td class="gt_row gt_center">20 (14%)</td>
-      <td class="gt_row gt_center">17 (11%)</td>
+      <td class="gt_row gt_center">13 (16%)</td>
+      <td class="gt_row gt_center">10 (9.0%)</td>
+      <td class="gt_row gt_center">33 (17%)</td>
+      <td class="gt_row gt_center">13 (11%)</td>
+      <td class="gt_row gt_center">28 (14%)</td>
+      <td class="gt_row gt_center">22 (15%)</td>
+      <td class="gt_row gt_center">17 (12%)</td>
+      <td class="gt_row gt_center">23 (16%)</td>
+      <td class="gt_row gt_center">20 (13%)</td>
+      <td class="gt_row gt_center">14 (9.2%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">30-39</td>
-      <td class="gt_row gt_center">10 (11%)</td>
-      <td class="gt_row gt_center">16 (15%)</td>
-      <td class="gt_row gt_center">24 (12%)</td>
-      <td class="gt_row gt_center">13 (13%)</td>
-      <td class="gt_row gt_center">37 (18%)</td>
-      <td class="gt_row gt_center">19 (12%)</td>
-      <td class="gt_row gt_center">17 (13%)</td>
-      <td class="gt_row gt_center">19 (11%)</td>
-      <td class="gt_row gt_center">19 (14%)</td>
+      <td class="gt_row gt_center">7 (8.8%)</td>
+      <td class="gt_row gt_center">22 (20%)</td>
+      <td class="gt_row gt_center">19 (9.7%)</td>
+      <td class="gt_row gt_center">17 (15%)</td>
+      <td class="gt_row gt_center">20 (9.9%)</td>
+      <td class="gt_row gt_center">19 (13%)</td>
+      <td class="gt_row gt_center">16 (11%)</td>
+      <td class="gt_row gt_center">17 (12%)</td>
       <td class="gt_row gt_center">24 (15%)</td>
+      <td class="gt_row gt_center">14 (9.2%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">40-49</td>
-      <td class="gt_row gt_center">9 (10%)</td>
-      <td class="gt_row gt_center">14 (13%)</td>
-      <td class="gt_row gt_center">23 (11%)</td>
-      <td class="gt_row gt_center">9 (9.1%)</td>
-      <td class="gt_row gt_center">24 (12%)</td>
-      <td class="gt_row gt_center">19 (12%)</td>
-      <td class="gt_row gt_center">12 (9.0%)</td>
-      <td class="gt_row gt_center">22 (13%)</td>
-      <td class="gt_row gt_center">16 (12%)</td>
-      <td class="gt_row gt_center">13 (8.4%)</td>
+      <td class="gt_row gt_center">7 (8.8%)</td>
+      <td class="gt_row gt_center">11 (9.9%)</td>
+      <td class="gt_row gt_center">15 (7.7%)</td>
+      <td class="gt_row gt_center">14 (12%)</td>
+      <td class="gt_row gt_center">33 (16%)</td>
+      <td class="gt_row gt_center">17 (11%)</td>
+      <td class="gt_row gt_center">22 (15%)</td>
+      <td class="gt_row gt_center">20 (14%)</td>
+      <td class="gt_row gt_center">16 (10%)</td>
+      <td class="gt_row gt_center">13 (8.6%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">50-59</td>
-      <td class="gt_row gt_center">15 (17%)</td>
-      <td class="gt_row gt_center">13 (12%)</td>
-      <td class="gt_row gt_center">26 (13%)</td>
-      <td class="gt_row gt_center">9 (9.1%)</td>
-      <td class="gt_row gt_center">29 (14%)</td>
-      <td class="gt_row gt_center">24 (15%)</td>
-      <td class="gt_row gt_center">20 (15%)</td>
-      <td class="gt_row gt_center">18 (11%)</td>
-      <td class="gt_row gt_center">13 (9.4%)</td>
-      <td class="gt_row gt_center">16 (10%)</td>
+      <td class="gt_row gt_center">10 (12%)</td>
+      <td class="gt_row gt_center">15 (14%)</td>
+      <td class="gt_row gt_center">23 (12%)</td>
+      <td class="gt_row gt_center">15 (13%)</td>
+      <td class="gt_row gt_center">23 (11%)</td>
+      <td class="gt_row gt_center">23 (15%)</td>
+      <td class="gt_row gt_center">13 (9.0%)</td>
+      <td class="gt_row gt_center">15 (10%)</td>
+      <td class="gt_row gt_center">21 (13%)</td>
+      <td class="gt_row gt_center">20 (13%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">60-69</td>
-      <td class="gt_row gt_center">9 (10%)</td>
-      <td class="gt_row gt_center">18 (17%)</td>
-      <td class="gt_row gt_center">30 (14%)</td>
-      <td class="gt_row gt_center">17 (17%)</td>
-      <td class="gt_row gt_center">34 (17%)</td>
-      <td class="gt_row gt_center">18 (11%)</td>
-      <td class="gt_row gt_center">25 (19%)</td>
-      <td class="gt_row gt_center">28 (17%)</td>
-      <td class="gt_row gt_center">16 (12%)</td>
+      <td class="gt_row gt_center">8 (10%)</td>
+      <td class="gt_row gt_center">10 (9.0%)</td>
+      <td class="gt_row gt_center">26 (13%)</td>
+      <td class="gt_row gt_center">15 (13%)</td>
+      <td class="gt_row gt_center">30 (15%)</td>
+      <td class="gt_row gt_center">19 (13%)</td>
+      <td class="gt_row gt_center">23 (16%)</td>
+      <td class="gt_row gt_center">17 (12%)</td>
       <td class="gt_row gt_center">20 (13%)</td>
-    </tr>
-    <tr>
-      <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">70-79</td>
-      <td class="gt_row gt_center">16 (18%)</td>
-      <td class="gt_row gt_center">16 (15%)</td>
-      <td class="gt_row gt_center">23 (11%)</td>
-      <td class="gt_row gt_center">17 (17%)</td>
-      <td class="gt_row gt_center">20 (9.8%)</td>
-      <td class="gt_row gt_center">21 (13%)</td>
-      <td class="gt_row gt_center">23 (17%)</td>
-      <td class="gt_row gt_center">27 (16%)</td>
-      <td class="gt_row gt_center">18 (13%)</td>
       <td class="gt_row gt_center">25 (16%)</td>
     </tr>
     <tr>
+      <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">70-79</td>
+      <td class="gt_row gt_center">14 (18%)</td>
+      <td class="gt_row gt_center">17 (15%)</td>
+      <td class="gt_row gt_center">32 (16%)</td>
+      <td class="gt_row gt_center">18 (16%)</td>
+      <td class="gt_row gt_center">17 (8.4%)</td>
+      <td class="gt_row gt_center">25 (17%)</td>
+      <td class="gt_row gt_center">20 (14%)</td>
+      <td class="gt_row gt_center">26 (18%)</td>
+      <td class="gt_row gt_center">18 (11%)</td>
+      <td class="gt_row gt_center">15 (9.9%)</td>
+    </tr>
+    <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">80+</td>
-      <td class="gt_row gt_center">10 (11%)</td>
-      <td class="gt_row gt_center">8 (7.3%)</td>
-      <td class="gt_row gt_center">26 (13%)</td>
-      <td class="gt_row gt_center">13 (13%)</td>
-      <td class="gt_row gt_center">16 (7.8%)</td>
-      <td class="gt_row gt_center">17 (11%)</td>
-      <td class="gt_row gt_center">12 (9.0%)</td>
+      <td class="gt_row gt_center">9 (11%)</td>
+      <td class="gt_row gt_center">13 (12%)</td>
+      <td class="gt_row gt_center">25 (13%)</td>
+      <td class="gt_row gt_center">16 (14%)</td>
+      <td class="gt_row gt_center">25 (12%)</td>
+      <td class="gt_row gt_center">15 (10%)</td>
+      <td class="gt_row gt_center">15 (10%)</td>
+      <td class="gt_row gt_center">13 (8.9%)</td>
       <td class="gt_row gt_center">21 (13%)</td>
-      <td class="gt_row gt_center">18 (13%)</td>
-      <td class="gt_row gt_center">20 (13%)</td>
+      <td class="gt_row gt_center">28 (18%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="font-weight: bold;">sex</td>
@@ -1202,29 +1202,29 @@ Category compared
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">Female</td>
-      <td class="gt_row gt_center">41 (47%)</td>
-      <td class="gt_row gt_center">49 (45%)</td>
-      <td class="gt_row gt_center">104 (50%)</td>
-      <td class="gt_row gt_center">48 (48%)</td>
-      <td class="gt_row gt_center">119 (58%)</td>
-      <td class="gt_row gt_center">76 (48%)</td>
-      <td class="gt_row gt_center">71 (53%)</td>
-      <td class="gt_row gt_center">84 (51%)</td>
-      <td class="gt_row gt_center">69 (50%)</td>
-      <td class="gt_row gt_center">88 (57%)</td>
+      <td class="gt_row gt_center">44 (55%)</td>
+      <td class="gt_row gt_center">50 (45%)</td>
+      <td class="gt_row gt_center">94 (48%)</td>
+      <td class="gt_row gt_center">58 (50%)</td>
+      <td class="gt_row gt_center">98 (49%)</td>
+      <td class="gt_row gt_center">66 (44%)</td>
+      <td class="gt_row gt_center">77 (53%)</td>
+      <td class="gt_row gt_center">78 (53%)</td>
+      <td class="gt_row gt_center">66 (42%)</td>
+      <td class="gt_row gt_center">74 (49%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">Male</td>
-      <td class="gt_row gt_center">46 (53%)</td>
-      <td class="gt_row gt_center">60 (55%)</td>
-      <td class="gt_row gt_center">103 (50%)</td>
-      <td class="gt_row gt_center">51 (52%)</td>
-      <td class="gt_row gt_center">85 (42%)</td>
-      <td class="gt_row gt_center">81 (52%)</td>
-      <td class="gt_row gt_center">63 (47%)</td>
-      <td class="gt_row gt_center">82 (49%)</td>
-      <td class="gt_row gt_center">69 (50%)</td>
-      <td class="gt_row gt_center">67 (43%)</td>
+      <td class="gt_row gt_center">36 (45%)</td>
+      <td class="gt_row gt_center">61 (55%)</td>
+      <td class="gt_row gt_center">102 (52%)</td>
+      <td class="gt_row gt_center">58 (50%)</td>
+      <td class="gt_row gt_center">104 (51%)</td>
+      <td class="gt_row gt_center">83 (56%)</td>
+      <td class="gt_row gt_center">67 (47%)</td>
+      <td class="gt_row gt_center">68 (47%)</td>
+      <td class="gt_row gt_center">93 (58%)</td>
+      <td class="gt_row gt_center">78 (51%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="font-weight: bold;">region</td>
@@ -1240,121 +1240,121 @@ Category compared
       <td class="gt_row gt_center"></td>
     </tr>
     <tr>
-      <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">South East</td>
-      <td class="gt_row gt_center">8 (15%)</td>
-      <td class="gt_row gt_center">18 (26%)</td>
-      <td class="gt_row gt_center">17 (13%)</td>
-      <td class="gt_row gt_center">11 (18%)</td>
-      <td class="gt_row gt_center">20 (16%)</td>
-      <td class="gt_row gt_center">17 (16%)</td>
-      <td class="gt_row gt_center">18 (20%)</td>
-      <td class="gt_row gt_center">14 (13%)</td>
+      <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">London</td>
+      <td class="gt_row gt_center">9 (17%)</td>
+      <td class="gt_row gt_center">18 (22%)</td>
+      <td class="gt_row gt_center">26 (20%)</td>
+      <td class="gt_row gt_center">14 (18%)</td>
+      <td class="gt_row gt_center">22 (17%)</td>
+      <td class="gt_row gt_center">24 (25%)</td>
+      <td class="gt_row gt_center">13 (14%)</td>
       <td class="gt_row gt_center">20 (21%)</td>
-      <td class="gt_row gt_center">28 (28%)</td>
+      <td class="gt_row gt_center">18 (18%)</td>
+      <td class="gt_row gt_center">20 (20%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">North West</td>
-      <td class="gt_row gt_center">4 (7.4%)</td>
-      <td class="gt_row gt_center">6 (8.6%)</td>
-      <td class="gt_row gt_center">19 (14%)</td>
-      <td class="gt_row gt_center">5 (8.3%)</td>
-      <td class="gt_row gt_center">11 (8.9%)</td>
-      <td class="gt_row gt_center">10 (9.4%)</td>
-      <td class="gt_row gt_center">7 (7.8%)</td>
-      <td class="gt_row gt_center">11 (10%)</td>
-      <td class="gt_row gt_center">8 (8.3%)</td>
-      <td class="gt_row gt_center">8 (7.9%)</td>
+      <td class="gt_row gt_center">6 (12%)</td>
+      <td class="gt_row gt_center">7 (8.8%)</td>
+      <td class="gt_row gt_center">11 (8.6%)</td>
+      <td class="gt_row gt_center">10 (13%)</td>
+      <td class="gt_row gt_center">18 (14%)</td>
+      <td class="gt_row gt_center">15 (15%)</td>
+      <td class="gt_row gt_center">11 (11%)</td>
+      <td class="gt_row gt_center">13 (14%)</td>
+      <td class="gt_row gt_center">8 (8.1%)</td>
+      <td class="gt_row gt_center">12 (12%)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">South East</td>
+      <td class="gt_row gt_center">10 (19%)</td>
+      <td class="gt_row gt_center">15 (19%)</td>
+      <td class="gt_row gt_center">25 (20%)</td>
+      <td class="gt_row gt_center">21 (27%)</td>
+      <td class="gt_row gt_center">21 (16%)</td>
+      <td class="gt_row gt_center">15 (15%)</td>
+      <td class="gt_row gt_center">23 (24%)</td>
+      <td class="gt_row gt_center">19 (20%)</td>
+      <td class="gt_row gt_center">19 (19%)</td>
+      <td class="gt_row gt_center">13 (13%)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">North East</td>
+      <td class="gt_row gt_center">7 (13%)</td>
+      <td class="gt_row gt_center">8 (10%)</td>
+      <td class="gt_row gt_center">12 (9.4%)</td>
+      <td class="gt_row gt_center">7 (9.0%)</td>
+      <td class="gt_row gt_center">12 (9.2%)</td>
+      <td class="gt_row gt_center">13 (13%)</td>
+      <td class="gt_row gt_center">11 (11%)</td>
+      <td class="gt_row gt_center">5 (5.3%)</td>
+      <td class="gt_row gt_center">9 (9.1%)</td>
+      <td class="gt_row gt_center">10 (10%)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">East Midlands</td>
+      <td class="gt_row gt_center">8 (15%)</td>
+      <td class="gt_row gt_center">5 (6.2%)</td>
+      <td class="gt_row gt_center">15 (12%)</td>
+      <td class="gt_row gt_center">6 (7.7%)</td>
+      <td class="gt_row gt_center">15 (12%)</td>
+      <td class="gt_row gt_center">6 (6.2%)</td>
+      <td class="gt_row gt_center">13 (14%)</td>
+      <td class="gt_row gt_center">8 (8.5%)</td>
+      <td class="gt_row gt_center">11 (11%)</td>
+      <td class="gt_row gt_center">7 (7.0%)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">West Midlands</td>
+      <td class="gt_row gt_center">4 (7.7%)</td>
+      <td class="gt_row gt_center">9 (11%)</td>
+      <td class="gt_row gt_center">14 (11%)</td>
+      <td class="gt_row gt_center">4 (5.1%)</td>
+      <td class="gt_row gt_center">12 (9.2%)</td>
+      <td class="gt_row gt_center">7 (7.2%)</td>
+      <td class="gt_row gt_center">7 (7.3%)</td>
+      <td class="gt_row gt_center">6 (6.4%)</td>
+      <td class="gt_row gt_center">13 (13%)</td>
+      <td class="gt_row gt_center">18 (18%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">Yorkshire and the Humber</td>
       <td class="gt_row gt_center">8 (15%)</td>
-      <td class="gt_row gt_center">7 (10%)</td>
-      <td class="gt_row gt_center">12 (8.9%)</td>
-      <td class="gt_row gt_center">10 (17%)</td>
-      <td class="gt_row gt_center">9 (7.3%)</td>
-      <td class="gt_row gt_center">10 (9.4%)</td>
-      <td class="gt_row gt_center">6 (6.7%)</td>
-      <td class="gt_row gt_center">15 (14%)</td>
-      <td class="gt_row gt_center">8 (8.3%)</td>
-      <td class="gt_row gt_center">10 (9.9%)</td>
-    </tr>
-    <tr>
-      <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">West Midlands</td>
-      <td class="gt_row gt_center">6 (11%)</td>
-      <td class="gt_row gt_center">6 (8.6%)</td>
-      <td class="gt_row gt_center">17 (13%)</td>
-      <td class="gt_row gt_center">7 (12%)</td>
-      <td class="gt_row gt_center">10 (8.1%)</td>
-      <td class="gt_row gt_center">13 (12%)</td>
-      <td class="gt_row gt_center">13 (14%)</td>
-      <td class="gt_row gt_center">7 (6.5%)</td>
+      <td class="gt_row gt_center">10 (12%)</td>
+      <td class="gt_row gt_center">12 (9.4%)</td>
+      <td class="gt_row gt_center">7 (9.0%)</td>
+      <td class="gt_row gt_center">14 (11%)</td>
       <td class="gt_row gt_center">10 (10%)</td>
-      <td class="gt_row gt_center">7 (6.9%)</td>
-    </tr>
-    <tr>
-      <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">North East</td>
-      <td class="gt_row gt_center">3 (5.6%)</td>
-      <td class="gt_row gt_center">4 (5.7%)</td>
-      <td class="gt_row gt_center">10 (7.4%)</td>
-      <td class="gt_row gt_center">6 (10%)</td>
-      <td class="gt_row gt_center">10 (8.1%)</td>
-      <td class="gt_row gt_center">10 (9.4%)</td>
-      <td class="gt_row gt_center">9 (10%)</td>
-      <td class="gt_row gt_center">14 (13%)</td>
+      <td class="gt_row gt_center">10 (10%)</td>
+      <td class="gt_row gt_center">14 (15%)</td>
       <td class="gt_row gt_center">11 (11%)</td>
-      <td class="gt_row gt_center">6 (5.9%)</td>
-    </tr>
-    <tr>
-      <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">East Midlands</td>
-      <td class="gt_row gt_center">7 (13%)</td>
-      <td class="gt_row gt_center">11 (16%)</td>
-      <td class="gt_row gt_center">20 (15%)</td>
-      <td class="gt_row gt_center">3 (5.0%)</td>
-      <td class="gt_row gt_center">15 (12%)</td>
-      <td class="gt_row gt_center">16 (15%)</td>
-      <td class="gt_row gt_center">11 (12%)</td>
-      <td class="gt_row gt_center">12 (11%)</td>
-      <td class="gt_row gt_center">10 (10%)</td>
-      <td class="gt_row gt_center">7 (6.9%)</td>
+      <td class="gt_row gt_center">12 (12%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">East of England</td>
-      <td class="gt_row gt_center">8 (15%)</td>
-      <td class="gt_row gt_center">8 (11%)</td>
-      <td class="gt_row gt_center">11 (8.1%)</td>
-      <td class="gt_row gt_center">4 (6.7%)</td>
-      <td class="gt_row gt_center">13 (11%)</td>
-      <td class="gt_row gt_center">12 (11%)</td>
-      <td class="gt_row gt_center">7 (7.8%)</td>
-      <td class="gt_row gt_center">17 (16%)</td>
+      <td class="gt_row gt_center">0 (0%)</td>
+      <td class="gt_row gt_center">8 (10%)</td>
+      <td class="gt_row gt_center">13 (10%)</td>
+      <td class="gt_row gt_center">9 (12%)</td>
+      <td class="gt_row gt_center">16 (12%)</td>
+      <td class="gt_row gt_center">7 (7.2%)</td>
       <td class="gt_row gt_center">8 (8.3%)</td>
-      <td class="gt_row gt_center">5 (5.0%)</td>
-    </tr>
-    <tr>
-      <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">London</td>
-      <td class="gt_row gt_center">10 (19%)</td>
-      <td class="gt_row gt_center">10 (14%)</td>
-      <td class="gt_row gt_center">29 (21%)</td>
-      <td class="gt_row gt_center">14 (23%)</td>
-      <td class="gt_row gt_center">35 (28%)</td>
-      <td class="gt_row gt_center">18 (17%)</td>
-      <td class="gt_row gt_center">19 (21%)</td>
-      <td class="gt_row gt_center">17 (16%)</td>
-      <td class="gt_row gt_center">21 (22%)</td>
-      <td class="gt_row gt_center">30 (30%)</td>
+      <td class="gt_row gt_center">9 (9.6%)</td>
+      <td class="gt_row gt_center">10 (10%)</td>
+      <td class="gt_row gt_center">8 (8.0%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">Unknown</td>
-      <td class="gt_row gt_center">33</td>
-      <td class="gt_row gt_center">39</td>
+      <td class="gt_row gt_center">28</td>
+      <td class="gt_row gt_center">31</td>
+      <td class="gt_row gt_center">68</td>
+      <td class="gt_row gt_center">38</td>
       <td class="gt_row gt_center">72</td>
-      <td class="gt_row gt_center">39</td>
-      <td class="gt_row gt_center">81</td>
-      <td class="gt_row gt_center">51</td>
-      <td class="gt_row gt_center">44</td>
-      <td class="gt_row gt_center">59</td>
-      <td class="gt_row gt_center">42</td>
-      <td class="gt_row gt_center">54</td>
+      <td class="gt_row gt_center">52</td>
+      <td class="gt_row gt_center">48</td>
+      <td class="gt_row gt_center">52</td>
+      <td class="gt_row gt_center">60</td>
+      <td class="gt_row gt_center">52</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="font-weight: bold;">IMD</td>
@@ -1370,68 +1370,68 @@ Category compared
       <td class="gt_row gt_center"></td>
     </tr>
     <tr>
-      <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">200</td>
-      <td class="gt_row gt_center">20 (23%)</td>
-      <td class="gt_row gt_center">18 (17%)</td>
-      <td class="gt_row gt_center">55 (27%)</td>
-      <td class="gt_row gt_center">21 (21%)</td>
-      <td class="gt_row gt_center">37 (18%)</td>
-      <td class="gt_row gt_center">37 (24%)</td>
-      <td class="gt_row gt_center">29 (22%)</td>
-      <td class="gt_row gt_center">33 (20%)</td>
-      <td class="gt_row gt_center">36 (26%)</td>
-      <td class="gt_row gt_center">33 (21%)</td>
+      <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">100</td>
+      <td class="gt_row gt_center">15 (19%)</td>
+      <td class="gt_row gt_center">23 (21%)</td>
+      <td class="gt_row gt_center">38 (19%)</td>
+      <td class="gt_row gt_center">22 (19%)</td>
+      <td class="gt_row gt_center">25 (12%)</td>
+      <td class="gt_row gt_center">25 (17%)</td>
+      <td class="gt_row gt_center">27 (19%)</td>
+      <td class="gt_row gt_center">33 (23%)</td>
+      <td class="gt_row gt_center">29 (18%)</td>
+      <td class="gt_row gt_center">33 (22%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">400</td>
-      <td class="gt_row gt_center">13 (15%)</td>
-      <td class="gt_row gt_center">19 (17%)</td>
-      <td class="gt_row gt_center">29 (14%)</td>
-      <td class="gt_row gt_center">18 (18%)</td>
-      <td class="gt_row gt_center">42 (21%)</td>
-      <td class="gt_row gt_center">22 (14%)</td>
-      <td class="gt_row gt_center">31 (23%)</td>
-      <td class="gt_row gt_center">27 (16%)</td>
-      <td class="gt_row gt_center">27 (20%)</td>
-      <td class="gt_row gt_center">28 (18%)</td>
-    </tr>
-    <tr>
-      <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">500</td>
-      <td class="gt_row gt_center">17 (20%)</td>
-      <td class="gt_row gt_center">22 (20%)</td>
-      <td class="gt_row gt_center">32 (15%)</td>
-      <td class="gt_row gt_center">23 (23%)</td>
-      <td class="gt_row gt_center">54 (26%)</td>
-      <td class="gt_row gt_center">39 (25%)</td>
-      <td class="gt_row gt_center">24 (18%)</td>
-      <td class="gt_row gt_center">35 (21%)</td>
-      <td class="gt_row gt_center">28 (20%)</td>
-      <td class="gt_row gt_center">31 (20%)</td>
+      <td class="gt_row gt_center">24 (30%)</td>
+      <td class="gt_row gt_center">23 (21%)</td>
+      <td class="gt_row gt_center">41 (21%)</td>
+      <td class="gt_row gt_center">24 (21%)</td>
+      <td class="gt_row gt_center">37 (18%)</td>
+      <td class="gt_row gt_center">25 (17%)</td>
+      <td class="gt_row gt_center">28 (19%)</td>
+      <td class="gt_row gt_center">32 (22%)</td>
+      <td class="gt_row gt_center">27 (17%)</td>
+      <td class="gt_row gt_center">35 (23%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">300</td>
-      <td class="gt_row gt_center">17 (20%)</td>
-      <td class="gt_row gt_center">29 (27%)</td>
-      <td class="gt_row gt_center">40 (19%)</td>
-      <td class="gt_row gt_center">20 (20%)</td>
-      <td class="gt_row gt_center">31 (15%)</td>
-      <td class="gt_row gt_center">27 (17%)</td>
-      <td class="gt_row gt_center">27 (20%)</td>
-      <td class="gt_row gt_center">35 (21%)</td>
-      <td class="gt_row gt_center">20 (14%)</td>
-      <td class="gt_row gt_center">29 (19%)</td>
+      <td class="gt_row gt_center">13 (16%)</td>
+      <td class="gt_row gt_center">19 (17%)</td>
+      <td class="gt_row gt_center">34 (17%)</td>
+      <td class="gt_row gt_center">22 (19%)</td>
+      <td class="gt_row gt_center">51 (25%)</td>
+      <td class="gt_row gt_center">37 (25%)</td>
+      <td class="gt_row gt_center">32 (22%)</td>
+      <td class="gt_row gt_center">21 (14%)</td>
+      <td class="gt_row gt_center">37 (23%)</td>
+      <td class="gt_row gt_center">20 (13%)</td>
     </tr>
     <tr>
-      <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">100</td>
-      <td class="gt_row gt_center">20 (23%)</td>
+      <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">500</td>
+      <td class="gt_row gt_center">12 (15%)</td>
       <td class="gt_row gt_center">21 (19%)</td>
-      <td class="gt_row gt_center">51 (25%)</td>
-      <td class="gt_row gt_center">17 (17%)</td>
-      <td class="gt_row gt_center">40 (20%)</td>
-      <td class="gt_row gt_center">32 (20%)</td>
-      <td class="gt_row gt_center">23 (17%)</td>
-      <td class="gt_row gt_center">36 (22%)</td>
-      <td class="gt_row gt_center">27 (20%)</td>
+      <td class="gt_row gt_center">44 (22%)</td>
+      <td class="gt_row gt_center">26 (22%)</td>
+      <td class="gt_row gt_center">41 (20%)</td>
+      <td class="gt_row gt_center">35 (23%)</td>
+      <td class="gt_row gt_center">25 (17%)</td>
+      <td class="gt_row gt_center">26 (18%)</td>
+      <td class="gt_row gt_center">33 (21%)</td>
+      <td class="gt_row gt_center">30 (20%)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">200</td>
+      <td class="gt_row gt_center">16 (20%)</td>
+      <td class="gt_row gt_center">25 (23%)</td>
+      <td class="gt_row gt_center">39 (20%)</td>
+      <td class="gt_row gt_center">22 (19%)</td>
+      <td class="gt_row gt_center">48 (24%)</td>
+      <td class="gt_row gt_center">27 (18%)</td>
+      <td class="gt_row gt_center">32 (22%)</td>
+      <td class="gt_row gt_center">34 (23%)</td>
+      <td class="gt_row gt_center">33 (21%)</td>
       <td class="gt_row gt_center">34 (22%)</td>
     </tr>
     <tr>
@@ -1449,29 +1449,29 @@ Category compared
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">False</td>
-      <td class="gt_row gt_center">85 (98%)</td>
-      <td class="gt_row gt_center">108 (99%)</td>
-      <td class="gt_row gt_center">206 (100%)</td>
-      <td class="gt_row gt_center">98 (99%)</td>
-      <td class="gt_row gt_center">200 (98%)</td>
-      <td class="gt_row gt_center">154 (98%)</td>
-      <td class="gt_row gt_center">132 (99%)</td>
-      <td class="gt_row gt_center">165 (99%)</td>
-      <td class="gt_row gt_center">138 (100%)</td>
-      <td class="gt_row gt_center">155 (100%)</td>
+      <td class="gt_row gt_center">78 (98%)</td>
+      <td class="gt_row gt_center">110 (99%)</td>
+      <td class="gt_row gt_center">196 (100%)</td>
+      <td class="gt_row gt_center">115 (99%)</td>
+      <td class="gt_row gt_center">199 (99%)</td>
+      <td class="gt_row gt_center">146 (98%)</td>
+      <td class="gt_row gt_center">142 (99%)</td>
+      <td class="gt_row gt_center">145 (99%)</td>
+      <td class="gt_row gt_center">158 (99%)</td>
+      <td class="gt_row gt_center">149 (98%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">True</td>
-      <td class="gt_row gt_center">2 (2.3%)</td>
+      <td class="gt_row gt_center">2 (2.5%)</td>
       <td class="gt_row gt_center">1 (0.9%)</td>
-      <td class="gt_row gt_center">1 (0.5%)</td>
-      <td class="gt_row gt_center">1 (1.0%)</td>
-      <td class="gt_row gt_center">4 (2.0%)</td>
-      <td class="gt_row gt_center">3 (1.9%)</td>
-      <td class="gt_row gt_center">2 (1.5%)</td>
+      <td class="gt_row gt_center">0 (0%)</td>
+      <td class="gt_row gt_center">1 (0.9%)</td>
+      <td class="gt_row gt_center">3 (1.5%)</td>
+      <td class="gt_row gt_center">3 (2.0%)</td>
+      <td class="gt_row gt_center">2 (1.4%)</td>
+      <td class="gt_row gt_center">1 (0.7%)</td>
       <td class="gt_row gt_center">1 (0.6%)</td>
-      <td class="gt_row gt_center">0 (0%)</td>
-      <td class="gt_row gt_center">0 (0%)</td>
+      <td class="gt_row gt_center">3 (2.0%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="font-weight: bold;">diabetes</td>
@@ -1488,29 +1488,29 @@ Category compared
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">False</td>
-      <td class="gt_row gt_center">86 (99%)</td>
-      <td class="gt_row gt_center">109 (100%)</td>
-      <td class="gt_row gt_center">205 (99%)</td>
-      <td class="gt_row gt_center">98 (99%)</td>
-      <td class="gt_row gt_center">200 (98%)</td>
-      <td class="gt_row gt_center">156 (99%)</td>
-      <td class="gt_row gt_center">133 (99%)</td>
-      <td class="gt_row gt_center">163 (98%)</td>
-      <td class="gt_row gt_center">137 (99%)</td>
-      <td class="gt_row gt_center">152 (98%)</td>
+      <td class="gt_row gt_center">80 (100%)</td>
+      <td class="gt_row gt_center">109 (98%)</td>
+      <td class="gt_row gt_center">193 (98%)</td>
+      <td class="gt_row gt_center">115 (99%)</td>
+      <td class="gt_row gt_center">201 (100%)</td>
+      <td class="gt_row gt_center">147 (99%)</td>
+      <td class="gt_row gt_center">143 (99%)</td>
+      <td class="gt_row gt_center">145 (99%)</td>
+      <td class="gt_row gt_center">157 (99%)</td>
+      <td class="gt_row gt_center">152 (100%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">True</td>
-      <td class="gt_row gt_center">1 (1.1%)</td>
       <td class="gt_row gt_center">0 (0%)</td>
-      <td class="gt_row gt_center">2 (1.0%)</td>
-      <td class="gt_row gt_center">1 (1.0%)</td>
-      <td class="gt_row gt_center">4 (2.0%)</td>
-      <td class="gt_row gt_center">1 (0.6%)</td>
+      <td class="gt_row gt_center">2 (1.8%)</td>
+      <td class="gt_row gt_center">3 (1.5%)</td>
+      <td class="gt_row gt_center">1 (0.9%)</td>
+      <td class="gt_row gt_center">1 (0.5%)</td>
+      <td class="gt_row gt_center">2 (1.3%)</td>
       <td class="gt_row gt_center">1 (0.7%)</td>
-      <td class="gt_row gt_center">3 (1.8%)</td>
       <td class="gt_row gt_center">1 (0.7%)</td>
-      <td class="gt_row gt_center">3 (1.9%)</td>
+      <td class="gt_row gt_center">2 (1.3%)</td>
+      <td class="gt_row gt_center">0 (0%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="font-weight: bold;">hypertension</td>
@@ -1527,29 +1527,29 @@ Category compared
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">False</td>
-      <td class="gt_row gt_center">87 (100%)</td>
-      <td class="gt_row gt_center">107 (98%)</td>
-      <td class="gt_row gt_center">205 (99%)</td>
-      <td class="gt_row gt_center">99 (100%)</td>
-      <td class="gt_row gt_center">201 (99%)</td>
-      <td class="gt_row gt_center">156 (99%)</td>
-      <td class="gt_row gt_center">133 (99%)</td>
-      <td class="gt_row gt_center">164 (99%)</td>
-      <td class="gt_row gt_center">135 (98%)</td>
-      <td class="gt_row gt_center">154 (99%)</td>
+      <td class="gt_row gt_center">79 (99%)</td>
+      <td class="gt_row gt_center">110 (99%)</td>
+      <td class="gt_row gt_center">196 (100%)</td>
+      <td class="gt_row gt_center">115 (99%)</td>
+      <td class="gt_row gt_center">200 (99%)</td>
+      <td class="gt_row gt_center">148 (99%)</td>
+      <td class="gt_row gt_center">144 (100%)</td>
+      <td class="gt_row gt_center">145 (99%)</td>
+      <td class="gt_row gt_center">154 (97%)</td>
+      <td class="gt_row gt_center">150 (99%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">True</td>
+      <td class="gt_row gt_center">1 (1.2%)</td>
+      <td class="gt_row gt_center">1 (0.9%)</td>
       <td class="gt_row gt_center">0 (0%)</td>
-      <td class="gt_row gt_center">2 (1.8%)</td>
+      <td class="gt_row gt_center">1 (0.9%)</td>
       <td class="gt_row gt_center">2 (1.0%)</td>
-      <td class="gt_row gt_center">0 (0%)</td>
-      <td class="gt_row gt_center">3 (1.5%)</td>
-      <td class="gt_row gt_center">1 (0.6%)</td>
       <td class="gt_row gt_center">1 (0.7%)</td>
-      <td class="gt_row gt_center">2 (1.2%)</td>
-      <td class="gt_row gt_center">3 (2.2%)</td>
-      <td class="gt_row gt_center">1 (0.6%)</td>
+      <td class="gt_row gt_center">0 (0%)</td>
+      <td class="gt_row gt_center">1 (0.7%)</td>
+      <td class="gt_row gt_center">5 (3.1%)</td>
+      <td class="gt_row gt_center">2 (1.3%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="font-weight: bold;">learning_disability</td>
@@ -1566,29 +1566,29 @@ Category compared
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">False</td>
-      <td class="gt_row gt_center">86 (99%)</td>
-      <td class="gt_row gt_center">109 (100%)</td>
-      <td class="gt_row gt_center">204 (99%)</td>
-      <td class="gt_row gt_center">99 (100%)</td>
-      <td class="gt_row gt_center">203 (100%)</td>
-      <td class="gt_row gt_center">151 (96%)</td>
-      <td class="gt_row gt_center">133 (99%)</td>
-      <td class="gt_row gt_center">165 (99%)</td>
-      <td class="gt_row gt_center">138 (100%)</td>
-      <td class="gt_row gt_center">154 (99%)</td>
+      <td class="gt_row gt_center">80 (100%)</td>
+      <td class="gt_row gt_center">111 (100%)</td>
+      <td class="gt_row gt_center">194 (99%)</td>
+      <td class="gt_row gt_center">115 (99%)</td>
+      <td class="gt_row gt_center">200 (99%)</td>
+      <td class="gt_row gt_center">147 (99%)</td>
+      <td class="gt_row gt_center">144 (100%)</td>
+      <td class="gt_row gt_center">144 (99%)</td>
+      <td class="gt_row gt_center">157 (99%)</td>
+      <td class="gt_row gt_center">152 (100%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">True</td>
-      <td class="gt_row gt_center">1 (1.1%)</td>
       <td class="gt_row gt_center">0 (0%)</td>
-      <td class="gt_row gt_center">3 (1.4%)</td>
       <td class="gt_row gt_center">0 (0%)</td>
-      <td class="gt_row gt_center">1 (0.5%)</td>
-      <td class="gt_row gt_center">6 (3.8%)</td>
-      <td class="gt_row gt_center">1 (0.7%)</td>
-      <td class="gt_row gt_center">1 (0.6%)</td>
+      <td class="gt_row gt_center">2 (1.0%)</td>
+      <td class="gt_row gt_center">1 (0.9%)</td>
+      <td class="gt_row gt_center">2 (1.0%)</td>
+      <td class="gt_row gt_center">2 (1.3%)</td>
       <td class="gt_row gt_center">0 (0%)</td>
-      <td class="gt_row gt_center">1 (0.6%)</td>
+      <td class="gt_row gt_center">2 (1.4%)</td>
+      <td class="gt_row gt_center">2 (1.3%)</td>
+      <td class="gt_row gt_center">0 (0%)</td>
     </tr>
 
 </tbody>
@@ -1618,7 +1618,7 @@ Missingness
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#mcpwiaablm .gt_table {
+#vddtqciuct .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -1643,7 +1643,7 @@ Missingness
   border-left-color: #D3D3D3;
 }
 
-#mcpwiaablm .gt_heading {
+#vddtqciuct .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1655,7 +1655,7 @@ Missingness
   border-right-color: #D3D3D3;
 }
 
-#mcpwiaablm .gt_title {
+#vddtqciuct .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1665,7 +1665,7 @@ Missingness
   border-bottom-width: 0;
 }
 
-#mcpwiaablm .gt_subtitle {
+#vddtqciuct .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1675,13 +1675,13 @@ Missingness
   border-top-width: 0;
 }
 
-#mcpwiaablm .gt_bottom_border {
+#vddtqciuct .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#mcpwiaablm .gt_col_headings {
+#vddtqciuct .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1696,7 +1696,7 @@ Missingness
   border-right-color: #D3D3D3;
 }
 
-#mcpwiaablm .gt_col_heading {
+#vddtqciuct .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1716,7 +1716,7 @@ Missingness
   overflow-x: hidden;
 }
 
-#mcpwiaablm .gt_column_spanner_outer {
+#vddtqciuct .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1728,15 +1728,15 @@ Missingness
   padding-right: 4px;
 }
 
-#mcpwiaablm .gt_column_spanner_outer:first-child {
+#vddtqciuct .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#mcpwiaablm .gt_column_spanner_outer:last-child {
+#vddtqciuct .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#mcpwiaablm .gt_column_spanner {
+#vddtqciuct .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1748,7 +1748,7 @@ Missingness
   width: 100%;
 }
 
-#mcpwiaablm .gt_group_heading {
+#vddtqciuct .gt_group_heading {
   padding: 1px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1770,7 +1770,7 @@ Missingness
   vertical-align: middle;
 }
 
-#mcpwiaablm .gt_empty_group_heading {
+#vddtqciuct .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1785,15 +1785,15 @@ Missingness
   vertical-align: middle;
 }
 
-#mcpwiaablm .gt_from_md > :first-child {
+#vddtqciuct .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#mcpwiaablm .gt_from_md > :last-child {
+#vddtqciuct .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#mcpwiaablm .gt_row {
+#vddtqciuct .gt_row {
   padding-top: 1px;
   padding-bottom: 1px;
   padding-left: 5px;
@@ -1812,7 +1812,7 @@ Missingness
   overflow-x: hidden;
 }
 
-#mcpwiaablm .gt_stub {
+#vddtqciuct .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1824,7 +1824,7 @@ Missingness
   padding-left: 12px;
 }
 
-#mcpwiaablm .gt_summary_row {
+#vddtqciuct .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1834,7 +1834,7 @@ Missingness
   padding-right: 5px;
 }
 
-#mcpwiaablm .gt_first_summary_row {
+#vddtqciuct .gt_first_summary_row {
   padding-top: 1px;
   padding-bottom: 1px;
   padding-left: 5px;
@@ -1844,7 +1844,7 @@ Missingness
   border-top-color: #D3D3D3;
 }
 
-#mcpwiaablm .gt_grand_summary_row {
+#vddtqciuct .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1854,7 +1854,7 @@ Missingness
   padding-right: 5px;
 }
 
-#mcpwiaablm .gt_first_grand_summary_row {
+#vddtqciuct .gt_first_grand_summary_row {
   padding-top: 1px;
   padding-bottom: 1px;
   padding-left: 5px;
@@ -1864,11 +1864,11 @@ Missingness
   border-top-color: #D3D3D3;
 }
 
-#mcpwiaablm .gt_striped {
+#vddtqciuct .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#mcpwiaablm .gt_table_body {
+#vddtqciuct .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1877,7 +1877,7 @@ Missingness
   border-bottom-color: #D3D3D3;
 }
 
-#mcpwiaablm .gt_footnotes {
+#vddtqciuct .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1891,13 +1891,13 @@ Missingness
   border-right-color: #D3D3D3;
 }
 
-#mcpwiaablm .gt_footnote {
+#vddtqciuct .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding: 1px;
 }
 
-#mcpwiaablm .gt_sourcenotes {
+#vddtqciuct .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1911,41 +1911,41 @@ Missingness
   border-right-color: #D3D3D3;
 }
 
-#mcpwiaablm .gt_sourcenote {
+#vddtqciuct .gt_sourcenote {
   font-size: 90%;
   padding: 1px;
 }
 
-#mcpwiaablm .gt_left {
+#vddtqciuct .gt_left {
   text-align: left;
 }
 
-#mcpwiaablm .gt_center {
+#vddtqciuct .gt_center {
   text-align: center;
 }
 
-#mcpwiaablm .gt_right {
+#vddtqciuct .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#mcpwiaablm .gt_font_normal {
+#vddtqciuct .gt_font_normal {
   font-weight: normal;
 }
 
-#mcpwiaablm .gt_font_bold {
+#vddtqciuct .gt_font_bold {
   font-weight: bold;
 }
 
-#mcpwiaablm .gt_font_italic {
+#vddtqciuct .gt_font_italic {
   font-style: italic;
 }
 
-#mcpwiaablm .gt_super {
+#vddtqciuct .gt_super {
   font-size: 65%;
 }
 
-#mcpwiaablm .gt_footnote_marks {
+#vddtqciuct .gt_footnote_marks {
   font-style: italic;
   font-size: 65%;
 }
@@ -1959,8 +1959,8 @@ Missingness
       </th>
     </tr>
     <tr>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1"><strong>has value</strong> N =<br>706 (71%)<sup class="gt_footnote_marks">1</sup></th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1"><strong>missing</strong> N =<br>294 (29%)<sup class="gt_footnote_marks">1</sup></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1"><strong>has value</strong> N =<br>705 (70%)<sup class="gt_footnote_marks">1</sup></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1"><strong>missing</strong> N =<br>295 (30%)<sup class="gt_footnote_marks">1</sup></th>
     </tr>
 
 </thead>
@@ -1972,43 +1972,43 @@ Missingness
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">0-19</td>
-      <td class="gt_row gt_center">87 (12%)</td>
-      <td class="gt_row gt_center">39 (13%)</td>
+      <td class="gt_row gt_center">82 (12%)</td>
+      <td class="gt_row gt_center">34 (12%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">20-29</td>
-      <td class="gt_row gt_center">75 (11%)</td>
-      <td class="gt_row gt_center">30 (10%)</td>
+      <td class="gt_row gt_center">97 (14%)</td>
+      <td class="gt_row gt_center">39 (13%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">30-39</td>
-      <td class="gt_row gt_center">100 (14%)</td>
-      <td class="gt_row gt_center">28 (9.5%)</td>
+      <td class="gt_row gt_center">85 (12%)</td>
+      <td class="gt_row gt_center">30 (10%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">40-49</td>
-      <td class="gt_row gt_center">79 (11%)</td>
-      <td class="gt_row gt_center">38 (13%)</td>
+      <td class="gt_row gt_center">80 (11%)</td>
+      <td class="gt_row gt_center">41 (14%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">50-59</td>
-      <td class="gt_row gt_center">92 (13%)</td>
-      <td class="gt_row gt_center">33 (11%)</td>
+      <td class="gt_row gt_center">86 (12%)</td>
+      <td class="gt_row gt_center">28 (9.5%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">60-69</td>
-      <td class="gt_row gt_center">108 (15%)</td>
-      <td class="gt_row gt_center">38 (13%)</td>
+      <td class="gt_row gt_center">89 (13%)</td>
+      <td class="gt_row gt_center">46 (16%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">70-79</td>
-      <td class="gt_row gt_center">92 (13%)</td>
-      <td class="gt_row gt_center">54 (18%)</td>
+      <td class="gt_row gt_center">98 (14%)</td>
+      <td class="gt_row gt_center">36 (12%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">80+</td>
-      <td class="gt_row gt_center">73 (10%)</td>
-      <td class="gt_row gt_center">34 (12%)</td>
+      <td class="gt_row gt_center">88 (12%)</td>
+      <td class="gt_row gt_center">41 (14%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="font-weight: bold;">sex</td>
@@ -2017,13 +2017,13 @@ Missingness
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">Female</td>
-      <td class="gt_row gt_center">361 (51%)</td>
-      <td class="gt_row gt_center">155 (53%)</td>
+      <td class="gt_row gt_center">344 (49%)</td>
+      <td class="gt_row gt_center">138 (47%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">Male</td>
-      <td class="gt_row gt_center">345 (49%)</td>
-      <td class="gt_row gt_center">139 (47%)</td>
+      <td class="gt_row gt_center">361 (51%)</td>
+      <td class="gt_row gt_center">157 (53%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="font-weight: bold;">region</td>
@@ -2031,49 +2031,49 @@ Missingness
       <td class="gt_row gt_center"></td>
     </tr>
     <tr>
-      <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">South East</td>
-      <td class="gt_row gt_center">74 (17%)</td>
-      <td class="gt_row gt_center">50 (24%)</td>
+      <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">London</td>
+      <td class="gt_row gt_center">89 (19%)</td>
+      <td class="gt_row gt_center">42 (23%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">North West</td>
-      <td class="gt_row gt_center">45 (10%)</td>
-      <td class="gt_row gt_center">18 (8.7%)</td>
+      <td class="gt_row gt_center">52 (11%)</td>
+      <td class="gt_row gt_center">23 (13%)</td>
     </tr>
     <tr>
-      <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">Yorkshire and the Humber</td>
-      <td class="gt_row gt_center">46 (10%)</td>
-      <td class="gt_row gt_center">19 (9.1%)</td>
-    </tr>
-    <tr>
-      <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">West Midlands</td>
-      <td class="gt_row gt_center">46 (10%)</td>
-      <td class="gt_row gt_center">20 (9.6%)</td>
+      <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">South East</td>
+      <td class="gt_row gt_center">92 (20%)</td>
+      <td class="gt_row gt_center">29 (16%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">North East</td>
-      <td class="gt_row gt_center">33 (7.5%)</td>
-      <td class="gt_row gt_center">23 (11%)</td>
+      <td class="gt_row gt_center">46 (9.8%)</td>
+      <td class="gt_row gt_center">19 (10%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">East Midlands</td>
-      <td class="gt_row gt_center">56 (13%)</td>
-      <td class="gt_row gt_center">21 (10%)</td>
+      <td class="gt_row gt_center">49 (10%)</td>
+      <td class="gt_row gt_center">13 (7.1%)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">West Midlands</td>
+      <td class="gt_row gt_center">43 (9.2%)</td>
+      <td class="gt_row gt_center">22 (12%)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">Yorkshire and the Humber</td>
+      <td class="gt_row gt_center">51 (11%)</td>
+      <td class="gt_row gt_center">25 (14%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">East of England</td>
-      <td class="gt_row gt_center">44 (10.0%)</td>
-      <td class="gt_row gt_center">18 (8.7%)</td>
-    </tr>
-    <tr>
-      <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">London</td>
-      <td class="gt_row gt_center">98 (22%)</td>
-      <td class="gt_row gt_center">39 (19%)</td>
+      <td class="gt_row gt_center">46 (9.8%)</td>
+      <td class="gt_row gt_center">9 (4.9%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">Unknown</td>
-      <td class="gt_row gt_center">264</td>
-      <td class="gt_row gt_center">86</td>
+      <td class="gt_row gt_center">237</td>
+      <td class="gt_row gt_center">113</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="font-weight: bold;">IMD</td>
@@ -2081,29 +2081,29 @@ Missingness
       <td class="gt_row gt_center"></td>
     </tr>
     <tr>
-      <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">200</td>
-      <td class="gt_row gt_center">151 (21%)</td>
-      <td class="gt_row gt_center">64 (22%)</td>
+      <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">100</td>
+      <td class="gt_row gt_center">123 (17%)</td>
+      <td class="gt_row gt_center">56 (19%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">400</td>
-      <td class="gt_row gt_center">121 (17%)</td>
-      <td class="gt_row gt_center">64 (22%)</td>
-    </tr>
-    <tr>
-      <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">500</td>
-      <td class="gt_row gt_center">148 (21%)</td>
-      <td class="gt_row gt_center">70 (24%)</td>
+      <td class="gt_row gt_center">149 (21%)</td>
+      <td class="gt_row gt_center">51 (17%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">300</td>
-      <td class="gt_row gt_center">137 (19%)</td>
-      <td class="gt_row gt_center">50 (17%)</td>
+      <td class="gt_row gt_center">139 (20%)</td>
+      <td class="gt_row gt_center">59 (20%)</td>
     </tr>
     <tr>
-      <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">100</td>
-      <td class="gt_row gt_center">149 (21%)</td>
-      <td class="gt_row gt_center">46 (16%)</td>
+      <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">500</td>
+      <td class="gt_row gt_center">144 (20%)</td>
+      <td class="gt_row gt_center">69 (23%)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">200</td>
+      <td class="gt_row gt_center">150 (21%)</td>
+      <td class="gt_row gt_center">60 (20%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="font-weight: bold;">Dementia</td>
@@ -2112,13 +2112,13 @@ Missingness
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">False</td>
-      <td class="gt_row gt_center">697 (99%)</td>
-      <td class="gt_row gt_center">293 (100%)</td>
+      <td class="gt_row gt_center">698 (99%)</td>
+      <td class="gt_row gt_center">292 (99%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">True</td>
-      <td class="gt_row gt_center">9 (1.3%)</td>
-      <td class="gt_row gt_center">1 (0.3%)</td>
+      <td class="gt_row gt_center">7 (1.0%)</td>
+      <td class="gt_row gt_center">3 (1.0%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="font-weight: bold;">diabetes</td>
@@ -2132,8 +2132,8 @@ Missingness
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">True</td>
-      <td class="gt_row gt_center">8 (1.1%)</td>
-      <td class="gt_row gt_center">2 (0.7%)</td>
+      <td class="gt_row gt_center">7 (1.0%)</td>
+      <td class="gt_row gt_center">3 (1.0%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="font-weight: bold;">hypertension</td>
@@ -2142,13 +2142,13 @@ Missingness
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">False</td>
-      <td class="gt_row gt_center">699 (99%)</td>
-      <td class="gt_row gt_center">291 (99%)</td>
+      <td class="gt_row gt_center">700 (99%)</td>
+      <td class="gt_row gt_center">290 (98%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">True</td>
-      <td class="gt_row gt_center">7 (1.0%)</td>
-      <td class="gt_row gt_center">3 (1.0%)</td>
+      <td class="gt_row gt_center">5 (0.7%)</td>
+      <td class="gt_row gt_center">5 (1.7%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="font-weight: bold;">learning_disability</td>
@@ -2157,8 +2157,8 @@ Missingness
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">False</td>
-      <td class="gt_row gt_center">701 (99%)</td>
-      <td class="gt_row gt_center">289 (98%)</td>
+      <td class="gt_row gt_center">700 (99%)</td>
+      <td class="gt_row gt_center">290 (98%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">True</td>
@@ -2193,7 +2193,7 @@ Missingness comparison
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#unapqilzmc .gt_table {
+#lwtydlzqpe .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -2218,7 +2218,7 @@ Missingness comparison
   border-left-color: #D3D3D3;
 }
 
-#unapqilzmc .gt_heading {
+#lwtydlzqpe .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -2230,7 +2230,7 @@ Missingness comparison
   border-right-color: #D3D3D3;
 }
 
-#unapqilzmc .gt_title {
+#lwtydlzqpe .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -2240,7 +2240,7 @@ Missingness comparison
   border-bottom-width: 0;
 }
 
-#unapqilzmc .gt_subtitle {
+#lwtydlzqpe .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -2250,13 +2250,13 @@ Missingness comparison
   border-top-width: 0;
 }
 
-#unapqilzmc .gt_bottom_border {
+#lwtydlzqpe .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#unapqilzmc .gt_col_headings {
+#lwtydlzqpe .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2271,7 +2271,7 @@ Missingness comparison
   border-right-color: #D3D3D3;
 }
 
-#unapqilzmc .gt_col_heading {
+#lwtydlzqpe .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2291,7 +2291,7 @@ Missingness comparison
   overflow-x: hidden;
 }
 
-#unapqilzmc .gt_column_spanner_outer {
+#lwtydlzqpe .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2303,15 +2303,15 @@ Missingness comparison
   padding-right: 4px;
 }
 
-#unapqilzmc .gt_column_spanner_outer:first-child {
+#lwtydlzqpe .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#unapqilzmc .gt_column_spanner_outer:last-child {
+#lwtydlzqpe .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#unapqilzmc .gt_column_spanner {
+#lwtydlzqpe .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -2323,7 +2323,7 @@ Missingness comparison
   width: 100%;
 }
 
-#unapqilzmc .gt_group_heading {
+#lwtydlzqpe .gt_group_heading {
   padding: 1px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2345,7 +2345,7 @@ Missingness comparison
   vertical-align: middle;
 }
 
-#unapqilzmc .gt_empty_group_heading {
+#lwtydlzqpe .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2360,15 +2360,15 @@ Missingness comparison
   vertical-align: middle;
 }
 
-#unapqilzmc .gt_from_md > :first-child {
+#lwtydlzqpe .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#unapqilzmc .gt_from_md > :last-child {
+#lwtydlzqpe .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#unapqilzmc .gt_row {
+#lwtydlzqpe .gt_row {
   padding-top: 1px;
   padding-bottom: 1px;
   padding-left: 5px;
@@ -2387,7 +2387,7 @@ Missingness comparison
   overflow-x: hidden;
 }
 
-#unapqilzmc .gt_stub {
+#lwtydlzqpe .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2399,7 +2399,7 @@ Missingness comparison
   padding-left: 12px;
 }
 
-#unapqilzmc .gt_summary_row {
+#lwtydlzqpe .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2409,7 +2409,7 @@ Missingness comparison
   padding-right: 5px;
 }
 
-#unapqilzmc .gt_first_summary_row {
+#lwtydlzqpe .gt_first_summary_row {
   padding-top: 1px;
   padding-bottom: 1px;
   padding-left: 5px;
@@ -2419,7 +2419,7 @@ Missingness comparison
   border-top-color: #D3D3D3;
 }
 
-#unapqilzmc .gt_grand_summary_row {
+#lwtydlzqpe .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2429,7 +2429,7 @@ Missingness comparison
   padding-right: 5px;
 }
 
-#unapqilzmc .gt_first_grand_summary_row {
+#lwtydlzqpe .gt_first_grand_summary_row {
   padding-top: 1px;
   padding-bottom: 1px;
   padding-left: 5px;
@@ -2439,11 +2439,11 @@ Missingness comparison
   border-top-color: #D3D3D3;
 }
 
-#unapqilzmc .gt_striped {
+#lwtydlzqpe .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#unapqilzmc .gt_table_body {
+#lwtydlzqpe .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2452,7 +2452,7 @@ Missingness comparison
   border-bottom-color: #D3D3D3;
 }
 
-#unapqilzmc .gt_footnotes {
+#lwtydlzqpe .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2466,13 +2466,13 @@ Missingness comparison
   border-right-color: #D3D3D3;
 }
 
-#unapqilzmc .gt_footnote {
+#lwtydlzqpe .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding: 1px;
 }
 
-#unapqilzmc .gt_sourcenotes {
+#lwtydlzqpe .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2486,41 +2486,41 @@ Missingness comparison
   border-right-color: #D3D3D3;
 }
 
-#unapqilzmc .gt_sourcenote {
+#lwtydlzqpe .gt_sourcenote {
   font-size: 90%;
   padding: 1px;
 }
 
-#unapqilzmc .gt_left {
+#lwtydlzqpe .gt_left {
   text-align: left;
 }
 
-#unapqilzmc .gt_center {
+#lwtydlzqpe .gt_center {
   text-align: center;
 }
 
-#unapqilzmc .gt_right {
+#lwtydlzqpe .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#unapqilzmc .gt_font_normal {
+#lwtydlzqpe .gt_font_normal {
   font-weight: normal;
 }
 
-#unapqilzmc .gt_font_bold {
+#lwtydlzqpe .gt_font_bold {
   font-weight: bold;
 }
 
-#unapqilzmc .gt_font_italic {
+#lwtydlzqpe .gt_font_italic {
   font-style: italic;
 }
 
-#unapqilzmc .gt_super {
+#lwtydlzqpe .gt_super {
   font-size: 65%;
 }
 
-#unapqilzmc .gt_footnote_marks {
+#lwtydlzqpe .gt_footnote_marks {
   font-style: italic;
   font-size: 65%;
 }
@@ -2534,10 +2534,10 @@ Missingness comparison
       </th>
     </tr>
     <tr>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1"><strong>Both</strong> N =<br>59 (5.9%)<sup class="gt_footnote_marks">1</sup></th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1"><strong>CTV3</strong> N =<br>191 (19%)<sup class="gt_footnote_marks">1</sup></th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1"><strong>SNOMED</strong> N =<br>235 (24%)<sup class="gt_footnote_marks">1</sup></th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1"><strong>Neither</strong> N =<br>515 (52%)<sup class="gt_footnote_marks">1</sup></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1"><strong>Both</strong> N =<br>73 (7.3%)<sup class="gt_footnote_marks">1</sup></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1"><strong>CTV3</strong> N =<br>177 (18%)<sup class="gt_footnote_marks">1</sup></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1"><strong>SNOMED</strong> N =<br>222 (22%)<sup class="gt_footnote_marks">1</sup></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1"><strong>Neither</strong> N =<br>528 (53%)<sup class="gt_footnote_marks">1</sup></th>
     </tr>
 
 </thead>
@@ -2551,59 +2551,59 @@ Missingness comparison
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">0-19</td>
-      <td class="gt_row gt_center">13 (22%)</td>
-      <td class="gt_row gt_center">24 (13%)</td>
-      <td class="gt_row gt_center">26 (11%)</td>
-      <td class="gt_row gt_center">63 (12%)</td>
+      <td class="gt_row gt_center">8 (11%)</td>
+      <td class="gt_row gt_center">24 (14%)</td>
+      <td class="gt_row gt_center">26 (12%)</td>
+      <td class="gt_row gt_center">58 (11%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">20-29</td>
-      <td class="gt_row gt_center">3 (5.1%)</td>
-      <td class="gt_row gt_center">21 (11%)</td>
-      <td class="gt_row gt_center">27 (11%)</td>
-      <td class="gt_row gt_center">54 (10%)</td>
+      <td class="gt_row gt_center">13 (18%)</td>
+      <td class="gt_row gt_center">27 (15%)</td>
+      <td class="gt_row gt_center">26 (12%)</td>
+      <td class="gt_row gt_center">70 (13%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">30-39</td>
-      <td class="gt_row gt_center">4 (6.8%)</td>
-      <td class="gt_row gt_center">26 (14%)</td>
-      <td class="gt_row gt_center">24 (10%)</td>
-      <td class="gt_row gt_center">74 (14%)</td>
+      <td class="gt_row gt_center">8 (11%)</td>
+      <td class="gt_row gt_center">17 (9.6%)</td>
+      <td class="gt_row gt_center">22 (9.9%)</td>
+      <td class="gt_row gt_center">68 (13%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">40-49</td>
-      <td class="gt_row gt_center">9 (15%)</td>
-      <td class="gt_row gt_center">26 (14%)</td>
-      <td class="gt_row gt_center">29 (12%)</td>
-      <td class="gt_row gt_center">53 (10%)</td>
+      <td class="gt_row gt_center">9 (12%)</td>
+      <td class="gt_row gt_center">24 (14%)</td>
+      <td class="gt_row gt_center">32 (14%)</td>
+      <td class="gt_row gt_center">56 (11%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">50-59</td>
-      <td class="gt_row gt_center">7 (12%)</td>
-      <td class="gt_row gt_center">27 (14%)</td>
-      <td class="gt_row gt_center">26 (11%)</td>
-      <td class="gt_row gt_center">65 (13%)</td>
+      <td class="gt_row gt_center">4 (5.5%)</td>
+      <td class="gt_row gt_center">18 (10%)</td>
+      <td class="gt_row gt_center">24 (11%)</td>
+      <td class="gt_row gt_center">68 (13%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">60-69</td>
-      <td class="gt_row gt_center">6 (10%)</td>
-      <td class="gt_row gt_center">33 (17%)</td>
-      <td class="gt_row gt_center">32 (14%)</td>
-      <td class="gt_row gt_center">75 (15%)</td>
+      <td class="gt_row gt_center">9 (12%)</td>
+      <td class="gt_row gt_center">22 (12%)</td>
+      <td class="gt_row gt_center">37 (17%)</td>
+      <td class="gt_row gt_center">67 (13%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">70-79</td>
-      <td class="gt_row gt_center">14 (24%)</td>
-      <td class="gt_row gt_center">18 (9.4%)</td>
-      <td class="gt_row gt_center">40 (17%)</td>
-      <td class="gt_row gt_center">74 (14%)</td>
+      <td class="gt_row gt_center">8 (11%)</td>
+      <td class="gt_row gt_center">22 (12%)</td>
+      <td class="gt_row gt_center">28 (13%)</td>
+      <td class="gt_row gt_center">76 (14%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">80+</td>
-      <td class="gt_row gt_center">3 (5.1%)</td>
-      <td class="gt_row gt_center">16 (8.4%)</td>
-      <td class="gt_row gt_center">31 (13%)</td>
-      <td class="gt_row gt_center">57 (11%)</td>
+      <td class="gt_row gt_center">14 (19%)</td>
+      <td class="gt_row gt_center">23 (13%)</td>
+      <td class="gt_row gt_center">27 (12%)</td>
+      <td class="gt_row gt_center">65 (12%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="font-weight: bold;">sex</td>
@@ -2614,17 +2614,17 @@ Missingness comparison
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">Female</td>
-      <td class="gt_row gt_center">32 (54%)</td>
-      <td class="gt_row gt_center">96 (50%)</td>
-      <td class="gt_row gt_center">123 (52%)</td>
-      <td class="gt_row gt_center">265 (51%)</td>
+      <td class="gt_row gt_center">33 (45%)</td>
+      <td class="gt_row gt_center">88 (50%)</td>
+      <td class="gt_row gt_center">105 (47%)</td>
+      <td class="gt_row gt_center">256 (48%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">Male</td>
-      <td class="gt_row gt_center">27 (46%)</td>
-      <td class="gt_row gt_center">95 (50%)</td>
-      <td class="gt_row gt_center">112 (48%)</td>
-      <td class="gt_row gt_center">250 (49%)</td>
+      <td class="gt_row gt_center">40 (55%)</td>
+      <td class="gt_row gt_center">89 (50%)</td>
+      <td class="gt_row gt_center">117 (53%)</td>
+      <td class="gt_row gt_center">272 (52%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="font-weight: bold;">region</td>
@@ -2634,67 +2634,67 @@ Missingness comparison
       <td class="gt_row gt_center"></td>
     </tr>
     <tr>
-      <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">South East</td>
-      <td class="gt_row gt_center">10 (31%)</td>
-      <td class="gt_row gt_center">17 (14%)</td>
-      <td class="gt_row gt_center">40 (23%)</td>
-      <td class="gt_row gt_center">57 (18%)</td>
+      <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">London</td>
+      <td class="gt_row gt_center">8 (21%)</td>
+      <td class="gt_row gt_center">28 (22%)</td>
+      <td class="gt_row gt_center">34 (24%)</td>
+      <td class="gt_row gt_center">61 (18%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">North West</td>
-      <td class="gt_row gt_center">3 (9.4%)</td>
-      <td class="gt_row gt_center">16 (14%)</td>
-      <td class="gt_row gt_center">15 (8.5%)</td>
-      <td class="gt_row gt_center">29 (9.0%)</td>
+      <td class="gt_row gt_center">3 (7.7%)</td>
+      <td class="gt_row gt_center">13 (10%)</td>
+      <td class="gt_row gt_center">20 (14%)</td>
+      <td class="gt_row gt_center">39 (11%)</td>
     </tr>
     <tr>
-      <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">Yorkshire and the Humber</td>
-      <td class="gt_row gt_center">6 (19%)</td>
-      <td class="gt_row gt_center">10 (8.5%)</td>
-      <td class="gt_row gt_center">13 (7.4%)</td>
-      <td class="gt_row gt_center">36 (11%)</td>
-    </tr>
-    <tr>
-      <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">West Midlands</td>
-      <td class="gt_row gt_center">2 (6.2%)</td>
-      <td class="gt_row gt_center">14 (12%)</td>
-      <td class="gt_row gt_center">18 (10%)</td>
-      <td class="gt_row gt_center">32 (9.9%)</td>
+      <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">South East</td>
+      <td class="gt_row gt_center">9 (23%)</td>
+      <td class="gt_row gt_center">23 (18%)</td>
+      <td class="gt_row gt_center">20 (14%)</td>
+      <td class="gt_row gt_center">69 (20%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">North East</td>
-      <td class="gt_row gt_center">1 (3.1%)</td>
-      <td class="gt_row gt_center">5 (4.2%)</td>
-      <td class="gt_row gt_center">22 (12%)</td>
-      <td class="gt_row gt_center">28 (8.6%)</td>
+      <td class="gt_row gt_center">3 (7.7%)</td>
+      <td class="gt_row gt_center">14 (11%)</td>
+      <td class="gt_row gt_center">16 (11%)</td>
+      <td class="gt_row gt_center">32 (9.3%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">East Midlands</td>
-      <td class="gt_row gt_center">5 (16%)</td>
-      <td class="gt_row gt_center">16 (14%)</td>
-      <td class="gt_row gt_center">16 (9.1%)</td>
-      <td class="gt_row gt_center">40 (12%)</td>
+      <td class="gt_row gt_center">4 (10%)</td>
+      <td class="gt_row gt_center">13 (10%)</td>
+      <td class="gt_row gt_center">9 (6.3%)</td>
+      <td class="gt_row gt_center">36 (10%)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">West Midlands</td>
+      <td class="gt_row gt_center">4 (10%)</td>
+      <td class="gt_row gt_center">10 (8.0%)</td>
+      <td class="gt_row gt_center">18 (13%)</td>
+      <td class="gt_row gt_center">33 (9.6%)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">Yorkshire and the Humber</td>
+      <td class="gt_row gt_center">6 (15%)</td>
+      <td class="gt_row gt_center">13 (10%)</td>
+      <td class="gt_row gt_center">19 (13%)</td>
+      <td class="gt_row gt_center">38 (11%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">East of England</td>
-      <td class="gt_row gt_center">2 (6.2%)</td>
-      <td class="gt_row gt_center">11 (9.3%)</td>
-      <td class="gt_row gt_center">16 (9.1%)</td>
-      <td class="gt_row gt_center">33 (10%)</td>
-    </tr>
-    <tr>
-      <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">London</td>
-      <td class="gt_row gt_center">3 (9.4%)</td>
-      <td class="gt_row gt_center">29 (25%)</td>
-      <td class="gt_row gt_center">36 (20%)</td>
-      <td class="gt_row gt_center">69 (21%)</td>
+      <td class="gt_row gt_center">2 (5.1%)</td>
+      <td class="gt_row gt_center">11 (8.8%)</td>
+      <td class="gt_row gt_center">7 (4.9%)</td>
+      <td class="gt_row gt_center">35 (10%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">Unknown</td>
-      <td class="gt_row gt_center">27</td>
-      <td class="gt_row gt_center">73</td>
-      <td class="gt_row gt_center">59</td>
-      <td class="gt_row gt_center">191</td>
+      <td class="gt_row gt_center">34</td>
+      <td class="gt_row gt_center">52</td>
+      <td class="gt_row gt_center">79</td>
+      <td class="gt_row gt_center">185</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="font-weight: bold;">IMD</td>
@@ -2704,39 +2704,39 @@ Missingness comparison
       <td class="gt_row gt_center"></td>
     </tr>
     <tr>
-      <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">200</td>
-      <td class="gt_row gt_center">10 (17%)</td>
-      <td class="gt_row gt_center">37 (19%)</td>
-      <td class="gt_row gt_center">54 (23%)</td>
-      <td class="gt_row gt_center">114 (22%)</td>
+      <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">100</td>
+      <td class="gt_row gt_center">12 (16%)</td>
+      <td class="gt_row gt_center">20 (11%)</td>
+      <td class="gt_row gt_center">44 (20%)</td>
+      <td class="gt_row gt_center">103 (20%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">400</td>
-      <td class="gt_row gt_center">15 (25%)</td>
-      <td class="gt_row gt_center">35 (18%)</td>
-      <td class="gt_row gt_center">49 (21%)</td>
-      <td class="gt_row gt_center">86 (17%)</td>
-    </tr>
-    <tr>
-      <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">500</td>
-      <td class="gt_row gt_center">21 (36%)</td>
-      <td class="gt_row gt_center">40 (21%)</td>
-      <td class="gt_row gt_center">49 (21%)</td>
-      <td class="gt_row gt_center">108 (21%)</td>
+      <td class="gt_row gt_center">11 (15%)</td>
+      <td class="gt_row gt_center">42 (24%)</td>
+      <td class="gt_row gt_center">40 (18%)</td>
+      <td class="gt_row gt_center">107 (20%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">300</td>
-      <td class="gt_row gt_center">6 (10%)</td>
-      <td class="gt_row gt_center">43 (23%)</td>
-      <td class="gt_row gt_center">44 (19%)</td>
-      <td class="gt_row gt_center">94 (18%)</td>
+      <td class="gt_row gt_center">16 (22%)</td>
+      <td class="gt_row gt_center">35 (20%)</td>
+      <td class="gt_row gt_center">43 (19%)</td>
+      <td class="gt_row gt_center">104 (20%)</td>
     </tr>
     <tr>
-      <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">100</td>
-      <td class="gt_row gt_center">7 (12%)</td>
-      <td class="gt_row gt_center">36 (19%)</td>
-      <td class="gt_row gt_center">39 (17%)</td>
-      <td class="gt_row gt_center">113 (22%)</td>
+      <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">500</td>
+      <td class="gt_row gt_center">25 (34%)</td>
+      <td class="gt_row gt_center">39 (22%)</td>
+      <td class="gt_row gt_center">44 (20%)</td>
+      <td class="gt_row gt_center">105 (20%)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">200</td>
+      <td class="gt_row gt_center">9 (12%)</td>
+      <td class="gt_row gt_center">41 (23%)</td>
+      <td class="gt_row gt_center">51 (23%)</td>
+      <td class="gt_row gt_center">109 (21%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="font-weight: bold;">Dementia</td>
@@ -2747,17 +2747,17 @@ Missingness comparison
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">False</td>
-      <td class="gt_row gt_center">59 (100%)</td>
-      <td class="gt_row gt_center">187 (98%)</td>
-      <td class="gt_row gt_center">234 (100%)</td>
-      <td class="gt_row gt_center">510 (99%)</td>
+      <td class="gt_row gt_center">73 (100%)</td>
+      <td class="gt_row gt_center">177 (100%)</td>
+      <td class="gt_row gt_center">219 (99%)</td>
+      <td class="gt_row gt_center">521 (99%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">True</td>
       <td class="gt_row gt_center">0 (0%)</td>
-      <td class="gt_row gt_center">4 (2.1%)</td>
-      <td class="gt_row gt_center">1 (0.4%)</td>
-      <td class="gt_row gt_center">5 (1.0%)</td>
+      <td class="gt_row gt_center">0 (0%)</td>
+      <td class="gt_row gt_center">3 (1.4%)</td>
+      <td class="gt_row gt_center">7 (1.3%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="font-weight: bold;">diabetes</td>
@@ -2768,17 +2768,17 @@ Missingness comparison
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">False</td>
-      <td class="gt_row gt_center">59 (100%)</td>
-      <td class="gt_row gt_center">190 (99%)</td>
-      <td class="gt_row gt_center">233 (99%)</td>
-      <td class="gt_row gt_center">508 (99%)</td>
+      <td class="gt_row gt_center">72 (99%)</td>
+      <td class="gt_row gt_center">174 (98%)</td>
+      <td class="gt_row gt_center">220 (99%)</td>
+      <td class="gt_row gt_center">524 (99%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">True</td>
-      <td class="gt_row gt_center">0 (0%)</td>
-      <td class="gt_row gt_center">1 (0.5%)</td>
+      <td class="gt_row gt_center">1 (1.4%)</td>
+      <td class="gt_row gt_center">3 (1.7%)</td>
       <td class="gt_row gt_center">2 (0.9%)</td>
-      <td class="gt_row gt_center">7 (1.4%)</td>
+      <td class="gt_row gt_center">4 (0.8%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="font-weight: bold;">hypertension</td>
@@ -2789,17 +2789,17 @@ Missingness comparison
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">False</td>
-      <td class="gt_row gt_center">59 (100%)</td>
-      <td class="gt_row gt_center">189 (99%)</td>
-      <td class="gt_row gt_center">232 (99%)</td>
-      <td class="gt_row gt_center">510 (99%)</td>
+      <td class="gt_row gt_center">72 (99%)</td>
+      <td class="gt_row gt_center">177 (100%)</td>
+      <td class="gt_row gt_center">218 (98%)</td>
+      <td class="gt_row gt_center">523 (99%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">True</td>
+      <td class="gt_row gt_center">1 (1.4%)</td>
       <td class="gt_row gt_center">0 (0%)</td>
-      <td class="gt_row gt_center">2 (1.0%)</td>
-      <td class="gt_row gt_center">3 (1.3%)</td>
-      <td class="gt_row gt_center">5 (1.0%)</td>
+      <td class="gt_row gt_center">4 (1.8%)</td>
+      <td class="gt_row gt_center">5 (0.9%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="font-weight: bold;">learning_disability</td>
@@ -2810,17 +2810,17 @@ Missingness comparison
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">False</td>
-      <td class="gt_row gt_center">59 (100%)</td>
-      <td class="gt_row gt_center">190 (99%)</td>
-      <td class="gt_row gt_center">230 (98%)</td>
-      <td class="gt_row gt_center">511 (99%)</td>
+      <td class="gt_row gt_center">71 (97%)</td>
+      <td class="gt_row gt_center">175 (99%)</td>
+      <td class="gt_row gt_center">219 (99%)</td>
+      <td class="gt_row gt_center">525 (99%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">True</td>
-      <td class="gt_row gt_center">0 (0%)</td>
-      <td class="gt_row gt_center">1 (0.5%)</td>
-      <td class="gt_row gt_center">5 (2.1%)</td>
-      <td class="gt_row gt_center">4 (0.8%)</td>
+      <td class="gt_row gt_center">2 (2.7%)</td>
+      <td class="gt_row gt_center">2 (1.1%)</td>
+      <td class="gt_row gt_center">3 (1.4%)</td>
+      <td class="gt_row gt_center">3 (0.6%)</td>
     </tr>
 
 </tbody>
@@ -2842,15 +2842,17 @@ Missingness comparison
 </table>
 
 <!--/html_preserve-->
-Patients registered as of 2022/01/01
-====================================
+Latest ethnicity vs most common ethnicity
+-----------------------------------------
+
+#### I need to think how to deal with ties for most common ethnicity
 
 <!--html_preserve-->
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#xzhngyyndr .gt_table {
+#dzufcrdifg .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -2875,7 +2877,7 @@ Patients registered as of 2022/01/01
   border-left-color: #D3D3D3;
 }
 
-#xzhngyyndr .gt_heading {
+#dzufcrdifg .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -2887,7 +2889,7 @@ Patients registered as of 2022/01/01
   border-right-color: #D3D3D3;
 }
 
-#xzhngyyndr .gt_title {
+#dzufcrdifg .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -2897,7 +2899,7 @@ Patients registered as of 2022/01/01
   border-bottom-width: 0;
 }
 
-#xzhngyyndr .gt_subtitle {
+#dzufcrdifg .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -2907,13 +2909,13 @@ Patients registered as of 2022/01/01
   border-top-width: 0;
 }
 
-#xzhngyyndr .gt_bottom_border {
+#dzufcrdifg .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#xzhngyyndr .gt_col_headings {
+#dzufcrdifg .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2928,7 +2930,7 @@ Patients registered as of 2022/01/01
   border-right-color: #D3D3D3;
 }
 
-#xzhngyyndr .gt_col_heading {
+#dzufcrdifg .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2948,7 +2950,7 @@ Patients registered as of 2022/01/01
   overflow-x: hidden;
 }
 
-#xzhngyyndr .gt_column_spanner_outer {
+#dzufcrdifg .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2960,15 +2962,15 @@ Patients registered as of 2022/01/01
   padding-right: 4px;
 }
 
-#xzhngyyndr .gt_column_spanner_outer:first-child {
+#dzufcrdifg .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#xzhngyyndr .gt_column_spanner_outer:last-child {
+#dzufcrdifg .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#xzhngyyndr .gt_column_spanner {
+#dzufcrdifg .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -2980,7 +2982,7 @@ Patients registered as of 2022/01/01
   width: 100%;
 }
 
-#xzhngyyndr .gt_group_heading {
+#dzufcrdifg .gt_group_heading {
   padding: 1px;
   color: #333333;
   background-color: #FFFFFF;
@@ -3002,7 +3004,7 @@ Patients registered as of 2022/01/01
   vertical-align: middle;
 }
 
-#xzhngyyndr .gt_empty_group_heading {
+#dzufcrdifg .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -3017,15 +3019,15 @@ Patients registered as of 2022/01/01
   vertical-align: middle;
 }
 
-#xzhngyyndr .gt_from_md > :first-child {
+#dzufcrdifg .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#xzhngyyndr .gt_from_md > :last-child {
+#dzufcrdifg .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#xzhngyyndr .gt_row {
+#dzufcrdifg .gt_row {
   padding-top: 1px;
   padding-bottom: 1px;
   padding-left: 5px;
@@ -3044,7 +3046,7 @@ Patients registered as of 2022/01/01
   overflow-x: hidden;
 }
 
-#xzhngyyndr .gt_stub {
+#dzufcrdifg .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3056,7 +3058,7 @@ Patients registered as of 2022/01/01
   padding-left: 12px;
 }
 
-#xzhngyyndr .gt_summary_row {
+#dzufcrdifg .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3066,7 +3068,7 @@ Patients registered as of 2022/01/01
   padding-right: 5px;
 }
 
-#xzhngyyndr .gt_first_summary_row {
+#dzufcrdifg .gt_first_summary_row {
   padding-top: 1px;
   padding-bottom: 1px;
   padding-left: 5px;
@@ -3076,7 +3078,7 @@ Patients registered as of 2022/01/01
   border-top-color: #D3D3D3;
 }
 
-#xzhngyyndr .gt_grand_summary_row {
+#dzufcrdifg .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3086,7 +3088,7 @@ Patients registered as of 2022/01/01
   padding-right: 5px;
 }
 
-#xzhngyyndr .gt_first_grand_summary_row {
+#dzufcrdifg .gt_first_grand_summary_row {
   padding-top: 1px;
   padding-bottom: 1px;
   padding-left: 5px;
@@ -3096,11 +3098,11 @@ Patients registered as of 2022/01/01
   border-top-color: #D3D3D3;
 }
 
-#xzhngyyndr .gt_striped {
+#dzufcrdifg .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#xzhngyyndr .gt_table_body {
+#dzufcrdifg .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3109,7 +3111,7 @@ Patients registered as of 2022/01/01
   border-bottom-color: #D3D3D3;
 }
 
-#xzhngyyndr .gt_footnotes {
+#dzufcrdifg .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3123,13 +3125,13 @@ Patients registered as of 2022/01/01
   border-right-color: #D3D3D3;
 }
 
-#xzhngyyndr .gt_footnote {
+#dzufcrdifg .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding: 1px;
 }
 
-#xzhngyyndr .gt_sourcenotes {
+#dzufcrdifg .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3143,41 +3145,879 @@ Patients registered as of 2022/01/01
   border-right-color: #D3D3D3;
 }
 
-#xzhngyyndr .gt_sourcenote {
+#dzufcrdifg .gt_sourcenote {
   font-size: 90%;
   padding: 1px;
 }
 
-#xzhngyyndr .gt_left {
+#dzufcrdifg .gt_left {
   text-align: left;
 }
 
-#xzhngyyndr .gt_center {
+#dzufcrdifg .gt_center {
   text-align: center;
 }
 
-#xzhngyyndr .gt_right {
+#dzufcrdifg .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#xzhngyyndr .gt_font_normal {
+#dzufcrdifg .gt_font_normal {
   font-weight: normal;
 }
 
-#xzhngyyndr .gt_font_bold {
+#dzufcrdifg .gt_font_bold {
   font-weight: bold;
 }
 
-#xzhngyyndr .gt_font_italic {
+#dzufcrdifg .gt_font_italic {
   font-style: italic;
 }
 
-#xzhngyyndr .gt_super {
+#dzufcrdifg .gt_super {
   font-size: 65%;
 }
 
-#xzhngyyndr .gt_footnote_marks {
+#dzufcrdifg .gt_footnote_marks {
+  font-style: italic;
+  font-size: 65%;
+}
+</style>
+<table class="gt_table">
+<thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1"><strong>Characteristic</strong></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1"><strong>Matching</strong>, N = 897<sup class="gt_footnote_marks">1</sup></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1"><strong>Not matching</strong>, N = 271<sup class="gt_footnote_marks">1</sup></th>
+    </tr>
+
+</thead>
+<tbody class="gt_table_body">
+    <tr>
+      <td class="gt_row gt_left" style="font-weight: bold;">Latest SNOMED</td>
+      <td class="gt_row gt_center"></td>
+      <td class="gt_row gt_center"></td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">Asian</td>
+      <td class="gt_row gt_center">128 (14%)</td>
+      <td class="gt_row gt_center">22 (8.1%)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">Black</td>
+      <td class="gt_row gt_center">136 (15%)</td>
+      <td class="gt_row gt_center">15 (5.5%)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">Mixed</td>
+      <td class="gt_row gt_center">306 (34%)</td>
+      <td class="gt_row gt_center">48 (18%)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">Other</td>
+      <td class="gt_row gt_center">155 (17%)</td>
+      <td class="gt_row gt_center">23 (8.5%)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">White</td>
+      <td class="gt_row gt_center">172 (19%)</td>
+      <td class="gt_row gt_center">163 (60%)</td>
+    </tr>
+
+</tbody>
+<tfoot>
+    <tr class="gt_footnotes">
+      <td colspan="3">
+        <p class="gt_footnote">
+          <sup class="gt_footnote_marks">
+            <em>1</em>
+          </sup>
+           
+          n (%)
+          <br />
+        </p>
+      </td>
+    </tr>
+
+</tfoot>
+</table>
+
+<!--/html_preserve-->
+#### expanded
+
+<!--html_preserve-->
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#aosqimcpgz .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: small;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#aosqimcpgz .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#aosqimcpgz .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#aosqimcpgz .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 4px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#aosqimcpgz .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#aosqimcpgz .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#aosqimcpgz .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#aosqimcpgz .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#aosqimcpgz .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#aosqimcpgz .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#aosqimcpgz .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#aosqimcpgz .gt_group_heading {
+  padding: 1px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#aosqimcpgz .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#aosqimcpgz .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#aosqimcpgz .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#aosqimcpgz .gt_row {
+  padding-top: 1px;
+  padding-bottom: 1px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#aosqimcpgz .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 12px;
+}
+
+#aosqimcpgz .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#aosqimcpgz .gt_first_summary_row {
+  padding-top: 1px;
+  padding-bottom: 1px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+}
+
+#aosqimcpgz .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#aosqimcpgz .gt_first_grand_summary_row {
+  padding-top: 1px;
+  padding-bottom: 1px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#aosqimcpgz .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#aosqimcpgz .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#aosqimcpgz .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#aosqimcpgz .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding: 1px;
+}
+
+#aosqimcpgz .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#aosqimcpgz .gt_sourcenote {
+  font-size: 90%;
+  padding: 1px;
+}
+
+#aosqimcpgz .gt_left {
+  text-align: left;
+}
+
+#aosqimcpgz .gt_center {
+  text-align: center;
+}
+
+#aosqimcpgz .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#aosqimcpgz .gt_font_normal {
+  font-weight: normal;
+}
+
+#aosqimcpgz .gt_font_bold {
+  font-weight: bold;
+}
+
+#aosqimcpgz .gt_font_italic {
+  font-style: italic;
+}
+
+#aosqimcpgz .gt_super {
+  font-size: 65%;
+}
+
+#aosqimcpgz .gt_footnote_marks {
+  font-style: italic;
+  font-size: 65%;
+}
+</style>
+<table class="gt_table">
+<thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1"><strong>Characteristic</strong></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1"><strong>asian</strong>, N = 211<sup class="gt_footnote_marks">1</sup></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1"><strong>black</strong>, N = 207<sup class="gt_footnote_marks">1</sup></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1"><strong>mixed</strong>, N = 220<sup class="gt_footnote_marks">1</sup></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1"><strong>other</strong>, N = 213<sup class="gt_footnote_marks">1</sup></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1"><strong>white</strong>, N = 795<sup class="gt_footnote_marks">1</sup></th>
+    </tr>
+
+</thead>
+<tbody class="gt_table_body">
+    <tr>
+      <td class="gt_row gt_left" style="font-weight: bold;">Latest</td>
+      <td class="gt_row gt_center"></td>
+      <td class="gt_row gt_center"></td>
+      <td class="gt_row gt_center"></td>
+      <td class="gt_row gt_center"></td>
+      <td class="gt_row gt_center"></td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">Asian</td>
+      <td class="gt_row gt_center">22 (15%)</td>
+      <td class="gt_row gt_center">21 (14%)</td>
+      <td class="gt_row gt_center">22 (14%)</td>
+      <td class="gt_row gt_center">18 (12%)</td>
+      <td class="gt_row gt_center">67 (12%)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">Black</td>
+      <td class="gt_row gt_center">12 (8.0%)</td>
+      <td class="gt_row gt_center">15 (10%)</td>
+      <td class="gt_row gt_center">17 (11%)</td>
+      <td class="gt_row gt_center">19 (12%)</td>
+      <td class="gt_row gt_center">88 (16%)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">Mixed</td>
+      <td class="gt_row gt_center">50 (33%)</td>
+      <td class="gt_row gt_center">54 (37%)</td>
+      <td class="gt_row gt_center">48 (31%)</td>
+      <td class="gt_row gt_center">53 (34%)</td>
+      <td class="gt_row gt_center">149 (27%)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">Other</td>
+      <td class="gt_row gt_center">23 (15%)</td>
+      <td class="gt_row gt_center">16 (11%)</td>
+      <td class="gt_row gt_center">24 (15%)</td>
+      <td class="gt_row gt_center">23 (15%)</td>
+      <td class="gt_row gt_center">92 (16%)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">White</td>
+      <td class="gt_row gt_center">43 (29%)</td>
+      <td class="gt_row gt_center">40 (27%)</td>
+      <td class="gt_row gt_center">46 (29%)</td>
+      <td class="gt_row gt_center">43 (28%)</td>
+      <td class="gt_row gt_center">163 (29%)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">Unknown</td>
+      <td class="gt_row gt_center">61</td>
+      <td class="gt_row gt_center">61</td>
+      <td class="gt_row gt_center">63</td>
+      <td class="gt_row gt_center">57</td>
+      <td class="gt_row gt_center">236</td>
+    </tr>
+
+</tbody>
+<tfoot>
+    <tr class="gt_footnotes">
+      <td colspan="6">
+        <p class="gt_footnote">
+          <sup class="gt_footnote_marks">
+            <em>1</em>
+          </sup>
+           
+          n (%)
+          <br />
+        </p>
+      </td>
+    </tr>
+
+</tfoot>
+</table>
+
+<!--/html_preserve-->
+ONS Comparison
+--------------
+
+<img src="/workspace/output/plots/ethnicity_count.png" width="10629" />
+
+State changes
+-------------
+
+<img src="/workspace/output/plots/alluvium.png" width="2362" />
+
+Patients registered as of 2022/01/01
+====================================
+
+<!--html_preserve-->
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#sdooujhrev .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: small;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#sdooujhrev .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#sdooujhrev .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#sdooujhrev .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 4px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#sdooujhrev .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#sdooujhrev .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#sdooujhrev .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#sdooujhrev .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#sdooujhrev .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#sdooujhrev .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#sdooujhrev .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#sdooujhrev .gt_group_heading {
+  padding: 1px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#sdooujhrev .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#sdooujhrev .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#sdooujhrev .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#sdooujhrev .gt_row {
+  padding-top: 1px;
+  padding-bottom: 1px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#sdooujhrev .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 12px;
+}
+
+#sdooujhrev .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#sdooujhrev .gt_first_summary_row {
+  padding-top: 1px;
+  padding-bottom: 1px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+}
+
+#sdooujhrev .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#sdooujhrev .gt_first_grand_summary_row {
+  padding-top: 1px;
+  padding-bottom: 1px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#sdooujhrev .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#sdooujhrev .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#sdooujhrev .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#sdooujhrev .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding: 1px;
+}
+
+#sdooujhrev .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#sdooujhrev .gt_sourcenote {
+  font-size: 90%;
+  padding: 1px;
+}
+
+#sdooujhrev .gt_left {
+  text-align: left;
+}
+
+#sdooujhrev .gt_center {
+  text-align: center;
+}
+
+#sdooujhrev .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#sdooujhrev .gt_font_normal {
+  font-weight: normal;
+}
+
+#sdooujhrev .gt_font_bold {
+  font-weight: bold;
+}
+
+#sdooujhrev .gt_font_italic {
+  font-style: italic;
+}
+
+#sdooujhrev .gt_super {
+  font-size: 65%;
+}
+
+#sdooujhrev .gt_footnote_marks {
   font-style: italic;
   font-size: 65%;
 }
@@ -3191,11 +4031,11 @@ Patients registered as of 2022/01/01
       </th>
     </tr>
     <tr>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1"><strong>Asian</strong> N =<br>58 (13%)<sup class="gt_footnote_marks">1</sup></th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1"><strong>Black</strong> N =<br>66 (15%)<sup class="gt_footnote_marks">1</sup></th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1"><strong>Mixed</strong> N =<br>133 (29%)<sup class="gt_footnote_marks">1</sup></th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1"><strong>Other</strong> N =<br>61 (13%)<sup class="gt_footnote_marks">1</sup></th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1"><strong>White</strong> N =<br>136 (30%)<sup class="gt_footnote_marks">1</sup></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1"><strong>Asian</strong> N =<br>50 (11%)<sup class="gt_footnote_marks">1</sup></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1"><strong>Black</strong> N =<br>75 (16%)<sup class="gt_footnote_marks">1</sup></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1"><strong>Mixed</strong> N =<br>123 (26%)<sup class="gt_footnote_marks">1</sup></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1"><strong>Other</strong> N =<br>79 (17%)<sup class="gt_footnote_marks">1</sup></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1"><strong>White</strong> N =<br>138 (30%)<sup class="gt_footnote_marks">1</sup></th>
     </tr>
 
 </thead>
@@ -3210,67 +4050,67 @@ Patients registered as of 2022/01/01
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">0-19</td>
-      <td class="gt_row gt_center">3 (5.2%)</td>
-      <td class="gt_row gt_center">9 (14%)</td>
-      <td class="gt_row gt_center">21 (16%)</td>
-      <td class="gt_row gt_center">7 (11%)</td>
-      <td class="gt_row gt_center">19 (14%)</td>
+      <td class="gt_row gt_center">7 (14%)</td>
+      <td class="gt_row gt_center">12 (16%)</td>
+      <td class="gt_row gt_center">11 (8.9%)</td>
+      <td class="gt_row gt_center">3 (3.8%)</td>
+      <td class="gt_row gt_center">22 (16%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">20-29</td>
-      <td class="gt_row gt_center">7 (12%)</td>
-      <td class="gt_row gt_center">8 (12%)</td>
-      <td class="gt_row gt_center">12 (9.0%)</td>
-      <td class="gt_row gt_center">5 (8.2%)</td>
-      <td class="gt_row gt_center">10 (7.4%)</td>
+      <td class="gt_row gt_center">10 (20%)</td>
+      <td class="gt_row gt_center">6 (8.0%)</td>
+      <td class="gt_row gt_center">23 (19%)</td>
+      <td class="gt_row gt_center">8 (10%)</td>
+      <td class="gt_row gt_center">19 (14%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">30-39</td>
-      <td class="gt_row gt_center">8 (14%)</td>
-      <td class="gt_row gt_center">8 (12%)</td>
-      <td class="gt_row gt_center">15 (11%)</td>
-      <td class="gt_row gt_center">7 (11%)</td>
-      <td class="gt_row gt_center">24 (18%)</td>
+      <td class="gt_row gt_center">5 (10%)</td>
+      <td class="gt_row gt_center">13 (17%)</td>
+      <td class="gt_row gt_center">12 (9.8%)</td>
+      <td class="gt_row gt_center">12 (15%)</td>
+      <td class="gt_row gt_center">11 (8.0%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">40-49</td>
-      <td class="gt_row gt_center">6 (10%)</td>
-      <td class="gt_row gt_center">6 (9.1%)</td>
-      <td class="gt_row gt_center">12 (9.0%)</td>
-      <td class="gt_row gt_center">8 (13%)</td>
-      <td class="gt_row gt_center">15 (11%)</td>
+      <td class="gt_row gt_center">3 (6.0%)</td>
+      <td class="gt_row gt_center">6 (8.0%)</td>
+      <td class="gt_row gt_center">11 (8.9%)</td>
+      <td class="gt_row gt_center">7 (8.9%)</td>
+      <td class="gt_row gt_center">26 (19%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">50-59</td>
-      <td class="gt_row gt_center">9 (16%)</td>
-      <td class="gt_row gt_center">7 (11%)</td>
-      <td class="gt_row gt_center">14 (11%)</td>
-      <td class="gt_row gt_center">7 (11%)</td>
-      <td class="gt_row gt_center">24 (18%)</td>
+      <td class="gt_row gt_center">7 (14%)</td>
+      <td class="gt_row gt_center">11 (15%)</td>
+      <td class="gt_row gt_center">19 (15%)</td>
+      <td class="gt_row gt_center">11 (14%)</td>
+      <td class="gt_row gt_center">18 (13%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">60-69</td>
-      <td class="gt_row gt_center">5 (8.6%)</td>
-      <td class="gt_row gt_center">13 (20%)</td>
-      <td class="gt_row gt_center">25 (19%)</td>
-      <td class="gt_row gt_center">7 (11%)</td>
-      <td class="gt_row gt_center">19 (14%)</td>
+      <td class="gt_row gt_center">6 (12%)</td>
+      <td class="gt_row gt_center">6 (8.0%)</td>
+      <td class="gt_row gt_center">12 (9.8%)</td>
+      <td class="gt_row gt_center">12 (15%)</td>
+      <td class="gt_row gt_center">22 (16%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">70-79</td>
-      <td class="gt_row gt_center">11 (19%)</td>
-      <td class="gt_row gt_center">10 (15%)</td>
-      <td class="gt_row gt_center">15 (11%)</td>
-      <td class="gt_row gt_center">11 (18%)</td>
-      <td class="gt_row gt_center">14 (10%)</td>
+      <td class="gt_row gt_center">9 (18%)</td>
+      <td class="gt_row gt_center">11 (15%)</td>
+      <td class="gt_row gt_center">18 (15%)</td>
+      <td class="gt_row gt_center">13 (16%)</td>
+      <td class="gt_row gt_center">8 (5.8%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">80+</td>
-      <td class="gt_row gt_center">9 (16%)</td>
-      <td class="gt_row gt_center">5 (7.6%)</td>
-      <td class="gt_row gt_center">19 (14%)</td>
-      <td class="gt_row gt_center">9 (15%)</td>
-      <td class="gt_row gt_center">11 (8.1%)</td>
+      <td class="gt_row gt_center">3 (6.0%)</td>
+      <td class="gt_row gt_center">10 (13%)</td>
+      <td class="gt_row gt_center">17 (14%)</td>
+      <td class="gt_row gt_center">13 (16%)</td>
+      <td class="gt_row gt_center">12 (8.7%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="font-weight: bold;">sex</td>
@@ -3282,19 +4122,19 @@ Patients registered as of 2022/01/01
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">Female</td>
-      <td class="gt_row gt_center">29 (50%)</td>
-      <td class="gt_row gt_center">30 (45%)</td>
-      <td class="gt_row gt_center">67 (50%)</td>
-      <td class="gt_row gt_center">30 (49%)</td>
-      <td class="gt_row gt_center">79 (58%)</td>
+      <td class="gt_row gt_center">27 (54%)</td>
+      <td class="gt_row gt_center">29 (39%)</td>
+      <td class="gt_row gt_center">52 (42%)</td>
+      <td class="gt_row gt_center">42 (53%)</td>
+      <td class="gt_row gt_center">68 (49%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">Male</td>
-      <td class="gt_row gt_center">29 (50%)</td>
-      <td class="gt_row gt_center">36 (55%)</td>
-      <td class="gt_row gt_center">66 (50%)</td>
-      <td class="gt_row gt_center">31 (51%)</td>
-      <td class="gt_row gt_center">57 (42%)</td>
+      <td class="gt_row gt_center">23 (46%)</td>
+      <td class="gt_row gt_center">46 (61%)</td>
+      <td class="gt_row gt_center">71 (58%)</td>
+      <td class="gt_row gt_center">37 (47%)</td>
+      <td class="gt_row gt_center">70 (51%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="font-weight: bold;">region</td>
@@ -3305,76 +4145,76 @@ Patients registered as of 2022/01/01
       <td class="gt_row gt_center"></td>
     </tr>
     <tr>
-      <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">South East</td>
-      <td class="gt_row gt_center">4 (11%)</td>
-      <td class="gt_row gt_center">13 (31%)</td>
-      <td class="gt_row gt_center">8 (10%)</td>
-      <td class="gt_row gt_center">6 (15%)</td>
-      <td class="gt_row gt_center">13 (17%)</td>
+      <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">London</td>
+      <td class="gt_row gt_center">5 (15%)</td>
+      <td class="gt_row gt_center">15 (26%)</td>
+      <td class="gt_row gt_center">15 (17%)</td>
+      <td class="gt_row gt_center">9 (17%)</td>
+      <td class="gt_row gt_center">10 (11%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">North West</td>
-      <td class="gt_row gt_center">3 (8.1%)</td>
-      <td class="gt_row gt_center">3 (7.1%)</td>
-      <td class="gt_row gt_center">11 (14%)</td>
-      <td class="gt_row gt_center">3 (7.7%)</td>
-      <td class="gt_row gt_center">10 (13%)</td>
+      <td class="gt_row gt_center">6 (18%)</td>
+      <td class="gt_row gt_center">6 (10%)</td>
+      <td class="gt_row gt_center">10 (11%)</td>
+      <td class="gt_row gt_center">8 (15%)</td>
+      <td class="gt_row gt_center">12 (13%)</td>
     </tr>
     <tr>
-      <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">Yorkshire and the Humber</td>
-      <td class="gt_row gt_center">7 (19%)</td>
-      <td class="gt_row gt_center">6 (14%)</td>
-      <td class="gt_row gt_center">9 (11%)</td>
-      <td class="gt_row gt_center">5 (13%)</td>
-      <td class="gt_row gt_center">3 (3.8%)</td>
-    </tr>
-    <tr>
-      <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">West Midlands</td>
-      <td class="gt_row gt_center">4 (11%)</td>
-      <td class="gt_row gt_center">4 (9.5%)</td>
-      <td class="gt_row gt_center">10 (13%)</td>
-      <td class="gt_row gt_center">5 (13%)</td>
-      <td class="gt_row gt_center">5 (6.4%)</td>
+      <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">South East</td>
+      <td class="gt_row gt_center">5 (15%)</td>
+      <td class="gt_row gt_center">10 (17%)</td>
+      <td class="gt_row gt_center">16 (18%)</td>
+      <td class="gt_row gt_center">12 (22%)</td>
+      <td class="gt_row gt_center">15 (16%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">North East</td>
-      <td class="gt_row gt_center">3 (8.1%)</td>
-      <td class="gt_row gt_center">3 (7.1%)</td>
-      <td class="gt_row gt_center">4 (5.1%)</td>
-      <td class="gt_row gt_center">4 (10%)</td>
-      <td class="gt_row gt_center">7 (9.0%)</td>
+      <td class="gt_row gt_center">4 (12%)</td>
+      <td class="gt_row gt_center">6 (10%)</td>
+      <td class="gt_row gt_center">9 (10%)</td>
+      <td class="gt_row gt_center">4 (7.4%)</td>
+      <td class="gt_row gt_center">11 (12%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">East Midlands</td>
-      <td class="gt_row gt_center">3 (8.1%)</td>
-      <td class="gt_row gt_center">6 (14%)</td>
-      <td class="gt_row gt_center">13 (16%)</td>
-      <td class="gt_row gt_center">2 (5.1%)</td>
-      <td class="gt_row gt_center">10 (13%)</td>
+      <td class="gt_row gt_center">5 (15%)</td>
+      <td class="gt_row gt_center">3 (5.2%)</td>
+      <td class="gt_row gt_center">10 (11%)</td>
+      <td class="gt_row gt_center">4 (7.4%)</td>
+      <td class="gt_row gt_center">12 (13%)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">West Midlands</td>
+      <td class="gt_row gt_center">3 (9.1%)</td>
+      <td class="gt_row gt_center">7 (12%)</td>
+      <td class="gt_row gt_center">9 (10%)</td>
+      <td class="gt_row gt_center">3 (5.6%)</td>
+      <td class="gt_row gt_center">12 (13%)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">Yorkshire and the Humber</td>
+      <td class="gt_row gt_center">5 (15%)</td>
+      <td class="gt_row gt_center">7 (12%)</td>
+      <td class="gt_row gt_center">10 (11%)</td>
+      <td class="gt_row gt_center">6 (11%)</td>
+      <td class="gt_row gt_center">8 (8.7%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">East of England</td>
-      <td class="gt_row gt_center">6 (16%)</td>
-      <td class="gt_row gt_center">4 (9.5%)</td>
-      <td class="gt_row gt_center">3 (3.8%)</td>
-      <td class="gt_row gt_center">4 (10%)</td>
-      <td class="gt_row gt_center">4 (5.1%)</td>
-    </tr>
-    <tr>
-      <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">London</td>
-      <td class="gt_row gt_center">7 (19%)</td>
-      <td class="gt_row gt_center">3 (7.1%)</td>
-      <td class="gt_row gt_center">21 (27%)</td>
-      <td class="gt_row gt_center">10 (26%)</td>
-      <td class="gt_row gt_center">26 (33%)</td>
+      <td class="gt_row gt_center">0 (0%)</td>
+      <td class="gt_row gt_center">4 (6.9%)</td>
+      <td class="gt_row gt_center">8 (9.2%)</td>
+      <td class="gt_row gt_center">8 (15%)</td>
+      <td class="gt_row gt_center">12 (13%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">Unknown</td>
-      <td class="gt_row gt_center">21</td>
-      <td class="gt_row gt_center">24</td>
-      <td class="gt_row gt_center">54</td>
-      <td class="gt_row gt_center">22</td>
-      <td class="gt_row gt_center">58</td>
+      <td class="gt_row gt_center">17</td>
+      <td class="gt_row gt_center">17</td>
+      <td class="gt_row gt_center">36</td>
+      <td class="gt_row gt_center">25</td>
+      <td class="gt_row gt_center">46</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="font-weight: bold;">IMD</td>
@@ -3385,44 +4225,44 @@ Patients registered as of 2022/01/01
       <td class="gt_row gt_center"></td>
     </tr>
     <tr>
-      <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">200</td>
-      <td class="gt_row gt_center">12 (21%)</td>
-      <td class="gt_row gt_center">9 (14%)</td>
-      <td class="gt_row gt_center">36 (27%)</td>
-      <td class="gt_row gt_center">13 (21%)</td>
-      <td class="gt_row gt_center">26 (19%)</td>
+      <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">100</td>
+      <td class="gt_row gt_center">9 (18%)</td>
+      <td class="gt_row gt_center">18 (24%)</td>
+      <td class="gt_row gt_center">27 (22%)</td>
+      <td class="gt_row gt_center">12 (15%)</td>
+      <td class="gt_row gt_center">15 (11%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">400</td>
-      <td class="gt_row gt_center">8 (14%)</td>
-      <td class="gt_row gt_center">12 (18%)</td>
-      <td class="gt_row gt_center">21 (16%)</td>
-      <td class="gt_row gt_center">9 (15%)</td>
-      <td class="gt_row gt_center">30 (22%)</td>
-    </tr>
-    <tr>
-      <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">500</td>
-      <td class="gt_row gt_center">8 (14%)</td>
-      <td class="gt_row gt_center">15 (23%)</td>
-      <td class="gt_row gt_center">20 (15%)</td>
-      <td class="gt_row gt_center">17 (28%)</td>
-      <td class="gt_row gt_center">35 (26%)</td>
+      <td class="gt_row gt_center">14 (28%)</td>
+      <td class="gt_row gt_center">18 (24%)</td>
+      <td class="gt_row gt_center">21 (17%)</td>
+      <td class="gt_row gt_center">14 (18%)</td>
+      <td class="gt_row gt_center">27 (20%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">300</td>
-      <td class="gt_row gt_center">14 (24%)</td>
-      <td class="gt_row gt_center">13 (20%)</td>
-      <td class="gt_row gt_center">24 (18%)</td>
-      <td class="gt_row gt_center">13 (21%)</td>
-      <td class="gt_row gt_center">16 (12%)</td>
+      <td class="gt_row gt_center">10 (20%)</td>
+      <td class="gt_row gt_center">13 (17%)</td>
+      <td class="gt_row gt_center">19 (15%)</td>
+      <td class="gt_row gt_center">21 (27%)</td>
+      <td class="gt_row gt_center">34 (25%)</td>
     </tr>
     <tr>
-      <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">100</td>
-      <td class="gt_row gt_center">16 (28%)</td>
-      <td class="gt_row gt_center">17 (26%)</td>
-      <td class="gt_row gt_center">32 (24%)</td>
-      <td class="gt_row gt_center">9 (15%)</td>
-      <td class="gt_row gt_center">29 (21%)</td>
+      <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">500</td>
+      <td class="gt_row gt_center">6 (12%)</td>
+      <td class="gt_row gt_center">11 (15%)</td>
+      <td class="gt_row gt_center">33 (27%)</td>
+      <td class="gt_row gt_center">17 (22%)</td>
+      <td class="gt_row gt_center">27 (20%)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">200</td>
+      <td class="gt_row gt_center">11 (22%)</td>
+      <td class="gt_row gt_center">15 (20%)</td>
+      <td class="gt_row gt_center">23 (19%)</td>
+      <td class="gt_row gt_center">15 (19%)</td>
+      <td class="gt_row gt_center">35 (25%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="font-weight: bold;">Dementia</td>
@@ -3434,19 +4274,19 @@ Patients registered as of 2022/01/01
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">False</td>
-      <td class="gt_row gt_center">57 (98%)</td>
-      <td class="gt_row gt_center">65 (98%)</td>
-      <td class="gt_row gt_center">133 (100%)</td>
-      <td class="gt_row gt_center">60 (98%)</td>
-      <td class="gt_row gt_center">132 (97%)</td>
+      <td class="gt_row gt_center">49 (98%)</td>
+      <td class="gt_row gt_center">74 (99%)</td>
+      <td class="gt_row gt_center">123 (100%)</td>
+      <td class="gt_row gt_center">79 (100%)</td>
+      <td class="gt_row gt_center">137 (99%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">True</td>
-      <td class="gt_row gt_center">1 (1.7%)</td>
-      <td class="gt_row gt_center">1 (1.5%)</td>
+      <td class="gt_row gt_center">1 (2.0%)</td>
+      <td class="gt_row gt_center">1 (1.3%)</td>
       <td class="gt_row gt_center">0 (0%)</td>
-      <td class="gt_row gt_center">1 (1.6%)</td>
-      <td class="gt_row gt_center">4 (2.9%)</td>
+      <td class="gt_row gt_center">0 (0%)</td>
+      <td class="gt_row gt_center">1 (0.7%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="font-weight: bold;">diabetes</td>
@@ -3458,19 +4298,19 @@ Patients registered as of 2022/01/01
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">False</td>
-      <td class="gt_row gt_center">58 (100%)</td>
-      <td class="gt_row gt_center">66 (100%)</td>
-      <td class="gt_row gt_center">131 (98%)</td>
-      <td class="gt_row gt_center">61 (100%)</td>
-      <td class="gt_row gt_center">133 (98%)</td>
+      <td class="gt_row gt_center">50 (100%)</td>
+      <td class="gt_row gt_center">73 (97%)</td>
+      <td class="gt_row gt_center">121 (98%)</td>
+      <td class="gt_row gt_center">79 (100%)</td>
+      <td class="gt_row gt_center">137 (99%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">True</td>
       <td class="gt_row gt_center">0 (0%)</td>
+      <td class="gt_row gt_center">2 (2.7%)</td>
+      <td class="gt_row gt_center">2 (1.6%)</td>
       <td class="gt_row gt_center">0 (0%)</td>
-      <td class="gt_row gt_center">2 (1.5%)</td>
-      <td class="gt_row gt_center">0 (0%)</td>
-      <td class="gt_row gt_center">3 (2.2%)</td>
+      <td class="gt_row gt_center">1 (0.7%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="font-weight: bold;">hypertension</td>
@@ -3482,19 +4322,19 @@ Patients registered as of 2022/01/01
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">False</td>
-      <td class="gt_row gt_center">58 (100%)</td>
-      <td class="gt_row gt_center">65 (98%)</td>
-      <td class="gt_row gt_center">132 (99%)</td>
-      <td class="gt_row gt_center">61 (100%)</td>
-      <td class="gt_row gt_center">133 (98%)</td>
+      <td class="gt_row gt_center">49 (98%)</td>
+      <td class="gt_row gt_center">75 (100%)</td>
+      <td class="gt_row gt_center">123 (100%)</td>
+      <td class="gt_row gt_center">78 (99%)</td>
+      <td class="gt_row gt_center">136 (99%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">True</td>
+      <td class="gt_row gt_center">1 (2.0%)</td>
       <td class="gt_row gt_center">0 (0%)</td>
-      <td class="gt_row gt_center">1 (1.5%)</td>
-      <td class="gt_row gt_center">1 (0.8%)</td>
       <td class="gt_row gt_center">0 (0%)</td>
-      <td class="gt_row gt_center">3 (2.2%)</td>
+      <td class="gt_row gt_center">1 (1.3%)</td>
+      <td class="gt_row gt_center">2 (1.4%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="font-weight: bold;">learning_disability</td>
@@ -3506,19 +4346,19 @@ Patients registered as of 2022/01/01
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">False</td>
-      <td class="gt_row gt_center">57 (98%)</td>
-      <td class="gt_row gt_center">66 (100%)</td>
-      <td class="gt_row gt_center">131 (98%)</td>
-      <td class="gt_row gt_center">61 (100%)</td>
-      <td class="gt_row gt_center">135 (99%)</td>
+      <td class="gt_row gt_center">50 (100%)</td>
+      <td class="gt_row gt_center">75 (100%)</td>
+      <td class="gt_row gt_center">121 (98%)</td>
+      <td class="gt_row gt_center">78 (99%)</td>
+      <td class="gt_row gt_center">136 (99%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">True</td>
-      <td class="gt_row gt_center">1 (1.7%)</td>
       <td class="gt_row gt_center">0 (0%)</td>
-      <td class="gt_row gt_center">2 (1.5%)</td>
       <td class="gt_row gt_center">0 (0%)</td>
-      <td class="gt_row gt_center">1 (0.7%)</td>
+      <td class="gt_row gt_center">2 (1.6%)</td>
+      <td class="gt_row gt_center">1 (1.3%)</td>
+      <td class="gt_row gt_center">2 (1.4%)</td>
     </tr>
 
 </tbody>
@@ -3550,7 +4390,7 @@ Category compared
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#ivcoanpbzv .gt_table {
+#vjpdgbuecj .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -3575,7 +4415,7 @@ Category compared
   border-left-color: #D3D3D3;
 }
 
-#ivcoanpbzv .gt_heading {
+#vjpdgbuecj .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -3587,7 +4427,7 @@ Category compared
   border-right-color: #D3D3D3;
 }
 
-#ivcoanpbzv .gt_title {
+#vjpdgbuecj .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -3597,7 +4437,7 @@ Category compared
   border-bottom-width: 0;
 }
 
-#ivcoanpbzv .gt_subtitle {
+#vjpdgbuecj .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -3607,13 +4447,13 @@ Category compared
   border-top-width: 0;
 }
 
-#ivcoanpbzv .gt_bottom_border {
+#vjpdgbuecj .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#ivcoanpbzv .gt_col_headings {
+#vjpdgbuecj .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3628,7 +4468,7 @@ Category compared
   border-right-color: #D3D3D3;
 }
 
-#ivcoanpbzv .gt_col_heading {
+#vjpdgbuecj .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3648,7 +4488,7 @@ Category compared
   overflow-x: hidden;
 }
 
-#ivcoanpbzv .gt_column_spanner_outer {
+#vjpdgbuecj .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3660,15 +4500,15 @@ Category compared
   padding-right: 4px;
 }
 
-#ivcoanpbzv .gt_column_spanner_outer:first-child {
+#vjpdgbuecj .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#ivcoanpbzv .gt_column_spanner_outer:last-child {
+#vjpdgbuecj .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#ivcoanpbzv .gt_column_spanner {
+#vjpdgbuecj .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -3680,7 +4520,7 @@ Category compared
   width: 100%;
 }
 
-#ivcoanpbzv .gt_group_heading {
+#vjpdgbuecj .gt_group_heading {
   padding: 1px;
   color: #333333;
   background-color: #FFFFFF;
@@ -3702,7 +4542,7 @@ Category compared
   vertical-align: middle;
 }
 
-#ivcoanpbzv .gt_empty_group_heading {
+#vjpdgbuecj .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -3717,15 +4557,15 @@ Category compared
   vertical-align: middle;
 }
 
-#ivcoanpbzv .gt_from_md > :first-child {
+#vjpdgbuecj .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#ivcoanpbzv .gt_from_md > :last-child {
+#vjpdgbuecj .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#ivcoanpbzv .gt_row {
+#vjpdgbuecj .gt_row {
   padding-top: 1px;
   padding-bottom: 1px;
   padding-left: 5px;
@@ -3744,7 +4584,7 @@ Category compared
   overflow-x: hidden;
 }
 
-#ivcoanpbzv .gt_stub {
+#vjpdgbuecj .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3756,7 +4596,7 @@ Category compared
   padding-left: 12px;
 }
 
-#ivcoanpbzv .gt_summary_row {
+#vjpdgbuecj .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3766,7 +4606,7 @@ Category compared
   padding-right: 5px;
 }
 
-#ivcoanpbzv .gt_first_summary_row {
+#vjpdgbuecj .gt_first_summary_row {
   padding-top: 1px;
   padding-bottom: 1px;
   padding-left: 5px;
@@ -3776,7 +4616,7 @@ Category compared
   border-top-color: #D3D3D3;
 }
 
-#ivcoanpbzv .gt_grand_summary_row {
+#vjpdgbuecj .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3786,7 +4626,7 @@ Category compared
   padding-right: 5px;
 }
 
-#ivcoanpbzv .gt_first_grand_summary_row {
+#vjpdgbuecj .gt_first_grand_summary_row {
   padding-top: 1px;
   padding-bottom: 1px;
   padding-left: 5px;
@@ -3796,11 +4636,11 @@ Category compared
   border-top-color: #D3D3D3;
 }
 
-#ivcoanpbzv .gt_striped {
+#vjpdgbuecj .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#ivcoanpbzv .gt_table_body {
+#vjpdgbuecj .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3809,7 +4649,7 @@ Category compared
   border-bottom-color: #D3D3D3;
 }
 
-#ivcoanpbzv .gt_footnotes {
+#vjpdgbuecj .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3823,13 +4663,13 @@ Category compared
   border-right-color: #D3D3D3;
 }
 
-#ivcoanpbzv .gt_footnote {
+#vjpdgbuecj .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding: 1px;
 }
 
-#ivcoanpbzv .gt_sourcenotes {
+#vjpdgbuecj .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3843,41 +4683,41 @@ Category compared
   border-right-color: #D3D3D3;
 }
 
-#ivcoanpbzv .gt_sourcenote {
+#vjpdgbuecj .gt_sourcenote {
   font-size: 90%;
   padding: 1px;
 }
 
-#ivcoanpbzv .gt_left {
+#vjpdgbuecj .gt_left {
   text-align: left;
 }
 
-#ivcoanpbzv .gt_center {
+#vjpdgbuecj .gt_center {
   text-align: center;
 }
 
-#ivcoanpbzv .gt_right {
+#vjpdgbuecj .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#ivcoanpbzv .gt_font_normal {
+#vjpdgbuecj .gt_font_normal {
   font-weight: normal;
 }
 
-#ivcoanpbzv .gt_font_bold {
+#vjpdgbuecj .gt_font_bold {
   font-weight: bold;
 }
 
-#ivcoanpbzv .gt_font_italic {
+#vjpdgbuecj .gt_font_italic {
   font-style: italic;
 }
 
-#ivcoanpbzv .gt_super {
+#vjpdgbuecj .gt_super {
   font-size: 65%;
 }
 
-#ivcoanpbzv .gt_footnote_marks {
+#vjpdgbuecj .gt_footnote_marks {
   font-style: italic;
   font-size: 65%;
 }
@@ -3894,16 +4734,16 @@ Category compared
       </th>
     </tr>
     <tr>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1"><strong>Asian</strong> N =<br>58 (13%)<sup class="gt_footnote_marks">1</sup></th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1"><strong>Black</strong> N =<br>66 (15%)<sup class="gt_footnote_marks">1</sup></th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1"><strong>Mixed</strong> N =<br>133 (29%)<sup class="gt_footnote_marks">1</sup></th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1"><strong>Other</strong> N =<br>61 (13%)<sup class="gt_footnote_marks">1</sup></th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1"><strong>White</strong> N =<br>136 (30%)<sup class="gt_footnote_marks">1</sup></th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1"><strong>Asian</strong> N =<br>101 (21%)<sup class="gt_footnote_marks">1</sup></th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1"><strong>Black</strong> N =<br>93 (19%)<sup class="gt_footnote_marks">1</sup></th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1"><strong>Mixed</strong> N =<br>112 (23%)<sup class="gt_footnote_marks">1</sup></th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1"><strong>Other</strong> N =<br>89 (18%)<sup class="gt_footnote_marks">1</sup></th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1"><strong>White</strong> N =<br>94 (19%)<sup class="gt_footnote_marks">1</sup></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1"><strong>Asian</strong> N =<br>50 (11%)<sup class="gt_footnote_marks">1</sup></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1"><strong>Black</strong> N =<br>75 (16%)<sup class="gt_footnote_marks">1</sup></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1"><strong>Mixed</strong> N =<br>123 (26%)<sup class="gt_footnote_marks">1</sup></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1"><strong>Other</strong> N =<br>79 (17%)<sup class="gt_footnote_marks">1</sup></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1"><strong>White</strong> N =<br>138 (30%)<sup class="gt_footnote_marks">1</sup></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1"><strong>Asian</strong> N =<br>99 (20%)<sup class="gt_footnote_marks">1</sup></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1"><strong>Black</strong> N =<br>92 (19%)<sup class="gt_footnote_marks">1</sup></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1"><strong>Mixed</strong> N =<br>92 (19%)<sup class="gt_footnote_marks">1</sup></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1"><strong>Other</strong> N =<br>113 (23%)<sup class="gt_footnote_marks">1</sup></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1"><strong>White</strong> N =<br>100 (20%)<sup class="gt_footnote_marks">1</sup></th>
     </tr>
 
 </thead>
@@ -3923,107 +4763,107 @@ Category compared
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">0-19</td>
-      <td class="gt_row gt_center">3 (5.2%)</td>
-      <td class="gt_row gt_center">9 (14%)</td>
-      <td class="gt_row gt_center">21 (16%)</td>
-      <td class="gt_row gt_center">7 (11%)</td>
-      <td class="gt_row gt_center">19 (14%)</td>
-      <td class="gt_row gt_center">14 (14%)</td>
-      <td class="gt_row gt_center">9 (9.7%)</td>
-      <td class="gt_row gt_center">11 (9.8%)</td>
-      <td class="gt_row gt_center">13 (15%)</td>
+      <td class="gt_row gt_center">7 (14%)</td>
+      <td class="gt_row gt_center">12 (16%)</td>
+      <td class="gt_row gt_center">11 (8.9%)</td>
+      <td class="gt_row gt_center">3 (3.8%)</td>
+      <td class="gt_row gt_center">22 (16%)</td>
+      <td class="gt_row gt_center">7 (7.1%)</td>
       <td class="gt_row gt_center">11 (12%)</td>
+      <td class="gt_row gt_center">9 (9.8%)</td>
+      <td class="gt_row gt_center">14 (12%)</td>
+      <td class="gt_row gt_center">12 (12%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">20-29</td>
-      <td class="gt_row gt_center">7 (12%)</td>
-      <td class="gt_row gt_center">8 (12%)</td>
-      <td class="gt_row gt_center">12 (9.0%)</td>
-      <td class="gt_row gt_center">5 (8.2%)</td>
-      <td class="gt_row gt_center">10 (7.4%)</td>
-      <td class="gt_row gt_center">9 (8.9%)</td>
+      <td class="gt_row gt_center">10 (20%)</td>
+      <td class="gt_row gt_center">6 (8.0%)</td>
+      <td class="gt_row gt_center">23 (19%)</td>
+      <td class="gt_row gt_center">8 (10%)</td>
+      <td class="gt_row gt_center">19 (14%)</td>
+      <td class="gt_row gt_center">16 (16%)</td>
       <td class="gt_row gt_center">10 (11%)</td>
-      <td class="gt_row gt_center">8 (7.1%)</td>
-      <td class="gt_row gt_center">12 (13%)</td>
-      <td class="gt_row gt_center">10 (11%)</td>
+      <td class="gt_row gt_center">15 (16%)</td>
+      <td class="gt_row gt_center">15 (13%)</td>
+      <td class="gt_row gt_center">7 (7.0%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">30-39</td>
-      <td class="gt_row gt_center">8 (14%)</td>
-      <td class="gt_row gt_center">8 (12%)</td>
-      <td class="gt_row gt_center">15 (11%)</td>
-      <td class="gt_row gt_center">7 (11%)</td>
-      <td class="gt_row gt_center">24 (18%)</td>
-      <td class="gt_row gt_center">12 (12%)</td>
+      <td class="gt_row gt_center">5 (10%)</td>
+      <td class="gt_row gt_center">13 (17%)</td>
+      <td class="gt_row gt_center">12 (9.8%)</td>
+      <td class="gt_row gt_center">12 (15%)</td>
+      <td class="gt_row gt_center">11 (8.0%)</td>
+      <td class="gt_row gt_center">13 (13%)</td>
+      <td class="gt_row gt_center">11 (12%)</td>
       <td class="gt_row gt_center">12 (13%)</td>
-      <td class="gt_row gt_center">13 (12%)</td>
-      <td class="gt_row gt_center">12 (13%)</td>
-      <td class="gt_row gt_center">13 (14%)</td>
+      <td class="gt_row gt_center">12 (11%)</td>
+      <td class="gt_row gt_center">10 (10%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">40-49</td>
-      <td class="gt_row gt_center">6 (10%)</td>
-      <td class="gt_row gt_center">6 (9.1%)</td>
-      <td class="gt_row gt_center">12 (9.0%)</td>
-      <td class="gt_row gt_center">8 (13%)</td>
-      <td class="gt_row gt_center">15 (11%)</td>
-      <td class="gt_row gt_center">12 (12%)</td>
-      <td class="gt_row gt_center">10 (11%)</td>
-      <td class="gt_row gt_center">15 (13%)</td>
-      <td class="gt_row gt_center">14 (16%)</td>
-      <td class="gt_row gt_center">8 (8.5%)</td>
+      <td class="gt_row gt_center">3 (6.0%)</td>
+      <td class="gt_row gt_center">6 (8.0%)</td>
+      <td class="gt_row gt_center">11 (8.9%)</td>
+      <td class="gt_row gt_center">7 (8.9%)</td>
+      <td class="gt_row gt_center">26 (19%)</td>
+      <td class="gt_row gt_center">11 (11%)</td>
+      <td class="gt_row gt_center">15 (16%)</td>
+      <td class="gt_row gt_center">13 (14%)</td>
+      <td class="gt_row gt_center">11 (9.7%)</td>
+      <td class="gt_row gt_center">8 (8.0%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">50-59</td>
-      <td class="gt_row gt_center">9 (16%)</td>
-      <td class="gt_row gt_center">7 (11%)</td>
-      <td class="gt_row gt_center">14 (11%)</td>
-      <td class="gt_row gt_center">7 (11%)</td>
-      <td class="gt_row gt_center">24 (18%)</td>
-      <td class="gt_row gt_center">18 (18%)</td>
-      <td class="gt_row gt_center">14 (15%)</td>
-      <td class="gt_row gt_center">12 (11%)</td>
-      <td class="gt_row gt_center">9 (10%)</td>
-      <td class="gt_row gt_center">8 (8.5%)</td>
+      <td class="gt_row gt_center">7 (14%)</td>
+      <td class="gt_row gt_center">11 (15%)</td>
+      <td class="gt_row gt_center">19 (15%)</td>
+      <td class="gt_row gt_center">11 (14%)</td>
+      <td class="gt_row gt_center">18 (13%)</td>
+      <td class="gt_row gt_center">16 (16%)</td>
+      <td class="gt_row gt_center">8 (8.7%)</td>
+      <td class="gt_row gt_center">12 (13%)</td>
+      <td class="gt_row gt_center">17 (15%)</td>
+      <td class="gt_row gt_center">17 (17%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">60-69</td>
-      <td class="gt_row gt_center">5 (8.6%)</td>
-      <td class="gt_row gt_center">13 (20%)</td>
-      <td class="gt_row gt_center">25 (19%)</td>
-      <td class="gt_row gt_center">7 (11%)</td>
-      <td class="gt_row gt_center">19 (14%)</td>
+      <td class="gt_row gt_center">6 (12%)</td>
+      <td class="gt_row gt_center">6 (8.0%)</td>
+      <td class="gt_row gt_center">12 (9.8%)</td>
+      <td class="gt_row gt_center">12 (15%)</td>
+      <td class="gt_row gt_center">22 (16%)</td>
       <td class="gt_row gt_center">11 (11%)</td>
-      <td class="gt_row gt_center">16 (17%)</td>
-      <td class="gt_row gt_center">18 (16%)</td>
-      <td class="gt_row gt_center">10 (11%)</td>
+      <td class="gt_row gt_center">17 (18%)</td>
       <td class="gt_row gt_center">12 (13%)</td>
+      <td class="gt_row gt_center">18 (16%)</td>
+      <td class="gt_row gt_center">19 (19%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">70-79</td>
-      <td class="gt_row gt_center">11 (19%)</td>
-      <td class="gt_row gt_center">10 (15%)</td>
-      <td class="gt_row gt_center">15 (11%)</td>
-      <td class="gt_row gt_center">11 (18%)</td>
-      <td class="gt_row gt_center">14 (10%)</td>
-      <td class="gt_row gt_center">13 (13%)</td>
-      <td class="gt_row gt_center">16 (17%)</td>
-      <td class="gt_row gt_center">18 (16%)</td>
+      <td class="gt_row gt_center">9 (18%)</td>
+      <td class="gt_row gt_center">11 (15%)</td>
+      <td class="gt_row gt_center">18 (15%)</td>
+      <td class="gt_row gt_center">13 (16%)</td>
+      <td class="gt_row gt_center">8 (5.8%)</td>
+      <td class="gt_row gt_center">16 (16%)</td>
       <td class="gt_row gt_center">11 (12%)</td>
-      <td class="gt_row gt_center">15 (16%)</td>
+      <td class="gt_row gt_center">12 (13%)</td>
+      <td class="gt_row gt_center">11 (9.7%)</td>
+      <td class="gt_row gt_center">9 (9.0%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">80+</td>
-      <td class="gt_row gt_center">9 (16%)</td>
-      <td class="gt_row gt_center">5 (7.6%)</td>
-      <td class="gt_row gt_center">19 (14%)</td>
-      <td class="gt_row gt_center">9 (15%)</td>
-      <td class="gt_row gt_center">11 (8.1%)</td>
-      <td class="gt_row gt_center">12 (12%)</td>
-      <td class="gt_row gt_center">6 (6.5%)</td>
-      <td class="gt_row gt_center">17 (15%)</td>
-      <td class="gt_row gt_center">8 (9.0%)</td>
-      <td class="gt_row gt_center">17 (18%)</td>
+      <td class="gt_row gt_center">3 (6.0%)</td>
+      <td class="gt_row gt_center">10 (13%)</td>
+      <td class="gt_row gt_center">17 (14%)</td>
+      <td class="gt_row gt_center">13 (16%)</td>
+      <td class="gt_row gt_center">12 (8.7%)</td>
+      <td class="gt_row gt_center">9 (9.1%)</td>
+      <td class="gt_row gt_center">9 (9.8%)</td>
+      <td class="gt_row gt_center">7 (7.6%)</td>
+      <td class="gt_row gt_center">15 (13%)</td>
+      <td class="gt_row gt_center">18 (18%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="font-weight: bold;">sex</td>
@@ -4040,29 +4880,29 @@ Category compared
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">Female</td>
-      <td class="gt_row gt_center">29 (50%)</td>
-      <td class="gt_row gt_center">30 (45%)</td>
-      <td class="gt_row gt_center">67 (50%)</td>
-      <td class="gt_row gt_center">30 (49%)</td>
-      <td class="gt_row gt_center">79 (58%)</td>
-      <td class="gt_row gt_center">50 (50%)</td>
+      <td class="gt_row gt_center">27 (54%)</td>
+      <td class="gt_row gt_center">29 (39%)</td>
+      <td class="gt_row gt_center">52 (42%)</td>
+      <td class="gt_row gt_center">42 (53%)</td>
+      <td class="gt_row gt_center">68 (49%)</td>
+      <td class="gt_row gt_center">42 (42%)</td>
       <td class="gt_row gt_center">48 (52%)</td>
-      <td class="gt_row gt_center">56 (50%)</td>
-      <td class="gt_row gt_center">44 (49%)</td>
-      <td class="gt_row gt_center">52 (55%)</td>
+      <td class="gt_row gt_center">46 (50%)</td>
+      <td class="gt_row gt_center">48 (42%)</td>
+      <td class="gt_row gt_center">48 (48%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">Male</td>
-      <td class="gt_row gt_center">29 (50%)</td>
-      <td class="gt_row gt_center">36 (55%)</td>
-      <td class="gt_row gt_center">66 (50%)</td>
-      <td class="gt_row gt_center">31 (51%)</td>
-      <td class="gt_row gt_center">57 (42%)</td>
-      <td class="gt_row gt_center">51 (50%)</td>
-      <td class="gt_row gt_center">45 (48%)</td>
-      <td class="gt_row gt_center">56 (50%)</td>
-      <td class="gt_row gt_center">45 (51%)</td>
-      <td class="gt_row gt_center">42 (45%)</td>
+      <td class="gt_row gt_center">23 (46%)</td>
+      <td class="gt_row gt_center">46 (61%)</td>
+      <td class="gt_row gt_center">71 (58%)</td>
+      <td class="gt_row gt_center">37 (47%)</td>
+      <td class="gt_row gt_center">70 (51%)</td>
+      <td class="gt_row gt_center">57 (58%)</td>
+      <td class="gt_row gt_center">44 (48%)</td>
+      <td class="gt_row gt_center">46 (50%)</td>
+      <td class="gt_row gt_center">65 (58%)</td>
+      <td class="gt_row gt_center">52 (52%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="font-weight: bold;">region</td>
@@ -4078,121 +4918,121 @@ Category compared
       <td class="gt_row gt_center"></td>
     </tr>
     <tr>
-      <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">South East</td>
-      <td class="gt_row gt_center">4 (11%)</td>
-      <td class="gt_row gt_center">13 (31%)</td>
-      <td class="gt_row gt_center">8 (10%)</td>
-      <td class="gt_row gt_center">6 (15%)</td>
-      <td class="gt_row gt_center">13 (17%)</td>
-      <td class="gt_row gt_center">11 (16%)</td>
-      <td class="gt_row gt_center">10 (15%)</td>
-      <td class="gt_row gt_center">11 (16%)</td>
-      <td class="gt_row gt_center">13 (21%)</td>
-      <td class="gt_row gt_center">13 (25%)</td>
+      <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">London</td>
+      <td class="gt_row gt_center">5 (15%)</td>
+      <td class="gt_row gt_center">15 (26%)</td>
+      <td class="gt_row gt_center">15 (17%)</td>
+      <td class="gt_row gt_center">9 (17%)</td>
+      <td class="gt_row gt_center">10 (11%)</td>
+      <td class="gt_row gt_center">12 (19%)</td>
+      <td class="gt_row gt_center">9 (14%)</td>
+      <td class="gt_row gt_center">9 (15%)</td>
+      <td class="gt_row gt_center">11 (14%)</td>
+      <td class="gt_row gt_center">16 (22%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">North West</td>
-      <td class="gt_row gt_center">3 (8.1%)</td>
-      <td class="gt_row gt_center">3 (7.1%)</td>
-      <td class="gt_row gt_center">11 (14%)</td>
-      <td class="gt_row gt_center">3 (7.7%)</td>
-      <td class="gt_row gt_center">10 (13%)</td>
-      <td class="gt_row gt_center">7 (10%)</td>
-      <td class="gt_row gt_center">5 (7.4%)</td>
-      <td class="gt_row gt_center">9 (13%)</td>
-      <td class="gt_row gt_center">5 (8.1%)</td>
-      <td class="gt_row gt_center">5 (9.4%)</td>
-    </tr>
-    <tr>
-      <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">Yorkshire and the Humber</td>
-      <td class="gt_row gt_center">7 (19%)</td>
-      <td class="gt_row gt_center">6 (14%)</td>
-      <td class="gt_row gt_center">9 (11%)</td>
-      <td class="gt_row gt_center">5 (13%)</td>
-      <td class="gt_row gt_center">3 (3.8%)</td>
-      <td class="gt_row gt_center">5 (7.2%)</td>
-      <td class="gt_row gt_center">4 (5.9%)</td>
-      <td class="gt_row gt_center">9 (13%)</td>
-      <td class="gt_row gt_center">5 (8.1%)</td>
+      <td class="gt_row gt_center">6 (18%)</td>
+      <td class="gt_row gt_center">6 (10%)</td>
+      <td class="gt_row gt_center">10 (11%)</td>
       <td class="gt_row gt_center">8 (15%)</td>
+      <td class="gt_row gt_center">12 (13%)</td>
+      <td class="gt_row gt_center">10 (16%)</td>
+      <td class="gt_row gt_center">8 (12%)</td>
+      <td class="gt_row gt_center">9 (15%)</td>
+      <td class="gt_row gt_center">7 (9.2%)</td>
+      <td class="gt_row gt_center">8 (11%)</td>
     </tr>
     <tr>
-      <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">West Midlands</td>
-      <td class="gt_row gt_center">4 (11%)</td>
-      <td class="gt_row gt_center">4 (9.5%)</td>
-      <td class="gt_row gt_center">10 (13%)</td>
-      <td class="gt_row gt_center">5 (13%)</td>
-      <td class="gt_row gt_center">5 (6.4%)</td>
-      <td class="gt_row gt_center">9 (13%)</td>
-      <td class="gt_row gt_center">13 (19%)</td>
-      <td class="gt_row gt_center">2 (2.9%)</td>
-      <td class="gt_row gt_center">6 (9.7%)</td>
-      <td class="gt_row gt_center">3 (5.7%)</td>
+      <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">South East</td>
+      <td class="gt_row gt_center">5 (15%)</td>
+      <td class="gt_row gt_center">10 (17%)</td>
+      <td class="gt_row gt_center">16 (18%)</td>
+      <td class="gt_row gt_center">12 (22%)</td>
+      <td class="gt_row gt_center">15 (16%)</td>
+      <td class="gt_row gt_center">8 (13%)</td>
+      <td class="gt_row gt_center">18 (28%)</td>
+      <td class="gt_row gt_center">9 (15%)</td>
+      <td class="gt_row gt_center">14 (18%)</td>
+      <td class="gt_row gt_center">9 (12%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">North East</td>
-      <td class="gt_row gt_center">3 (8.1%)</td>
-      <td class="gt_row gt_center">3 (7.1%)</td>
-      <td class="gt_row gt_center">4 (5.1%)</td>
-      <td class="gt_row gt_center">4 (10%)</td>
-      <td class="gt_row gt_center">7 (9.0%)</td>
-      <td class="gt_row gt_center">6 (8.7%)</td>
-      <td class="gt_row gt_center">6 (8.8%)</td>
-      <td class="gt_row gt_center">9 (13%)</td>
+      <td class="gt_row gt_center">4 (12%)</td>
+      <td class="gt_row gt_center">6 (10%)</td>
+      <td class="gt_row gt_center">9 (10%)</td>
+      <td class="gt_row gt_center">4 (7.4%)</td>
+      <td class="gt_row gt_center">11 (12%)</td>
+      <td class="gt_row gt_center">11 (18%)</td>
       <td class="gt_row gt_center">7 (11%)</td>
-      <td class="gt_row gt_center">1 (1.9%)</td>
+      <td class="gt_row gt_center">4 (6.8%)</td>
+      <td class="gt_row gt_center">7 (9.2%)</td>
+      <td class="gt_row gt_center">7 (9.7%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">East Midlands</td>
-      <td class="gt_row gt_center">3 (8.1%)</td>
-      <td class="gt_row gt_center">6 (14%)</td>
-      <td class="gt_row gt_center">13 (16%)</td>
-      <td class="gt_row gt_center">2 (5.1%)</td>
-      <td class="gt_row gt_center">10 (13%)</td>
-      <td class="gt_row gt_center">9 (13%)</td>
-      <td class="gt_row gt_center">11 (16%)</td>
-      <td class="gt_row gt_center">9 (13%)</td>
-      <td class="gt_row gt_center">8 (13%)</td>
-      <td class="gt_row gt_center">4 (7.5%)</td>
+      <td class="gt_row gt_center">5 (15%)</td>
+      <td class="gt_row gt_center">3 (5.2%)</td>
+      <td class="gt_row gt_center">10 (11%)</td>
+      <td class="gt_row gt_center">4 (7.4%)</td>
+      <td class="gt_row gt_center">12 (13%)</td>
+      <td class="gt_row gt_center">4 (6.5%)</td>
+      <td class="gt_row gt_center">9 (14%)</td>
+      <td class="gt_row gt_center">6 (10%)</td>
+      <td class="gt_row gt_center">9 (12%)</td>
+      <td class="gt_row gt_center">4 (5.6%)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">West Midlands</td>
+      <td class="gt_row gt_center">3 (9.1%)</td>
+      <td class="gt_row gt_center">7 (12%)</td>
+      <td class="gt_row gt_center">9 (10%)</td>
+      <td class="gt_row gt_center">3 (5.6%)</td>
+      <td class="gt_row gt_center">12 (13%)</td>
+      <td class="gt_row gt_center">7 (11%)</td>
+      <td class="gt_row gt_center">4 (6.2%)</td>
+      <td class="gt_row gt_center">4 (6.8%)</td>
+      <td class="gt_row gt_center">12 (16%)</td>
+      <td class="gt_row gt_center">12 (17%)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">Yorkshire and the Humber</td>
+      <td class="gt_row gt_center">5 (15%)</td>
+      <td class="gt_row gt_center">7 (12%)</td>
+      <td class="gt_row gt_center">10 (11%)</td>
+      <td class="gt_row gt_center">6 (11%)</td>
+      <td class="gt_row gt_center">8 (8.7%)</td>
+      <td class="gt_row gt_center">7 (11%)</td>
+      <td class="gt_row gt_center">6 (9.2%)</td>
+      <td class="gt_row gt_center">12 (20%)</td>
+      <td class="gt_row gt_center">7 (9.2%)</td>
+      <td class="gt_row gt_center">10 (14%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">East of England</td>
-      <td class="gt_row gt_center">6 (16%)</td>
-      <td class="gt_row gt_center">4 (9.5%)</td>
-      <td class="gt_row gt_center">3 (3.8%)</td>
-      <td class="gt_row gt_center">4 (10%)</td>
-      <td class="gt_row gt_center">4 (5.1%)</td>
-      <td class="gt_row gt_center">7 (10%)</td>
-      <td class="gt_row gt_center">2 (2.9%)</td>
-      <td class="gt_row gt_center">7 (10%)</td>
+      <td class="gt_row gt_center">0 (0%)</td>
+      <td class="gt_row gt_center">4 (6.9%)</td>
+      <td class="gt_row gt_center">8 (9.2%)</td>
+      <td class="gt_row gt_center">8 (15%)</td>
+      <td class="gt_row gt_center">12 (13%)</td>
       <td class="gt_row gt_center">3 (4.8%)</td>
-      <td class="gt_row gt_center">3 (5.7%)</td>
-    </tr>
-    <tr>
-      <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">London</td>
-      <td class="gt_row gt_center">7 (19%)</td>
-      <td class="gt_row gt_center">3 (7.1%)</td>
-      <td class="gt_row gt_center">21 (27%)</td>
-      <td class="gt_row gt_center">10 (26%)</td>
-      <td class="gt_row gt_center">26 (33%)</td>
-      <td class="gt_row gt_center">15 (22%)</td>
-      <td class="gt_row gt_center">17 (25%)</td>
-      <td class="gt_row gt_center">12 (18%)</td>
-      <td class="gt_row gt_center">15 (24%)</td>
-      <td class="gt_row gt_center">16 (30%)</td>
+      <td class="gt_row gt_center">4 (6.2%)</td>
+      <td class="gt_row gt_center">6 (10%)</td>
+      <td class="gt_row gt_center">9 (12%)</td>
+      <td class="gt_row gt_center">6 (8.3%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">Unknown</td>
-      <td class="gt_row gt_center">21</td>
-      <td class="gt_row gt_center">24</td>
-      <td class="gt_row gt_center">54</td>
-      <td class="gt_row gt_center">22</td>
-      <td class="gt_row gt_center">58</td>
-      <td class="gt_row gt_center">32</td>
+      <td class="gt_row gt_center">17</td>
+      <td class="gt_row gt_center">17</td>
+      <td class="gt_row gt_center">36</td>
       <td class="gt_row gt_center">25</td>
-      <td class="gt_row gt_center">44</td>
+      <td class="gt_row gt_center">46</td>
+      <td class="gt_row gt_center">37</td>
       <td class="gt_row gt_center">27</td>
-      <td class="gt_row gt_center">41</td>
+      <td class="gt_row gt_center">33</td>
+      <td class="gt_row gt_center">37</td>
+      <td class="gt_row gt_center">28</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="font-weight: bold;">IMD</td>
@@ -4208,69 +5048,69 @@ Category compared
       <td class="gt_row gt_center"></td>
     </tr>
     <tr>
-      <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">200</td>
-      <td class="gt_row gt_center">12 (21%)</td>
-      <td class="gt_row gt_center">9 (14%)</td>
-      <td class="gt_row gt_center">36 (27%)</td>
-      <td class="gt_row gt_center">13 (21%)</td>
-      <td class="gt_row gt_center">26 (19%)</td>
-      <td class="gt_row gt_center">29 (29%)</td>
-      <td class="gt_row gt_center">20 (22%)</td>
-      <td class="gt_row gt_center">21 (19%)</td>
-      <td class="gt_row gt_center">21 (24%)</td>
-      <td class="gt_row gt_center">20 (21%)</td>
+      <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">100</td>
+      <td class="gt_row gt_center">9 (18%)</td>
+      <td class="gt_row gt_center">18 (24%)</td>
+      <td class="gt_row gt_center">27 (22%)</td>
+      <td class="gt_row gt_center">12 (15%)</td>
+      <td class="gt_row gt_center">15 (11%)</td>
+      <td class="gt_row gt_center">16 (16%)</td>
+      <td class="gt_row gt_center">14 (15%)</td>
+      <td class="gt_row gt_center">21 (23%)</td>
+      <td class="gt_row gt_center">20 (18%)</td>
+      <td class="gt_row gt_center">20 (20%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">400</td>
-      <td class="gt_row gt_center">8 (14%)</td>
-      <td class="gt_row gt_center">12 (18%)</td>
-      <td class="gt_row gt_center">21 (16%)</td>
-      <td class="gt_row gt_center">9 (15%)</td>
-      <td class="gt_row gt_center">30 (22%)</td>
-      <td class="gt_row gt_center">14 (14%)</td>
-      <td class="gt_row gt_center">20 (22%)</td>
-      <td class="gt_row gt_center">21 (19%)</td>
-      <td class="gt_row gt_center">19 (21%)</td>
+      <td class="gt_row gt_center">14 (28%)</td>
+      <td class="gt_row gt_center">18 (24%)</td>
+      <td class="gt_row gt_center">21 (17%)</td>
+      <td class="gt_row gt_center">14 (18%)</td>
+      <td class="gt_row gt_center">27 (20%)</td>
+      <td class="gt_row gt_center">17 (17%)</td>
       <td class="gt_row gt_center">17 (18%)</td>
-    </tr>
-    <tr>
-      <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">500</td>
-      <td class="gt_row gt_center">8 (14%)</td>
-      <td class="gt_row gt_center">15 (23%)</td>
-      <td class="gt_row gt_center">20 (15%)</td>
-      <td class="gt_row gt_center">17 (28%)</td>
-      <td class="gt_row gt_center">35 (26%)</td>
-      <td class="gt_row gt_center">20 (20%)</td>
-      <td class="gt_row gt_center">19 (20%)</td>
-      <td class="gt_row gt_center">21 (19%)</td>
-      <td class="gt_row gt_center">19 (21%)</td>
-      <td class="gt_row gt_center">21 (22%)</td>
+      <td class="gt_row gt_center">17 (18%)</td>
+      <td class="gt_row gt_center">19 (17%)</td>
+      <td class="gt_row gt_center">26 (26%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">300</td>
-      <td class="gt_row gt_center">14 (24%)</td>
-      <td class="gt_row gt_center">13 (20%)</td>
-      <td class="gt_row gt_center">24 (18%)</td>
-      <td class="gt_row gt_center">13 (21%)</td>
-      <td class="gt_row gt_center">16 (12%)</td>
-      <td class="gt_row gt_center">14 (14%)</td>
-      <td class="gt_row gt_center">21 (23%)</td>
-      <td class="gt_row gt_center">23 (21%)</td>
-      <td class="gt_row gt_center">12 (13%)</td>
-      <td class="gt_row gt_center">18 (19%)</td>
+      <td class="gt_row gt_center">10 (20%)</td>
+      <td class="gt_row gt_center">13 (17%)</td>
+      <td class="gt_row gt_center">19 (15%)</td>
+      <td class="gt_row gt_center">21 (27%)</td>
+      <td class="gt_row gt_center">34 (25%)</td>
+      <td class="gt_row gt_center">27 (27%)</td>
+      <td class="gt_row gt_center">23 (25%)</td>
+      <td class="gt_row gt_center">15 (16%)</td>
+      <td class="gt_row gt_center">30 (27%)</td>
+      <td class="gt_row gt_center">13 (13%)</td>
     </tr>
     <tr>
-      <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">100</td>
-      <td class="gt_row gt_center">16 (28%)</td>
-      <td class="gt_row gt_center">17 (26%)</td>
-      <td class="gt_row gt_center">32 (24%)</td>
-      <td class="gt_row gt_center">9 (15%)</td>
-      <td class="gt_row gt_center">29 (21%)</td>
-      <td class="gt_row gt_center">24 (24%)</td>
-      <td class="gt_row gt_center">13 (14%)</td>
-      <td class="gt_row gt_center">26 (23%)</td>
+      <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">500</td>
+      <td class="gt_row gt_center">6 (12%)</td>
+      <td class="gt_row gt_center">11 (15%)</td>
+      <td class="gt_row gt_center">33 (27%)</td>
+      <td class="gt_row gt_center">17 (22%)</td>
+      <td class="gt_row gt_center">27 (20%)</td>
+      <td class="gt_row gt_center">23 (23%)</td>
       <td class="gt_row gt_center">18 (20%)</td>
-      <td class="gt_row gt_center">18 (19%)</td>
+      <td class="gt_row gt_center">15 (16%)</td>
+      <td class="gt_row gt_center">22 (19%)</td>
+      <td class="gt_row gt_center">16 (16%)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">200</td>
+      <td class="gt_row gt_center">11 (22%)</td>
+      <td class="gt_row gt_center">15 (20%)</td>
+      <td class="gt_row gt_center">23 (19%)</td>
+      <td class="gt_row gt_center">15 (19%)</td>
+      <td class="gt_row gt_center">35 (25%)</td>
+      <td class="gt_row gt_center">16 (16%)</td>
+      <td class="gt_row gt_center">20 (22%)</td>
+      <td class="gt_row gt_center">24 (26%)</td>
+      <td class="gt_row gt_center">22 (19%)</td>
+      <td class="gt_row gt_center">25 (25%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="font-weight: bold;">Dementia</td>
@@ -4287,29 +5127,29 @@ Category compared
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">False</td>
-      <td class="gt_row gt_center">57 (98%)</td>
-      <td class="gt_row gt_center">65 (98%)</td>
-      <td class="gt_row gt_center">133 (100%)</td>
-      <td class="gt_row gt_center">60 (98%)</td>
-      <td class="gt_row gt_center">132 (97%)</td>
-      <td class="gt_row gt_center">99 (98%)</td>
-      <td class="gt_row gt_center">91 (98%)</td>
-      <td class="gt_row gt_center">111 (99%)</td>
-      <td class="gt_row gt_center">89 (100%)</td>
-      <td class="gt_row gt_center">94 (100%)</td>
+      <td class="gt_row gt_center">49 (98%)</td>
+      <td class="gt_row gt_center">74 (99%)</td>
+      <td class="gt_row gt_center">123 (100%)</td>
+      <td class="gt_row gt_center">79 (100%)</td>
+      <td class="gt_row gt_center">137 (99%)</td>
+      <td class="gt_row gt_center">96 (97%)</td>
+      <td class="gt_row gt_center">91 (99%)</td>
+      <td class="gt_row gt_center">92 (100%)</td>
+      <td class="gt_row gt_center">113 (100%)</td>
+      <td class="gt_row gt_center">98 (98%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">True</td>
-      <td class="gt_row gt_center">1 (1.7%)</td>
-      <td class="gt_row gt_center">1 (1.5%)</td>
+      <td class="gt_row gt_center">1 (2.0%)</td>
+      <td class="gt_row gt_center">1 (1.3%)</td>
       <td class="gt_row gt_center">0 (0%)</td>
-      <td class="gt_row gt_center">1 (1.6%)</td>
-      <td class="gt_row gt_center">4 (2.9%)</td>
+      <td class="gt_row gt_center">0 (0%)</td>
+      <td class="gt_row gt_center">1 (0.7%)</td>
+      <td class="gt_row gt_center">3 (3.0%)</td>
+      <td class="gt_row gt_center">1 (1.1%)</td>
+      <td class="gt_row gt_center">0 (0%)</td>
+      <td class="gt_row gt_center">0 (0%)</td>
       <td class="gt_row gt_center">2 (2.0%)</td>
-      <td class="gt_row gt_center">2 (2.2%)</td>
-      <td class="gt_row gt_center">1 (0.9%)</td>
-      <td class="gt_row gt_center">0 (0%)</td>
-      <td class="gt_row gt_center">0 (0%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="font-weight: bold;">diabetes</td>
@@ -4326,29 +5166,29 @@ Category compared
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">False</td>
-      <td class="gt_row gt_center">58 (100%)</td>
-      <td class="gt_row gt_center">66 (100%)</td>
-      <td class="gt_row gt_center">131 (98%)</td>
-      <td class="gt_row gt_center">61 (100%)</td>
-      <td class="gt_row gt_center">133 (98%)</td>
-      <td class="gt_row gt_center">101 (100%)</td>
-      <td class="gt_row gt_center">92 (99%)</td>
-      <td class="gt_row gt_center">110 (98%)</td>
-      <td class="gt_row gt_center">88 (99%)</td>
-      <td class="gt_row gt_center">92 (98%)</td>
+      <td class="gt_row gt_center">50 (100%)</td>
+      <td class="gt_row gt_center">73 (97%)</td>
+      <td class="gt_row gt_center">121 (98%)</td>
+      <td class="gt_row gt_center">79 (100%)</td>
+      <td class="gt_row gt_center">137 (99%)</td>
+      <td class="gt_row gt_center">98 (99%)</td>
+      <td class="gt_row gt_center">91 (99%)</td>
+      <td class="gt_row gt_center">91 (99%)</td>
+      <td class="gt_row gt_center">112 (99%)</td>
+      <td class="gt_row gt_center">100 (100%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">True</td>
       <td class="gt_row gt_center">0 (0%)</td>
+      <td class="gt_row gt_center">2 (2.7%)</td>
+      <td class="gt_row gt_center">2 (1.6%)</td>
       <td class="gt_row gt_center">0 (0%)</td>
-      <td class="gt_row gt_center">2 (1.5%)</td>
-      <td class="gt_row gt_center">0 (0%)</td>
-      <td class="gt_row gt_center">3 (2.2%)</td>
-      <td class="gt_row gt_center">0 (0%)</td>
+      <td class="gt_row gt_center">1 (0.7%)</td>
+      <td class="gt_row gt_center">1 (1.0%)</td>
       <td class="gt_row gt_center">1 (1.1%)</td>
-      <td class="gt_row gt_center">2 (1.8%)</td>
       <td class="gt_row gt_center">1 (1.1%)</td>
-      <td class="gt_row gt_center">2 (2.1%)</td>
+      <td class="gt_row gt_center">1 (0.9%)</td>
+      <td class="gt_row gt_center">0 (0%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="font-weight: bold;">hypertension</td>
@@ -4365,29 +5205,29 @@ Category compared
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">False</td>
-      <td class="gt_row gt_center">58 (100%)</td>
-      <td class="gt_row gt_center">65 (98%)</td>
-      <td class="gt_row gt_center">132 (99%)</td>
-      <td class="gt_row gt_center">61 (100%)</td>
-      <td class="gt_row gt_center">133 (98%)</td>
-      <td class="gt_row gt_center">100 (99%)</td>
-      <td class="gt_row gt_center">92 (99%)</td>
-      <td class="gt_row gt_center">111 (99%)</td>
-      <td class="gt_row gt_center">86 (97%)</td>
-      <td class="gt_row gt_center">93 (99%)</td>
+      <td class="gt_row gt_center">49 (98%)</td>
+      <td class="gt_row gt_center">75 (100%)</td>
+      <td class="gt_row gt_center">123 (100%)</td>
+      <td class="gt_row gt_center">78 (99%)</td>
+      <td class="gt_row gt_center">136 (99%)</td>
+      <td class="gt_row gt_center">98 (99%)</td>
+      <td class="gt_row gt_center">92 (100%)</td>
+      <td class="gt_row gt_center">92 (100%)</td>
+      <td class="gt_row gt_center">109 (96%)</td>
+      <td class="gt_row gt_center">98 (98%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">True</td>
+      <td class="gt_row gt_center">1 (2.0%)</td>
       <td class="gt_row gt_center">0 (0%)</td>
-      <td class="gt_row gt_center">1 (1.5%)</td>
-      <td class="gt_row gt_center">1 (0.8%)</td>
       <td class="gt_row gt_center">0 (0%)</td>
-      <td class="gt_row gt_center">3 (2.2%)</td>
+      <td class="gt_row gt_center">1 (1.3%)</td>
+      <td class="gt_row gt_center">2 (1.4%)</td>
       <td class="gt_row gt_center">1 (1.0%)</td>
-      <td class="gt_row gt_center">1 (1.1%)</td>
-      <td class="gt_row gt_center">1 (0.9%)</td>
-      <td class="gt_row gt_center">3 (3.4%)</td>
-      <td class="gt_row gt_center">1 (1.1%)</td>
+      <td class="gt_row gt_center">0 (0%)</td>
+      <td class="gt_row gt_center">0 (0%)</td>
+      <td class="gt_row gt_center">4 (3.5%)</td>
+      <td class="gt_row gt_center">2 (2.0%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="font-weight: bold;">learning_disability</td>
@@ -4404,28 +5244,28 @@ Category compared
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">False</td>
-      <td class="gt_row gt_center">57 (98%)</td>
-      <td class="gt_row gt_center">66 (100%)</td>
-      <td class="gt_row gt_center">131 (98%)</td>
-      <td class="gt_row gt_center">61 (100%)</td>
-      <td class="gt_row gt_center">135 (99%)</td>
-      <td class="gt_row gt_center">97 (96%)</td>
-      <td class="gt_row gt_center">92 (99%)</td>
-      <td class="gt_row gt_center">111 (99%)</td>
-      <td class="gt_row gt_center">89 (100%)</td>
-      <td class="gt_row gt_center">94 (100%)</td>
+      <td class="gt_row gt_center">50 (100%)</td>
+      <td class="gt_row gt_center">75 (100%)</td>
+      <td class="gt_row gt_center">121 (98%)</td>
+      <td class="gt_row gt_center">78 (99%)</td>
+      <td class="gt_row gt_center">136 (99%)</td>
+      <td class="gt_row gt_center">97 (98%)</td>
+      <td class="gt_row gt_center">92 (100%)</td>
+      <td class="gt_row gt_center">91 (99%)</td>
+      <td class="gt_row gt_center">111 (98%)</td>
+      <td class="gt_row gt_center">100 (100%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">True</td>
-      <td class="gt_row gt_center">1 (1.7%)</td>
       <td class="gt_row gt_center">0 (0%)</td>
-      <td class="gt_row gt_center">2 (1.5%)</td>
       <td class="gt_row gt_center">0 (0%)</td>
-      <td class="gt_row gt_center">1 (0.7%)</td>
-      <td class="gt_row gt_center">4 (4.0%)</td>
+      <td class="gt_row gt_center">2 (1.6%)</td>
+      <td class="gt_row gt_center">1 (1.3%)</td>
+      <td class="gt_row gt_center">2 (1.4%)</td>
+      <td class="gt_row gt_center">2 (2.0%)</td>
+      <td class="gt_row gt_center">0 (0%)</td>
       <td class="gt_row gt_center">1 (1.1%)</td>
-      <td class="gt_row gt_center">1 (0.9%)</td>
-      <td class="gt_row gt_center">0 (0%)</td>
+      <td class="gt_row gt_center">2 (1.8%)</td>
       <td class="gt_row gt_center">0 (0%)</td>
     </tr>
 
@@ -4456,7 +5296,7 @@ Missingness
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#dldluukjjp .gt_table {
+#kkcbxiqmpx .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -4481,7 +5321,7 @@ Missingness
   border-left-color: #D3D3D3;
 }
 
-#dldluukjjp .gt_heading {
+#kkcbxiqmpx .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -4493,7 +5333,7 @@ Missingness
   border-right-color: #D3D3D3;
 }
 
-#dldluukjjp .gt_title {
+#kkcbxiqmpx .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -4503,7 +5343,7 @@ Missingness
   border-bottom-width: 0;
 }
 
-#dldluukjjp .gt_subtitle {
+#kkcbxiqmpx .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -4513,13 +5353,13 @@ Missingness
   border-top-width: 0;
 }
 
-#dldluukjjp .gt_bottom_border {
+#kkcbxiqmpx .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#dldluukjjp .gt_col_headings {
+#kkcbxiqmpx .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -4534,7 +5374,7 @@ Missingness
   border-right-color: #D3D3D3;
 }
 
-#dldluukjjp .gt_col_heading {
+#kkcbxiqmpx .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4554,7 +5394,7 @@ Missingness
   overflow-x: hidden;
 }
 
-#dldluukjjp .gt_column_spanner_outer {
+#kkcbxiqmpx .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4566,15 +5406,15 @@ Missingness
   padding-right: 4px;
 }
 
-#dldluukjjp .gt_column_spanner_outer:first-child {
+#kkcbxiqmpx .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#dldluukjjp .gt_column_spanner_outer:last-child {
+#kkcbxiqmpx .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#dldluukjjp .gt_column_spanner {
+#kkcbxiqmpx .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -4586,7 +5426,7 @@ Missingness
   width: 100%;
 }
 
-#dldluukjjp .gt_group_heading {
+#kkcbxiqmpx .gt_group_heading {
   padding: 1px;
   color: #333333;
   background-color: #FFFFFF;
@@ -4608,7 +5448,7 @@ Missingness
   vertical-align: middle;
 }
 
-#dldluukjjp .gt_empty_group_heading {
+#kkcbxiqmpx .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -4623,15 +5463,15 @@ Missingness
   vertical-align: middle;
 }
 
-#dldluukjjp .gt_from_md > :first-child {
+#kkcbxiqmpx .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#dldluukjjp .gt_from_md > :last-child {
+#kkcbxiqmpx .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#dldluukjjp .gt_row {
+#kkcbxiqmpx .gt_row {
   padding-top: 1px;
   padding-bottom: 1px;
   padding-left: 5px;
@@ -4650,7 +5490,7 @@ Missingness
   overflow-x: hidden;
 }
 
-#dldluukjjp .gt_stub {
+#kkcbxiqmpx .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -4662,7 +5502,7 @@ Missingness
   padding-left: 12px;
 }
 
-#dldluukjjp .gt_summary_row {
+#kkcbxiqmpx .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -4672,7 +5512,7 @@ Missingness
   padding-right: 5px;
 }
 
-#dldluukjjp .gt_first_summary_row {
+#kkcbxiqmpx .gt_first_summary_row {
   padding-top: 1px;
   padding-bottom: 1px;
   padding-left: 5px;
@@ -4682,7 +5522,7 @@ Missingness
   border-top-color: #D3D3D3;
 }
 
-#dldluukjjp .gt_grand_summary_row {
+#kkcbxiqmpx .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -4692,7 +5532,7 @@ Missingness
   padding-right: 5px;
 }
 
-#dldluukjjp .gt_first_grand_summary_row {
+#kkcbxiqmpx .gt_first_grand_summary_row {
   padding-top: 1px;
   padding-bottom: 1px;
   padding-left: 5px;
@@ -4702,11 +5542,11 @@ Missingness
   border-top-color: #D3D3D3;
 }
 
-#dldluukjjp .gt_striped {
+#kkcbxiqmpx .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#dldluukjjp .gt_table_body {
+#kkcbxiqmpx .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -4715,7 +5555,7 @@ Missingness
   border-bottom-color: #D3D3D3;
 }
 
-#dldluukjjp .gt_footnotes {
+#kkcbxiqmpx .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -4729,13 +5569,13 @@ Missingness
   border-right-color: #D3D3D3;
 }
 
-#dldluukjjp .gt_footnote {
+#kkcbxiqmpx .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding: 1px;
 }
 
-#dldluukjjp .gt_sourcenotes {
+#kkcbxiqmpx .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -4749,41 +5589,41 @@ Missingness
   border-right-color: #D3D3D3;
 }
 
-#dldluukjjp .gt_sourcenote {
+#kkcbxiqmpx .gt_sourcenote {
   font-size: 90%;
   padding: 1px;
 }
 
-#dldluukjjp .gt_left {
+#kkcbxiqmpx .gt_left {
   text-align: left;
 }
 
-#dldluukjjp .gt_center {
+#kkcbxiqmpx .gt_center {
   text-align: center;
 }
 
-#dldluukjjp .gt_right {
+#kkcbxiqmpx .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#dldluukjjp .gt_font_normal {
+#kkcbxiqmpx .gt_font_normal {
   font-weight: normal;
 }
 
-#dldluukjjp .gt_font_bold {
+#kkcbxiqmpx .gt_font_bold {
   font-weight: bold;
 }
 
-#dldluukjjp .gt_font_italic {
+#kkcbxiqmpx .gt_font_italic {
   font-style: italic;
 }
 
-#dldluukjjp .gt_super {
+#kkcbxiqmpx .gt_super {
   font-size: 65%;
 }
 
-#dldluukjjp .gt_footnote_marks {
+#kkcbxiqmpx .gt_footnote_marks {
   font-style: italic;
   font-size: 65%;
 }
@@ -4797,8 +5637,8 @@ Missingness
       </th>
     </tr>
     <tr>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1"><strong>has value</strong> N =<br>454 (70%)<sup class="gt_footnote_marks">1</sup></th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1"><strong>missing</strong> N =<br>196 (30%)<sup class="gt_footnote_marks">1</sup></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1"><strong>has value</strong> N =<br>465 (72%)<sup class="gt_footnote_marks">1</sup></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1"><strong>missing</strong> N =<br>185 (28%)<sup class="gt_footnote_marks">1</sup></th>
     </tr>
 
 </thead>
@@ -4810,43 +5650,43 @@ Missingness
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">0-19</td>
-      <td class="gt_row gt_center">59 (13%)</td>
-      <td class="gt_row gt_center">25 (13%)</td>
+      <td class="gt_row gt_center">55 (12%)</td>
+      <td class="gt_row gt_center">20 (11%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">20-29</td>
-      <td class="gt_row gt_center">42 (9.3%)</td>
-      <td class="gt_row gt_center">20 (10%)</td>
+      <td class="gt_row gt_center">66 (14%)</td>
+      <td class="gt_row gt_center">21 (11%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">30-39</td>
-      <td class="gt_row gt_center">62 (14%)</td>
-      <td class="gt_row gt_center">20 (10%)</td>
+      <td class="gt_row gt_center">53 (11%)</td>
+      <td class="gt_row gt_center">20 (11%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">40-49</td>
-      <td class="gt_row gt_center">47 (10%)</td>
-      <td class="gt_row gt_center">32 (16%)</td>
+      <td class="gt_row gt_center">53 (11%)</td>
+      <td class="gt_row gt_center">24 (13%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">50-59</td>
-      <td class="gt_row gt_center">61 (13%)</td>
-      <td class="gt_row gt_center">21 (11%)</td>
+      <td class="gt_row gt_center">66 (14%)</td>
+      <td class="gt_row gt_center">19 (10%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">60-69</td>
-      <td class="gt_row gt_center">69 (15%)</td>
-      <td class="gt_row gt_center">25 (13%)</td>
+      <td class="gt_row gt_center">58 (12%)</td>
+      <td class="gt_row gt_center">35 (19%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">70-79</td>
-      <td class="gt_row gt_center">61 (13%)</td>
-      <td class="gt_row gt_center">32 (16%)</td>
+      <td class="gt_row gt_center">59 (13%)</td>
+      <td class="gt_row gt_center">22 (12%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">80+</td>
-      <td class="gt_row gt_center">53 (12%)</td>
-      <td class="gt_row gt_center">21 (11%)</td>
+      <td class="gt_row gt_center">55 (12%)</td>
+      <td class="gt_row gt_center">24 (13%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="font-weight: bold;">sex</td>
@@ -4855,13 +5695,13 @@ Missingness
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">Female</td>
-      <td class="gt_row gt_center">235 (52%)</td>
-      <td class="gt_row gt_center">99 (51%)</td>
+      <td class="gt_row gt_center">218 (47%)</td>
+      <td class="gt_row gt_center">92 (50%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">Male</td>
-      <td class="gt_row gt_center">219 (48%)</td>
-      <td class="gt_row gt_center">97 (49%)</td>
+      <td class="gt_row gt_center">247 (53%)</td>
+      <td class="gt_row gt_center">93 (50%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="font-weight: bold;">region</td>
@@ -4869,49 +5709,49 @@ Missingness
       <td class="gt_row gt_center"></td>
     </tr>
     <tr>
-      <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">South East</td>
-      <td class="gt_row gt_center">44 (16%)</td>
-      <td class="gt_row gt_center">33 (23%)</td>
+      <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">London</td>
+      <td class="gt_row gt_center">54 (17%)</td>
+      <td class="gt_row gt_center">27 (24%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">North West</td>
-      <td class="gt_row gt_center">30 (11%)</td>
-      <td class="gt_row gt_center">13 (9.2%)</td>
+      <td class="gt_row gt_center">42 (13%)</td>
+      <td class="gt_row gt_center">11 (9.7%)</td>
     </tr>
     <tr>
-      <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">Yorkshire and the Humber</td>
-      <td class="gt_row gt_center">30 (11%)</td>
-      <td class="gt_row gt_center">12 (8.5%)</td>
-    </tr>
-    <tr>
-      <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">West Midlands</td>
-      <td class="gt_row gt_center">28 (10%)</td>
-      <td class="gt_row gt_center">16 (11%)</td>
+      <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">South East</td>
+      <td class="gt_row gt_center">58 (18%)</td>
+      <td class="gt_row gt_center">16 (14%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">North East</td>
-      <td class="gt_row gt_center">21 (7.6%)</td>
-      <td class="gt_row gt_center">13 (9.2%)</td>
+      <td class="gt_row gt_center">34 (10%)</td>
+      <td class="gt_row gt_center">13 (12%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">East Midlands</td>
-      <td class="gt_row gt_center">34 (12%)</td>
-      <td class="gt_row gt_center">16 (11%)</td>
+      <td class="gt_row gt_center">34 (10%)</td>
+      <td class="gt_row gt_center">9 (8.0%)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">West Midlands</td>
+      <td class="gt_row gt_center">34 (10%)</td>
+      <td class="gt_row gt_center">15 (13%)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">Yorkshire and the Humber</td>
+      <td class="gt_row gt_center">36 (11%)</td>
+      <td class="gt_row gt_center">17 (15%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">East of England</td>
-      <td class="gt_row gt_center">21 (7.6%)</td>
-      <td class="gt_row gt_center">8 (5.6%)</td>
-    </tr>
-    <tr>
-      <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">London</td>
-      <td class="gt_row gt_center">67 (24%)</td>
-      <td class="gt_row gt_center">31 (22%)</td>
+      <td class="gt_row gt_center">32 (9.9%)</td>
+      <td class="gt_row gt_center">5 (4.4%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">Unknown</td>
-      <td class="gt_row gt_center">179</td>
-      <td class="gt_row gt_center">54</td>
+      <td class="gt_row gt_center">141</td>
+      <td class="gt_row gt_center">72</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="font-weight: bold;">IMD</td>
@@ -4919,29 +5759,29 @@ Missingness
       <td class="gt_row gt_center"></td>
     </tr>
     <tr>
-      <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">200</td>
-      <td class="gt_row gt_center">96 (21%)</td>
-      <td class="gt_row gt_center">45 (23%)</td>
+      <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">100</td>
+      <td class="gt_row gt_center">81 (17%)</td>
+      <td class="gt_row gt_center">28 (15%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">400</td>
-      <td class="gt_row gt_center">80 (18%)</td>
-      <td class="gt_row gt_center">43 (22%)</td>
-    </tr>
-    <tr>
-      <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">500</td>
-      <td class="gt_row gt_center">95 (21%)</td>
-      <td class="gt_row gt_center">46 (23%)</td>
+      <td class="gt_row gt_center">94 (20%)</td>
+      <td class="gt_row gt_center">33 (18%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">300</td>
-      <td class="gt_row gt_center">80 (18%)</td>
-      <td class="gt_row gt_center">37 (19%)</td>
+      <td class="gt_row gt_center">97 (21%)</td>
+      <td class="gt_row gt_center">44 (24%)</td>
     </tr>
     <tr>
-      <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">100</td>
-      <td class="gt_row gt_center">103 (23%)</td>
-      <td class="gt_row gt_center">25 (13%)</td>
+      <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">500</td>
+      <td class="gt_row gt_center">94 (20%)</td>
+      <td class="gt_row gt_center">43 (23%)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">200</td>
+      <td class="gt_row gt_center">99 (21%)</td>
+      <td class="gt_row gt_center">37 (20%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="font-weight: bold;">Dementia</td>
@@ -4950,13 +5790,13 @@ Missingness
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">False</td>
-      <td class="gt_row gt_center">447 (98%)</td>
-      <td class="gt_row gt_center">195 (99%)</td>
+      <td class="gt_row gt_center">462 (99%)</td>
+      <td class="gt_row gt_center">182 (98%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">True</td>
-      <td class="gt_row gt_center">7 (1.5%)</td>
-      <td class="gt_row gt_center">1 (0.5%)</td>
+      <td class="gt_row gt_center">3 (0.6%)</td>
+      <td class="gt_row gt_center">3 (1.6%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="font-weight: bold;">diabetes</td>
@@ -4965,13 +5805,13 @@ Missingness
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">False</td>
-      <td class="gt_row gt_center">449 (99%)</td>
-      <td class="gt_row gt_center">195 (99%)</td>
+      <td class="gt_row gt_center">460 (99%)</td>
+      <td class="gt_row gt_center">183 (99%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">True</td>
       <td class="gt_row gt_center">5 (1.1%)</td>
-      <td class="gt_row gt_center">1 (0.5%)</td>
+      <td class="gt_row gt_center">2 (1.1%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="font-weight: bold;">hypertension</td>
@@ -4980,13 +5820,13 @@ Missingness
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">False</td>
-      <td class="gt_row gt_center">449 (99%)</td>
-      <td class="gt_row gt_center">193 (98%)</td>
+      <td class="gt_row gt_center">461 (99%)</td>
+      <td class="gt_row gt_center">181 (98%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">True</td>
-      <td class="gt_row gt_center">5 (1.1%)</td>
-      <td class="gt_row gt_center">3 (1.5%)</td>
+      <td class="gt_row gt_center">4 (0.9%)</td>
+      <td class="gt_row gt_center">4 (2.2%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="font-weight: bold;">learning_disability</td>
@@ -4995,13 +5835,13 @@ Missingness
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">False</td>
-      <td class="gt_row gt_center">450 (99%)</td>
-      <td class="gt_row gt_center">193 (98%)</td>
+      <td class="gt_row gt_center">460 (99%)</td>
+      <td class="gt_row gt_center">181 (98%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">True</td>
-      <td class="gt_row gt_center">4 (0.9%)</td>
-      <td class="gt_row gt_center">3 (1.5%)</td>
+      <td class="gt_row gt_center">5 (1.1%)</td>
+      <td class="gt_row gt_center">4 (2.2%)</td>
     </tr>
 
 </tbody>
@@ -5031,7 +5871,7 @@ Missingness comparison
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#ngzdywkkdk .gt_table {
+#glbnydfadk .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -5056,7 +5896,7 @@ Missingness comparison
   border-left-color: #D3D3D3;
 }
 
-#ngzdywkkdk .gt_heading {
+#glbnydfadk .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -5068,7 +5908,7 @@ Missingness comparison
   border-right-color: #D3D3D3;
 }
 
-#ngzdywkkdk .gt_title {
+#glbnydfadk .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -5078,7 +5918,7 @@ Missingness comparison
   border-bottom-width: 0;
 }
 
-#ngzdywkkdk .gt_subtitle {
+#glbnydfadk .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -5088,13 +5928,13 @@ Missingness comparison
   border-top-width: 0;
 }
 
-#ngzdywkkdk .gt_bottom_border {
+#glbnydfadk .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#ngzdywkkdk .gt_col_headings {
+#glbnydfadk .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -5109,7 +5949,7 @@ Missingness comparison
   border-right-color: #D3D3D3;
 }
 
-#ngzdywkkdk .gt_col_heading {
+#glbnydfadk .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -5129,7 +5969,7 @@ Missingness comparison
   overflow-x: hidden;
 }
 
-#ngzdywkkdk .gt_column_spanner_outer {
+#glbnydfadk .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -5141,15 +5981,15 @@ Missingness comparison
   padding-right: 4px;
 }
 
-#ngzdywkkdk .gt_column_spanner_outer:first-child {
+#glbnydfadk .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#ngzdywkkdk .gt_column_spanner_outer:last-child {
+#glbnydfadk .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#ngzdywkkdk .gt_column_spanner {
+#glbnydfadk .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -5161,7 +6001,7 @@ Missingness comparison
   width: 100%;
 }
 
-#ngzdywkkdk .gt_group_heading {
+#glbnydfadk .gt_group_heading {
   padding: 1px;
   color: #333333;
   background-color: #FFFFFF;
@@ -5183,7 +6023,7 @@ Missingness comparison
   vertical-align: middle;
 }
 
-#ngzdywkkdk .gt_empty_group_heading {
+#glbnydfadk .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -5198,15 +6038,15 @@ Missingness comparison
   vertical-align: middle;
 }
 
-#ngzdywkkdk .gt_from_md > :first-child {
+#glbnydfadk .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#ngzdywkkdk .gt_from_md > :last-child {
+#glbnydfadk .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#ngzdywkkdk .gt_row {
+#glbnydfadk .gt_row {
   padding-top: 1px;
   padding-bottom: 1px;
   padding-left: 5px;
@@ -5225,7 +6065,7 @@ Missingness comparison
   overflow-x: hidden;
 }
 
-#ngzdywkkdk .gt_stub {
+#glbnydfadk .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -5237,7 +6077,7 @@ Missingness comparison
   padding-left: 12px;
 }
 
-#ngzdywkkdk .gt_summary_row {
+#glbnydfadk .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -5247,7 +6087,7 @@ Missingness comparison
   padding-right: 5px;
 }
 
-#ngzdywkkdk .gt_first_summary_row {
+#glbnydfadk .gt_first_summary_row {
   padding-top: 1px;
   padding-bottom: 1px;
   padding-left: 5px;
@@ -5257,7 +6097,7 @@ Missingness comparison
   border-top-color: #D3D3D3;
 }
 
-#ngzdywkkdk .gt_grand_summary_row {
+#glbnydfadk .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -5267,7 +6107,7 @@ Missingness comparison
   padding-right: 5px;
 }
 
-#ngzdywkkdk .gt_first_grand_summary_row {
+#glbnydfadk .gt_first_grand_summary_row {
   padding-top: 1px;
   padding-bottom: 1px;
   padding-left: 5px;
@@ -5277,11 +6117,11 @@ Missingness comparison
   border-top-color: #D3D3D3;
 }
 
-#ngzdywkkdk .gt_striped {
+#glbnydfadk .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#ngzdywkkdk .gt_table_body {
+#glbnydfadk .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -5290,7 +6130,7 @@ Missingness comparison
   border-bottom-color: #D3D3D3;
 }
 
-#ngzdywkkdk .gt_footnotes {
+#glbnydfadk .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -5304,13 +6144,13 @@ Missingness comparison
   border-right-color: #D3D3D3;
 }
 
-#ngzdywkkdk .gt_footnote {
+#glbnydfadk .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding: 1px;
 }
 
-#ngzdywkkdk .gt_sourcenotes {
+#glbnydfadk .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -5324,41 +6164,41 @@ Missingness comparison
   border-right-color: #D3D3D3;
 }
 
-#ngzdywkkdk .gt_sourcenote {
+#glbnydfadk .gt_sourcenote {
   font-size: 90%;
   padding: 1px;
 }
 
-#ngzdywkkdk .gt_left {
+#glbnydfadk .gt_left {
   text-align: left;
 }
 
-#ngzdywkkdk .gt_center {
+#glbnydfadk .gt_center {
   text-align: center;
 }
 
-#ngzdywkkdk .gt_right {
+#glbnydfadk .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#ngzdywkkdk .gt_font_normal {
+#glbnydfadk .gt_font_normal {
   font-weight: normal;
 }
 
-#ngzdywkkdk .gt_font_bold {
+#glbnydfadk .gt_font_bold {
   font-weight: bold;
 }
 
-#ngzdywkkdk .gt_font_italic {
+#glbnydfadk .gt_font_italic {
   font-style: italic;
 }
 
-#ngzdywkkdk .gt_super {
+#glbnydfadk .gt_super {
   font-size: 65%;
 }
 
-#ngzdywkkdk .gt_footnote_marks {
+#glbnydfadk .gt_footnote_marks {
   font-style: italic;
   font-size: 65%;
 }
@@ -5372,10 +6212,10 @@ Missingness comparison
       </th>
     </tr>
     <tr>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1"><strong>Both</strong> N =<br>36 (5.5%)<sup class="gt_footnote_marks">1</sup></th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1"><strong>CTV3</strong> N =<br>125 (19%)<sup class="gt_footnote_marks">1</sup></th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1"><strong>SNOMED</strong> N =<br>160 (25%)<sup class="gt_footnote_marks">1</sup></th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1"><strong>Neither</strong> N =<br>329 (51%)<sup class="gt_footnote_marks">1</sup></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1"><strong>Both</strong> N =<br>47 (7.2%)<sup class="gt_footnote_marks">1</sup></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1"><strong>CTV3</strong> N =<br>107 (16%)<sup class="gt_footnote_marks">1</sup></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1"><strong>SNOMED</strong> N =<br>138 (21%)<sup class="gt_footnote_marks">1</sup></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1"><strong>Neither</strong> N =<br>358 (55%)<sup class="gt_footnote_marks">1</sup></th>
     </tr>
 
 </thead>
@@ -5389,59 +6229,59 @@ Missingness comparison
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">0-19</td>
-      <td class="gt_row gt_center">9 (25%)</td>
-      <td class="gt_row gt_center">17 (14%)</td>
-      <td class="gt_row gt_center">16 (10%)</td>
-      <td class="gt_row gt_center">42 (13%)</td>
+      <td class="gt_row gt_center">4 (8.5%)</td>
+      <td class="gt_row gt_center">18 (17%)</td>
+      <td class="gt_row gt_center">16 (12%)</td>
+      <td class="gt_row gt_center">37 (10%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">20-29</td>
-      <td class="gt_row gt_center">2 (5.6%)</td>
-      <td class="gt_row gt_center">11 (8.8%)</td>
-      <td class="gt_row gt_center">18 (11%)</td>
-      <td class="gt_row gt_center">31 (9.4%)</td>
+      <td class="gt_row gt_center">9 (19%)</td>
+      <td class="gt_row gt_center">15 (14%)</td>
+      <td class="gt_row gt_center">12 (8.7%)</td>
+      <td class="gt_row gt_center">51 (14%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">30-39</td>
-      <td class="gt_row gt_center">1 (2.8%)</td>
-      <td class="gt_row gt_center">19 (15%)</td>
-      <td class="gt_row gt_center">19 (12%)</td>
-      <td class="gt_row gt_center">43 (13%)</td>
+      <td class="gt_row gt_center">6 (13%)</td>
+      <td class="gt_row gt_center">9 (8.4%)</td>
+      <td class="gt_row gt_center">14 (10%)</td>
+      <td class="gt_row gt_center">44 (12%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">40-49</td>
-      <td class="gt_row gt_center">8 (22%)</td>
-      <td class="gt_row gt_center">12 (9.6%)</td>
-      <td class="gt_row gt_center">24 (15%)</td>
-      <td class="gt_row gt_center">35 (11%)</td>
+      <td class="gt_row gt_center">4 (8.5%)</td>
+      <td class="gt_row gt_center">15 (14%)</td>
+      <td class="gt_row gt_center">20 (14%)</td>
+      <td class="gt_row gt_center">38 (11%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">50-59</td>
-      <td class="gt_row gt_center">4 (11%)</td>
-      <td class="gt_row gt_center">17 (14%)</td>
-      <td class="gt_row gt_center">17 (11%)</td>
-      <td class="gt_row gt_center">44 (13%)</td>
+      <td class="gt_row gt_center">3 (6.4%)</td>
+      <td class="gt_row gt_center">12 (11%)</td>
+      <td class="gt_row gt_center">16 (12%)</td>
+      <td class="gt_row gt_center">54 (15%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">60-69</td>
-      <td class="gt_row gt_center">3 (8.3%)</td>
-      <td class="gt_row gt_center">24 (19%)</td>
-      <td class="gt_row gt_center">22 (14%)</td>
-      <td class="gt_row gt_center">45 (14%)</td>
+      <td class="gt_row gt_center">6 (13%)</td>
+      <td class="gt_row gt_center">10 (9.3%)</td>
+      <td class="gt_row gt_center">29 (21%)</td>
+      <td class="gt_row gt_center">48 (13%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">70-79</td>
-      <td class="gt_row gt_center">6 (17%)</td>
-      <td class="gt_row gt_center">14 (11%)</td>
-      <td class="gt_row gt_center">26 (16%)</td>
-      <td class="gt_row gt_center">47 (14%)</td>
+      <td class="gt_row gt_center">6 (13%)</td>
+      <td class="gt_row gt_center">16 (15%)</td>
+      <td class="gt_row gt_center">16 (12%)</td>
+      <td class="gt_row gt_center">43 (12%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">80+</td>
-      <td class="gt_row gt_center">3 (8.3%)</td>
-      <td class="gt_row gt_center">11 (8.8%)</td>
-      <td class="gt_row gt_center">18 (11%)</td>
-      <td class="gt_row gt_center">42 (13%)</td>
+      <td class="gt_row gt_center">9 (19%)</td>
+      <td class="gt_row gt_center">12 (11%)</td>
+      <td class="gt_row gt_center">15 (11%)</td>
+      <td class="gt_row gt_center">43 (12%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="font-weight: bold;">sex</td>
@@ -5452,17 +6292,17 @@ Missingness comparison
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">Female</td>
-      <td class="gt_row gt_center">19 (53%)</td>
-      <td class="gt_row gt_center">65 (52%)</td>
-      <td class="gt_row gt_center">80 (50%)</td>
-      <td class="gt_row gt_center">170 (52%)</td>
+      <td class="gt_row gt_center">26 (55%)</td>
+      <td class="gt_row gt_center">52 (49%)</td>
+      <td class="gt_row gt_center">66 (48%)</td>
+      <td class="gt_row gt_center">166 (46%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">Male</td>
-      <td class="gt_row gt_center">17 (47%)</td>
-      <td class="gt_row gt_center">60 (48%)</td>
-      <td class="gt_row gt_center">80 (50%)</td>
-      <td class="gt_row gt_center">159 (48%)</td>
+      <td class="gt_row gt_center">21 (45%)</td>
+      <td class="gt_row gt_center">55 (51%)</td>
+      <td class="gt_row gt_center">72 (52%)</td>
+      <td class="gt_row gt_center">192 (54%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="font-weight: bold;">region</td>
@@ -5472,67 +6312,67 @@ Missingness comparison
       <td class="gt_row gt_center"></td>
     </tr>
     <tr>
-      <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">South East</td>
-      <td class="gt_row gt_center">6 (29%)</td>
-      <td class="gt_row gt_center">13 (17%)</td>
-      <td class="gt_row gt_center">27 (22%)</td>
-      <td class="gt_row gt_center">31 (16%)</td>
+      <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">London</td>
+      <td class="gt_row gt_center">5 (21%)</td>
+      <td class="gt_row gt_center">19 (24%)</td>
+      <td class="gt_row gt_center">22 (25%)</td>
+      <td class="gt_row gt_center">35 (14%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">North West</td>
-      <td class="gt_row gt_center">2 (9.5%)</td>
-      <td class="gt_row gt_center">10 (13%)</td>
-      <td class="gt_row gt_center">11 (9.1%)</td>
-      <td class="gt_row gt_center">20 (10%)</td>
+      <td class="gt_row gt_center">2 (8.3%)</td>
+      <td class="gt_row gt_center">9 (11%)</td>
+      <td class="gt_row gt_center">9 (10%)</td>
+      <td class="gt_row gt_center">33 (13%)</td>
     </tr>
     <tr>
-      <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">Yorkshire and the Humber</td>
-      <td class="gt_row gt_center">5 (24%)</td>
-      <td class="gt_row gt_center">6 (7.9%)</td>
-      <td class="gt_row gt_center">7 (5.8%)</td>
-      <td class="gt_row gt_center">24 (12%)</td>
-    </tr>
-    <tr>
-      <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">West Midlands</td>
-      <td class="gt_row gt_center">2 (9.5%)</td>
-      <td class="gt_row gt_center">9 (12%)</td>
-      <td class="gt_row gt_center">14 (12%)</td>
-      <td class="gt_row gt_center">19 (9.5%)</td>
+      <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">South East</td>
+      <td class="gt_row gt_center">4 (17%)</td>
+      <td class="gt_row gt_center">12 (15%)</td>
+      <td class="gt_row gt_center">12 (13%)</td>
+      <td class="gt_row gt_center">46 (19%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">North East</td>
-      <td class="gt_row gt_center">1 (4.8%)</td>
-      <td class="gt_row gt_center">4 (5.3%)</td>
-      <td class="gt_row gt_center">12 (9.9%)</td>
-      <td class="gt_row gt_center">17 (8.5%)</td>
+      <td class="gt_row gt_center">2 (8.3%)</td>
+      <td class="gt_row gt_center">9 (11%)</td>
+      <td class="gt_row gt_center">11 (12%)</td>
+      <td class="gt_row gt_center">25 (10%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">East Midlands</td>
-      <td class="gt_row gt_center">2 (9.5%)</td>
-      <td class="gt_row gt_center">7 (9.2%)</td>
-      <td class="gt_row gt_center">14 (12%)</td>
-      <td class="gt_row gt_center">27 (14%)</td>
+      <td class="gt_row gt_center">3 (12%)</td>
+      <td class="gt_row gt_center">8 (10%)</td>
+      <td class="gt_row gt_center">6 (6.7%)</td>
+      <td class="gt_row gt_center">26 (11%)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">West Midlands</td>
+      <td class="gt_row gt_center">3 (12%)</td>
+      <td class="gt_row gt_center">7 (8.9%)</td>
+      <td class="gt_row gt_center">12 (13%)</td>
+      <td class="gt_row gt_center">27 (11%)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">Yorkshire and the Humber</td>
+      <td class="gt_row gt_center">4 (17%)</td>
+      <td class="gt_row gt_center">7 (8.9%)</td>
+      <td class="gt_row gt_center">13 (15%)</td>
+      <td class="gt_row gt_center">29 (12%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">East of England</td>
-      <td class="gt_row gt_center">1 (4.8%)</td>
-      <td class="gt_row gt_center">6 (7.9%)</td>
-      <td class="gt_row gt_center">7 (5.8%)</td>
-      <td class="gt_row gt_center">15 (7.5%)</td>
-    </tr>
-    <tr>
-      <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">London</td>
-      <td class="gt_row gt_center">2 (9.5%)</td>
-      <td class="gt_row gt_center">21 (28%)</td>
-      <td class="gt_row gt_center">29 (24%)</td>
-      <td class="gt_row gt_center">46 (23%)</td>
+      <td class="gt_row gt_center">1 (4.2%)</td>
+      <td class="gt_row gt_center">8 (10%)</td>
+      <td class="gt_row gt_center">4 (4.5%)</td>
+      <td class="gt_row gt_center">24 (9.8%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">Unknown</td>
-      <td class="gt_row gt_center">15</td>
+      <td class="gt_row gt_center">23</td>
+      <td class="gt_row gt_center">28</td>
       <td class="gt_row gt_center">49</td>
-      <td class="gt_row gt_center">39</td>
-      <td class="gt_row gt_center">130</td>
+      <td class="gt_row gt_center">113</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="font-weight: bold;">IMD</td>
@@ -5542,39 +6382,39 @@ Missingness comparison
       <td class="gt_row gt_center"></td>
     </tr>
     <tr>
-      <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">200</td>
-      <td class="gt_row gt_center">5 (14%)</td>
-      <td class="gt_row gt_center">25 (20%)</td>
-      <td class="gt_row gt_center">40 (25%)</td>
-      <td class="gt_row gt_center">71 (22%)</td>
+      <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">100</td>
+      <td class="gt_row gt_center">5 (11%)</td>
+      <td class="gt_row gt_center">13 (12%)</td>
+      <td class="gt_row gt_center">23 (17%)</td>
+      <td class="gt_row gt_center">68 (19%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">400</td>
-      <td class="gt_row gt_center">11 (31%)</td>
-      <td class="gt_row gt_center">21 (17%)</td>
-      <td class="gt_row gt_center">32 (20%)</td>
-      <td class="gt_row gt_center">59 (18%)</td>
-    </tr>
-    <tr>
-      <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">500</td>
-      <td class="gt_row gt_center">13 (36%)</td>
-      <td class="gt_row gt_center">28 (22%)</td>
-      <td class="gt_row gt_center">33 (21%)</td>
-      <td class="gt_row gt_center">67 (20%)</td>
+      <td class="gt_row gt_center">7 (15%)</td>
+      <td class="gt_row gt_center">24 (22%)</td>
+      <td class="gt_row gt_center">26 (19%)</td>
+      <td class="gt_row gt_center">70 (20%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">300</td>
-      <td class="gt_row gt_center">5 (14%)</td>
-      <td class="gt_row gt_center">24 (19%)</td>
-      <td class="gt_row gt_center">32 (20%)</td>
-      <td class="gt_row gt_center">56 (17%)</td>
+      <td class="gt_row gt_center">9 (19%)</td>
+      <td class="gt_row gt_center">24 (22%)</td>
+      <td class="gt_row gt_center">35 (25%)</td>
+      <td class="gt_row gt_center">73 (20%)</td>
     </tr>
     <tr>
-      <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">100</td>
-      <td class="gt_row gt_center">2 (5.6%)</td>
-      <td class="gt_row gt_center">27 (22%)</td>
-      <td class="gt_row gt_center">23 (14%)</td>
-      <td class="gt_row gt_center">76 (23%)</td>
+      <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">500</td>
+      <td class="gt_row gt_center">18 (38%)</td>
+      <td class="gt_row gt_center">25 (23%)</td>
+      <td class="gt_row gt_center">25 (18%)</td>
+      <td class="gt_row gt_center">69 (19%)</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">200</td>
+      <td class="gt_row gt_center">8 (17%)</td>
+      <td class="gt_row gt_center">21 (20%)</td>
+      <td class="gt_row gt_center">29 (21%)</td>
+      <td class="gt_row gt_center">78 (22%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="font-weight: bold;">Dementia</td>
@@ -5585,17 +6425,17 @@ Missingness comparison
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">False</td>
-      <td class="gt_row gt_center">36 (100%)</td>
-      <td class="gt_row gt_center">122 (98%)</td>
-      <td class="gt_row gt_center">159 (99%)</td>
-      <td class="gt_row gt_center">325 (99%)</td>
+      <td class="gt_row gt_center">47 (100%)</td>
+      <td class="gt_row gt_center">107 (100%)</td>
+      <td class="gt_row gt_center">135 (98%)</td>
+      <td class="gt_row gt_center">355 (99%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">True</td>
       <td class="gt_row gt_center">0 (0%)</td>
-      <td class="gt_row gt_center">3 (2.4%)</td>
-      <td class="gt_row gt_center">1 (0.6%)</td>
-      <td class="gt_row gt_center">4 (1.2%)</td>
+      <td class="gt_row gt_center">0 (0%)</td>
+      <td class="gt_row gt_center">3 (2.2%)</td>
+      <td class="gt_row gt_center">3 (0.8%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="font-weight: bold;">diabetes</td>
@@ -5606,17 +6446,17 @@ Missingness comparison
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">False</td>
-      <td class="gt_row gt_center">36 (100%)</td>
-      <td class="gt_row gt_center">125 (100%)</td>
-      <td class="gt_row gt_center">159 (99%)</td>
-      <td class="gt_row gt_center">324 (98%)</td>
+      <td class="gt_row gt_center">46 (98%)</td>
+      <td class="gt_row gt_center">105 (98%)</td>
+      <td class="gt_row gt_center">137 (99%)</td>
+      <td class="gt_row gt_center">355 (99%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">True</td>
-      <td class="gt_row gt_center">0 (0%)</td>
-      <td class="gt_row gt_center">0 (0%)</td>
-      <td class="gt_row gt_center">1 (0.6%)</td>
-      <td class="gt_row gt_center">5 (1.5%)</td>
+      <td class="gt_row gt_center">1 (2.1%)</td>
+      <td class="gt_row gt_center">2 (1.9%)</td>
+      <td class="gt_row gt_center">1 (0.7%)</td>
+      <td class="gt_row gt_center">3 (0.8%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="font-weight: bold;">hypertension</td>
@@ -5627,17 +6467,17 @@ Missingness comparison
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">False</td>
-      <td class="gt_row gt_center">36 (100%)</td>
-      <td class="gt_row gt_center">124 (99%)</td>
-      <td class="gt_row gt_center">157 (98%)</td>
-      <td class="gt_row gt_center">325 (99%)</td>
+      <td class="gt_row gt_center">46 (98%)</td>
+      <td class="gt_row gt_center">107 (100%)</td>
+      <td class="gt_row gt_center">135 (98%)</td>
+      <td class="gt_row gt_center">354 (99%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">True</td>
+      <td class="gt_row gt_center">1 (2.1%)</td>
       <td class="gt_row gt_center">0 (0%)</td>
-      <td class="gt_row gt_center">1 (0.8%)</td>
-      <td class="gt_row gt_center">3 (1.9%)</td>
-      <td class="gt_row gt_center">4 (1.2%)</td>
+      <td class="gt_row gt_center">3 (2.2%)</td>
+      <td class="gt_row gt_center">4 (1.1%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="font-weight: bold;">learning_disability</td>
@@ -5648,17 +6488,17 @@ Missingness comparison
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">False</td>
-      <td class="gt_row gt_center">36 (100%)</td>
-      <td class="gt_row gt_center">124 (99%)</td>
-      <td class="gt_row gt_center">157 (98%)</td>
-      <td class="gt_row gt_center">326 (99%)</td>
+      <td class="gt_row gt_center">45 (96%)</td>
+      <td class="gt_row gt_center">105 (98%)</td>
+      <td class="gt_row gt_center">136 (99%)</td>
+      <td class="gt_row gt_center">355 (99%)</td>
     </tr>
     <tr>
       <td class="gt_row gt_left" style="text-align: left; text-indent: 10px;">True</td>
-      <td class="gt_row gt_center">0 (0%)</td>
-      <td class="gt_row gt_center">1 (0.8%)</td>
-      <td class="gt_row gt_center">3 (1.9%)</td>
-      <td class="gt_row gt_center">3 (0.9%)</td>
+      <td class="gt_row gt_center">2 (4.3%)</td>
+      <td class="gt_row gt_center">2 (1.9%)</td>
+      <td class="gt_row gt_center">2 (1.4%)</td>
+      <td class="gt_row gt_center">3 (0.8%)</td>
     </tr>
 
 </tbody>

@@ -1,5 +1,5 @@
 ---
-title: "Factors associated with COVID-19 vaccine coverage in chronic kidney disease patients"
+title: "Ethnicity in OpenSAFELY-TPP: A short data report"
 output: html_document
 ---
 
@@ -10,6 +10,7 @@ library('here')
 library('tidyverse')
 library('gtsummary')
 library('kableExtra')
+library('knitr')
 
 ```
 
@@ -40,11 +41,34 @@ read_rds(here("output", "tables", "full_missing.rds"))
 read_rds(here("output", "tables", "full_missing_compare.rds"))
 ```
 
+## Latest ethnicity vs most common ethnicity
+#### I need to think how to deal with ties for most common ethnicity
+```{r matches, echo=FALSE}
+read_rds(here("output", "tables", "matches.rds"))
+```
+
+
+#### expanded
+```{r matches_expanded, echo=FALSE}
+read_rds(here("output", "tables", "matches_expanded.rds"))
+```
+
+## ONS Comparison
+```{r ons_region, echo=FALSE}
+  include_graphics(here("output", "plots", "ethnicity_count.png"))
+```
+
+## State changes
+```{r alluvium, echo=FALSE}
+  include_graphics(here("output", "plots", "alluvium.png"))
+```
+
+
 # Patients registered as of 2022/01/01 
 
 
 ```{r reg_SNOMED, echo=FALSE}
-read_rds(here("output", "tables", "reg_SNOMED.rds"))
+read_rds(here::here("output", "tables", "reg_SNOMED.rds"))
 ```
 
 ## Category compared
@@ -66,3 +90,5 @@ read_rds(here("output", "tables", "reg_missing.rds"))
 ```{r reg_missing_compare, echo=FALSE}
 read_rds(here("output", "tables", "reg_missing_compare.rds"))
 ```
+
+
