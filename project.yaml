@@ -23,6 +23,10 @@ actions:
         table6: output/tables/reg_ethnicity_compare.rds
         table7: output/tables/reg_missing.rds
         table8: output/tables/reg_missing_compare.rds
+        table9: output/tables/matches.rds
+        table10: output/tables/matches_expanded.rds
+        plot1: output/plots/ethnicity_count.png
+        plot2: output/plots/alluvium.png
 
   rmd_report:
     run: r:latest -e 'rmarkdown::render("analysis/ethnicity.Rmd",  knit_root_dir = "/workspace",  output_dir = "/workspace/notebook", output_format = c("html_document","rmarkdown::github_document")   )'

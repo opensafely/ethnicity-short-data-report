@@ -20,9 +20,10 @@
 ## import libraries
 library('tidyverse')
 library('gtsummary')
+library('ggalluvial')
 
 fs::dir_create(here::here("output","tables"))
-
+fs::dir_create(here::here("output","plots"))
 # # import data
 df_input <- arrow::read_feather(file.path(here::here("output","data","input.feather"))) %>%
 mutate(age_band = factor(age_band,levels=c("0-19","20-29","30-39","40-49","50-59","60-69","70-79","80+")),
@@ -40,6 +41,29 @@ mutate(age_band = factor(age_band,levels=c("0-19","20-29","30-39","40-49","50-59
          ethnicity_5 == "4" ~ "Black",
          ethnicity_5 == "5" ~ "Other"))
   
+matches<-df_input %>% 
+  gather(common, cnt, ends_with("count")) %>% 
+  group_by(patient_id) %>% 
+  filter(cnt == max(cnt)) %>% # top_n(cnt, n = 1) also works
+  arrange(patient_id) %>%
+  ungroup() %>%
+  mutate(common = gsub("\\_.*", "", common),
+         match=ifelse(common==tolower(ethnicity_snomed_5),"Not matching","Matching")) 
+
+matches_table <- matches %>%
+  select(match,ethnicity_snomed_5) %>%
+  tbl_summary(by= match,
+              label = ethnicity_snomed_5 ~ "Latest SNOMED") %>%
+  bold_labels()
+saveRDS(matches_table, here::here("output", "tables","matches.rds"))
+
+matches_full_table <- matches %>%
+  select(common,ethnicity_snomed_5) %>%
+  tbl_summary(by= common,
+              label = list(ethnicity_snomed_5 ~ "Latest",common ~ "Most frequent")) %>%
+  bold_labels()
+saveRDS(matches_full_table, here::here("output", "tables","matches_expanded.rds"))
+
   definitions <- c("ctv3_yn","snomed_yn")
   demographic_covariates <- c('age_band', 'sex', 'region', 'imd')
   clinical_covariates <-  c('dementia', 'diabetes', 'hypertension', 'learning_disability')
@@ -98,21 +122,18 @@ saveRDS(ethnicity_compare, here::here("output", "tables","reg_ethnicity_compare.
 
 #  ################ Ethnicity
 # 
-# eth_tpp <- df_input %>%
-#   mutate(Ethnic_Group=case_when(
-#     ethnicity_5 == "1" ~ "White",
-#     ethnicity_5 == "2" ~ "Mixed",
-#     ethnicity_5 == "3" ~ "Asian",
-#     ethnicity_5 == "4" ~ "Black",
-#     ethnicity_5 == "5" ~ "Other",))  %>%
-#   group_by(region,Ethnic_Group) %>%
-#   summarise(N=n()) %>%
-#   ungroup %>%
-#   group_by(region) %>% 
-#   mutate(Total = sum(N),
-#          cohort="CTV3",
-#          group="5_2001")
-# 
+eth_ons<-read_csv(here::here("data","ethnicity_ons.csv.gz"))  
+
+eth_tpp <- df_input %>%
+  rename("Ethnic_Group"="ethnicity_snomed_5") %>%
+  group_by(region,Ethnic_Group) %>%
+  summarise(N=n()) %>%
+  ungroup %>%
+  group_by(region) %>%
+  mutate(Total = sum(N),
+         cohort="SNOMED",
+         group="5_2001") 
+
 # 
 # eth_tpp_16 <- df_input %>%
 #   mutate(Ethnic_Group=case_when(
@@ -140,37 +161,102 @@ saveRDS(ethnicity_compare, here::here("output", "tables","reg_ethnicity_compare.
 #          cohort="TPP",
 #          group="16_2001")
 # 
-# ethnicity<-eth_tpp_16 %>%
-#   bind_rows(eth_tpp) %>%
-#   bind_rows(eth_ons) 
-# ### Add England
-# ethnicity_unrounded <-ethnicity %>%
-#   group_by(group,Ethnic_Group,cohort) %>%
-#   summarise(N=sum(N)) %>% 
-#   group_by(group,cohort) %>%
-#   mutate(N=N,
-#          Total=sum(N),
-#          region="England") %>%
-#   bind_rows(ethnicity) 
-#   
-#   ethnicity2 <- ethnicity_unrounded %>%
-#     ## add rounding
-#   mutate(N=round(N/5)*5,
-#          Total=round(Total/5)*5,
-#          percentage=N/Total * 100) 
-# 
-# write_csv(ethnicity2,here::here("output", "tables","ethnic_group.csv"))
-# 
-# 
-# #### NA removed
-# 
-# ethnicity_na<-ethnicity_unrounded %>%
-#   drop_na(Ethnic_Group) %>%
-#   group_by(group,cohort, region) %>%
-#   mutate(
-#          Total=sum(N),
-#          N=round(N/5)*5,
-#          Total=round(Total/5)*5,
-#          percentage=N/Total * 100) 
-# 
-# write_csv(ethnicity_na,here::here("output", "tables","ethnic_group_NA.csv"))
+ethnicity<-  eth_tpp %>%
+  bind_rows(eth_ons) %>%
+  mutate(
+    region=case_when(region=="East"~as.character("East of England"),
+                     region=="Yorkshire and The Humber"~as.character("Yorkshire and the Humber"),
+                     T~as.character(region)))
+
+
+# %>%
+#  bind_rows(eth_tpp_16)
+
+### Add England
+ethnicity_unrounded <-ethnicity %>%
+  group_by(group,Ethnic_Group,cohort) %>%
+  summarise(N=sum(N)) %>%
+  group_by(group,cohort) %>%
+  mutate(N=N,
+         Total=sum(N),
+         region="England") %>%
+  bind_rows(ethnicity)
+
+  ethnicity2 <- ethnicity_unrounded %>%
+    ## add rounding
+  mutate(N=round(N/5)*5,
+         Total=round(Total/5)*5,
+         percentage=N/Total * 100)
+
+write_csv(ethnicity2,here::here("output", "tables","ethnic_group.csv"))
+
+
+
+#### NA removed
+
+ethnicity_na<-ethnicity_unrounded %>%
+  drop_na(Ethnic_Group) %>%
+  group_by(group,cohort, region) %>%
+  mutate(
+         Total=sum(N),
+         N=round(N/5)*5,
+         Total=round(Total/5)*5,
+         percentage=N/Total * 100)
+write_csv(ethnicity_na,here::here("output", "tables","ethnic_group_NA.csv"))
+
+
+ethnicity_plot <- ethnicity_na %>%
+  filter(region != "England", group == "5_2001") %>%
+  ggplot(aes(x = Ethnic_Group, y = percentage, fill = cohort)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  facet_wrap( ~ region) +
+  theme_classic() +
+  theme(text = element_text(size = 20)) +
+  theme(axis.text.x = element_text(
+    size = 20,
+    hjust = 0,
+    vjust = 0
+  )) +
+  coord_flip() +
+  xlab("") + ylab("Percentage of all ethnicities")
+
+ggsave(
+  filename = here::here("output", "plots", "ethnicity_count.png"),
+  ethnicity_plot,
+  dpi = 600,
+  width = 45,
+  height = 30,
+  units = "cm"
+)
+
+#### ggalluvial
+alluvial<-df_input %>% 
+  gather(common, cnt, ends_with("count")) %>% 
+  group_by(patient_id) %>% 
+  top_n(cnt, n = 5) %>%
+  arrange(patient_id,-cnt) %>% 
+  group_by(patient_id) %>%
+  mutate(rank=row_number()) %>%
+  mutate(common=ifelse(cnt==0,NA,common)) %>%
+  fill(common) %>%
+  drop_na(common) %>%
+  select(common,rank,patient_id) %>%
+ggplot(
+       aes(x = rank, stratum = common, alluvium = patient_id,
+           fill = common, label = common)) +
+  scale_fill_brewer(type = "qual", palette = "Set2") +
+  geom_flow(stat = "alluvium", lode.guidance = "frontback",
+            color = "darkgray") +
+  geom_alluvium(aes(fill=common,alpha=0.5)) +
+  geom_stratum() +
+  theme(legend.position = "bottom") +
+  ggtitle("Ethnicity")
+
+ggsave(
+  filename = here::here("output", "plots", "alluvium.png"),
+  alluvial,
+  dpi = 200,
+  width = 30,
+  height = 15,
+  units = "cm"
+)
