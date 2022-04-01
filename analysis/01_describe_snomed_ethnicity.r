@@ -38,8 +38,10 @@ write_csv(data,here::here("output","unredacted","snomed_ethnicity_counts.csv"))
 data <- data %>%
   mutate(included=case_when(snomedcode_count>0~1,
                             T~0),
-          snomedcode_count=case_when(snomedcode_count<5 ~ as.integer(5),
-                                    T ~ snomedcode_count))
+          snomedcode_count=case_when(
+            snomedcode_count==0 ~ as.integer(0),
+            snomedcode_count<5 ~ as.integer(5),
+            T ~ snomedcode_count))
 
 write_csv(data,here::here("output","for_release","snomed_ethnicity_counts.csv"))   
 
