@@ -97,6 +97,46 @@ set_table("full_missing_compare",full_table,"missing","**Missing Ethnicity**")
 set_table("full_SNOMED",full_table,"ethnicity_snomed_5","**SNOMED Ethnicity**")                                               
 set_table("full_CTV3",full_table,"ethnicity_5","**CTV3 Ethnicity**")                                               
 
+
+set_table2 <- function (name,input,variable,heading){ DF <- input %>%
+  select(c(all_of(variable),all_of(demographic_covariates),all_of(clinical_covariates))) %>%
+  tbl_summary(by= variable,
+              label = list(age_band ~ "Patient Age", dementia ~ "Dementia",imd ~ "IMD")) %>%
+  modify_header(all_stat_cols() ~ "N={n}<br>({style_percent(p)}%)") %>%
+  bold_labels() %>%
+  modify_spanning_header(all_stat_cols() ~ heading)
+
+assign(name,DF,envir = .GlobalEnv)
+} 
+
+ethnicities<-c("Asian","Black","Mixed","Other","White")
+for (eth in ethnicities) {
+  assign(paste0("full_table_snomed_",eth),full_table %>%
+           filter(ethnicity_snomed_5==eth))
+  
+  set_table2(paste0("full_SNOMED_",eth),get(paste0("full_table_snomed_",eth)),"ethnicity_snomed_5","**SNO**") 
+
+  assign(paste0("full_table_",eth),full_table %>%
+           filter(ethnicity_5==eth))
+  
+  set_table2(paste0("full_",eth),get(paste0("full_table_",eth)),"ethnicity_5","**CTV3**") 
+  
+  
+  }
+
+compare<-tbl_merge( list(full_SNOMED_Asian,full_Asian,
+                                   full_SNOMED_Black,full_Black,
+                                   full_SNOMED_Mixed,full_Mixed,
+                                   full_SNOMED_Other,full_Other,
+                                   full_SNOMED_White,full_White),
+                              tab_spanner = c("**SNOMED<br>Asian**", "**CTV3<br>Asian**",
+                                              "**SNOMED<br>Black**", "**CTV3<br>Black**",
+                                              "**SNOMED<br>Mixed**", "**CTV3<br>Mixed**",
+                                              "**SNOMED<br>Other**", "**CTV3<br>Other**",
+                                              "**SNOMED<br>White**", "**CTV3<br>White**"))  #%>%
+
+saveRDS(compare, here::here("output", "tables","full_compare.rds"))
+
   #### combined SNOMED and CTV3
 theme_gtsummary_compact()
 ethnicity_compare<-tbl_merge( list(full_SNOMED,full_CTV3),

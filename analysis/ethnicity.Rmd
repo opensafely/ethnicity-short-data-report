@@ -28,6 +28,12 @@ theme_gtsummary_compact()
 read_rds(here("output", "tables", "full_ethnicity_compare.rds"))
 ```
 
+```{r full_compare, echo=FALSE}
+theme_gtsummary_compact()
+read_rds(here("output", "tables", "full_compare.rds"))
+```
+
+
 ## Missingness
 
 ```{r full_missing, echo=FALSE}
