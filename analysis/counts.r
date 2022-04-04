@@ -39,7 +39,8 @@ mutate(age_band = factor(age_band,levels=c("0-19","20-29","30-39","40-49","50-59
          ethnicity_5 == "2" ~ "Mixed",
          ethnicity_5 == "3" ~ "Asian",
          ethnicity_5 == "4" ~ "Black",
-         ethnicity_5 == "5" ~ "Other"))
+         ethnicity_5 == "5" ~ "Other")) %>%
+  filter(white_count>=0,black_count>=0,asian_count>=0, other_count>=0,mixed_count>=0)
   
 matches<-df_input %>% 
   gather(common, cnt, ends_with("count")) %>% 
@@ -48,7 +49,7 @@ matches<-df_input %>%
   arrange(patient_id) %>%
   ungroup() %>%
   mutate(common = gsub("\\_.*", "", common),
-         match=ifelse(common==tolower(ethnicity_snomed_5),"Not matching","Matching")) 
+         match=ifelse(common==tolower(ethnicity_snomed_5),"Matching","Not matching")) 
 
 matches_table <- matches %>%
   select(match,ethnicity_snomed_5) %>%
@@ -270,14 +271,16 @@ ggsave(
 )
 
 #### ggalluvial
-alluvial<-df_input %>% 
+alluvial_data<-df_input %>% 
   gather(common, cnt, ends_with("count")) %>% 
   group_by(patient_id) %>% 
   top_n(cnt, n = 5) %>%
   arrange(patient_id,-cnt) %>% 
   group_by(patient_id) %>%
   mutate(rank=row_number()) %>%
-  mutate(common=ifelse(cnt==0,NA,common)) %>%
+  mutate(common=ifelse(cnt==0,NA,common))
+
+alluvial<- alluvial_data %>%
   fill(common) %>%
   drop_na(common) %>%
   select(common,rank,patient_id) %>%
@@ -293,8 +296,32 @@ ggplot(
   ggtitle("Ethnicity")
 
 ggsave(
-  filename = here::here("output", "plots", "alluvium.png"),
+  filename = here::here("output", "plots", "alluvial.png"),
   alluvial,
+  dpi = 200,
+  width = 30,
+  height = 15,
+  units = "cm"
+)
+
+alluvial2<-alluvial_data %>%
+drop_na(common) %>%
+  select(common,rank,patient_id) %>%
+  ggplot(
+    aes(x = rank, stratum = common, alluvium = patient_id,
+        fill = common, label = common)) +
+  scale_fill_brewer(type = "qual", palette = "Set2") +
+  geom_flow(stat = "alluvium", lode.guidance = "frontback",
+            color = "darkgray") +
+  geom_alluvium(aes(fill=common,alpha=0.5)) +
+  geom_stratum() +
+  theme(legend.position = "bottom") +
+  ggtitle("Ethnicity")
+
+
+ggsave(
+  filename = here::here("output", "plots", "alluvial2.png"),
+  alluvial2,
   dpi = 200,
   width = 30,
   height = 15,

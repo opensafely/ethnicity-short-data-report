@@ -27,7 +27,8 @@ actions:
         table10: output/tables/matches_expanded.rds
         table11: output/tables/full_compare.rds
         plot1: output/plots/ethnicity_count.png
-        plot2: output/plots/alluvium.png
+        plot2: output/plots/alluvial.png
+        plot3: output/plots/alluvial2.png
 
   rmd_report:
     run: r:latest -e 'rmarkdown::render("analysis/ethnicity.Rmd",  knit_root_dir = "/workspace",  output_dir = "/workspace/notebook", output_format = c("html_document","rmarkdown::github_document")   )'
