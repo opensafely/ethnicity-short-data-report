@@ -39,3 +39,10 @@ actions:
       moderately_sensitive:
         html: notebook/ethnicity.html
         md: notebook/ethnicity.md
+
+  generate_report_ethnicity:
+    run: jupyter:latest jupyter nbconvert /workspace/notebooks_jupyter/report_ethnicity.ipynb --execute --to html --template basic --output-dir=/workspace/output --ExecutePreprocessor.timeout=86400 --no-input
+    needs: [generate_study_population]
+    outputs:
+      moderately_sensitive:
+        notebook: output/report_ethnicity.html
