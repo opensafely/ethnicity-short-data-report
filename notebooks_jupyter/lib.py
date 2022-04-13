@@ -51,20 +51,33 @@ def import_clean(input_path, definitions, other_vars, demographic_covariates, cl
 
     df_filled = pd.concat(li_filled, axis=1)
     df_clean = df_clean.merge(df_filled, on='patient_id')
+    
+    # Flag all filled/all missing
+    li_col_filled = [col for col in df_clean.columns if col.endswith('_filled')]
+    li_col_missing = [col for col in df_clean.columns if col.endswith('_missing')]
+    df_clean['all_filled'] = (df_clean[li_col_filled].sum(axis=1) == len(definitions)).astype(int)
+    df_clean['all_missing'] = (df_clean[li_col_missing].sum(axis=1) == len(definitions)).astype(int)
+    
     return df_clean
 
 def patient_counts(df_clean, definitions, demographic_covariates, clinical_covariates, missing=False):
     suffix = '_filled'
     subgroup = 'with records'
+    overlap = 'all_filled'
     if missing == True:
         suffix = '_missing'
         subgroup = 'missing records'
+        overlap = 'all_missing'
     # All population
     li_pop = []
     for definition in definitions:
         df_temp = df_clean[['patient_id']].drop_duplicates().set_index('patient_id')
         df_temp[definition+suffix] = 1
         li_pop.append(df_temp)
+        
+    df_temp = df_clean[['patient_id']].drop_duplicates().set_index('patient_id')
+    df_temp[overlap] = 1
+    li_pop.append(df_temp)
 
     df_temp0 = pd.concat(li_pop)
     df_pop = pd.DataFrame(df_temp0.sum()).T
@@ -77,11 +90,14 @@ def patient_counts(df_clean, definitions, demographic_covariates, clinical_covar
         df_temp = df_clean[['patient_id', definition+suffix]].drop_duplicates().dropna().set_index('patient_id')
         li_filled.append(df_temp)
 
+    df_temp = df_clean[['patient_id', overlap]].drop_duplicates().dropna().set_index('patient_id')
+    li_filled.append(df_temp)
+    
     df_temp2 = pd.concat(li_filled, axis=1)
     df_all = pd.DataFrame(df_temp2.sum()).T
     df_all['group'],df_all['subgroup'] = ['population',subgroup]
     df_all = df_all.set_index(['group','subgroup'])
-
+    
     # By group
     li_group = []
     for group in demographic_covariates + clinical_covariates:
@@ -89,6 +105,10 @@ def patient_counts(df_clean, definitions, demographic_covariates, clinical_covar
         for definition in definitions:
             df_temp = df_clean[['patient_id', definition+suffix, group]].drop_duplicates().dropna().reset_index(drop=True)
             li_filled_group.append(df_temp)
+            
+        df_temp = df_clean[['patient_id', overlap, group]].drop_duplicates().dropna().reset_index(drop=True)
+        li_filled_group.append(df_temp)
+        
         df_reduce = reduce(lambda df1, df2: pd.merge(df1, df2,on=['patient_id',group],how='outer'), li_filled_group)
         df_reduce2 = df_reduce.sort_values(by=group).drop(columns=['patient_id']).groupby(group).sum().reset_index()
         df_reduce2['group'] = group
@@ -96,19 +116,23 @@ def patient_counts(df_clean, definitions, demographic_covariates, clinical_covar
         li_group.append(df_reduce2)
     df_all_group = pd.concat(li_group, axis=0, ignore_index=True).set_index(['group','subgroup'])
     df_all_ct = df_pop.append([df_all,df_all_group])
-
+    
     # Redact
     df_all_redact = redact_round_table(df_all_ct)
 
     # Create percentage columns 
     for definition in definitions:
         df_all_redact[definition+'_pct'] = round((df_all_redact[definition+suffix].div(df_all_redact[definition+suffix][0]))*100,1)
+    df_all_redact[overlap+'_pct'] = round((df_all_redact[overlap].div(df_all_redact[overlap][0]))*100,1)
 
     # Column order
     li_col_order = []
     for definition in definitions:
         li_col_order.append(definition+suffix)
         li_col_order.append(definition+'_pct')
+    li_col_order.append(overlap)
+    li_col_order.append(overlap+'_pct')
+    
     df_all_redact = df_all_redact[li_col_order]
     
     # Final redaction step
