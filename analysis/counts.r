@@ -280,6 +280,7 @@ alluvial_data<-df_input %>%
   mutate(rank=row_number()) %>%
   mutate(common=ifelse(cnt==0,NA,common))
 
+
 alluvial<- alluvial_data %>%
   fill(common) %>%
   drop_na(common) %>%
@@ -327,3 +328,27 @@ ggsave(
   height = 15,
   units = "cm"
 )
+
+
+alluvial_data %>%
+  select(ethnicity_snomed_5 ,common) %>%
+  tbl_summary(by= ethnicity_snomed_5) %>%
+  modify_header(all_stat_cols() ~ "N={n}<br>({style_percent(p)}%)")
+
+
+
+matches_full_table <- matches %>%
+  select(ethnicity_snomed_5,common) %>%
+  tbl_summary(by= ethnicity_snomed_5,
+              label = list(common ~ "Most frequent",ethnicity_snomed_5 ~ "Latest")) %>%
+  bold_labels()
+
+  
+    df_tab<-alluvial_data %>% 
+    drop_na(common,ethnicity_snomed_5) %>% 
+    group_by(ethnicity_snomed_5) %>% 
+    mutate(n=n_distinct(patient_id),ethnicity_snomed_5=paste0(ethnicity_snomed_5,": N=",n)) %>%
+    select(ethnicity_snomed_5,common) %>% 
+    tbl_summary(by= common,percent = "row")
+#    ,list(all_categorical() ~ "{n}"))
+    
