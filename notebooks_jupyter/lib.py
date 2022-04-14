@@ -15,19 +15,26 @@ def redact_round_table(df_in):
     df_out = df_in.where(df_in > 5, np.nan).apply(lambda x: 5 * round(x/5))
     return df_out
 
-def import_clean(input_path, definitions, other_vars, demographic_covariates, clinical_covariates, null, time_delta, dates=False):
+def import_clean(input_path, definitions, other_vars, demographic_covariates, clinical_covariates, null, time_delta, code_dict='', dates=False):
     # Import
     df_import = pd.read_feather(input_path)
+    # Dates
     if dates==True:
         date_vars = [definition+'_date' for definition in definitions]
         for definition in definitions:
             df_import[definition+'_date'] = df_import[definition+'_date'].dt.to_period('M').dt.to_timestamp()
         # Create difference between measurement dates
         for definition in definitions:
-            df_clean = df_clean.sort_values(by=['patient_id',definition+'_date'])
-            df_clean['date_diff_' + definition] = round(df_clean.groupby('patient_id')[definition+'_date'].diff() / np.timedelta64(1, time_delta))
+            df_import = df_import.sort_values(by=['patient_id',definition+'_date'])
+            df_import['date_diff_' + definition] = round(df_import.groupby('patient_id')[definition+'_date'].diff() / np.timedelta64(1, time_delta))
     else: 
         date_vars = []
+    # Codes
+    if code_dict!='':
+        for definition in definitions:
+            df_import[definition] = df_import[definition].astype(float)
+            df_import[definition] = df_import[definition].replace(code_dict)
+    
     # Subset to relevant columns
     df_clean = df_import[['patient_id'] + definitions + other_vars + date_vars + demographic_covariates + clinical_covariates]
     # Limit to relevant date range
@@ -476,9 +483,7 @@ def report_update_frequency(df_occ, definitions, time_delta, num_definitions, gr
             
 def latest_common_comparison(df_clean, definitions, other_vars):
     for definition in definitions:
-        df_clean[definition] = df_clean[definition].astype(float)
         df_subset = df_clean.loc[~df_clean[definition].isna()]
-        df_subset[definition] = df_subset[definition].astype(int)
         df_subset=df_subset[[definition]+other_vars].set_index(definition)
 
         df_subset2 = df_subset.where(df_subset.eq(df_subset.max(1),axis=0))
@@ -506,16 +511,15 @@ def state_change(df_clean, other_vars, definitions):
         df_subset = df_clean[
             [definition]+other_vars
         ].replace(0,np.nan).set_index(definition).reset_index()
-        # Convert categories to float (SHOULD BE DONE IN PREPROCESSING?)
-        df_clean[definition] = df_clean[definition].astype(float)
+        df_subset['n'] = 1
+        # Count
         df_subset2 = df_subset.loc[~df_subset[definition].isna()]
-        # Convert float code values to int for formatting
-        df_subset2[definition] = df_subset2[definition].astype(int)
-        df_subset3 = df_subset2.groupby(definition).count()
-        # Fill in n
-        df_counts = pd.DataFrame(np.diagonal(df_subset3),index=df_subset3.index,columns=['n'])
-        df_out = redact_round_table(df_subset3.merge(df_counts,right_index=True,left_index=True)).reset_index()
+        df_subset3 = redact_round_table(df_subset2.groupby(definition).count()).reset_index()
+        # Set index
+        df_subset3['index'] = df_subset3[definition].astype(str) + " (n = " + df_subset3['n'].astype(int).astype(str) + ")"
+        df_out = df_subset3.drop(columns=[definition,'n']).rename(columns = {'index':definition}).set_index(definition)
+        # Null out the diagonal
+        np.fill_diagonal(df_out.values, np.nan)
         df_out = df_out.where(~df_out.isna(), '-')
-        df_out['index'] = df_out[definition].astype(str) + " (n = " + df_out['n'].astype(str) + ")"
-        df_out = df_out.drop(columns=[definition,'n']).rename(columns = {'index':definition}).set_index(definition)
+    
         display(df_out)
