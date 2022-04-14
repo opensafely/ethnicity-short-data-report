@@ -76,21 +76,6 @@ def patient_counts(df_clean, definitions, demographic_covariates, clinical_covar
                 df_clean.loc[df_clean[definition] == x, f'{definition}_{x}_filled'] = 1 
                 li_cat_def.append(f'{definition}_{x}')
         definitions = li_cat_def
-    # All population
-    li_pop = []
-    for definition in definitions:
-        df_temp = df_clean[['patient_id']].drop_duplicates().set_index('patient_id')
-        df_temp[definition+suffix] = 1
-        li_pop.append(df_temp)
-        
-    df_temp = df_clean[['patient_id']].drop_duplicates().set_index('patient_id')
-    df_temp[overlap] = 1
-    li_pop.append(df_temp)
-
-    df_temp0 = pd.concat(li_pop)
-    df_pop = pd.DataFrame(df_temp0.sum()).T
-    df_pop['group'],df_pop['subgroup'] = ['population','N']
-    df_pop = df_pop.set_index(['group','subgroup'])
 
     # All with measurement
     li_filled = []
@@ -123,7 +108,27 @@ def patient_counts(df_clean, definitions, demographic_covariates, clinical_covar
         df_reduce2 = df_reduce2.rename(columns={group:'subgroup'})
         li_group.append(df_reduce2)
     df_all_group = pd.concat(li_group, axis=0, ignore_index=True).set_index(['group','subgroup'])
-    df_all_ct = df_pop.append([df_all,df_all_group])
+    
+    if categories == False:
+        # All population
+        li_pop = []
+        for definition in definitions:
+            df_temp = df_clean[['patient_id']].drop_duplicates().set_index('patient_id')
+            df_temp[definition+suffix] = 1
+            li_pop.append(df_temp)
+
+        df_temp = df_clean[['patient_id']].drop_duplicates().set_index('patient_id')
+        df_temp[overlap] = 1
+        li_pop.append(df_temp)
+
+        df_temp0 = pd.concat(li_pop)
+        df_pop = pd.DataFrame(df_temp0.sum()).T
+        df_pop['group'],df_pop['subgroup'] = ['population','N']
+        df_pop = df_pop.set_index(['group','subgroup'])
+   
+        df_all_ct = df_pop.append([df_all,df_all_group])
+    if categories == True:
+        df_all_ct = df_all.append(df_all_group)
     
     # Redact
     df_all_redact = redact_round_table(df_all_ct)
@@ -144,11 +149,12 @@ def patient_counts(df_clean, definitions, demographic_covariates, clinical_covar
     df_all_redact = df_all_redact.drop(columns=[overlap+'_pct'])
         
     # Column order
+
     li_col_order = []
     for definition in definitions:
         li_col_order.append(definition)
     li_col_order.append(overlap)
-    
+
     df_all_redact = df_all_redact[li_col_order]
     
     return df_all_redact
@@ -165,7 +171,7 @@ def display_heatmap(df_clean, definitions):
     # Prepare data for heatmap input
     df_temp2 = pd.concat(li_filled, axis=1)
     df_transform = df_temp2.replace(np.nan,0)
-    df_dot = df_transform.T.dot(df_transform)
+    df_dot = redact_round_table(df_transform.T.dot(df_transform))
     
     # Create mask to eliminate duplicates in heatmap
     mask = np.triu(np.ones_like(df_dot))
@@ -477,7 +483,8 @@ def latest_common_comparison(df_clean, definitions, other_vars):
 
         df_subset2 = df_subset.where(df_subset.eq(df_subset.max(1),axis=0))
         df_subset_3 = df_subset2.notnull().astype('int').reset_index()
-        df_sum = df_subset_3.groupby(definition).sum()
+        df_sum = redact_round_table(df_subset_3.groupby(definition).sum())
+        df_sum = df_sum.where(~df_sum.isna(), '-')
 
         df_counts = pd.DataFrame(np.diagonal(df_sum),index=df_sum.index,columns=[f'matching (n={np.diagonal(df_sum).sum()})'])
 
@@ -487,7 +494,9 @@ def latest_common_comparison(df_clean, definitions, other_vars):
         df_out = df_counts.merge(df_diag,right_index=True,left_index=True)
         display(df_out)
 
-        df_sum = df_subset_3.groupby(definition).sum()
+        df_sum = redact_round_table(df_subset_3.groupby(definition).sum())
+        df_sum = df_sum.where(~df_sum.isna(), '-')
+
         for col in df_sum.columns:
             df_sum = df_sum.rename(columns = {col:f'{col} (n={df_sum[col].sum()})'})
         display(df_sum)
@@ -505,7 +514,8 @@ def state_change(df_clean, other_vars, definitions):
         df_subset3 = df_subset2.groupby(definition).count()
         # Fill in n
         df_counts = pd.DataFrame(np.diagonal(df_subset3),index=df_subset3.index,columns=['n'])
-        df_out = df_subset3.merge(df_counts,right_index=True,left_index=True).reset_index()
+        df_out = redact_round_table(df_subset3.merge(df_counts,right_index=True,left_index=True)).reset_index()
+        df_out = df_out.where(~df_out.isna(), '-')
         df_out['index'] = df_out[definition].astype(str) + " (n = " + df_out['n'].astype(str) + ")"
-        df_out = redact_round_table(df_out.drop(columns=[definition,'n']).rename(columns = {'index':definition}).set_index(definition))
+        df_out = df_out.drop(columns=[definition,'n']).rename(columns = {'index':definition}).set_index(definition)
         display(df_out)
