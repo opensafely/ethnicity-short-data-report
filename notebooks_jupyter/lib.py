@@ -34,7 +34,7 @@ def import_clean(input_path, definitions, other_vars, demographic_covariates, cl
     df_clean = df_clean.sort_values(by='patient_id').reset_index(drop=True)
     # Set null values to nan
     for definition in definitions: 
-        df_clean.loc[df_clean[definition] == null, definition] = np.nan
+        df_clean.loc[df_clean[definition].isin(null), definition] = np.nan
      # Create order for categorical variables
     for group in demographic_covariates + clinical_covariates:
         if df_clean[group].dtype.name == 'category':
@@ -60,7 +60,7 @@ def import_clean(input_path, definitions, other_vars, demographic_covariates, cl
     
     return df_clean
 
-def patient_counts(df_clean, definitions, demographic_covariates, clinical_covariates, missing=False):
+def patient_counts(df_clean, definitions, demographic_covariates, clinical_covariates, categories=False, missing=False):
     suffix = '_filled'
     subgroup = 'with records'
     overlap = 'all_filled'
@@ -68,6 +68,14 @@ def patient_counts(df_clean, definitions, demographic_covariates, clinical_covar
         suffix = '_missing'
         subgroup = 'missing records'
         overlap = 'all_missing'
+    if categories == True:
+        li_cat_def = []
+        for definition in definitions:
+            li_cat = df_clean[definition].dropna().astype(str).sort_values().unique().tolist()
+            for x in li_cat:
+                df_clean.loc[df_clean[definition] == x, f'{definition}_{x}_filled'] = 1 
+                li_cat_def.append(f'{definition}_{x}')
+        definitions = li_cat_def
     # All population
     li_pop = []
     for definition in definitions:
@@ -124,19 +132,25 @@ def patient_counts(df_clean, definitions, demographic_covariates, clinical_covar
     for definition in definitions:
         df_all_redact[definition+'_pct'] = round((df_all_redact[definition+suffix].div(df_all_redact[definition+suffix][0]))*100,1)
     df_all_redact[overlap+'_pct'] = round((df_all_redact[overlap].div(df_all_redact[overlap][0]))*100,1)
-
-    # Column order
-    li_col_order = []
-    for definition in definitions:
-        li_col_order.append(definition+suffix)
-        li_col_order.append(definition+'_pct')
-    li_col_order.append(overlap)
-    li_col_order.append(overlap+'_pct')
-    
-    df_all_redact = df_all_redact[li_col_order]
     
     # Final redaction step
     df_all_redact = df_all_redact.where(~df_all_redact.isna(), '-')
+    
+    # Combine count and percentage columns
+    for definition in definitions:
+        df_all_redact[definition] = df_all_redact[definition+suffix].astype(str) + " (" + df_all_redact[definition+'_pct'].astype(str) + ")" 
+        df_all_redact = df_all_redact.drop(columns=[definition+suffix,definition+'_pct'])
+    df_all_redact[overlap] = df_all_redact[overlap].astype(str) + " (" + df_all_redact[overlap+'_pct'].astype(str) + ")" 
+    df_all_redact = df_all_redact.drop(columns=[overlap+'_pct'])
+        
+    # Column order
+    li_col_order = []
+    for definition in definitions:
+        li_col_order.append(definition)
+    li_col_order.append(overlap)
+    
+    df_all_redact = df_all_redact[li_col_order]
+    
     return df_all_redact
 
 def display_heatmap(df_clean, definitions):
@@ -453,3 +467,45 @@ def report_update_frequency(df_occ, definitions, time_delta, num_definitions, gr
             sns.boxplot(x=group, y='value', hue='variable', data=df_plot)
             plt.title(f'Update frequencies by {group} and {time_delta}')
             plt.show()
+            
+def latest_common_comparison(df_clean, definitions, other_vars):
+    for definition in definitions:
+        df_clean[definition] = df_clean[definition].astype(float)
+        df_subset = df_clean.loc[~df_clean[definition].isna()]
+        df_subset[definition] = df_subset[definition].astype(int)
+        df_subset=df_subset[[definition]+other_vars].set_index(definition)
+
+        df_subset2 = df_subset.where(df_subset.eq(df_subset.max(1),axis=0))
+        df_subset_3 = df_subset2.notnull().astype('int').reset_index()
+        df_sum = df_subset_3.groupby(definition).sum()
+
+        df_counts = pd.DataFrame(np.diagonal(df_sum),index=df_sum.index,columns=[f'matching (n={np.diagonal(df_sum).sum()})'])
+
+        df_sum2 = df_sum.copy(deep=True)
+        np.fill_diagonal(df_sum2.values, 0)
+        df_diag = pd.DataFrame(df_sum2.sum(axis=1), columns=[f'not_matching (n={df_sum2.sum(axis=1).sum()})'])
+        df_out = df_counts.merge(df_diag,right_index=True,left_index=True)
+        display(df_out)
+
+        df_sum = df_subset_3.groupby(definition).sum()
+        for col in df_sum.columns:
+            df_sum = df_sum.rename(columns = {col:f'{col} (n={df_sum[col].sum()})'})
+        display(df_sum)
+            
+def state_change(df_clean, other_vars, definitions):
+    for definition in definitions:
+        df_subset = df_clean[
+            [definition]+other_vars
+        ].replace(0,np.nan).set_index(definition).reset_index()
+        # Convert categories to float (SHOULD BE DONE IN PREPROCESSING?)
+        df_clean[definition] = df_clean[definition].astype(float)
+        df_subset2 = df_subset.loc[~df_subset[definition].isna()]
+        # Convert float code values to int for formatting
+        df_subset2[definition] = df_subset2[definition].astype(int)
+        df_subset3 = df_subset2.groupby(definition).count()
+        # Fill in n
+        df_counts = pd.DataFrame(np.diagonal(df_subset3),index=df_subset3.index,columns=['n'])
+        df_out = df_subset3.merge(df_counts,right_index=True,left_index=True).reset_index()
+        df_out['index'] = df_out[definition].astype(str) + " (n = " + df_out['n'].astype(str) + ")"
+        df_out = redact_round_table(df_out.drop(columns=[definition,'n']).rename(columns = {'index':definition}).set_index(definition))
+        display(df_out)
