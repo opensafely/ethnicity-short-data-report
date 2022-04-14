@@ -109,47 +109,47 @@ def patient_counts(df_clean, definitions, demographic_covariates, clinical_covar
         li_group.append(df_reduce2)
     df_all_group = pd.concat(li_group, axis=0, ignore_index=True).set_index(['group','subgroup'])
     
-    if categories == False:
-        # All population
-        li_pop = []
-        for definition in definitions:
-            df_temp = df_clean[['patient_id']].drop_duplicates().set_index('patient_id')
-            df_temp[definition+suffix] = 1
-            li_pop.append(df_temp)
-
+    # All population
+    li_pop = []
+    for definition in definitions:
         df_temp = df_clean[['patient_id']].drop_duplicates().set_index('patient_id')
-        df_temp[overlap] = 1
+        df_temp[definition] = 1
         li_pop.append(df_temp)
 
-        df_temp0 = pd.concat(li_pop)
-        df_pop = pd.DataFrame(df_temp0.sum()).T
-        df_pop['group'],df_pop['subgroup'] = ['population','N']
-        df_pop = df_pop.set_index(['group','subgroup'])
-   
-        df_all_ct = df_pop.append([df_all,df_all_group])
-    if categories == True:
-        df_all_ct = df_all.append(df_all_group)
-    
+    df_temp = df_clean[['patient_id']].drop_duplicates().set_index('patient_id')
+    df_temp[overlap] = 1
+    li_pop.append(df_temp)
+
+    df_temp0 = pd.concat(li_pop)
+    df_pop = pd.DataFrame(df_temp0.sum()).T
+    df_pop['group'],df_pop['subgroup'] = ['population','N']
+    df_pop = df_pop.set_index(['group','subgroup'])
+
     # Redact
-    df_all_redact = redact_round_table(df_all_ct)
+    df_pop = redact_round_table(df_pop)
+    df_append = redact_round_table(df_all.append(df_all_group))
 
     # Create percentage columns 
     for definition in definitions:
-        df_all_redact[definition+'_pct'] = round((df_all_redact[definition+suffix].div(df_all_redact[definition+suffix][0]))*100,1)
-    df_all_redact[overlap+'_pct'] = round((df_all_redact[overlap].div(df_all_redact[overlap][0]))*100,1)
-    
+        df_append[definition+'_pct'] = round((df_append[definition+suffix].div(df_append[definition+suffix][0]))*100,1)
+    df_append[overlap+'_pct'] = round((df_append[overlap].div(df_append[overlap][0]))*100,1)
+
     # Final redaction step
-    df_all_redact = df_all_redact.where(~df_all_redact.isna(), '-')
-    
+    df_append = df_append.where(~df_append.isna(), '-')  
+
     # Combine count and percentage columns
     for definition in definitions:
-        df_all_redact[definition] = df_all_redact[definition+suffix].astype(str) + " (" + df_all_redact[definition+'_pct'].astype(str) + ")" 
-        df_all_redact = df_all_redact.drop(columns=[definition+suffix,definition+'_pct'])
-    df_all_redact[overlap] = df_all_redact[overlap].astype(str) + " (" + df_all_redact[overlap+'_pct'].astype(str) + ")" 
-    df_all_redact = df_all_redact.drop(columns=[overlap+'_pct'])
-        
-    # Column order
+        df_append[definition] = df_append[definition+suffix].astype(str) + " (" + df_append[definition+'_pct'].astype(str) + ")" 
+        df_append = df_append.drop(columns=[definition+suffix,definition+'_pct'])
+    df_append[overlap] = df_append[overlap].astype(str) + " (" + df_append[overlap+'_pct'].astype(str) + ")" 
+    df_append = df_append.drop(columns=[overlap+'_pct'])
 
+    if categories == False:
+        df_all_redact = df_pop.append(df_append)
+    if categories == True:
+        df_all_redact = df_append
+    
+    # Column order
     li_col_order = []
     for definition in definitions:
         li_col_order.append(definition)
