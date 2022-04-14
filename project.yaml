@@ -10,39 +10,9 @@ actions:
       highly_sensitive:
         cohort: output/data/input.feather
 
-  generate_tables:
-    run: r:latest analysis/counts.r
-    needs: [generate_study_population]
-    outputs:      
-      moderately_sensitive:
-        table1: output/tables/full_SNOMED.rds
-        table2: output/tables/full_ethnicity_compare.rds
-        table3: output/tables/full_missing.rds
-        table4: output/tables/full_missing_compare.rds
-        table5: output/tables/reg_SNOMED.rds
-        table6: output/tables/reg_ethnicity_compare.rds
-        table7: output/tables/reg_missing.rds
-        table8: output/tables/reg_missing_compare.rds
-        table9: output/tables/matches.rds
-        table10: output/tables/matches_expanded.rds
-        table11: output/tables/full_compare.rds
-        plot1: output/plots/ethnicity_count.png
-        plot2: output/plots/alluvial.png
-        plot3: output/plots/alluvial2.png
-
-  rmd_report:
-    run: r:latest -e 'rmarkdown::render("analysis/ethnicity.Rmd",  knit_root_dir = "/workspace",  output_dir = "/workspace/notebook", output_format = c("html_document","rmarkdown::github_document")   )'
-    needs:
-    - generate_tables
-
-    outputs:
-      moderately_sensitive:
-        html: notebook/ethnicity.html
-        md: notebook/ethnicity.md
-
   generate_report_ethnicity:
-    run: jupyter:latest jupyter nbconvert /workspace/notebooks_jupyter/report_ethnicity.ipynb --execute --to html --template basic --output-dir=/workspace/output --ExecutePreprocessor.timeout=86400 --no-input
+    run: jupyter:latest jupyter nbconvert /workspace/notebooks_jupyter/report_ethnicity_rp.ipynb --execute --to html --template basic --output-dir=/workspace/output --ExecutePreprocessor.timeout=86400 --no-input
     needs: [generate_study_population]
     outputs:
       moderately_sensitive:
-        notebook: output/report_ethnicity.html
+        notebook: output/report_ethnicity_rp.html
