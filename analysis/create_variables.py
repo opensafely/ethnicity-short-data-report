@@ -21,9 +21,33 @@ clinical_variables = dict(
                     "incidence": 0.75,
                 },
             ),  
+    ethnicity_5_date=patients.with_these_clinical_events(
+        ethnicity_codes,
+        returning="date",
+        find_first_match_in_period=True,
+        return_expectations={"date": {"earliest": "1900-01-01", "latest": "2022-01-01"}},
+    ),
 
+    ethnicity_new_5=patients.with_these_clinical_events(
+                ethnicity_codes,
+                returning="category",
+                find_last_match_in_period=True,
+                include_date_of_match=False,
+                return_expectations={
+                    "category": {
+                        "ratios": {"1": 0.2, "2": 0.2, "3": 0.2, "4": 0.2, "5": 0.2}
+                    },
+                    "incidence": 0.75,
+                },
+            ),  
+    ethnicity_new_5_date=patients.with_these_clinical_events(
+        ethnicity_codes,
+        returning="date",
+        find_first_match_in_period=True,
+        return_expectations={"date": {"earliest": "1900-01-01", "latest": "2022-01-01"}},
+    ),
     # Ethnicity using SNOMED codes - returns latest in period
-    ethnicity_snomed_5=patients.categorised_as(
+    ethnicity_primis_5=patients.categorised_as(
             {
                 "Missing": "DEFAULT",
                 "1": """ eth2001=1 """,
@@ -90,6 +114,12 @@ clinical_variables = dict(
                 date_format="YYYY-MM-DD",
             ),
         ),
+    ethnicity_primis_5_date=patients.with_these_clinical_events(
+        eth2001,
+        returning="date",
+        find_first_match_in_period=True,
+        return_expectations={"date": {"earliest": "1900-01-01", "latest": "2022-01-01"}},
+    ),
 
     # -------------------
     # Clinical conditions
