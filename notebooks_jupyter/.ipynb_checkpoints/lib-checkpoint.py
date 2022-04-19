@@ -1,3 +1,4 @@
+import datetime
 import itertools
 import matplotlib.gridspec as gridspec
 import numpy as np
@@ -15,28 +16,45 @@ def redact_round_table(df_in):
     df_out = df_in.where(df_in > 5, np.nan).apply(lambda x: 5 * round(x/5))
     return df_out
 
-def import_clean(input_path, definitions, other_vars, demographic_covariates, clinical_covariates, null, time_delta, code_dict='', dates=False):
+def import_clean(input_path, definitions, other_vars, demographic_covariates, 
+                 clinical_covariates, null, date_min, date_max, 
+                 time_delta, code_dict='', dates=False):
     # Import
     df_import = pd.read_feather(input_path)
     # Dates
     if dates==True:
         date_vars = [definition+'_date' for definition in definitions]
+        # Create variable that captures difference in measurement dates
+        date_diff_vars = []
+        # Define start and end dates
+        start_date = datetime.datetime.strptime(date_min, '%Y-%m-%d')
+        end_date = datetime.datetime.strptime(date_max, '%Y-%m-%d')
         for definition in definitions:
-            df_import[definition+'_date'] = df_import[definition+'_date'].dt.to_period('M').dt.to_timestamp()
-        # Create difference between measurement dates
-        for definition in definitions:
+            # Remove OpenSAFELY null dates 
+            df_import.loc[df_import[definition+'_date'] == '1900-01-01', definition+'_date'] = np.nan
+            # Limit to period of interest             
+            df_import[definition+'_date'] = pd.to_datetime(df_import[definition+'_date'])
+            df_import.loc[df_import[definition+'_date'] < start_date, definition+'_date'] = np.nan
+            df_import.loc[df_import[definition+'_date'] > end_date, definition+'_date'] = np.nan
+            # Remove the measurement if outside the date parameters
+            df_import.loc[df_import[definition+'_date'].isna(), definition] = np.nan
+            df_import 
+            # Create difference between measurement dates
+            df_import[definition+'_date'] = df_import[definition+'_date'].dt.to_period(time_delta).dt.to_timestamp()
             df_import = df_import.sort_values(by=['patient_id',definition+'_date'])
             df_import['date_diff_' + definition] = round(df_import.groupby('patient_id')[definition+'_date'].diff() / np.timedelta64(1, time_delta))
+            date_diff_vars.append('date_diff_' + definition)
     else: 
         date_vars = []
+        date_diff_vars = []
     # Codes
     if code_dict!='':
-        for definition in definitions:
-            df_import[definition] = df_import[definition].astype(float)
-            df_import[definition] = df_import[definition].replace(code_dict)
+        for key in code_dict:
+            df_import[key] = df_import[key].astype(float)
+            df_import[key] = df_import[key].replace(code_dict[key])
     
     # Subset to relevant columns
-    df_clean = df_import[['patient_id'] + definitions + other_vars + date_vars + demographic_covariates + clinical_covariates]
+    df_clean = df_import[['patient_id'] + definitions + other_vars + date_vars + date_diff_vars + demographic_covariates + clinical_covariates]
     # Limit to relevant date range
     df_clean = df_clean.sort_values(by='patient_id').reset_index(drop=True)
     # Set null values to nan
@@ -309,7 +327,7 @@ def report_out_of_range(df_occ, definitions, min_range, max_range, num_definitio
         df_oor.loc[(df_oor[definition] < min_range) | (df_oor[definition] > max_range), "out_of_range_"+definition] = 1
         # Make definitions null if not out of range or empty
         df_oor["oor_" + definition] = df_oor[definition]
-        df_oor.loc[(df_oor["out_of_range_"+definition] != 1) | (df_oor[definition] == null), "oor_" + definition] = np.nan
+        df_oor.loc[(df_oor["out_of_range_"+definition] != 1) | (df_oor[definition].isin(null)), "oor_" + definition] = np.nan
         if group == '':
             try:
                 df_out = df_oor.agg(
