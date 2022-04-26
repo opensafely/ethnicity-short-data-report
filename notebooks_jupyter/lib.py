@@ -75,6 +75,8 @@ def import_clean(input_path, definitions, other_vars, demographic_covariates,
         li_filled.append(df_fill)
 
     df_filled = pd.concat(li_filled, axis=1)
+    # Remove list from memory
+    del li_filled  
     df_clean = df_clean.merge(df_filled, on='patient_id')
     
     # Flag all filled/all missing
@@ -112,6 +114,8 @@ def patient_counts(df_clean, definitions, demographic_covariates, clinical_covar
     li_filled.append(df_temp)
     
     df_temp2 = pd.concat(li_filled, axis=1)
+    # Remove list from memory
+    del li_filled
     df_all = pd.DataFrame(df_temp2.sum()).T
     df_all['group'],df_all['subgroup'] = ['population',subgroup]
     df_all = df_all.set_index(['group','subgroup'])
@@ -128,11 +132,15 @@ def patient_counts(df_clean, definitions, demographic_covariates, clinical_covar
         li_filled_group.append(df_temp)
         
         df_reduce = reduce(lambda df1, df2: pd.merge(df1, df2,on=['patient_id',group],how='outer'), li_filled_group)
+        # Remove list from memory
+        del li_filled_group 
         df_reduce2 = df_reduce.sort_values(by=group).drop(columns=['patient_id']).groupby(group).sum().reset_index()
         df_reduce2['group'] = group
         df_reduce2 = df_reduce2.rename(columns={group:'subgroup'})
         li_group.append(df_reduce2)
     df_all_group = pd.concat(li_group, axis=0, ignore_index=True).set_index(['group','subgroup'])
+    # Remove list from memory
+    del li_group  
     
     # All population
     li_pop = []
@@ -146,6 +154,8 @@ def patient_counts(df_clean, definitions, demographic_covariates, clinical_covar
     li_pop.append(df_temp)
 
     df_temp0 = pd.concat(li_pop)
+    # Remove list from memory
+    del li_pop 
     df_pop = pd.DataFrame(df_temp0.sum()).T
     df_pop['group'],df_pop['subgroup'] = ['population','N']
     df_pop = df_pop.set_index(['group','subgroup'])
@@ -195,6 +205,8 @@ def display_heatmap(df_clean, definitions):
 
     # Prepare data for heatmap input
     df_temp2 = pd.concat(li_filled, axis=1)
+    # Remove list from memory
+    del li_filled 
     df_transform = df_temp2.replace(np.nan,0)
     df_dot = redact_round_table(df_transform.T.dot(df_transform))
     
@@ -213,6 +225,8 @@ def records_over_time(df_clean, definitions, demographic_covariates, clinical_co
         df_grouped = df_clean[[definition+'_date',definition]].groupby(definition+'_date').count().reset_index().rename(columns={definition+'_date':'date'}).set_index('date')
         li_df.append(redact_round_table(df_grouped))
     df_all_time = pd.concat(li_df).stack().reset_index().rename(columns={'level_1':'variable',0:'value'})
+    # Remove list from memory
+    del li_df 
     fig, ax = plt.subplots(figsize=(12, 8))
     fig.autofmt_xdate()
     sns.lineplot(x = 'date', y = 'value', hue='variable', data = df_all_time, ax=ax).set_title('New records by month')
@@ -236,16 +250,18 @@ def report_distribution(df_occ, definitions, num_definitions, group=''):
         if num_definitions == 1:
             for definition in definitions: 
 
-                avg_value = df_occ.agg(
-                    avg = (definition, 'mean'),
-                    count = (definition, 'count')
+                avg_value = pd.DataFrame(
+                    df_occ[definition].agg(
+                        ['mean','count']
+                    )
                 )
                 if avg_value.loc['count'][0] > 6:
                     avg_value.loc['count'][0] = 5 * round(avg_value.loc['count'][0]/5)
                     print(f'Average {definition}:\n')
                     display(avg_value)
                     fig, ax = plt.subplots(figsize=(12, 8))
-                    plt.hist(df_occ[definition])
+                    hist_data = df_occ[definition].loc[~df_occ[definition].isna()]
+                    plt.hist(hist_data, bins=np.arange(min(hist_data), max(hist_data)))
                     plt.title('Distribution of ' + definition)
                     plt.show()
                 else:
@@ -262,16 +278,15 @@ def report_distribution(df_occ, definitions, num_definitions, group=''):
             print('Averages:\n')
             display(avg_value)
             fig, ax = plt.subplots(figsize=(12, 8))
-            sns.boxplot(data=df_bp)
+            sns.boxplot(data=df_bp,showfliers = False)
             plt.title("Distributions of values")
             plt.show()
     else:
         if num_definitions == 1:
             for definition in definitions: 
                 df_bp = df_occ[[group]+ [definition]]
-                avg_value = df_bp.groupby(group).agg(
-                    mean = (definition, 'mean'),
-                    count = (definition, 'count')
+                avg_value = df_bp.groupby(group)[definition].agg(
+                    ['mean', 'count']
                 )
                 # Redact and round values
                 avg_value['count'] = avg_value['count'].where(
@@ -281,7 +296,7 @@ def report_distribution(df_occ, definitions, num_definitions, group=''):
                 display(avg_value)    
                 null_index = avg_value[avg_value['count'] == '-'].index.tolist()
                 fig, ax = plt.subplots(figsize=(12, 8))
-                sns.boxplot(x=group, y=definition, data=df_bp.loc[~df_bp[group].isin(null_index)])
+                sns.boxplot(x=group, y=definition, data=df_bp.loc[~df_bp[group].isin(null_index)], showfliers=False)
                 plt.title(f"Distributions by {group}")
                 plt.show()
         else:
@@ -306,7 +321,7 @@ def report_distribution(df_occ, definitions, num_definitions, group=''):
                 df_bp.loc[df_bp[group].isin(null_index),definition] = np.nan
             fig, ax = plt.subplots(figsize=(12, 8))
             df_plot = df_bp.melt(id_vars=group, value_vars=definitions)
-            sns.boxplot(x=group, y='value', hue='variable', data=df_plot)
+            sns.boxplot(x=group, y='value', hue='variable', data=df_plot, showfliers=False)
             plt.title(f'Distributions by {group}')
             plt.show()
             
@@ -345,11 +360,11 @@ def report_out_of_range(df_occ, definitions, min_range, max_range, num_definitio
             else:
                 df_out["oor_" + definition] = '-'
         else:
-            df_out = df_oor.groupby(group).agg(
-                                                count = ("oor_" + definition, 'count'),
-                                                mean  = ("oor_" + definition, 'mean'),
-                                                pct25 = ("oor_" + definition, q25),
-                                                pct75 = ("oor_" + definition, q75),
+            df_out = df_oor.groupby(group)["oor_" + definition].agg(
+                                                [('count', 'count'),
+                                                 ('mean', 'mean'),
+                                                 ('pct25', q25),
+                                                 ('pct75', q75)]
                                               ).add_suffix("_"+definition)
             df_out.loc[df_out["count_" + definition] > 5, "count_" + definition] = 5 * round(df_out["count_" + definition]/5)
             df_out.loc[df_out["count_" + definition] < 6, 
@@ -359,6 +374,8 @@ def report_out_of_range(df_occ, definitions, min_range, max_range, num_definitio
     
     if num_definitions == 1:    
         display(df_out)
+        # Remove list from memory
+        del li_dfs 
         if group == '': 
             if df_out["oor_" + definition]['count'] != '-':
                 df_plot = df_oor["oor_" + definition]
@@ -376,7 +393,7 @@ def report_out_of_range(df_occ, definitions, min_range, max_range, num_definitio
                 df_bp = df_oor[[group]+ ["oor_" + definition]]
                 if df_bp["oor_" + definition].sum() > 0:
                     fig, ax = plt.subplots(figsize=(12, 8))
-                    sns.boxplot(x=group, y="oor_" + definition, data=df_bp)
+                    sns.boxplot(x=group, y="oor_" + definition, data=df_bp, showfliers=False)
                     plt.title(f"Distribution of out of range values by {group}")
                     plt.show()
                 else:
@@ -391,7 +408,7 @@ def report_out_of_range(df_occ, definitions, min_range, max_range, num_definitio
                 df_bp["oor_" + definition] = np.nan
             try:
                 fig, ax = plt.subplots(figsize=(12, 8))
-                sns.boxplot(data=df_bp)
+                sns.boxplot(data=df_bp, showfliers=False)
                 plt.title('Distribution of out of range values')
                 plt.show()
             except: 
@@ -408,7 +425,7 @@ def report_out_of_range(df_occ, definitions, min_range, max_range, num_definitio
             df_plot = df_bp.melt(id_vars=group, value_vars=cols)
             if df_plot['value'].sum() > 0:
                 fig, ax = plt.subplots(figsize=(12, 8))
-                sns.boxplot(x=group, y='value', hue='variable', data=df_plot)
+                sns.boxplot(x=group, y='value', hue='variable', data=df_plot, showfliers=False)
                 plt.title(f'Distribution of out of range values by {group}')
                 plt.show()
             else: 
@@ -468,7 +485,7 @@ def report_update_frequency(df_occ, definitions, time_delta, num_definitions, gr
                 display(avg_update_freq)    
                 null_index = avg_update_freq[avg_update_freq['count'] == '-'].index.tolist()
                 fig, ax = plt.subplots(figsize=(12, 8))
-                sns.boxplot(x=group, y='date_diff_'+definition, data=df_bp.loc[~df_bp[group].isin(null_index)].sort_index())
+                sns.boxplot(x=group, y='date_diff_'+definition, data=df_bp.loc[~df_bp[group].isin(null_index)].sort_index(), showfliers=False)
                 plt.title(f"Update frequency by {group} and {time_delta}")
                 plt.show()
         else:
@@ -495,7 +512,7 @@ def report_update_frequency(df_occ, definitions, time_delta, num_definitions, gr
                 df_sub.loc[df_sub[group].isin(null_index),'date_diff_'+definition] = np.nan
             fig, ax = plt.subplots(figsize=(12, 8))
             df_plot = df_sub.melt(id_vars=group, value_vars=cols)
-            sns.boxplot(x=group, y='value', hue='variable', data=df_plot)
+            sns.boxplot(x=group, y='value', hue='variable', data=df_plot, showfliers=False)
             plt.title(f'Update frequencies by {group} and {time_delta}')
             plt.show()
             
