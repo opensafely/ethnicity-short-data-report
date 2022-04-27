@@ -18,7 +18,7 @@ actions:
         cohort: output/data/input.feather
         
   execute_validation_analyses:
-    run: python:latest python analysis/report_functions.py
+    run: python:latest python analysis/validation_script.py
     needs: [generate_study_population]
     outputs:
       moderately_sensitive: 
