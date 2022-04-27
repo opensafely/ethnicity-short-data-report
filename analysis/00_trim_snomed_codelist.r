@@ -1,15 +1,15 @@
 library('tidyverse')
 library('sf')
 
-fs::dir_create(here::here("output", "tables"))
-
 # # import data
-df_input <- read_csv(here::here("codelists","opensafely-ethnicity-uk-categories.csv"))
+df_input <- read_csv(here::here("codelists","opensafely-ethnicity.csv"))
 group_split<-df_input %>%
-  mutate(group=ceiling(row_number()/61)) %>%
-  group_split(group)
+  group_split(Grouping_6)
 
-for (i in 1:10){
-  list<-group_split[i][[1]] %>% select(code,term,group)
-  write_csv(list,here::here("codelists",paste0("group_",i,".csv"))) 
+ethnicities<-c('white','mixed','asian','black','other')
+
+for (i in 1:5){
+  list<-group_split[i][[1]] %>% select(Code,Description)
+  write_csv(list,here::here("codelists",paste0("grouped_",ethnicities[i],".csv"))) 
 }
+
