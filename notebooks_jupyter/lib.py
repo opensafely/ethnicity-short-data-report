@@ -4,8 +4,11 @@ import matplotlib.gridspec as gridspec
 import numpy as np
 import pandas as pd
 import seaborn as sns
+import upsetplot
+from upsetplot import plot, from_indicators
 
-from ebmdatalab import charts
+
+#from ebmdatalab import charts
 from functools import reduce
 from matplotlib import pyplot as plt
 
@@ -558,3 +561,8 @@ def state_change(df_clean, definitions, other_vars):
         df_out = df_out.where(~df_out.isna(), '-')
     
         display(df_out)
+
+def upsetplot(df_clean,definitions,indicator,orientation):
+    plot(from_indicators(indicators=indicator, data=df_clean[definitions]),orientation=orientation, show_counts=True)
+    plt.show()
+
