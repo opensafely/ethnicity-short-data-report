@@ -564,5 +564,6 @@ def state_change(df_clean, definitions, other_vars):
 
 def upsetplot(df_clean,definitions,indicator,orientation):
     plot(from_indicators(indicators=indicator, data=df_clean[definitions]),orientation=orientation, show_counts=True)
+    # plt.figure(figsize=(24, 16))
     plt.show()
 
