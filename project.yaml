@@ -22,8 +22,8 @@ actions:
     needs: [generate_study_population]
     outputs:
       moderately_sensitive: 
-        tables: output/tables/*.csv
-        figures: output/figures/*.png
+        tables: output/phenotype_validation_ethnicity/tables/*.csv
+        figures: output/phenotype_validation_ethnicity/figures/*.png
 
   generate_report_ethnicity:
     run: python:latest jupyter nbconvert /workspace/notebooks_jupyter/report_ethnicity_rp.ipynb --execute --to html --template basic --output-dir=/workspace/output --ExecutePreprocessor.timeout=86400 --no-input

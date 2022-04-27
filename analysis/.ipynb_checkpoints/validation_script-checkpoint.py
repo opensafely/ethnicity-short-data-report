@@ -37,7 +37,7 @@ demographic_covariates = ['age_band', 'sex', 'region', 'imd']
 clinical_covariates = ['dementia', 'diabetes', 'hypertension', 'learning_disability']
 
 # Output filepath
-output_path = 'ethnicity'
+output_path = 'phenotype_validation_ethnicity'
 
 ########################## SPECIFY ANALYSES TO RUN HERE ##############################
 
