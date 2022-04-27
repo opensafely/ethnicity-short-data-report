@@ -36,24 +36,27 @@ null = [0,"0"]
 demographic_covariates = ['age_band', 'sex', 'region', 'imd']
 clinical_covariates = ['dementia', 'diabetes', 'hypertension', 'learning_disability']
 
+# Output filepath
+output_path = 'ethnicity'
+
 ########################## SPECIFY ANALYSES TO RUN HERE ##############################
 
 def main():
     df_clean = import_clean(input_path, definitions, other_vars, demographic_covariates, 
                         clinical_covariates, null, date_min, date_max, 
-                        time_delta, code_dict, dates)
+                        time_delta, output_path, code_dict, dates)
     # Count patients with records
-    patient_counts(df_clean, definitions, demographic_covariates, clinical_covariates)
+    patient_counts(df_clean, definitions, demographic_covariates, clinical_covariates, output_path)
     # Count patients without records
-    patient_counts(df_clean, definitions, demographic_covariates, clinical_covariates, missing=True)
+    patient_counts(df_clean, definitions, demographic_covariates, clinical_covariates, output_path, missing=True)
     # Count patients by categories 
-    patient_counts(df_clean, definitions, demographic_covariates, clinical_covariates, categories=True)
+    patient_counts(df_clean, definitions, demographic_covariates, clinical_covariates, output_path, categories=True)
     # Generate heatmap of overlapping definitions
-    display_heatmap(df_clean, definitions)
+    display_heatmap(df_clean, definitions, output_path)
     # Latest v most common
-    latest_common_comparison(df_clean, definitions, other_vars)
+    latest_common_comparison(df_clean, definitions, other_vars, output_path)
     # State change
-    state_change(df_clean, definitions, other_vars)
+    state_change(df_clean, definitions, other_vars, output_path)
     
 ########################## DO NOT EDIT – RUNS SCRIPT ##############################
 
