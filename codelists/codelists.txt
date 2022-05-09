@@ -9,3 +9,4 @@ user/rohini-mathur/ethnicity_group7/7f4340d4
 user/rohini-mathur/ethnicity_group8/6633cd9f
 user/rohini-mathur/ethnicity_group9/4d245a6a
 user/rohini-mathur/ethnicity_group10/3414e735
+user/candrews/snomed_ethnicity_cda/2597fdea

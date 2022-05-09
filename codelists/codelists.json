@@ -65,6 +65,12 @@
       "url": "https://codelists.opensafely.org/codelist/user/rohini-mathur/ethnicity_group10/3414e735/",
       "downloaded_at": "2021-09-02 17:11:58.335285Z",
       "sha": "88643e94e4a2df0dd29c224598c4b589ef62f7c2"
+    },
+    "user-candrews-snomed_ethnicity_cda.csv": {
+      "id": "user/candrews/snomed_ethnicity_cda/2597fdea",
+      "url": "https://codelists.opensafely.org/codelist/user/candrews/snomed_ethnicity_cda/2597fdea/",
+      "downloaded_at": "2022-05-09 14:40:32.906673Z",
+      "sha": "9a620759d946d7c627cfa8177d2aef5854b4b305"
     }
   }
 }

@@ -5,8 +5,7 @@ library('data.table')
 fs::dir_create(here::here("output", "for_release"))
 fs::dir_create(here::here("output", "unredacted"))
 
-files=dir(here::here("output"),pattern = "input")
-files<-files[1:10]
+files=dir(here::here("output"),pattern = glob2rx("input*.csv"))
 
 df<-NULL
 df_comb<-NULL
@@ -14,6 +13,7 @@ for (x in files) {
   df<-as.data.table(read.csv(here::here("output",x)))
   df<-melt(df,variable.name = "code", value.name = "snomedcode_count",measure.vars=grep("^eth_", colnames(df)))
   df<-df[, sum(snomedcode_count),by=code]
+  df$name<-x
   df_comb<-rbind(df_comb,df)
 }
 
