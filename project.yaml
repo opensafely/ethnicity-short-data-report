@@ -8,7 +8,7 @@ actions:
     run: r:latest analysis/00_trim_snomed_codelist.r
     outputs:
       highly_sensitive:
-        data: codelists/grouped_*.csv
+        data: codelists/ethnicity_*.csv
 
   generate_study_population:
     run: cohortextractor:latest generate_cohort --study-definition study_definition --output-dir=output --output-format feather

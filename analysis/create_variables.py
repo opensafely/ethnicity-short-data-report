@@ -10,7 +10,7 @@ clinical_variables = dict(
     # ----
     # Ethnicity using CTV3 codes - returns latest in period
     ethnicity_5=patients.with_these_clinical_events(
-                ethnicity_codes,
+                ethnicity_codes_ctv3,
                 returning="category",
                 find_last_match_in_period=True,
                 include_date_of_match=False,
@@ -22,14 +22,14 @@ clinical_variables = dict(
                 },
             ),  
     ethnicity_5_date=patients.with_these_clinical_events(
-        ethnicity_codes,
+        ethnicity_codes_ctv3,
         returning="date",
         find_first_match_in_period=True,
         return_expectations={"date": {"earliest": "1900-01-01", "latest": "2022-01-01"}},
     ),
 
     ethnicity_new_5=patients.with_these_clinical_events(
-                ethnicity_codes,
+                ethnicity_codes_snomed,
                 returning="category",
                 find_last_match_in_period=True,
                 include_date_of_match=False,
@@ -41,7 +41,7 @@ clinical_variables = dict(
                 },
             ),  
     ethnicity_new_5_date=patients.with_these_clinical_events(
-        ethnicity_codes,
+        ethnicity_codes_snomed,
         returning="date",
         find_first_match_in_period=True,
         return_expectations={"date": {"earliest": "1900-01-01", "latest": "2022-01-01"}},

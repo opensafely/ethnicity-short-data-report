@@ -17,7 +17,8 @@ code_dict = {
 }
 
 # Other variables to include
-other_vars = ['asian_count','black_count','mixed_count','other_count','white_count']
+other_vars = ['asian','black','mixed','other','white']
+other_vars_combined = [x+'_'+y for x in definitions for y in other_vars]
 
 # Dates
 dates = False
@@ -40,9 +41,10 @@ clinical_covariates = ['dementia', 'diabetes', 'hypertension', 'learning_disabil
 output_path = 'phenotype_validation_ethnicity'
 
 ########################## SPECIFY ANALYSES TO RUN HERE ##############################
-
+ 
 def main():
-    df_clean = import_clean(input_path, definitions, other_vars, demographic_covariates, 
+    # combine defintions and other_vars  
+    df_clean = import_clean(input_path, definitions, other_vars_combined, demographic_covariates, 
                         clinical_covariates, null, date_min, date_max, 
                         time_delta, output_path, code_dict, dates)
     # Count patients with records
@@ -54,9 +56,9 @@ def main():
     # Generate heatmap of overlapping definitions
     display_heatmap(df_clean, definitions, output_path)
     # Latest v most common
-    latest_common_comparison(df_clean, definitions, other_vars, output_path)
+    latest_common_comparison(df_clean, definitions, other_vars_combined, output_path)
     # State change
-    state_change(df_clean, definitions, other_vars, output_path)
+    state_change(df_clean, definitions, other_vars_combined, output_path)
     
 ########################## DO NOT EDIT – RUNS SCRIPT ##############################
 

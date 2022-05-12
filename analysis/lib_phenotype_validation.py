@@ -10,6 +10,7 @@ from ebmdatalab import charts
 from functools import reduce
 from matplotlib import pyplot as plt
 
+
 def redact_round_table(df_in):
     """Redacts counts <= 5 and rounds counts to nearest 5"""
     df_out = df_in.where(df_in > 5, np.nan).apply(lambda x: 5 * round(x/5))
@@ -51,7 +52,6 @@ def import_clean(input_path, definitions, other_vars, demographic_covariates,
         for key in code_dict:
             df_import[key] = df_import[key].astype(float)
             df_import[key] = df_import[key].replace(code_dict[key])
-    
     # Subset to relevant columns
     df_clean = df_import[['patient_id'] + definitions + other_vars + date_vars + date_diff_vars + demographic_covariates + clinical_covariates]
     # Limit to relevant date range
@@ -537,8 +537,9 @@ def report_update_frequency(df_occ, definitions, time_delta, num_definitions, ou
             
 def latest_common_comparison(df_clean, definitions, other_vars, output_path):
     for definition in definitions:
+        vars = [s for s in other_vars if definition in s]
         df_subset = df_clean.loc[~df_clean[definition].isna()]
-        df_subset=df_subset[[definition]+other_vars].set_index(definition)
+        df_subset=df_subset[[definition]+vars].set_index(definition)
 
         df_subset2 = df_subset.where(df_subset.eq(df_subset.max(1),axis=0))
         df_subset_3 = df_subset2.notnull().astype('int').reset_index()
@@ -564,8 +565,9 @@ def latest_common_comparison(df_clean, definitions, other_vars, output_path):
             
 def state_change(df_clean, definitions, other_vars, output_path):
     for definition in definitions:
+        vars = [s for s in other_vars if definition in s]
         df_subset = df_clean[
-            [definition]+other_vars
+            [definition]+vars
         ].replace(0,np.nan).set_index(definition).reset_index()
         df_subset['n'] = 1
         # Count

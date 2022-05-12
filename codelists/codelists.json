@@ -269,6 +269,12 @@
       "url": "https://codelists.opensafely.org/codelist/user/candrews/white/0100404b/",
       "downloaded_at": "2022-03-30 15:14:51.056368Z",
       "sha": "4d41e79e73f9632d316452e89e13452a7616b678"
+    },
+    "user-candrews-full_ethnicity_coded.csv": {
+      "id": "user/candrews/full_ethnicity_coded/6281e42c",
+      "url": "https://codelists.opensafely.org/codelist/user/candrews/full_ethnicity_coded/6281e42c/",
+      "downloaded_at": "2022-05-10 17:01:23.997566Z",
+      "sha": "1144d00ee7bfc5ccc837fca647921ff9bc8e743d"
     }
   }
 }
