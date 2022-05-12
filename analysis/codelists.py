@@ -4,14 +4,22 @@ from cohortextractor import (
 )
 from itertools import product
 
-definitions = ['ethnicity_5','ethnicity_new_5', 'ethnicity_primis_5']
-other_vars = ['asian','black','mixed','other','white']
-ethnicity_combinations = [f"{definition}_{other_var}" for definition, other_var in product(definitions,other_vars)]
+definitions_ctv3 = ['ethnicity_5']
+definitions_snomed = ['ethnicity_new_5', 'ethnicity_primis_5']
 
-codelists = {name: codelist_from_csv(f"codelists/{name}.csv",
+other_vars = ['asian','black','mixed','other','white']
+ethnicity_combinations_ctv3 = [f"{definition}_{other_var}" for definition, other_var in product(definitions_ctv3,other_vars)]
+ethnicity_combinations_snomed = [f"{definition}_{other_var}" for definition, other_var in product(definitions_snomed,other_vars)]
+
+codelists_ctv3 = {name: codelist_from_csv(f"codelists/{name}.csv",
     system="ctv3",
-    column="Code",) for name in ethnicity_combinations}
-locals().update(codelists)
+    column="Code",) for name in ethnicity_combinations_ctv3}
+locals().update(codelists_ctv3)
+
+codelists_snomed = {name: codelist_from_csv(f"codelists/{name}.csv",
+    system="snomed",
+    column="Code",) for name in ethnicity_combinations_snomed}
+locals().update(codelists_snomed)
 
 # ----------------
 # Ethnicity codes
