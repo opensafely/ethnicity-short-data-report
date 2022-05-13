@@ -549,7 +549,8 @@ def latest_common_comparison(df_clean, definitions, other_vars, output_path):
         df_counts = pd.DataFrame(np.diagonal(df_sum),index=df_sum.index,columns=[f'matching (n={np.diagonal(df_sum).sum()})'])
 
         df_sum2 = df_sum.copy(deep=True)
-        np.fill_diagonal(df_sum2.values        df_diag = pd.DataFrame(df_sum2.sum(axis=1), columns=[f'not_matching (n={df_sum2.sum(axis=1).sum()})'])
+        np.fill_diagonal(df_sum2.values, 0)
+        df_diag = pd.DataFrame(df_sum2.sum(axis=1), columns=[f'not_matching (n={df_sum2.sum(axis=1).sum()})'])
         df_out = df_counts.merge(df_diag,right_index=True,left_index=True)
         #display(df_out)
         df_out.to_csv(f'output/{output_path}/tables/latest_common_simple_{definition}.csv')
