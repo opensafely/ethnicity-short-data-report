@@ -544,7 +544,7 @@ def latest_common_comparison(df_clean, definitions, other_vars, output_path):
         df_subset2 = df_subset.where(df_subset.eq(df_subset.max(1),axis=0))
         df_subset_3 = df_subset2.notnull().astype('int').reset_index()
         df_sum = redact_round_table(df_subset_3.groupby(definition).sum())
-        df_sum = df_sum.where(~df_sum.isna(), '-')
+  #      df_sum = df_sum.where(~df_sum.isna(), '-')
 
         df_counts = pd.DataFrame(np.diagonal(df_sum),index=df_sum.index,columns=[f'matching (n={np.diagonal(df_sum).sum()})'])
 
@@ -555,12 +555,12 @@ def latest_common_comparison(df_clean, definitions, other_vars, output_path):
         #display(df_out)
         df_out.to_csv(f'output/{output_path}/tables/latest_common_simple_{definition}.csv')
 
-        df_sum = redact_round_table(df_subset_3.groupby(definition).sum())
-        df_sum = df_sum.where(~df_sum.isna(), '-')
+        df_sum = redact_round_table(df_subset_3.groupby(definition).sum())     
 
         for col in df_sum.columns:
             df_sum = df_sum.rename(columns = {col:f'{col} (n={df_sum[col].sum()})'})
         #display(df_sum)
+        df_sum = df_sum.where(~df_sum.isna(), '-')
         df_sum.to_csv(f'output/{output_path}/tables/latest_common_expanded_{definition}.csv')
             
 def state_change(df_clean, definitions, other_vars, output_path):

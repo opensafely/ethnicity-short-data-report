@@ -11,10 +11,11 @@ definitions = ['ethnicity_16', 'ethnicity_new_16', 'ethnicity_primis_16']
 # Code dictionary
 code_dict = {
     'imd': {0: 'Unknown', 100: '1 Most deprived', 200: '2', 300: '3', 400: '4', 500: '5 Least deprived'},
-    'ethnicity_5': {1:'White', 2:'Mixed', 3:'Asian', 4:'Black', 5:'Other'},
-    'ethnicity_new_5': {1:'White', 2:'Mixed', 3:'Asian', 4:'Black', 5:'Other'},
-    'ethnicity_primis_5': {1:'White', 2:'Mixed', 3:'Asian', 4:'Black', 5:'Other'},
+    'ethnicity_16': {1:'White_British',2:'White_Irish',3:'Other_White',4:'White_and_Black_Caribbean',5:'White_and_Black_African',6:'White_and_Asian',7:'Other_Mixed',8:'Indian',9:'Pakistani',10:'Bangladeshi',11:'Other_Asian',12:'Caribbean',13:'African',14:'Other_Black',15:'Chinese',16:'Any_other_ethnic_group'},
+    'ethnicity_new_16': {1:'White_British',2:'White_Irish',3:'Other_White',4:'White_and_Black_Caribbean',5:'White_and_Black_African',6:'White_and_Asian',7:'Other_Mixed',8:'Indian',9:'Pakistani',10:'Bangladeshi',11:'Other_Asian',12:'Caribbean',13:'African',14:'Other_Black',15:'Chinese',16:'Any_other_ethnic_group'},
+    'ethnicity_primis_16':  {1:'White_British',2:'White_Irish',3:'Other_White',4:'White_and_Black_Caribbean',5:'White_and_Black_African',6:'White_and_Asian',7:'Other_Mixed',8:'Indian',9:'Pakistani',10:'Bangladeshi',11:'Other_Asian',12:'Caribbean',13:'African',14:'Other_Black',15:'Chinese',16:'Any_other_ethnic_group'},
 }
+
 
 # Other variables to include
 other_vars = ['White_British','White_Irish','Other_White','White_and_Black_Caribbean','White_and_Black_African','White_and_Asian','Other_Mixed','Indian','Pakistani','Bangladeshi','Other_Asian','Caribbean','African','Other_Black','Chinese','Any_other_ethnic_group']
