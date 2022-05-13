@@ -44,3 +44,4 @@ user/candrews/asian/1cc27376
 user/candrews/black/35d1e6ab
 user/candrews/mixed/67f0cd15
 user/candrews/white/0100404b
+user/candrews/full_ethnicity_coded/6281e42c

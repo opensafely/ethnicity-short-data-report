@@ -2,77 +2,41 @@ from cohortextractor import (
     codelist,
     codelist_from_csv,
 )
-ethnicity_codes = codelist_from_csv(
-    "codelists/opensafely-ethnicity-uk-categories.csv",
-    system="snomed",
-    column="code",
-)
+from itertools import product
 
-group1 = codelist_from_csv(
-    "codelists/user-rohini-mathur-ethnicity_group1.csv",
-    system="snomed",
-    column="code",
-)
+definitions_ctv3 = ['ethnicity_5']
+definitions_ctv3_16 = ['ethnicity_16']
 
-group2 = codelist_from_csv(
-    "codelists/user-rohini-mathur-ethnicity_group2.csv",
-    system="snomed",
-    column="code",
-)
+definitions_snomed = ['ethnicity_new_5', 'ethnicity_primis_5']
+definitions_snomed_16 = ['ethnicity_new_16', 'ethnicity_primis_16']
 
-group3 = codelist_from_csv(
-    "codelists/user-rohini-mathur-ethnicity_group3.csv",
-    system="snomed",
-    column="code",
-)
+other_vars = ['white','mixed','asian','black','other']
+other_vars_16 = ['White_British','White_Irish','Other_White','White_and_Black_Caribbean','White_and_Black_African','White_and_Asian','Other_Mixed','Indian','Pakistani','Bangladeshi','Other_Asian','Caribbean','African','Other_Black','Chinese','Any_other_ethnic_group']
 
-group4 = codelist_from_csv(
-    "codelists/user-rohini-mathur-ethnicity_group4.csv",
-    system="snomed",
-    column="code",
-)
+ethnicity_combinations_ctv3 = [f"{definition}_{other_var}" for definition, other_var in product(definitions_ctv3,other_vars)]
+ethnicity_combinations_snomed = [f"{definition}_{other_var}" for definition, other_var in product(definitions_snomed,other_vars)]
 
-group5 = codelist_from_csv(
-    "codelists/user-rohini-mathur-ethnicity_group5.csv",
-    system="snomed",
-    column="code",
-)
+ethnicity_combinations_ctv3_16 = [f"{definition}_{other_var}" for definition, other_var in product(definitions_ctv3_16,other_vars_16)]
+ethnicity_combinations_snomed_16 = [f"{definition}_{other_var}" for definition, other_var in product(definitions_snomed_16,other_vars_16)]
 
-group6 = codelist_from_csv(
-    "codelists/user-rohini-mathur-ethnicity_group6.csv",
-    system="snomed",
-    column="code",
-)
+ethnicity_combinations_ctv3=  ethnicity_combinations_ctv3 + ethnicity_combinations_ctv3_16
+ethnicity_combinations_snomed = ethnicity_combinations_snomed + ethnicity_combinations_snomed_16
 
-group7 = codelist_from_csv(
-    "codelists/user-rohini-mathur-ethnicity_group7.csv",
-    system="snomed",
-    column="code",
-)
+codelists_ctv3 = {name: codelist_from_csv(f"codelists/{name}.csv",
+    system="ctv3",
+    column="Code",) for name in ethnicity_combinations_ctv3}
+locals().update(codelists_ctv3)
 
-group8 = codelist_from_csv(
-    "codelists/user-rohini-mathur-ethnicity_group8.csv",
+codelists_snomed = {name: codelist_from_csv(f"codelists/{name}.csv",
     system="snomed",
-    column="code",
-)
-
-group9 = codelist_from_csv(
-    "codelists/user-rohini-mathur-ethnicity_group9.csv",
-    system="snomed",
-    column="code",
-)
-
-group10 = codelist_from_csv(
-    "codelists/user-rohini-mathur-ethnicity_group10.csv",
-    system="snomed",
-    column="code",
-)
+    column="Code",) for name in ethnicity_combinations_snomed}
+locals().update(codelists_snomed)
 
 # ----------------
 # Ethnicity codes
 # ----------------
 
-ethnicity_codes = codelist_from_csv(
+ethnicity_codes_ctv3 = codelist_from_csv(
     "codelists/opensafely-ethnicity.csv",
     system="ctv3",
     column="Code",
@@ -80,10 +44,25 @@ ethnicity_codes = codelist_from_csv(
 )
 
 
-ethnicity_codes_16 = codelist_from_csv(
+ethnicity_codes_ctv3_16 = codelist_from_csv(
     "codelists/opensafely-ethnicity.csv",
     system="ctv3",
     column="Code",
+    category_column="Grouping_16",
+)
+
+ethnicity_codes_snomed = codelist_from_csv(
+    "codelists/user-candrews-full_ethnicity_coded.csv",
+    system="ctv3",
+    column="snomedcode",
+    category_column="Grouping_6",
+)
+
+
+ethnicity_codes_snomed_16 = codelist_from_csv(
+    "codelists/user-candrews-full_ethnicity_coded.csv",
+    system="ctv3",
+    column="snomedcode",
     category_column="Grouping_16",
 )
 
@@ -198,36 +177,4 @@ sev_obesity_codes = codelist_from_csv(
     "codelists/primis-covid19-vacc-uptake-sev_obesity.csv",
     system="snomed",
     column="code",
-)
-
-
-##### custom ethnicity
-white = codelist_from_csv(
-    "codelists/grouped_white.csv",
-    system="ctv3",
-    column="Code",
-)
-
-black = codelist_from_csv(
-    "codelists/grouped_black.csv",
-    system="ctv3",
-    column="Code",
-)
-
-asian = codelist_from_csv(
-    "codelists/grouped_asian.csv",
-    system="ctv3",
-    column="Code",
-)
-
-other = codelist_from_csv(
-    "codelists/grouped_other.csv",
-    system="ctv3",
-    column="Code",
-)
-
-mixed = codelist_from_csv(
-    "codelists/grouped_mixed.csv",
-    system="ctv3",
-    column="Code",
 )

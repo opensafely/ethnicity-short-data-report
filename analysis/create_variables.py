@@ -10,7 +10,7 @@ clinical_variables = dict(
     # ----
     # Ethnicity using CTV3 codes - returns latest in period
     ethnicity_5=patients.with_these_clinical_events(
-                ethnicity_codes,
+                ethnicity_codes_ctv3,
                 returning="category",
                 find_last_match_in_period=True,
                 include_date_of_match=False,
@@ -22,14 +22,49 @@ clinical_variables = dict(
                 },
             ),  
     ethnicity_5_date=patients.with_these_clinical_events(
-        ethnicity_codes,
+        ethnicity_codes_ctv3,
+        returning="date",
+        find_first_match_in_period=True,
+        return_expectations={"date": {"earliest": "1900-01-01", "latest": "2022-01-01"}},
+    ),
+    ethnicity_16=patients.with_these_clinical_events(
+            ethnicity_codes_ctv3_16,
+            returning="category",
+            find_last_match_in_period=True,
+            include_date_of_match=False,
+            return_expectations={
+                "category": {
+                                   "ratios": {
+                    "1": 0.0625,
+                    "2": 0.0625,
+                    "3": 0.0625,
+                    "4": 0.0625,
+                    "5": 0.0625,
+                    "6": 0.0625,
+                    "7": 0.0625,
+                    "8": 0.0625,
+                    "9": 0.0625,
+                    "10": 0.0625,
+                    "11": 0.0625,
+                    "12": 0.0625,
+                    "13": 0.0625,
+                    "14": 0.0625,
+                    "15": 0.0625,
+                    "16": 0.0625,
+                }
+                },
+                "incidence": 0.75,
+            },
+        ),  
+    ethnicity_16_date=patients.with_these_clinical_events(
+        ethnicity_codes_ctv3_16,
         returning="date",
         find_first_match_in_period=True,
         return_expectations={"date": {"earliest": "1900-01-01", "latest": "2022-01-01"}},
     ),
 
     ethnicity_new_5=patients.with_these_clinical_events(
-                ethnicity_codes,
+                ethnicity_codes_snomed,
                 returning="category",
                 find_last_match_in_period=True,
                 include_date_of_match=False,
@@ -41,7 +76,42 @@ clinical_variables = dict(
                 },
             ),  
     ethnicity_new_5_date=patients.with_these_clinical_events(
-        ethnicity_codes,
+        ethnicity_codes_snomed,
+        returning="date",
+        find_first_match_in_period=True,
+        return_expectations={"date": {"earliest": "1900-01-01", "latest": "2022-01-01"}},
+    ),
+    ethnicity_new_16=patients.with_these_clinical_events(
+                ethnicity_codes_snomed_16,
+                returning="category",
+                find_last_match_in_period=True,
+                include_date_of_match=False,
+                return_expectations={
+                    "category": {
+                    "ratios": {
+                        "1": 0.0625,
+                        "2": 0.0625,
+                        "3": 0.0625,
+                        "4": 0.0625,
+                        "5": 0.0625,
+                        "6": 0.0625,
+                        "7": 0.0625,
+                        "8": 0.0625,
+                        "9": 0.0625,
+                        "10": 0.0625,
+                        "11": 0.0625,
+                        "12": 0.0625,
+                        "13": 0.0625,
+                        "14": 0.0625,
+                        "15": 0.0625,
+                        "16": 0.0625,
+                }
+                    },
+                    "incidence": 0.75,
+                },
+            ),  
+    ethnicity_new_16_date=patients.with_these_clinical_events(
+        ethnicity_codes_snomed_16,
         returning="date",
         find_first_match_in_period=True,
         return_expectations={"date": {"earliest": "1900-01-01", "latest": "2022-01-01"}},
@@ -60,15 +130,7 @@ clinical_variables = dict(
             return_expectations={
                 "rate": "universal",
                 "category": {
-                    "ratios": {
-                        "0": 0.3,
-                        "1": 0.2,
-                        "2": 0.2,
-                        "3": 0.1,
-                        "4": 0.1,
-                        "5": 0.1,
-                    }
-                },
+                              "ratios": {"1": 0.2, "2": 0.2, "3": 0.2, "4": 0.2, "5": 0.2}                },
                 "incidence": 0.75,
             },
             eth2001=patients.with_these_clinical_events(
@@ -116,6 +178,43 @@ clinical_variables = dict(
         ),
     ethnicity_primis_5_date=patients.with_these_clinical_events(
         eth2001,
+        returning="date",
+        find_first_match_in_period=True,
+        return_expectations={"date": {"earliest": "1900-01-01", "latest": "2022-01-01"}},
+    ),
+
+    ethnicity_primis_16 = patients.with_these_clinical_events(
+        eth2001_16,
+        returning = "category",
+        find_last_match_in_period = True,
+        include_date_of_match = False,
+        return_expectations = {
+            "category": {
+                "ratios": {
+                    "1": 0.0625,
+                    "2": 0.0625,
+                    "3": 0.0625,
+                    "4": 0.0625,
+                    "5": 0.0625,
+                    "6": 0.0625,
+                    "7": 0.0625,
+                    "8": 0.0625,
+                    "9": 0.0625,
+                    "10": 0.0625,
+                    "11": 0.0625,
+                    "12": 0.0625,
+                    "13": 0.0625,
+                    "14": 0.0625,
+                    "15": 0.0625,
+                    "16": 0.0625,
+                }
+            },
+            "incidence": 0.75,
+        },
+    ),
+
+    ethnicity_primis_16_date=patients.with_these_clinical_events(
+        eth2001_16,
         returning="date",
         find_first_match_in_period=True,
         return_expectations={"date": {"earliest": "1900-01-01", "latest": "2022-01-01"}},
