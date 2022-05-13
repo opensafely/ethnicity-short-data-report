@@ -6,7 +6,7 @@ from lib_phenotype_validation import *
 input_path = 'output/data/input.feather'
 
 # Definitions
-definitions = ['ethnicity_5', 'ethnicity_new_5', 'ethnicity_primis_5']
+definitions = ['ethnicity_16', 'ethnicity_new_16', 'ethnicity_primis_16']
 
 # Code dictionary
 code_dict = {
@@ -17,7 +17,7 @@ code_dict = {
 }
 
 # Other variables to include
-other_vars = ['white','mixed','asian','black','other']
+other_vars = ['White_British','White_Irish','Other_White','White_and_Black_Caribbean','White_and_Black_African','White_and_Asian','Other_Mixed','Indian','Pakistani','Bangladeshi','Other_Asian','Caribbean','African','Other_Black','Chinese','Any_other_ethnic_group']
 other_vars_combined = [x+'_'+y for x in definitions for y in other_vars]
 
 # Dates
@@ -38,7 +38,7 @@ demographic_covariates = ['age_band', 'sex', 'region', 'imd']
 clinical_covariates = ['dementia', 'diabetes', 'hypertension', 'learning_disability']
 
 # Output filepath
-output_path = 'phenotype_validation_ethnicity/5'
+output_path = 'phenotype_validation_ethnicity/16'
 
 ########################## SPECIFY ANALYSES TO RUN HERE ##############################
  

@@ -537,7 +537,7 @@ def report_update_frequency(df_occ, definitions, time_delta, num_definitions, ou
             
 def latest_common_comparison(df_clean, definitions, other_vars, output_path):
     for definition in definitions:
-        vars = [s for s in other_vars if definition in s]
+        vars = [s for s in other_vars if s.startswith(definition)]
         df_subset = df_clean.loc[~df_clean[definition].isna()]
         df_subset=df_subset[[definition]+vars].set_index(definition)
 
@@ -549,8 +549,7 @@ def latest_common_comparison(df_clean, definitions, other_vars, output_path):
         df_counts = pd.DataFrame(np.diagonal(df_sum),index=df_sum.index,columns=[f'matching (n={np.diagonal(df_sum).sum()})'])
 
         df_sum2 = df_sum.copy(deep=True)
-        np.fill_diagonal(df_sum2.values, 0)
-        df_diag = pd.DataFrame(df_sum2.sum(axis=1), columns=[f'not_matching (n={df_sum2.sum(axis=1).sum()})'])
+        np.fill_diagonal(df_sum2.values        df_diag = pd.DataFrame(df_sum2.sum(axis=1), columns=[f'not_matching (n={df_sum2.sum(axis=1).sum()})'])
         df_out = df_counts.merge(df_diag,right_index=True,left_index=True)
         #display(df_out)
         df_out.to_csv(f'output/{output_path}/tables/latest_common_simple_{definition}.csv')
@@ -565,7 +564,7 @@ def latest_common_comparison(df_clean, definitions, other_vars, output_path):
             
 def state_change(df_clean, definitions, other_vars, output_path):
     for definition in definitions:
-        vars = [s for s in other_vars if definition in s]
+        vars = [s for s in other_vars if s.startswith(definition)]
         df_subset = df_clean[
             [definition]+vars
         ].replace(0,np.nan).set_index(definition).reset_index()

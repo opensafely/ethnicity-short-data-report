@@ -22,8 +22,16 @@ actions:
     needs: [generate_study_population]
     outputs:
       moderately_sensitive: 
-        tables: output/phenotype_validation_ethnicity/tables/*.csv
-        figures: output/phenotype_validation_ethnicity/figures/*.png
+        tables: output/phenotype_validation_ethnicity/5/tables/*.csv
+        figures: output/phenotype_validation_ethnicity/5/figures/*.png
+  
+  execute_validation_analyses_16:
+    run: python:latest python analysis/validation_script_16.py
+    needs: [generate_study_population]
+    outputs:
+      moderately_sensitive: 
+        tables: output/phenotype_validation_ethnicity/16/tables/*.csv
+        figures: output/phenotype_validation_ethnicity/16/figures/*.png
 
   generate_report_ethnicity:
     run: python:latest jupyter nbconvert /workspace/notebooks_jupyter/report_ethnicity_rp.ipynb --execute --to html --template basic --output-dir=/workspace/output --ExecutePreprocessor.timeout=86400 --no-input
@@ -31,3 +39,12 @@ actions:
     outputs:
       moderately_sensitive:
         notebook: output/report_ethnicity_rp.html
+
+  generate_report_ethnicity_16:
+    run: python:latest jupyter nbconvert /workspace/notebooks_jupyter/report_ethnicity_rp_16.ipynb --execute --to html --template basic --output-dir=/workspace/output --ExecutePreprocessor.timeout=86400 --no-input
+    needs: [execute_validation_analyses_16]
+    outputs:
+      moderately_sensitive:
+        notebook: output/report_ethnicity_rp_16.html
+  
+

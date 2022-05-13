@@ -5,11 +5,22 @@ from cohortextractor import (
 from itertools import product
 
 definitions_ctv3 = ['ethnicity_5']
-definitions_snomed = ['ethnicity_new_5', 'ethnicity_primis_5']
+definitions_ctv3_16 = ['ethnicity_16']
 
-other_vars = ['asian','black','mixed','other','white']
+definitions_snomed = ['ethnicity_new_5', 'ethnicity_primis_5']
+definitions_snomed_16 = ['ethnicity_new_16', 'ethnicity_primis_16']
+
+other_vars = ['white','mixed','asian','black','other']
+other_vars_16 = ['White_British','White_Irish','Other_White','White_and_Black_Caribbean','White_and_Black_African','White_and_Asian','Other_Mixed','Indian','Pakistani','Bangladeshi','Other_Asian','Caribbean','African','Other_Black','Chinese','Any_other_ethnic_group']
+
 ethnicity_combinations_ctv3 = [f"{definition}_{other_var}" for definition, other_var in product(definitions_ctv3,other_vars)]
 ethnicity_combinations_snomed = [f"{definition}_{other_var}" for definition, other_var in product(definitions_snomed,other_vars)]
+
+ethnicity_combinations_ctv3_16 = [f"{definition}_{other_var}" for definition, other_var in product(definitions_ctv3_16,other_vars_16)]
+ethnicity_combinations_snomed_16 = [f"{definition}_{other_var}" for definition, other_var in product(definitions_snomed_16,other_vars_16)]
+
+ethnicity_combinations_ctv3=  ethnicity_combinations_ctv3 + ethnicity_combinations_ctv3_16
+ethnicity_combinations_snomed = ethnicity_combinations_snomed + ethnicity_combinations_snomed_16
 
 codelists_ctv3 = {name: codelist_from_csv(f"codelists/{name}.csv",
     system="ctv3",
