@@ -121,12 +121,14 @@ clinical_variables = dict(
                 eth2001,
                 returning="category",
                 find_last_match_in_period=True,
-                on_or_before="index_date",
+                include_date_of_match=False,
                 return_expectations={
-                "ratios": {"1": 0.2, "2": 0.2, "3": 0.2, "4": 0.2, "5": 0.2},
+                    "category": {
+                        "ratios": {"1": 0.2, "2": 0.2, "3": 0.2, "4": 0.2, "5": 0.2}
+                    },
                     "incidence": 0.75,
                 },
-            ),
+            ),  
 # # Any other ethnicity code
 # non_eth2001_dat=patients.with_these_clinical_events(
 #     non_eth2001,
