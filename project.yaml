@@ -21,7 +21,7 @@ actions:
     run: >
       dataset-report:v0.0.9
         --input-files output/data/input.feather
-        --output-dir output
+        --output-dir output/data
     needs: [generate_study_population]
     outputs:
       moderately_sensitive:
