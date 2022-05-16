@@ -375,23 +375,34 @@ demographic_variables = dict(
             "South East": 0.2, }}}
     ),
     # IMD
-    imd=patients.address_as_of(
-        "index_date",
-        returning="index_of_multiple_deprivation",
-        round_to_nearest=100,
-        return_expectations={
-            "rate": "universal",
-            "category": {
-                "ratios": {
-                    "100": 0.2,
-                    "200": 0.2,
-                    "300": 0.2,
-                    "400": 0.2,
-                    "500": 0.2
-                }
+    imd = patients.categorised_as(
+            {
+                "0": "DEFAULT",
+                "1": """index_of_multiple_deprivation >=1 AND index_of_multiple_deprivation < 32844*1/5""",
+                "2": """index_of_multiple_deprivation >= 32844*1/5 AND index_of_multiple_deprivation < 32844*2/5""",
+                "3": """index_of_multiple_deprivation >= 32844*2/5 AND index_of_multiple_deprivation < 32844*3/5""",
+                "4": """index_of_multiple_deprivation >= 32844*3/5 AND index_of_multiple_deprivation < 32844*4/5""",
+                "5": """index_of_multiple_deprivation >= 32844*4/5 """,
             },
-        },
-    ),
+            index_of_multiple_deprivation = patients.address_as_of(
+                "index_date",
+                returning = "index_of_multiple_deprivation",
+                round_to_nearest = 100,
+            ),
+            return_expectations = {
+                "rate": "universal",
+                "category": {
+                    "ratios": {
+                        "0": 0.01,
+                        "1": 0.20,
+                        "2": 0.20,
+                        "3": 0.20,
+                        "4": 0.20,
+                        "5": 0.19,
+                    }
+                },
+            },
+        ),
     # registered
     registered= patients.registered_as_of(index_date),
 )

@@ -10,7 +10,7 @@ definitions = ['ethnicity_5', 'ethnicity_new_5', 'ethnicity_primis_5']
 
 # Code dictionary
 code_dict = {
-    'imd': {0: 'Unknown', 100: '1 Most deprived', 200: '2', 300: '3', 400: '4', 500: '5 Least deprived'},
+    'imd': {0: 'Unknown', 1: '1 Most deprived', 2: '2', 3: '3', 4: '4', 5: '5 Least deprived'},
     'ethnicity_5': {1:'White', 2:'Mixed', 3:'Asian', 4:'Black', 5:'Other'},
     'ethnicity_new_5': {1:'White', 2:'Mixed', 3:'Asian', 4:'Black', 5:'Other'},
     'ethnicity_primis_5': {1:'White', 2:'Mixed', 3:'Asian', 4:'Black', 5:'Other'},
