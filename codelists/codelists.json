@@ -6,66 +6,6 @@
       "downloaded_at": "2021-07-22 10:42:48.357490Z",
       "sha": "69e849415f9c8da54e607f861534b689fa6da48c"
     },
-    "user-rohini-mathur-ethnicity_group1.csv": {
-      "id": "user/rohini-mathur/ethnicity_group1/159ff414",
-      "url": "https://codelists.opensafely.org/codelist/user/rohini-mathur/ethnicity_group1/159ff414/",
-      "downloaded_at": "2021-09-02 17:00:49.188908Z",
-      "sha": "4331cab7adb08b8860e4069b10d05182f0cdf390"
-    },
-    "user-rohini-mathur-ethnicity_group2.csv": {
-      "id": "user/rohini-mathur/ethnicity_group2/7c9080de",
-      "url": "https://codelists.opensafely.org/codelist/user/rohini-mathur/ethnicity_group2/7c9080de/",
-      "downloaded_at": "2021-09-02 17:11:55.245032Z",
-      "sha": "a824c6b25274b4d5d2278363604026679cc11673"
-    },
-    "user-rohini-mathur-ethnicity_group3.csv": {
-      "id": "user/rohini-mathur/ethnicity_group3/63810da9",
-      "url": "https://codelists.opensafely.org/codelist/user/rohini-mathur/ethnicity_group3/63810da9/",
-      "downloaded_at": "2021-09-02 17:11:55.482329Z",
-      "sha": "874b1bf40ac7230f2b2c9986e26c7b2057d8538a"
-    },
-    "user-rohini-mathur-ethnicity_group4.csv": {
-      "id": "user/rohini-mathur/ethnicity_group4/4a719a74",
-      "url": "https://codelists.opensafely.org/codelist/user/rohini-mathur/ethnicity_group4/4a719a74/",
-      "downloaded_at": "2021-09-02 17:11:55.789535Z",
-      "sha": "63cfd5b3c9f1e8a9b2b200110e676e5e3df3ab32"
-    },
-    "user-rohini-mathur-ethnicity_group5.csv": {
-      "id": "user/rohini-mathur/ethnicity_group5/3162273f",
-      "url": "https://codelists.opensafely.org/codelist/user/rohini-mathur/ethnicity_group5/3162273f/",
-      "downloaded_at": "2021-09-02 17:11:56.035382Z",
-      "sha": "ce86673177c491e225596468da9222aeb1e8dcf2"
-    },
-    "user-rohini-mathur-ethnicity_group6.csv": {
-      "id": "user/rohini-mathur/ethnicity_group6/1852b40a",
-      "url": "https://codelists.opensafely.org/codelist/user/rohini-mathur/ethnicity_group6/1852b40a/",
-      "downloaded_at": "2021-09-02 17:11:57.355397Z",
-      "sha": "46b08416a4c918db3e3345a62bc9059226838648"
-    },
-    "user-rohini-mathur-ethnicity_group7.csv": {
-      "id": "user/rohini-mathur/ethnicity_group7/7f4340d4",
-      "url": "https://codelists.opensafely.org/codelist/user/rohini-mathur/ethnicity_group7/7f4340d4/",
-      "downloaded_at": "2021-09-02 17:11:57.577624Z",
-      "sha": "9bd2d8fea80c96ad1d2af14b880632aeb4d86ece"
-    },
-    "user-rohini-mathur-ethnicity_group8.csv": {
-      "id": "user/rohini-mathur/ethnicity_group8/6633cd9f",
-      "url": "https://codelists.opensafely.org/codelist/user/rohini-mathur/ethnicity_group8/6633cd9f/",
-      "downloaded_at": "2021-09-02 17:11:57.824732Z",
-      "sha": "34498c37a64c8bd89553ace9aa57b737c0abe57d"
-    },
-    "user-rohini-mathur-ethnicity_group9.csv": {
-      "id": "user/rohini-mathur/ethnicity_group9/4d245a6a",
-      "url": "https://codelists.opensafely.org/codelist/user/rohini-mathur/ethnicity_group9/4d245a6a/",
-      "downloaded_at": "2021-09-02 17:11:58.064362Z",
-      "sha": "11afbf6243223cb365ca63430faf57c400b28f4c"
-    },
-    "user-rohini-mathur-ethnicity_group10.csv": {
-      "id": "user/rohini-mathur/ethnicity_group10/3414e735",
-      "url": "https://codelists.opensafely.org/codelist/user/rohini-mathur/ethnicity_group10/3414e735/",
-      "downloaded_at": "2021-09-02 17:11:58.335285Z",
-      "sha": "88643e94e4a2df0dd29c224598c4b589ef62f7c2"
-    },
     "primis-covid19-vacc-uptake-eth2001.csv": {
       "id": "primis-covid19-vacc-uptake/eth2001/v1",
       "url": "https://codelists.opensafely.org/codelist/primis-covid19-vacc-uptake/eth2001/v1/",
@@ -101,24 +41,6 @@
       "url": "https://codelists.opensafely.org/codelist/opensafely/ethnicity/2020-04-27/",
       "downloaded_at": "2022-03-16 15:32:19.071173Z",
       "sha": "3d2f3998b71863a80b24d60f6f4282e14191ae13"
-    },
-    "primis-covid19-vacc-uptake-bmi.csv": {
-      "id": "primis-covid19-vacc-uptake/bmi/v1",
-      "url": "https://codelists.opensafely.org/codelist/primis-covid19-vacc-uptake/bmi/v1/",
-      "downloaded_at": "2022-03-16 15:34:06.288629Z",
-      "sha": "6e96c04ee1a647905be2b410fa2c33d770576bf0"
-    },
-    "opensafely-height-snomed.csv": {
-      "id": "opensafely/height-snomed/3b4a3891",
-      "url": "https://codelists.opensafely.org/codelist/opensafely/height-snomed/3b4a3891/",
-      "downloaded_at": "2022-03-16 15:34:06.489831Z",
-      "sha": "22988f25528e7ebcbcd079afe54c39c883bcf63c"
-    },
-    "opensafely-weight-snomed.csv": {
-      "id": "opensafely/weight-snomed/5459abc6",
-      "url": "https://codelists.opensafely.org/codelist/opensafely/weight-snomed/5459abc6/",
-      "downloaded_at": "2022-03-16 15:34:06.679293Z",
-      "sha": "66c5fa2b4fc41bd55982e97ba2a30b148136b2dd"
     },
     "primis-covid19-vacc-uptake-ast.csv": {
       "id": "primis-covid19-vacc-uptake/ast/v1",
