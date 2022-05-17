@@ -542,6 +542,10 @@ def latest_common_comparison(df_clean, definitions, other_vars, output_path):
         df_subset=df_subset[[definition]+vars].set_index(definition)
         df_subset=df_subset.replace(0,np.nan)
         df_subset2 = df_subset.where(df_subset.eq(df_subset.max(1),axis=0))
+        #add check for tied most common ethnicity
+        # check=df_subset2.count(axis=1)
+        # check = df_subset2.loc[check>1]
+        # display(check) 
         df_subset_3 = df_subset2.notnull().astype('int').reset_index()
         df_sum = redact_round_table(df_subset_3.groupby(definition).sum())
         #sort columns alphabetically
