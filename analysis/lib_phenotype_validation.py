@@ -106,9 +106,9 @@ def patient_counts(df_clean, definitions, demographic_covariates, clinical_covar
         overlap = 'all_missing'
     if categories == True:
         li_cat_def = []
-        for definition in definitions:
-            li_cat = df_clean[definition].dropna().astype(str).sort_values().unique().tolist()
-            for x in li_cat:
+        li_cat = df_clean[definitions[0]].dropna().astype(str).sort_values().unique().tolist()
+        for x in li_cat:
+            for definition in definitions:
                 df_clean.loc[df_clean[definition] == x, f'{definition}_{x}_filled'] = 1 
                 li_cat_def.append(f'{definition}_{x}')
         definitions = li_cat_def
