@@ -53,7 +53,7 @@ ethnicity_codes_ctv3_16 = codelist_from_csv(
 
 ethnicity_codes_snomed = codelist_from_csv(
     "codelists/user-candrews-full_ethnicity_coded.csv",
-    system="ctv3",
+    system="snomed",
     column="snomedcode",
     category_column="Grouping_6",
 )
@@ -61,7 +61,7 @@ ethnicity_codes_snomed = codelist_from_csv(
 
 ethnicity_codes_snomed_16 = codelist_from_csv(
     "codelists/user-candrews-full_ethnicity_coded.csv",
-    system="ctv3",
+    system="snomed",
     column="snomedcode",
     category_column="Grouping_16",
 )
