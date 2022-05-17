@@ -576,6 +576,8 @@ def state_change(df_clean, definitions, other_vars, output_path):
         # Set index
         df_subset3['index'] = df_subset3[definition].astype(str) + " (n = " + df_subset3['n'].astype(int).astype(str) + ")"
         df_out = df_subset3.drop(columns=[definition,'n']).rename(columns = {'index':definition}).set_index(definition)
+        df_out.columns=df_out.columns.str.replace(definition+'_', '')
+        df_out = df_out.reindex(sorted(df_out.columns), axis=1)        
         # Null out the diagonal
         # np.fill_diagonal(df_out.values, np.nan)
         # df_out = df_out.where(~df_out.isna(), '-')
