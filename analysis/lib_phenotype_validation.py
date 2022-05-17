@@ -577,8 +577,8 @@ def state_change(df_clean, definitions, other_vars, output_path):
         df_subset3['index'] = df_subset3[definition].astype(str) + " (n = " + df_subset3['n'].astype(int).astype(str) + ")"
         df_out = df_subset3.drop(columns=[definition,'n']).rename(columns = {'index':definition}).set_index(definition)
         # Null out the diagonal
-        np.fill_diagonal(df_out.values, np.nan)
-        df_out = df_out.where(~df_out.isna(), '-')
+        # np.fill_diagonal(df_out.values, np.nan)
+        # df_out = df_out.where(~df_out.isna(), '-')
     
         #display(df_out)
         df_out.to_csv(f'output/{output_path}/tables/state_change_{definition}.csv')
