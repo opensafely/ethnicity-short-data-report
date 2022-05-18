@@ -58,7 +58,7 @@ def main():
     # Latest v most common
     latest_common_comparison(df_clean, definitions, other_vars_combined, output_path)
     # State change
-    state_change(df_clean, definitions, other_vars_combined, output_path)
+    state_change(df_clean, definitions, other_vars_combined, output_path,code_dict)
     
 ########################## DO NOT EDIT – RUNS SCRIPT ##############################
 

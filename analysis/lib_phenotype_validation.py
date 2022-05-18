@@ -570,7 +570,7 @@ def latest_common_comparison(df_clean, definitions, other_vars, output_path):
         df_sum = df_sum.where(~df_sum.isna(), '-')
         df_sum.to_csv(f'output/{output_path}/tables/latest_common_expanded_{definition}.csv')
             
-def state_change(df_clean, definitions, other_vars, output_path):
+def state_change(df_clean, definitions, other_vars, output_path,code_dict=''):
     for definition in definitions:
         vars = [s for s in other_vars if s.startswith(definition)]
         df_subset = df_clean[
@@ -581,10 +581,26 @@ def state_change(df_clean, definitions, other_vars, output_path):
         df_subset2 = df_subset.loc[~df_subset[definition].isna()]
         df_subset3 = redact_round_table(df_subset2.groupby(definition).count()).reset_index()
         # Set index
+        ### arrange rows by category value
+        if code_dict!='': 
+            for x in code_dict[definition]:
+                df_subset3[definition] = df_subset3[definition].replace(code_dict[definition][x],x)
+            df_subset3=df_subset3.sort_values(definition)
+            for x in code_dict[definition]:
+                df_subset3[definition] = df_subset3[definition].replace(x,code_dict[definition][x])
+
         df_subset3['index'] = df_subset3[definition].astype(str) + " (n = " + df_subset3['n'].astype(int).astype(str) + ")"
         df_out = df_subset3.drop(columns=[definition,'n']).rename(columns = {'index':definition}).set_index(definition)
         df_out.columns=df_out.columns.str.replace(definition+'_', '')
-        df_out = df_out.reindex(sorted(df_out.columns), axis=1)        
+        #rearrange columns by category value 
+        df_out.columns=df_out.columns.str.lower()
+        if code_dict!='':
+            for x in code_dict[definition]:
+                df_out = df_out.rename({code_dict[definition][x].lower():x}, axis='columns')
+            for x in code_dict[definition]:
+                df_out = df_out.rename({x:code_dict[definition][x].lower()}, axis='columns') 
+        else:
+            df_out = df_out.reindex(sorted(df_out.columns), axis=1)        
         # Null out the diagonal
         # np.fill_diagonal(df_out.values, np.nan)
         # df_out = df_out.where(~df_out.isna(), '-')
