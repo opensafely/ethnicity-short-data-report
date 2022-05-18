@@ -45,7 +45,7 @@ for (i in 1:16){
 }
 
 df_input <- read_csv(here::here("codelists","user-candrews-full_ethnicity_coded.csv")) %>%
-  filter(Grouping_6!=0)
+  filter(Grouping_16!=0)
 
 group_split<-df_input %>%
   group_split(Grouping_16)
