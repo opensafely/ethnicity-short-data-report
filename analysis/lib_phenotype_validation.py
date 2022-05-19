@@ -106,9 +106,9 @@ def patient_counts(df_clean, definitions, demographic_covariates, clinical_covar
         overlap = 'all_missing'
     if categories == True:
         li_cat_def = []
-        for definition in definitions:
-            li_cat = df_clean[definition].dropna().astype(str).sort_values().unique().tolist()
-            for x in li_cat:
+        li_cat = df_clean[definitions[0]].dropna().astype(str).sort_values().unique().tolist()
+        for x in li_cat:
+            for definition in definitions:
                 df_clean.loc[df_clean[definition] == x, f'{definition}_{x}_filled'] = 1 
                 li_cat_def.append(f'{definition}_{x}')
         definitions = li_cat_def
@@ -540,23 +540,30 @@ def latest_common_comparison(df_clean, definitions, other_vars, output_path):
         vars = [s for s in other_vars if s.startswith(definition)]
         df_subset = df_clean.loc[~df_clean[definition].isna()]
         df_subset=df_subset[[definition]+vars].set_index(definition)
-
+        df_subset=df_subset.replace(0,np.nan)
         df_subset2 = df_subset.where(df_subset.eq(df_subset.max(1),axis=0))
+        #add check for tied most common ethnicity
+        # check=df_subset2.count(axis=1)
+        # check = df_subset2.loc[check>1]
+        # display(check) 
         df_subset_3 = df_subset2.notnull().astype('int').reset_index()
         df_sum = redact_round_table(df_subset_3.groupby(definition).sum())
-  #      df_sum = df_sum.where(~df_sum.isna(), '-')
-
+        #sort columns alphabetically
+        df_sum.columns=df_sum.columns.str.replace(definition+'_', '')
+        df_sum = df_sum.reindex(sorted(df_sum.columns), axis=1)
         df_counts = pd.DataFrame(np.diagonal(df_sum),index=df_sum.index,columns=[f'matching (n={np.diagonal(df_sum).sum()})'])
 
         df_sum2 = df_sum.copy(deep=True)
         np.fill_diagonal(df_sum2.values, 0)
         df_diag = pd.DataFrame(df_sum2.sum(axis=1), columns=[f'not_matching (n={df_sum2.sum(axis=1).sum()})'])
         df_out = df_counts.merge(df_diag,right_index=True,left_index=True)
-        #display(df_out)
+        df_out = df_out.where(~df_out.isna(), '-')
         df_out.to_csv(f'output/{output_path}/tables/latest_common_simple_{definition}.csv')
 
         df_sum = redact_round_table(df_subset_3.groupby(definition).sum())     
-
+        #sort columns alphabetically
+        df_sum.columns=df_sum.columns.str.replace(definition+'_', '')
+        df_sum = df_sum.reindex(sorted(df_sum.columns), axis=1)
         for col in df_sum.columns:
             df_sum = df_sum.rename(columns = {col:f'{col} (n={df_sum[col].sum()})'})
         #display(df_sum)
@@ -576,9 +583,11 @@ def state_change(df_clean, definitions, other_vars, output_path):
         # Set index
         df_subset3['index'] = df_subset3[definition].astype(str) + " (n = " + df_subset3['n'].astype(int).astype(str) + ")"
         df_out = df_subset3.drop(columns=[definition,'n']).rename(columns = {'index':definition}).set_index(definition)
+        df_out.columns=df_out.columns.str.replace(definition+'_', '')
+        df_out = df_out.reindex(sorted(df_out.columns), axis=1)        
         # Null out the diagonal
-        np.fill_diagonal(df_out.values, np.nan)
-        df_out = df_out.where(~df_out.isna(), '-')
+        # np.fill_diagonal(df_out.values, np.nan)
+        # df_out = df_out.where(~df_out.isna(), '-')
     
         #display(df_out)
         df_out.to_csv(f'output/{output_path}/tables/state_change_{definition}.csv')

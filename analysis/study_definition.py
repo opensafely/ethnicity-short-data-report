@@ -14,7 +14,6 @@ ethnicity_combinations = ethnicity_combinations_5 + ethnicity_combinations_16
 
 codelists = {name :  patients.with_these_clinical_events(
                     globals()[name],
-                    on_or_before="index_date",
                     returning="number_of_matches_in_period",
                     return_expectations={
                         "int": {"distribution": "normal", "mean": 6, "stddev": 3},
