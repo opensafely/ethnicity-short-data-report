@@ -179,6 +179,7 @@ def patient_counts(df_clean, definitions, demographic_covariates, clinical_covar
     li_col_order.append('population')
 
     df_all_redact = df_append[li_col_order]
+    df_all_redact.columns=df_all_redact.columns.str.replace('_', ' ')
 
     if categories == False:
         df_all_redact.to_csv(f'output/{output_path}/tables/patient_counts{suffix}.csv')
@@ -535,7 +536,7 @@ def report_update_frequency(df_occ, definitions, time_delta, num_definitions, ou
             #plt.show()
             plt.savefig(f'output/{output_path}/figures/avg_update_frequency_{group}.png')
             
-def latest_common_comparison(df_clean, definitions, other_vars, output_path):
+def latest_common_comparison(df_clean, definitions, other_vars, output_path,code_dict=''):
     for definition in definitions:
         vars = [s for s in other_vars if s.startswith(definition)]
         df_subset = df_clean.loc[~df_clean[definition].isna()]
@@ -548,26 +549,49 @@ def latest_common_comparison(df_clean, definitions, other_vars, output_path):
         # display(check) 
         df_subset_3 = df_subset2.notnull().astype('int').reset_index()
         df_sum = redact_round_table(df_subset_3.groupby(definition).sum())
-        #sort columns alphabetically
-        df_sum.columns=df_sum.columns.str.replace(definition+'_', '')
-        df_sum = df_sum.reindex(sorted(df_sum.columns), axis=1)
         df_counts = pd.DataFrame(np.diagonal(df_sum),index=df_sum.index,columns=[f'matching (n={np.diagonal(df_sum).sum()})'])
 
         df_sum2 = df_sum.copy(deep=True)
         np.fill_diagonal(df_sum2.values, 0)
         df_diag = pd.DataFrame(df_sum2.sum(axis=1), columns=[f'not_matching (n={df_sum2.sum(axis=1).sum()})'])
         df_out = df_counts.merge(df_diag,right_index=True,left_index=True)
+        
+        #sort rows by category index
+        df_out=df_out.reset_index(level=0)
+        if code_dict!='': 
+            for x in code_dict[definition]:
+                df_out[definition] = df_out[definition].replace(code_dict[definition][x],x)
+            df_out=df_out.sort_values(definition)
+            for x in code_dict[definition]:
+                df_out[definition] = df_out[definition].replace(x,code_dict[definition][x])
+        df_out=df_out.set_index(definition)
+
         df_out = df_out.where(~df_out.isna(), '-')
         df_out.to_csv(f'output/{output_path}/tables/latest_common_simple_{definition}.csv')
-
-        df_sum = redact_round_table(df_subset_3.groupby(definition).sum())     
-        #sort columns alphabetically
+        df_sum = redact_round_table(df_subset_3.groupby(definition).sum())   
+        #sort columns by category index
         df_sum.columns=df_sum.columns.str.replace(definition+'_', '')
-        df_sum = df_sum.reindex(sorted(df_sum.columns), axis=1)
+        df_sum.columns=df_sum.columns.str.lower()
+        if code_dict!='':
+            for x in code_dict[definition]:
+                df_sum = df_sum.rename({code_dict[definition][x].lower():x}, axis='columns')
+            for x in code_dict[definition]:
+                df_sum = df_sum.rename({x:code_dict[definition][x].lower()}, axis='columns') 
+        else:
+            df_sum = df_sum.reindex(sorted(df_sum.columns), axis=1)       
+        #sort rows by category index
+        df_sum=df_sum.reset_index(level=0)
+        if code_dict!='': 
+            for x in code_dict[definition]:
+                df_sum[definition] = df_sum[definition].replace(code_dict[definition][x],x)
+            df_sum=df_sum.sort_values(definition)
+            for x in code_dict[definition]:
+                df_sum[definition] = df_sum[definition].replace(x,code_dict[definition][x])
+        df_sum=df_sum.set_index(definition)
+        df_sum.columns=df_sum.columns.str.replace('_', ' ')
         for col in df_sum.columns:
             df_sum = df_sum.rename(columns = {col:f'{col} (n={df_sum[col].sum()})'})
-        #display(df_sum)
-        df_sum = df_sum.where(~df_sum.isna(), '-')
+        df_sum = df_sum.where(~df_sum.isna(), '-')       
         df_sum.to_csv(f'output/{output_path}/tables/latest_common_expanded_{definition}.csv')
             
 def state_change(df_clean, definitions, other_vars, output_path,code_dict=''):
@@ -603,7 +627,5 @@ def state_change(df_clean, definitions, other_vars, output_path,code_dict=''):
             df_out = df_out.reindex(sorted(df_out.columns), axis=1)        
         # Null out the diagonal
         # np.fill_diagonal(df_out.values, np.nan)
-        # df_out = df_out.where(~df_out.isna(), '-')
-    
-        #display(df_out)
+        df_out = df_out.where(~df_out.isna(), '-')
         df_out.to_csv(f'output/{output_path}/tables/state_change_{definition}.csv')

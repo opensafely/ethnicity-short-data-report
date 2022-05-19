@@ -56,7 +56,7 @@ def main():
     # Generate heatmap of overlapping definitions
     display_heatmap(df_clean, definitions, output_path)
     # Latest v most common
-    latest_common_comparison(df_clean, definitions, other_vars_combined, output_path)
+    latest_common_comparison(df_clean, definitions, other_vars_combined, output_path,code_dict)
     # State change
     state_change(df_clean, definitions, other_vars_combined, output_path,code_dict)
     
