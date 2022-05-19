@@ -96,7 +96,7 @@ def import_clean(input_path, definitions, other_vars, demographic_covariates,
 
     return df_clean
 
-def patient_counts(df_clean, definitions, demographic_covariates, clinical_covariates, output_path, categories=False, missing=False):
+def patient_counts(df_clean, definitions, demographic_covariates, clinical_covariates, output_path,code_dict='',categories=False, missing=False):
     suffix = '_filled'
     subgroup = 'with records'
     overlap = 'all_filled'
@@ -109,8 +109,15 @@ def patient_counts(df_clean, definitions, demographic_covariates, clinical_covar
         li_cat = df_clean[definitions[0]].dropna().astype(str).sort_values().unique().tolist()
         for x in li_cat:
             for definition in definitions:
-                df_clean.loc[df_clean[definition] == x, f'{definition}_{x}_filled'] = 1 
-                li_cat_def.append(f'{definition}_{x}')
+                df_clean.loc[df_clean[definition] == x, f'{x}_{definition}_filled'] = 1 
+                li_cat_def.append(f'-{x}-{definition}')
+        if code_dict!='':
+            for i in code_dict[definition]:
+                li_cat_def = list(map(lambda x: x.replace(code_dict[definition][i],str(i) ), li_cat_def))
+            
+            li_cat_def=sorted(li_cat_def)
+            for i in code_dict[definition]:
+                li_cat_def = list(map(lambda x: x.replace(f"-{str(i)}-",f"{code_dict[definition][i]}_"), li_cat_def))
         definitions = li_cat_def
 
     # All with measurement

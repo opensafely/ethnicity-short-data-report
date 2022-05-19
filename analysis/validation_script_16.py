@@ -53,7 +53,7 @@ def main():
     # Count patients without records
     patient_counts(df_clean, definitions, demographic_covariates, clinical_covariates, output_path, missing=True)
     # Count patients by categories 
-    patient_counts(df_clean, definitions, demographic_covariates, clinical_covariates, output_path, categories=True)
+    patient_counts(df_clean, definitions, demographic_covariates, clinical_covariates, output_path,code_dict, categories=True)
     # Generate heatmap of overlapping definitions
     display_heatmap(df_clean, definitions, output_path)
     # Latest v most common
