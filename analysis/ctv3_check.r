@@ -5,7 +5,7 @@ fs::dir_create(here::here("output","tables"))
 
 # # import data
 df_input <- read_csv(here::here("output","input_ctv3.csv"))
-df_input$ethnicity_ctv3[which(df_input$ethnicity_ctv3=="Y9930"& df_input$ethnicity_new_5=="0")]<-NA
+
 df<-df_input %>% 
   mutate(ethnicity_new_5=case_when(is.na(ethnicity_new_5)~"Missing",
                                    ethnicity_new_5==0~"Unknown")) %>%
