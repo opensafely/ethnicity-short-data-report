@@ -111,7 +111,7 @@ actions:
       highly_sensitive:
         cohort: output/input_ctv3.csv
 
-  initial_counts:
+  ctv3_check:
     run: r:latest analysis/ctv3_check.r
     needs: [generate_cohort_ctv3]
     outputs:      
