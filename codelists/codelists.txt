@@ -10,3 +10,5 @@ user/rohini-mathur/ethnicity_group8/6633cd9f
 user/rohini-mathur/ethnicity_group9/4d245a6a
 user/rohini-mathur/ethnicity_group10/3414e735
 user/candrews/snomed_ethnicity_cda/2597fdea
+opensafely/ethnicity/2020-04-27/
+user/candrews/full_ethnicity_coded/6281e42c/

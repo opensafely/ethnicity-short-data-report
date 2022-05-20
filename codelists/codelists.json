@@ -71,6 +71,18 @@
       "url": "https://codelists.opensafely.org/codelist/user/candrews/snomed_ethnicity_cda/2597fdea/",
       "downloaded_at": "2022-05-09 14:40:32.906673Z",
       "sha": "9a620759d946d7c627cfa8177d2aef5854b4b305"
+    },
+    "opensafely-ethnicity.csv": {
+      "id": "opensafely/ethnicity/2020-04-27",
+      "url": "https://codelists.opensafely.org/codelist/opensafely/ethnicity/2020-04-27/",
+      "downloaded_at": "2022-05-20 11:10:53.467718Z",
+      "sha": "3d2f3998b71863a80b24d60f6f4282e14191ae13"
+    },
+    "user-candrews-full_ethnicity_coded.csv": {
+      "id": "user/candrews/full_ethnicity_coded/6281e42c",
+      "url": "https://codelists.opensafely.org/codelist/user/candrews/full_ethnicity_coded/6281e42c/",
+      "downloaded_at": "2022-05-20 11:10:53.655605Z",
+      "sha": "1144d00ee7bfc5ccc837fca647921ff9bc8e743d"
     }
   }
 }
