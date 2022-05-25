@@ -4,7 +4,10 @@ library('sf')
 fs::dir_create(here::here("output","tables"))
 
 # # import data
-df_input <- read_csv(here::here("output","input_ctv3.csv"))
+df_input <- read_csv(here::here("output","input_ctv3.csv"),
+                     col_types = cols_only(
+                      ethnicity_new_5 = col_integer(),
+                      ethnicity_ctv3 = col_character()))
 
 df<-df_input %>% 
   filter(is.na(ethnicity_new_5) | ethnicity_new_5 == 0) %>%
