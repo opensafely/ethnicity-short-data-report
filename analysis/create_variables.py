@@ -70,7 +70,7 @@ clinical_variables = dict(
                 include_date_of_match=False,
                 return_expectations={
                     "category": {
-                        "ratios": {"1": 0.2, "2": 0.2, "3": 0.2, "4": 0.2, "5": 0.2}
+                        "ratios": {"0":0.1,"1": 0.5, "2": 0.1, "3": 0.1, "4": 0.1, "5": 0.1}
                     },
                     "incidence": 0.75,
                 },
