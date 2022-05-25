@@ -23,6 +23,7 @@ def import_clean(
     other_vars,
     demographic_covariates,
     clinical_covariates,
+    reg,
     null,
     date_min,
     date_max,
@@ -30,9 +31,15 @@ def import_clean(
     output_path,
     code_dict="",
     dates=False,
+    registered=True,
 ):
     # Import
     df_import = pd.read_feather(input_path)
+
+    # restrict to registered as of indes date
+    if registered == True:
+        df_import = df_import[df_import[reg]]
+
     # Dates
     if dates == True:
         date_vars = [definition + "_date" for definition in definitions]
