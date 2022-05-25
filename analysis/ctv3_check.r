@@ -7,9 +7,9 @@ fs::dir_create(here::here("output","tables"))
 df_input <- read_csv(here::here("output","input_ctv3.csv"))
 
 df<-df_input %>% 
+  filter(is.na(ethnicity_new_5) | ethnicity_new_5 == 0) %>%
   mutate(ethnicity_new_5=case_when(is.na(ethnicity_new_5)~"Missing",
                                    ethnicity_new_5==0~"Unknown")) %>%
-  drop_na(ethnicity_new_5) %>%
   group_by(ethnicity_new_5,ethnicity_ctv3) %>%
   summarise(N=n())  %>% 
   mutate(N=case_when(N>5~N))

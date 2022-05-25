@@ -9,3 +9,4 @@ venv/
 .Rproj.user/*
 .Rhistory
 ethnicity-short-data-report.Rproj
+.Rproj.user
