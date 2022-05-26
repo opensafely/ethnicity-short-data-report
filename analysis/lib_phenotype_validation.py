@@ -928,3 +928,137 @@ def state_change(df_clean, definitions, other_vars, output_path, code_dict=""):
         df_out = df_out.where(~df_out.isna(), "-")
         df_out.to_csv(f"output/{output_path}/tables/state_change_{definition}.csv")
 
+
+def simple_latest_common_comparison(df_clean, definitions, other_vars, output_path):
+    for definition in definitions:
+        vars = [s for s in other_vars if s.startswith(definition)]
+        df_subset = df_clean.loc[~df_clean[definition].isna()]
+        df_subset=df_subset[[definition]+vars].set_index(definition)
+        df_subset=df_subset.replace(0,np.nan)
+        df_subset2 = df_subset.where(df_subset.eq(df_subset.max(1),axis=0))
+        df_subset_3 = df_subset2.notnull().astype('int').reset_index()
+        df_sum = redact_round_table(df_subset_3.groupby(definition).sum())
+        df_sum.to_csv(f'output/{output_path}/tables/simple_latest_common_{definition}.csv')
+
+
+def simple_state_change(df_clean, definitions, other_vars, output_path):
+    for definition in definitions:
+        vars = [s for s in other_vars if s.startswith(definition)]
+        df_subset = (
+            df_clean[[definition] + vars]
+            .replace(0, np.nan)
+            .set_index(definition)
+            .reset_index()
+        )
+        df_subset["n"] = 1
+        # Count
+        df_subset2 = df_subset.loc[~df_subset[definition].isna()]
+        df_subset3 = redact_round_table(
+            df_subset2.groupby(definition).count()
+        ).reset_index()
+        df_subset3.to_csv(f"output/{output_path}/tables/simple_state_change_{definition}.csv")
+
+
+def simple_patient_counts(
+    df_clean,
+    definitions,
+    demographic_covariates,
+    clinical_covariates,
+    output_path,
+    categories=False,
+):
+    suffix = "_filled"
+    subgroup = "with records"
+    if categories == True:
+        li_cat_def = []
+        li_cat = (
+            df_clean[definitions[0]]
+            .dropna()
+            .astype(str)
+            .sort_values()
+            .unique()
+            .tolist()
+        )
+        for x in li_cat:
+            for definition in definitions:
+                df_clean.loc[df_clean[definition] == x, f"{x}_{definition}_filled"] = 1
+                li_cat_def.append(f"{x}_{definition}")
+        definitions = li_cat_def
+
+    # All with measurement
+    li_filled = []
+    for definition in definitions:
+        df_temp = (
+            df_clean[["patient_id", definition + suffix]]
+            .drop_duplicates()
+            .dropna()
+            .set_index("patient_id")
+        )
+        li_filled.append(df_temp)
+
+    df_temp = (
+        df_clean[["patient_id", "all_filled","all_missing"]]
+        .drop_duplicates()
+        .dropna()
+        .set_index("patient_id")
+    )
+    li_filled.append(df_temp)
+
+    df_temp2 = pd.concat(li_filled, axis=1)
+    df_temp2["population"] = 1
+    # Remove list from memory
+    del li_filled
+    df_all = pd.DataFrame(df_temp2.sum()).T
+    df_all["group"], df_all["subgroup"] = ["all", subgroup]
+    df_all = df_all.set_index(["group", "subgroup"])
+
+    # By group
+    li_group = []
+    for group in demographic_covariates + clinical_covariates:
+        li_filled_group = []
+        for definition in definitions:
+            df_temp = (
+                df_clean[["patient_id", definition + suffix, group]]
+                .drop_duplicates()
+                .dropna()
+                .reset_index(drop=True)
+            )
+            li_filled_group.append(df_temp)
+
+        df_temp = (
+            df_clean[["patient_id", "all_filled","all_missing", group]]
+            .drop_duplicates()
+            .dropna()
+            .reset_index(drop=True)
+        )
+        li_filled_group.append(df_temp)
+
+        df_reduce = reduce(
+            lambda df1, df2: pd.merge(df1, df2, on=["patient_id", group], how="outer"),
+            li_filled_group,
+        )
+        df_reduce["population"] = 1
+        # Remove list from memory
+        del li_filled_group
+        df_reduce2 = (
+            df_reduce.sort_values(by=group)
+            .drop(columns=["patient_id"])
+            .groupby(group)
+            .sum()
+            .reset_index()
+        )
+        df_reduce2["group"] = group
+        df_reduce2 = df_reduce2.rename(columns={group: "subgroup"})
+        li_group.append(df_reduce2)
+    df_all_group = pd.concat(li_group, axis=0, ignore_index=True).set_index(
+        ["group", "subgroup"]
+    )
+    # Remove list from memory
+    del li_group
+
+    # Redact
+    df_append = redact_round_table(df_all.append(df_all_group))
+    if categories:
+        df_append.to_csv(f"output/{output_path}/tables/simple_patient_counts_categories.csv")
+    else:
+        df_append.to_csv(f"output/{output_path}/tables/simple_patient_counts.csv")

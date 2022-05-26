@@ -58,3 +58,18 @@ actions:
         notebook: output/report_ethnicity_rp_16_registered.html
   
 
+  execute_simple_validation_analyses:
+    run: python:latest python analysis/simple_validation_script.py
+    needs: [generate_study_population]
+    outputs:
+      moderately_sensitive: 
+        tables: output/phenotype_validation_ethnicity/5/registered/tables/simple*.csv
+        figures: output/phenotype_validation_ethnicity/5/registered/figures/h*.png
+  
+  execute_simple_validation_analyses_16:
+    run: python:latest python analysis/simple_validation_script_16.py
+    needs: [generate_study_population]
+    outputs:
+      moderately_sensitive: 
+        tables: output/phenotype_validation_ethnicity/16/registered/tables/simple*.csv
+        figures: output/phenotype_validation_ethnicity/16/registered/figures/h*.png
