@@ -73,3 +73,10 @@ actions:
       moderately_sensitive: 
         tables: output/phenotype_validation_ethnicity/16/registered/tables/simple*.csv
         figures: output/phenotype_validation_ethnicity/16/registered/figures/h*.png
+
+  local_generate_report_ethnicity:
+    run: python:latest jupyter nbconvert /workspace/notebooks_jupyter/local_report_ethnicity.ipynb --execute --to html --template basic --output-dir=/workspace/local --ExecutePreprocessor.timeout=86400 --no-input
+    needs: []
+    outputs:
+      moderately_sensitive:
+        notebook: local/local_report_ethnicity.html
