@@ -1095,6 +1095,16 @@ def simple_patient_counts(
 
 
 def upset(df_clean, output_path, comparator_1, comparator_2):
+    # create csv for output checking
+    upset_output_check = df_clean[[comparator_1, comparator_2]]
+    upset_output_check[comparator_1] = df_clean[comparator_1].fillna("Unknown")
+    upset_output_check[comparator_2] = df_clean[comparator_2].fillna("Unknown")
+    upset_output_check = pd.crosstab(
+        upset_output_check[comparator_1], upset_output_check[comparator_2]
+    )
+    upset_output_check.to_csv(f"output/{output_path}/figures/upset_output_check.csv")
+    del upset_output_check
+
     upset_df = df_clean.set_index(~df_clean[comparator_1].isnull())
     upset_df = upset_df.set_index(~upset_df[comparator_2].isnull(), append=True)
 

@@ -34,4 +34,4 @@ actions:
       moderately_sensitive: 
         tables: output/phenotype_validation_ethnicity/5/registered/tables/simple*.csv
         figures: output/phenotype_validation_ethnicity/5/registered/figures/upset*.png
-  
+        figures_outputcheck: output/phenotype_validation_ethnicity/5/registered/figures/upset*.csv
