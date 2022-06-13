@@ -64,7 +64,7 @@ actions:
     outputs:
       moderately_sensitive: 
         tables: output/phenotype_validation_ethnicity/5/registered/tables/simple*.csv
-        figures: output/phenotype_validation_ethnicity/5/registered/figures/h*.png
+        figures: output/phenotype_validation_ethnicity/5/registered/figures/upset*.png
   
   execute_simple_validation_analyses_16:
     run: python:latest python analysis/simple_validation_script_16.py
@@ -72,7 +72,7 @@ actions:
     outputs:
       moderately_sensitive: 
         tables: output/phenotype_validation_ethnicity/16/registered/tables/simple*.csv
-        figures: output/phenotype_validation_ethnicity/16/registered/figures/h*.png
+        figures: output/phenotype_validation_ethnicity/16/registered/figures/upset*.png
 
   local_generate_report_ethnicity:
     run: python:latest jupyter nbconvert /workspace/notebooks_jupyter/local_report_ethnicity.ipynb --execute --to html --template basic --output-dir=/workspace/local --ExecutePreprocessor.timeout=86400 --no-input
