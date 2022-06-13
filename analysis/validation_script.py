@@ -97,8 +97,9 @@ def main():
         code_dict,
         categories=True,
     )
-    # Generate heatmap of overlapping definitions
-    display_heatmap(df_clean, definitions, output_path)
+    # Generate upset plot of overlapping definitions
+    upset(df_clean, definitions[1], definitions[0])
+    upset_cat(df_clean, definitions[1], definitions[0])
     # Latest v most common
     latest_common_comparison(
         df_clean, definitions, other_vars_combined, output_path, code_dict

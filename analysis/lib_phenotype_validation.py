@@ -6,9 +6,11 @@ import os
 import pandas as pd
 import seaborn as sns
 
+from matplotlib import cm
 from ebmdatalab import charts
 from functools import reduce
 from matplotlib import pyplot as plt
+from upsetplot import *
 
 
 def redact_round_table(df_in):
@@ -32,6 +34,7 @@ def import_clean(
     code_dict="",
     dates=False,
     registered=True,
+    dates_check=True,
 ):
     # Import
     df_import = pd.read_feather(input_path)
@@ -87,6 +90,8 @@ def import_clean(
             df_import[key] = df_import[key].astype(float)
             df_import[key] = df_import[key].replace(code_dict[key])
     # Subset to relevant columns
+    if dates_check:
+        dates = [f"{definition}_date" for definition in definitions]
     df_clean = df_import[
         ["patient_id"]
         + definitions
@@ -95,6 +100,7 @@ def import_clean(
         + date_diff_vars
         + demographic_covariates
         + clinical_covariates
+        + dates
     ]
     # Limit to relevant date range
     df_clean = df_clean.sort_values(by="patient_id").reset_index(drop=True)
@@ -929,20 +935,35 @@ def state_change(df_clean, definitions, other_vars, output_path, code_dict=""):
         df_out.to_csv(f"output/{output_path}/tables/state_change_{definition}.csv")
 
 
-def simple_latest_common_comparison(df_clean, definitions, other_vars, output_path):
+def simple_latest_common_comparison(
+    df_clean, definitions, other_vars, output_path, missing_check=False
+):
     for definition in definitions:
+        if missing_check:
+            df_clean = df_clean[df_clean[f"{definition}_date"] == "1900-01-01"]
         vars = [s for s in other_vars if s.startswith(definition)]
         df_subset = df_clean.loc[~df_clean[definition].isna()]
-        df_subset=df_subset[[definition]+vars].set_index(definition)
-        df_subset=df_subset.replace(0,np.nan)
-        df_subset2 = df_subset.where(df_subset.eq(df_subset.max(1),axis=0))
-        df_subset_3 = df_subset2.notnull().astype('int').reset_index()
+        df_subset = df_subset[[definition] + vars].set_index(definition)
+        df_subset = df_subset.replace(0, np.nan)
+        df_subset2 = df_subset.where(df_subset.eq(df_subset.max(1), axis=0))
+        df_subset_3 = df_subset2.notnull().astype("int").reset_index()
         df_sum = redact_round_table(df_subset_3.groupby(definition).sum())
-        df_sum.to_csv(f'output/{output_path}/tables/simple_latest_common_{definition}.csv')
+        if missing_check:
+            df_sum.to_csv(
+                f"output/{output_path}/tables/simple_latest_common_{definition}_missing.csv"
+            )
+        else:
+            df_sum.to_csv(
+                f"output/{output_path}/tables/simple_latest_common_{definition}.csv"
+            )
 
 
-def simple_state_change(df_clean, definitions, other_vars, output_path):
+def simple_state_change(
+    df_clean, definitions, other_vars, output_path, missing_check=False
+):
     for definition in definitions:
+        if missing_check:
+            df_clean = df_clean[df_clean[f"{definition}_date"] == "1900-01-01"]
         vars = [s for s in other_vars if s.startswith(definition)]
         df_subset = (
             df_clean[[definition] + vars]
@@ -956,7 +977,14 @@ def simple_state_change(df_clean, definitions, other_vars, output_path):
         df_subset3 = redact_round_table(
             df_subset2.groupby(definition).count()
         ).reset_index()
-        df_subset3.to_csv(f"output/{output_path}/tables/simple_state_change_{definition}.csv")
+        if missing_check:
+            df_subset3.to_csv(
+                f"output/{output_path}/tables/simple_state_change_{definition}_missing.csv"
+            )
+        else:
+            df_subset3.to_csv(
+                f"output/{output_path}/tables/simple_state_change_{definition}.csv"
+            )
 
 
 def simple_patient_counts(
@@ -997,7 +1025,7 @@ def simple_patient_counts(
         li_filled.append(df_temp)
 
     df_temp = (
-        df_clean[["patient_id", "all_filled","all_missing"]]
+        df_clean[["patient_id", "all_filled", "all_missing"]]
         .drop_duplicates()
         .dropna()
         .set_index("patient_id")
@@ -1026,7 +1054,7 @@ def simple_patient_counts(
             li_filled_group.append(df_temp)
 
         df_temp = (
-            df_clean[["patient_id", "all_filled","all_missing", group]]
+            df_clean[["patient_id", "all_filled", "all_missing", group]]
             .drop_duplicates()
             .dropna()
             .reset_index(drop=True)
@@ -1059,6 +1087,67 @@ def simple_patient_counts(
     # Redact
     df_append = redact_round_table(df_all.append(df_all_group))
     if categories:
-        df_append.to_csv(f"output/{output_path}/tables/simple_patient_counts_categories.csv")
+        df_append.to_csv(
+            f"output/{output_path}/tables/simple_patient_counts_categories.csv"
+        )
     else:
         df_append.to_csv(f"output/{output_path}/tables/simple_patient_counts.csv")
+
+
+def upset(df_clean, output_path, comparator_1, comparator_2):
+    # create csv for output checking
+    upset_output_check = df_clean[[comparator_1, comparator_2]]
+    upset_output_check[comparator_1] = df_clean[comparator_1].fillna("Unknown")
+    upset_output_check[comparator_2] = df_clean[comparator_2].fillna("Unknown")
+    upset_output_check = pd.crosstab(
+        upset_output_check[comparator_1], upset_output_check[comparator_2]
+    )
+    upset_output_check.to_csv(f"output/{output_path}/figures/upset_output_check.csv")
+    del upset_output_check
+
+    upset_df = df_clean.set_index(~df_clean[comparator_1].isnull())
+    upset_df = upset_df.set_index(~upset_df[comparator_2].isnull(), append=True)
+
+    upset_df[comparator_1] = upset_df[comparator_1].fillna("Unknown")
+    upset = UpSet(upset_df, intersection_plot_elements=0)
+
+    upset.add_stacked_bars(
+        by=comparator_1, colors=cm.Pastel1, title="Count by ethnicity", elements=10
+    )
+
+    upset.plot()
+    plt.savefig(f"output/{output_path}/figures/upset_{comparator_1}_{comparator_2}.png")
+
+
+def upset_cat(df_clean, output_path, comparator_1, comparator_2, other_vars):
+    upset_cat_df = pd.DataFrame(df_clean[comparator_1])
+    for definition in [comparator_1, comparator_2]:
+        for var in other_vars:
+            upset_cat_df[f"{var}_{definition}"] = (
+                df_clean[definition].str.lower() == var
+            )
+
+    for definition in [comparator_1, comparator_2]:
+        for var in other_vars:
+            if var == other_vars[0] and definition == comparator_1:
+                upset_cat_df = upset_cat_df.set_index(
+                    upset_cat_df[f"{var}_{definition}"] == True
+                )
+            else:
+                upset_cat_df = upset_cat_df.set_index(
+                    upset_cat_df[f"{var}_{definition}"] == True, append=True
+                )
+            upset_cat_df.drop([f"{var}_{definition}"], axis=1, inplace=True)
+
+    upset_cat_df[comparator_1] = upset_cat_df[comparator_1].fillna("Unknown")
+    upset_cat = UpSet(upset_cat_df, intersection_plot_elements=0)
+
+    upset_cat.add_stacked_bars(
+        by=comparator_1, colors=cm.Pastel1, title="Count by ethnicity", elements=10
+    )
+
+    upset_cat.plot()
+    plt.savefig(
+        f"output/{output_path}/figures/upset_category_{comparator_1}_{comparator_2}.png"
+    )
+

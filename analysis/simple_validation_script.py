@@ -73,6 +73,7 @@ def main():
         code_dict,
         dates,
         registered,
+        dates_check=True,
     )
     # Count patients with records
     simple_patient_counts(
@@ -88,14 +89,21 @@ def main():
         output_path,
         categories=True,
     )
-    # Generate heatmap of overlapping definitions
-    display_heatmap(df_clean, definitions, output_path)
+    # Generate upset plot of overlapping definitions
+    upset(df_clean, output_path, definitions[1], definitions[0])
+    upset_cat(df_clean, output_path, definitions[1], definitions[0], other_vars)
     # Latest v most common
     simple_latest_common_comparison(
         df_clean, definitions, other_vars_combined, output_path
     )
+    simple_latest_common_comparison(
+        df_clean, definitions, other_vars_combined, output_path, missing_check=True
+    )
     # State change
     simple_state_change(df_clean, definitions, other_vars_combined, output_path)
+    simple_state_change(
+        df_clean, definitions, other_vars_combined, output_path, missing_check=True
+    )
 
 
 ########################## DO NOT EDIT – RUNS SCRIPT ##############################

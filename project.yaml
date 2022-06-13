@@ -27,49 +27,11 @@ actions:
       moderately_sensitive:
         dataset_report: output/data/input.html
 
-  execute_validation_analyses:
-    run: python:latest python analysis/validation_script.py
-    needs: [generate_study_population]
-    outputs:
-      moderately_sensitive: 
-        tables: output/phenotype_validation_ethnicity/5/registered/tables/*.csv
-        figures: output/phenotype_validation_ethnicity/5/registered/figures/*.png
-  
-  execute_validation_analyses_16:
-    run: python:latest python analysis/validation_script_16.py
-    needs: [generate_study_population]
-    outputs:
-      moderately_sensitive: 
-        tables: output/phenotype_validation_ethnicity/16/registered/tables/*.csv
-        figures: output/phenotype_validation_ethnicity/16/registered/figures/*.png
-
-  generate_report_ethnicity:
-    run: python:latest jupyter nbconvert /workspace/notebooks_jupyter/report_ethnicity_rp_registered.ipynb --execute --to html --template basic --output-dir=/workspace/output --ExecutePreprocessor.timeout=86400 --no-input
-    needs: [execute_validation_analyses]
-    outputs:
-      moderately_sensitive:
-        notebook: output/report_ethnicity_rp_registered.html
-
-  generate_report_ethnicity_16:
-    run: python:latest jupyter nbconvert /workspace/notebooks_jupyter/report_ethnicity_rp_16_registered.ipynb --execute --to html --template basic --output-dir=/workspace/output --ExecutePreprocessor.timeout=86400 --no-input
-    needs: [execute_validation_analyses_16]
-    outputs:
-      moderately_sensitive:
-        notebook: output/report_ethnicity_rp_16_registered.html
-  
-
   execute_simple_validation_analyses:
     run: python:latest python analysis/simple_validation_script.py
     needs: [generate_study_population]
     outputs:
       moderately_sensitive: 
         tables: output/phenotype_validation_ethnicity/5/registered/tables/simple*.csv
-        figures: output/phenotype_validation_ethnicity/5/registered/figures/h*.png
-  
-  execute_simple_validation_analyses_16:
-    run: python:latest python analysis/simple_validation_script_16.py
-    needs: [generate_study_population]
-    outputs:
-      moderately_sensitive: 
-        tables: output/phenotype_validation_ethnicity/16/registered/tables/simple*.csv
-        figures: output/phenotype_validation_ethnicity/16/registered/figures/h*.png
+        figures: output/phenotype_validation_ethnicity/5/registered/figures/upset*.png
+        figures_outputcheck: output/phenotype_validation_ethnicity/5/registered/figures/upset*.csv
