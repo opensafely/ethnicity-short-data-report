@@ -6,7 +6,11 @@ from lib_phenotype_validation import *
 input_path = "output/data/input.feather"
 
 # Definitions
-definitions = ["ethnicity_5", "ethnicity_new_5", "ethnicity_primis_5"]
+definitions = [
+    "ethnicity_5",
+    "ethnicity_new_5",
+    "ethnicity_primis_5",
+]
 
 # Code dictionary
 code_dict = {
@@ -29,7 +33,9 @@ other_vars_combined = [x + "_" + y for x in definitions for y in other_vars]
 
 # Restrict to registered as of index date
 registered = True
-reg = "registered"
+reg = "fullset"
+if registered == True:
+    reg = "registered"
 
 # Dates
 dates = False
@@ -49,9 +55,8 @@ demographic_covariates = ["age_band", "sex", "region", "imd"]
 clinical_covariates = ["dementia", "diabetes", "hypertension", "learning_disability"]
 
 # Output filepath
-output_path = "phenotype_validation_ethnicity/5"
-if registered == True:
-    output_path = output_path + "/registered"
+output_path = "simplified_output"
+grouping = "5_group"
 
 ########################## SPECIFY ANALYSES TO RUN HERE ##############################
 
@@ -70,43 +75,52 @@ def main():
         date_max,
         time_delta,
         output_path,
+        grouping,
         code_dict,
-        dates,
-        registered,
+        dates=False,
+        registered = registered,
         dates_check=True,
     )
     # Count patients with records
     simple_patient_counts(
-        df_clean, definitions, demographic_covariates, clinical_covariates, output_path
+        df_clean, definitions,reg, demographic_covariates, clinical_covariates, output_path,grouping,
     )
 
     # Count patients by categories
     simple_patient_counts(
         df_clean,
         definitions,
+        reg,
         demographic_covariates,
         clinical_covariates,
         output_path,
+        grouping,
         categories=True,
     )
-    # Generate upset plot of overlapping definitions
-    upset(df_clean, output_path, definitions[1], definitions[0])
-    upset_cat(df_clean, output_path, definitions[1], definitions[0], other_vars)
+    # # Generate upset plot of overlapping definitions
+    # upset(df_clean_reg, output_path, definitions[1], definitions[0])
+    # upset_cat(df_clean, output_path, definitions[1], definitions[0], other_vars)
     # Latest v most common
     simple_latest_common_comparison(
-        df_clean, definitions, other_vars_combined, output_path
+        df_clean, definitions,reg, other_vars_combined, output_path,grouping,
     )
     simple_latest_common_comparison(
-        df_clean, definitions, other_vars_combined, output_path, missing_check=True
+        df_clean, definitions,reg, other_vars_combined, output_path,grouping, missing_check=True,
     )
     # State change
-    simple_state_change(df_clean, definitions, other_vars_combined, output_path)
+    simple_state_change(df_clean, definitions,reg, other_vars_combined, output_path,grouping,)
     simple_state_change(
-        df_clean, definitions, other_vars_combined, output_path, missing_check=True
+        df_clean, definitions,reg, other_vars_combined, output_path,grouping, missing_check=True
     )
 
 
 ########################## DO NOT EDIT – RUNS SCRIPT ##############################
+
+if __name__ == "__main__":
+    main()
+
+registered = False
+reg = "fullset"
 
 if __name__ == "__main__":
     main()
