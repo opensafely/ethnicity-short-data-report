@@ -3,18 +3,12 @@
 ################ RUN LOCALLY ###################################################
 #
 # input:  downloaded va Nomis:(https://www.nomisweb.co.uk/query/select/getdatasetbytheme.asp?opt=3&theme=&subgrp=)
-#        data/populationbyimdenglandandwales2020.xlsx
-#        data/nomis_2021_11_22_110504.xlsx
-#        data/nomis_2021_11_22_104904.xlsx
 #        data/nomis_2021_11_22_213653.xlsx
 #
-# output: /data/death_ons.csv.gz
-#         /data/imd_ons.csv.gz
-#         /data/age_ons_sex.csv.gz
-#         /data/ethnicity_ons.csv.gz
+# output: /data/ethnicity_ons.csv.gz
 #
 # Author: Colm D Andrews
-# Date: 26/11/2021
+# Date: 14/07/2022
 #
 ################################################################################
 
@@ -49,7 +43,7 @@ eth_16_ons<-eth_ons %>%
   group_by(region) %>%
   mutate(Total=sum(N),
          percentage=N/Total*100,
-         group="16_2001")
+         group="16")
 
 eth_5_ons<-eth_ons %>%
   select(-Ethnic_Group) %>%
@@ -59,11 +53,11 @@ eth_5_ons<-eth_ons %>%
   group_by(region) %>%
   mutate(Total=sum(N),
          percentage=N/Total*100,
-         group="5_2001") %>%
+         group="5") %>%
   rename("Ethnic_Group" = "Ethnic_Group5")
 
-eth_ons_2001 <-eth_5_ons %>%
+eth_ons_2011 <-eth_5_ons %>%
   bind_rows(eth_16_ons) %>%
   mutate(cohort="ONS")
   
-write_csv(eth_ons_2001,here::here("data","ethnicity_ons.csv.gz")) 
+write_csv(eth_ons_2011,here::here("data","ethnicity_ons.csv.gz")) 

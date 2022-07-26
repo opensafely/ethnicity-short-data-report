@@ -32,6 +32,4 @@ actions:
     needs: [generate_study_population]
     outputs:
       moderately_sensitive: 
-        tables: output/phenotype_validation_ethnicity/5/registered/tables/simple*.csv
-        figures: output/phenotype_validation_ethnicity/5/registered/figures/upset*.png
-        figures_outputcheck: output/phenotype_validation_ethnicity/5/registered/figures/upset*.csv
+        tables: output/simplified_output/5_group/tables/simple*.csv
