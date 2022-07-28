@@ -16,8 +16,7 @@ library('tidyverse')
 library('gtsummary')
 # library('ggalluvial')
 
-fs::dir_create(here::here("output","tables"))
-fs::dir_create(here::here("output","plots"))
+fs::dir_create(here::here("output","ons"))
 
 ## import data
 eth_ons<-read_csv(here::here("data","ethnicity_ons.csv.gz"))
@@ -132,4 +131,18 @@ ethnicity2 <- ethnicity_unrounded %>%
          Total=round(Total/5)*5,
          percentage=N/Total * 100) 
 
-write_csv(ethnicity2,here::here("output", "tables","ethnic_group.csv")) 
+write_csv(ethnicity2,here::here("output", "ons","ethnic_group.csv")) 
+
+
+#### NA removed
+
+ethnicity_na<-ethnicity_unrounded %>%
+  drop_na(Ethnic_Group) %>%
+  group_by(group,cohort, region) %>%
+  mutate(
+    Total=sum(N),
+    N=round(N/5)*5,
+    Total=round(Total/5)*5,
+    percentage=N/Total * 100) 
+
+write_csv(ethnicity_na,here::here("output", "ons","ethnic_group_NA.csv"))
