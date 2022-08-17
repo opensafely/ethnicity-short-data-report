@@ -46,8 +46,8 @@ actions:
     needs: [generate_study_population]
     outputs:
       moderately_sensitive:
-        data: output/ons/ethnic_group.csv
-        data2: output/ons/ethnic_group_NA.csv
+        data: output/ons/ethnic_group*.csv
+        data2: output/ons/ethnic_group_NA*.csv
 
   ons_plot:
     run: r:latest analysis/ons_plots.R

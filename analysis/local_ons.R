@@ -16,120 +16,18 @@
 library(tidyverse)
 library(scales)
 library(readr)
+library(ggsci)
 library(ggpubr)
 
-fs::dir_create(here::here("output", "ons"))
-fs::dir_create(here::here("output", "ons", "na_removed"))
-
-############### ethnicity
-ethnicity <-
-  read_csv(here::here("output", "ons", "ethnic_group_registered.csv"))
-
-ethnicity_plot <- ethnicity %>%
-  filter(region != "England", group == "5") %>%
-  ggplot(aes(x = Ethnic_Group, y = percentage, fill = cohort)) +
-  geom_bar(stat = "identity", position = "dodge") +
-  facet_wrap( ~ region) +
-  theme_classic() +
-  theme(text = element_text(size = 20)) +
-  theme(axis.text.x = element_text(
-    size = 20,
-    hjust = 0,
-    vjust = 0
-  )) +
-  coord_flip() +
-  xlab("") + ylab("Percentage of all ethnicities")
-
-
-
-ggsave(
-  filename = here::here("output", "ons", "ethnicity_count.png"),
-  ethnicity_plot,
-  dpi = 600,
-  width = 45,
-  height = 30,
-  units = "cm"
-)
-
-
-
-ethnicity_plot_eng <- ethnicity %>%
-  filter(region == "England", group == "5") %>%
-  ggplot(aes(x = Ethnic_Group, y = percentage, fill = cohort)) +
-  geom_bar(stat = "identity", position = "dodge") +
-  theme_classic() +
-  theme(text = element_text(size = 20)) +
-  theme(axis.text.x = element_text(
-    size = 20,
-    hjust = 0,
-    vjust = 0
-  )) +
-  coord_flip() +
-  xlab("") + ylab("Percentage of all ethnicities")
-
-ggsave(
-  filename = here::here("output", "ons", "ethnicity_count_eng.png"),
-  ethnicity_plot_eng,
-  dpi = 600,
-  width = 30,
-  height = 30,
-  units = "cm"
-)
-
-
-ethnicity_plot16 <- ethnicity %>%
-  filter(region != "England", group == "16") %>%
-  ggplot(aes(x = Ethnic_Group, y = percentage, fill = cohort)) +
-  geom_bar(stat = "identity", position = "dodge") +
-  facet_wrap( ~ region) +
-  theme_classic() +
-  theme(text = element_text(size = 20)) +
-  theme(axis.text.x = element_text(
-    size = 20,
-    hjust = 0,
-    vjust = 0
-  )) +
-  coord_flip() +
-  xlab("") + ylab("Percentage of all ethnicities")
-
-ggsave(
-  filename = here::here("output", "ons", "ethnicity16_count.png"),
-  ethnicity_plot16,
-  dpi = 600,
-  width = 45,
-  height = 30,
-  units = "cm"
-)
-
-ethnicity_plot16_eng <- ethnicity %>%
-  filter(region == "England", group == "16") %>%
-  ggplot(aes(x = Ethnic_Group, y = percentage, fill = cohort)) +
-  geom_bar(stat = "identity", position = "dodge") +
-  theme_classic() +
-  theme(text = element_text(size = 20)) +
-  theme(axis.text.x = element_text(
-    size = 20,
-    hjust = 0,
-    vjust = 0
-  )) +
-  coord_flip() +
-  xlab("") + ylab("Percentage of all ethnicities")
-
-ggsave(
-  filename = here::here("output", "ons", "ethnicity16_count_eng.png"),
-  ethnicity_plot16_eng,
-  dpi = 600,
-  width = 30,
-  height = 30,
-  units = "cm"
-)
-
-
+fs::dir_create(here::here("output", "local", "ons"))
+fs::dir_create(here::here("output", "local", "ons", "na_removed"))
 
 ####### NA removed
 
 ethnicity_na <-
-  read_csv(here::here("output", "ons", "ethnic_group_NA_registered.csv")) 
+  read_csv(here::here("output", "local","ons", "ethnic_group_NA.csv"),col_types =(cols())) %>%
+  mutate(cohort = fct_relevel(cohort, 
+                              "ONS", "CTV3","SNOMED"))
 
 
 ethnicity_plot16_eng_na <-  ethnicity_na %>%
@@ -143,12 +41,13 @@ ethnicity_plot16_eng_na <-  ethnicity_na %>%
     hjust = 0,
     vjust = 0
   )) +
-  coord_flip() +
+  coord_flip()  + scale_fill_lancet() +
   xlab("") + ylab("Percentage of all ethnicities")
 
 ggsave(
   filename = here::here(
     "output",
+    "local",
     "ons",
     "na_removed",
     "ethnicity16_count_eng_na.png"
@@ -172,11 +71,11 @@ ethnicity_plot_na <- ethnicity_na %>%
     hjust = 0,
     vjust = 0
   )) +
-  coord_flip() +
+  coord_flip()  + scale_fill_lancet() +
   xlab("") + ylab("Percentage of all ethnicities")
 
 ggsave(
-  filename = here::here("output", "ons", "na_removed", "ethnicity_count_na.png"),
+  filename = here::here("output", "local", "ons", "na_removed", "ethnicity_count_na.png"),
   ethnicity_plot_na,
   dpi = 600,
   width = 45,
@@ -195,12 +94,13 @@ ethnicity_plot_eng_na <- ethnicity_na %>%
     hjust = 0,
     vjust = 0
   )) +
-  coord_flip() +
+  coord_flip()  + scale_fill_lancet() +
   xlab("") + ylab("Percentage of all ethnicities")
 
 ggsave(
   filename = here::here(
     "output",
+    "local",
     "ons",
     "na_removed",
     "ethnicity_count_eng_na.png"
@@ -226,12 +126,12 @@ ethnicity_plot16_na <- ethnicity_na %>%
     hjust = 0,
     vjust = 0
   )) +
-  coord_flip() +
+  coord_flip() + scale_fill_lancet()  +
   xlab("") + ylab("Percentage of all ethnicities")
 
 
 ggsave(
-  filename = here::here("output", "ons", "na_removed", "ethnicity16_count_na.png"),
+  filename = here::here("output", "local", "ons", "na_removed", "ethnicity16_count_na.png"),
   ethnicity_plot16_na,
   dpi = 600,
   width = 45,
@@ -252,11 +152,11 @@ ethnicity_plot_eng_nw <- ethnicity_na %>%
     hjust = 0,
     vjust = 0
   )) +
-  coord_flip() +
+  coord_flip()  + scale_fill_lancet()  +
   xlab("") + ylab("Percentage of all ethnicities")
 
 ggsave(
-  filename = here::here("output", "ons", "ethnicity_count_eng_nw.png"),
+  filename = here::here("output", "local", "ons", "ethnicity_count_eng_nw.png"),
   ethnicity_plot_eng_nw,
   dpi = 600,
   width = 30,
@@ -276,11 +176,11 @@ ethnicity_plot_nw <- ethnicity_na %>%
     hjust = 0,
     vjust = 0
   )) +
-  coord_flip() +
+  coord_flip()  + scale_fill_lancet()  +
   xlab("") + ylab("Percentage of all ethnicities")
 
 ggsave(
-  filename = here::here("output", "ons", "ethnicity_count_nw.png"),
+  filename = here::here("output", "local", "ons", "ethnicity_count_nw.png"),
   ethnicity_plot_nw,
   dpi = 600,
   width = 45,
@@ -300,11 +200,11 @@ ethnicity_plot16_nw <- ethnicity_na %>%
     hjust = 0,
     vjust = 0
   )) +
-  coord_flip() +
+  coord_flip()  + scale_fill_lancet() +
   xlab("") + ylab("Percentage of all ethnicities")
 
 ggsave(
-  filename = here::here("output", "ons", "ethnicity16_count_nw.png"),
+  filename = here::here("output", "local", "ons", "ethnicity16_count_nw.png"),
   ethnicity_plot16_nw,
   dpi = 600,
   width = 45,
@@ -323,11 +223,11 @@ ethnicity_plot16_eng_nw <- ethnicity_na %>%
     hjust = 0,
     vjust = 0
   )) +
-  coord_flip() +
+  coord_flip()  + scale_fill_lancet() +
   xlab("") + ylab("Percentage of all ethnicities")
 
 ggsave(
-  filename = here::here("output", "ons", "ethnicity16_count_eng_nw.png"),
+  filename = here::here("output", "local", "ons", "ethnicity16_count_eng_nw.png"),
   ethnicity_plot16_eng_nw,
   dpi = 600,
   width = 30,
@@ -348,7 +248,7 @@ ethnicity_5_16 <-
   )
 
 ggsave(
-  filename = here::here("output", "ons", "ethnicity_5_16_comb.png"),
+  filename = here::here("output", "local", "ons", "ethnicity_5_16_comb.png"),
   ethnicity_5_16,
   dpi = 600,
   width = 30,
