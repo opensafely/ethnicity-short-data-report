@@ -23,7 +23,7 @@ fs::dir_create(here::here("output", "ons", "na_removed"))
 
 ############### ethnicity
 ethnicity <-
-  read_csv(here::here("output", "ons", "ethnic_group.csv"))
+  read_csv(here::here("output", "ons", "ethnic_group_registered.csv"))
 
 ethnicity_plot <- ethnicity %>%
   filter(region != "England", group == "5") %>%
@@ -129,7 +129,7 @@ ggsave(
 ####### NA removed
 
 ethnicity_na <-
-  read_csv(here::here("output", "ons", "ethnic_group_NA.csv")) 
+  read_csv(here::here("output", "ons", "ethnic_group_NA_registered.csv")) 
 
 
 ethnicity_plot16_eng_na <-  ethnicity_na %>%
