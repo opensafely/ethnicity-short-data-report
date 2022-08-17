@@ -21,7 +21,6 @@ opensafely/housebound/5bc77310/
 opensafely/hypertension-snomed/2020-04-28/
 primis-covid19-vacc-uptake/learndis/v1/
 primis-covid19-vacc-uptake/sev_obesity/v1.2/
-opensafely/ethnicity/2020-04-27
 opensafely/learning-disabilities/2020-07-06
 opensafely/systolic-blood-pressure-qof/3572b5fb
 opensafely/structured-medication-review-nhs-england/5459205f
