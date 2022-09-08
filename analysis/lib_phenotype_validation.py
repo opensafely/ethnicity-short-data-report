@@ -190,7 +190,23 @@ def simple_state_change(
             .set_index(definition)
             .reset_index()
         )
+        ### sum all 'vars' which are not null
+        df_subset[f"{definition}_any"]=df_subset[vars].notnull().sum(axis=1)
+        ### all px with a latest ethnicity must have at least 1 defined ethnicity 
+        ### If they only have 1 recorded ethnicity this must equal the latest ethnicity
+        ### replace 1 with NULL and count all with over one recorded ethnicity (i.e. latest plus another ethnicity)
+        df_subset[f"{definition}_any"] = df_subset[f"{definition}_any"].replace(1, np.nan)
         df_subset["n"] = 1
+        ### check if any px have latest ethnicity but no recorded ethnicity (this should be impossible!) 
+        df_any_check=df_subset
+        df_any_check[f"{definition}_any_check"]=df_any_check[f"{definition}_any"]==0
+        df_any_check[f"{definition}_any_check"]=df_any_check[f"{definition}_any_check"].replace(False, np.nan)
+        df_any_check=df_any_check.groupby(definition).count()
+        df_any_check=df_any_check[f"{definition}_any_check"]
+        df_any_check.to_csv(
+                f"output/{output_path}/{grouping}/tables/simple_{definition}_any_check.csv"
+            )
+
         # Count
         df_subset2 = df_subset.loc[~df_subset[definition].isna()]
         df_subset3 = redact_round_table(
