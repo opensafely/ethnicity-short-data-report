@@ -190,7 +190,12 @@ def simple_state_change(
             .set_index(definition)
             .reset_index()
         )
+        df_subset[f"{definition}_any"]=df_subset[vars].notnull().sum(axis=1)-1
+        df_subset[f"{definition}_any"] = df_subset[f"{definition}_any"].replace(0, np.nan)
+        df_subset[f"{definition}_any_check"]=df_subset[f"{definition}_any"]==-1
+        df_subset[f"{definition}_any_check"]=df_subset[f"{definition}_any_check"].replace(False, np.nan)
         df_subset["n"] = 1
+        
         # Count
         df_subset2 = df_subset.loc[~df_subset[definition].isna()]
         df_subset3 = redact_round_table(
