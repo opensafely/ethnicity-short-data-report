@@ -22,9 +22,9 @@ clinical_variables = dict(
     ethnicity_5_date=patients.with_these_clinical_events(
         ethnicity_codes_ctv3,
         returning="date",
-        find_first_match_in_period=True,
+        find_last_match_in_period=True,
         return_expectations={
-            "date": {"earliest": "1900-01-01", "latest": "1900-01-02"}
+            "date": {"earliest": "1960-01-01", "latest": "2022-01-02"}
         },
     ),
     ethnicity_16=patients.with_these_clinical_events(
@@ -59,9 +59,9 @@ clinical_variables = dict(
     ethnicity_16_date=patients.with_these_clinical_events(
         ethnicity_codes_ctv3_16,
         returning="date",
-        find_first_match_in_period=True,
+        find_last_match_in_period=True,
         return_expectations={
-            "date": {"earliest": "1900-01-01", "latest": "2022-01-01"}
+            "date": {"earliest": "1960-01-01", "latest": "2022-01-01"}
         },
     ),
     ethnicity_new_5=patients.with_these_clinical_events(
@@ -77,9 +77,9 @@ clinical_variables = dict(
     ethnicity_new_5_date=patients.with_these_clinical_events(
         ethnicity_codes_snomed,
         returning="date",
-        find_first_match_in_period=True,
+        find_last_match_in_period=True,
         return_expectations={
-            "date": {"earliest": "1900-01-01", "latest": "1900-01-02"}
+            "date": {"earliest": "1960-01-01", "latest": "2022-01-02"}
         },
     ),
     ethnicity_new_16=patients.with_these_clinical_events(
@@ -114,9 +114,9 @@ clinical_variables = dict(
     ethnicity_new_16_date=patients.with_these_clinical_events(
         ethnicity_codes_snomed_16,
         returning="date",
-        find_first_match_in_period=True,
+        find_last_match_in_period=True,
         return_expectations={
-            "date": {"earliest": "1900-01-01", "latest": "1900-01-02"}
+            "date": {"earliest": "1960-01-01", "latest": "2022-01-02"}
         },
     ),
     # Ethnicity using SNOMED codes - returns latest in period
@@ -133,9 +133,9 @@ clinical_variables = dict(
     ethnicity_primis_5_date=patients.with_these_clinical_events(
         eth2001,
         returning="date",
-        find_first_match_in_period=True,
+        find_last_match_in_period=True,
         return_expectations={
-            "date": {"earliest": "1900-01-01", "latest": "1900-01-02"}
+            "date": {"earliest": "1960-01-01", "latest": "2022-01-02"}
         },
     ),
     ethnicity_primis_16=patients.with_these_clinical_events(
@@ -170,9 +170,9 @@ clinical_variables = dict(
     ethnicity_primis_16_date=patients.with_these_clinical_events(
         eth2001_16,
         returning="date",
-        find_first_match_in_period=True,
+        find_last_match_in_period=True,
         return_expectations={
-            "date": {"earliest": "1900-01-01", "latest": "1900-01-02"}
+            "date": {"earliest": "1960-01-01", "latest": "2022-01-02"}
         },
     ),
         ethnicity_sus_5 = patients.with_ethnicity_from_sus(
@@ -275,91 +275,91 @@ clinical_variables = dict(
     # Chronic cardiac disease
     chronic_cardiac_disease=patients.with_these_clinical_events(
         chronic_cardiac_dis_codes,
-        on_or_before="index_date - 1 day",
+        on_or_before="index_date",
         returning="binary_flag",
         return_expectations={"incidence": 0.01,},
     ),
     # Chronic kidney disease
     chronic_kidney_disease=patients.with_these_clinical_events(
         chronic_kidney_dis_codes,
-        on_or_before="index_date - 1 day",
+        on_or_before="index_date",
         returning="binary_flag",
         return_expectations={"incidence": 0.01,},
     ),
     # Chronic liver disease
     chronic_liver_disease=patients.with_these_clinical_events(
         chronic_liver_dis_codes,
-        on_or_before="index_date - 1 day",
+        on_or_before="index_date",
         returning="binary_flag",
         return_expectations={"incidence": 0.01,},
     ),
     # Chronic respiratory disease
     chronic_respiratory_disease=patients.with_these_clinical_events(
         chronic_respiratory_dis_codes,
-        on_or_before="index_date - 1 day",
+        on_or_before="index_date",
         returning="binary_flag",
         return_expectations={"incidence": 0.01,},
     ),
     # Cancer (Haemotological)
     cancer_haem=patients.with_these_clinical_events(
         cancer_haem_codes,
-        on_or_before="index_date - 1 day",
+        on_or_before="index_date",
         returning="binary_flag",
         return_expectations={"incidence": 0.01,},
     ),
     # Cancer (Lung)
     cancer_lung=patients.with_these_clinical_events(
         cancer_lung_codes,
-        on_or_before="index_date - 1 day",
+        on_or_before="index_date",
         returning="binary_flag",
         return_expectations={"incidence": 0.01,},
     ),
     # Cancer (Other)
     cancer_other=patients.with_these_clinical_events(
         cancer_other_codes,
-        on_or_before="index_date - 1 day",
+        on_or_before="index_date",
         returning="binary_flag",
         return_expectations={"incidence": 0.01,},
     ),
     # Dementia
     dementia=patients.with_these_clinical_events(
         dementia_codes,
-        on_or_before="index_date - 1 day",
+        on_or_before="index_date",
         returning="binary_flag",
         return_expectations={"incidence": 0.01,},
     ),
     # Diabetes
     diabetes=patients.with_these_clinical_events(
         diabetes_codes,
-        on_or_before="index_date - 1 day",
+        on_or_before="index_date",
         returning="binary_flag",
         return_expectations={"incidence": 0.01,},
     ),
     # Housebound
     housebound=patients.with_these_clinical_events(
         housebound_codes,
-        on_or_before="index_date - 1 day",
+        on_or_before="index_date",
         returning="binary_flag",
         return_expectations={"incidence": 0.01,},
     ),
     # Hypertension
     hypertension=patients.with_these_clinical_events(
         hypertension_codes,
-        between=["index_date - 2 years", "index_date - 1 day"],
+        between=["index_date - 2 years", "index_date"],
         returning="binary_flag",
         return_expectations={"incidence": 0.01,},
     ),
     # Learning disability
     learning_disability=patients.with_these_clinical_events(
         wider_ld_codes,
-        on_or_before="index_date - 1 day",
+        on_or_before="index_date",
         returning="binary_flag",
         return_expectations={"incidence": 0.01,},
     ),
     # Severe obesity
     sev_obesity=patients.with_these_clinical_events(
         sev_obesity_codes,
-        between=["index_date - 2 years", "index_date - 1 day"],
+        between=["index_date - 2 years", "index_date"],
         returning="date",
         date_format="YYYY-MM-DD",
         find_last_match_in_period=True,

@@ -32,7 +32,8 @@ actions:
     needs: [generate_study_population]
     outputs:
       moderately_sensitive: 
-        tables: output/simplified_output/5_group/tables/simple*.csv
+        tables: output/simplified_output/5_group/tables/*.csv
+        figures: output/simplified_output/5_group/figures/*.png
 
   execute_simple_validation_analyses_16:
     run: python:latest python analysis/simple_validation_script_16.py
@@ -56,3 +57,5 @@ actions:
       moderately_sensitive:
         plot: output/ons/ethnicity_*.png
         plot_na: output/ons/na_removed/ethnicity_*.png
+
+      
