@@ -38,9 +38,9 @@ if registered == True:
     reg = "registered"
 
 # Dates
-dates = False
-date_min = ""
-date_max = ""
+dates = True
+date_min = "1900-01-01"
+date_max = "2022-01-02"
 time_delta = ""
 
 # Min/max range
@@ -112,7 +112,10 @@ def main():
     simple_state_change(
         df_clean, definitions,reg, other_vars_combined, output_path,grouping, missing_check=True
     )
-
+    # records over time
+    records_over_time(
+        df_clean, definitions, demographic_covariates, clinical_covariates, output_path, "",grouping
+        )
 
 ########################## DO NOT EDIT – RUNS SCRIPT ##############################
 

@@ -14,6 +14,7 @@
 
 library("readxl")
 library("tidyverse")
+library("ggsci")
 
 
 ######### Ethnicity
@@ -58,6 +59,6 @@ eth_5_ons<-eth_ons %>%
 
 eth_ons_2011 <-eth_5_ons %>%
   bind_rows(eth_16_ons) %>%
-  mutate(cohort="ONS")
+  mutate(cohort="ONS") %>%
   
 write_csv(eth_ons_2011,here::here("data","ethnicity_ons.csv.gz")) 

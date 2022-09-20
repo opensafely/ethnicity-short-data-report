@@ -32,7 +32,7 @@ registered = True
 reg = "registered"
 
 # Dates
-dates = False
+dates = True
 date_min = ""
 date_max = ""
 time_delta = ""
