@@ -114,7 +114,7 @@ def main():
     )
     # records over time
     records_over_time(
-        df_clean, definitions, demographic_covariates, clinical_covariates, output_path, "",grouping
+        df_clean, definitions, demographic_covariates, clinical_covariates, output_path, "",grouping,reg
         )
 
 ########################## DO NOT EDIT – RUNS SCRIPT ##############################

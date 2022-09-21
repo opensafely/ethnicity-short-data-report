@@ -14,8 +14,8 @@ from upsetplot import *
 
 
 def redact_round_table(df_in):
-    """Redacts counts <= 5 and rounds counts to nearest 5"""
-    df_out = df_in.where(df_in > 5, np.nan).apply(lambda x: 5 * round(x / 5))
+    """Redacts counts <= 7 and rounds counts to nearest 5"""
+    df_out = df_in.where(df_in > 7, np.nan).apply(lambda x: 5 * round(x / 5))
     return df_out
 
 
@@ -388,7 +388,7 @@ def upset_cat(df_clean, output_path, comparator_1, comparator_2, other_vars,grou
         f"output/{output_path}/{grouping}/figures/upset_category_{comparator_1}_{comparator_2}.png"
     )
 
-def records_over_time(df_clean, definitions, demographic_covariates, clinical_covariates, output_path, filepath,grouping):
+def records_over_time(df_clean, definitions, demographic_covariates, clinical_covariates, output_path, filepath,grouping,reg):
     """
     Count the number of records over time
     
@@ -418,8 +418,8 @@ def records_over_time(df_clean, definitions, demographic_covariates, clinical_co
     sns.lineplot(x = 'date', y = 'value', hue='variable', data = df_all_time, ax=ax).set_title('New records by month')
     ax.legend().set_title('')
     if len(df_all_time) > 0:
-        df_all_time.to_csv(f'output/{output_path}/{grouping}/tables/records_over_time{filepath}.csv')
-        plt.savefig(f'output/{output_path}/{grouping}/figures/records_over_time{filepath}.png')
+        df_all_time.to_csv(f'output/{output_path}/{grouping}/tables/records_over_time{filepath}_{reg}.csv')
+        plt.savefig(f'output/{output_path}/{grouping}/figures/records_over_time{filepath}_{reg}.png')
 
     for group in demographic_covariates + clinical_covariates:
         for definition in definitions:
@@ -431,7 +431,7 @@ def records_over_time(df_clean, definitions, demographic_covariates, clinical_co
             sns.lineplot(x = 'date', y = definition, hue=group, data = df_time, ax=ax).set_title(f'{definition} recorded by {group} and month')
             ax.legend().set_title('')
             if len(df_time) > 0:
-                df_time.to_csv(f'output/{output_path}/{grouping}/tables/records_over_time_{definition}_{group}{filepath}.csv')
-                plt.savefig(f'output/{output_path}/{grouping}/figures/records_over_time_{definition}_{group}{filepath}.png')
+                df_time.to_csv(f'output/{output_path}/{grouping}/tables/records_over_time_{definition}_{group}{filepath}_{reg}.csv')
+                plt.savefig(f'output/{output_path}/{grouping}/figures/records_over_time_{definition}_{group}{filepath}_{reg}.png')
             
   
