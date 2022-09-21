@@ -14,8 +14,8 @@ from upsetplot import *
 
 
 def redact_round_table(df_in):
-    """Redacts counts <= 5 and rounds counts to nearest 5"""
-    df_out = df_in.where(df_in > 5, np.nan).apply(lambda x: 5 * round(x / 5))
+    """Redacts counts <= 7 and rounds counts to nearest 5"""
+    df_out = df_in.where(df_in > 7, np.nan).apply(lambda x: 5 * round(x / 5))
     return df_out
 
 
