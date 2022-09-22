@@ -10,12 +10,16 @@ library("dplyr")
 fs::dir_create(here::here("output", "simplified_output","5_group","tables"))
 
 input<-arrow::read_feather(here::here("output","data","input.feather")) %>%
-  mutate(ethnicity_new_5=as.numeric(as.character(ethnicity_new_5)),
-         ethnicity_5=as.numeric(as.character(ethnicity_5)),
-         ethnicity_primis_5=as.numeric(as.character(ethnicity_primis_5)))
+  mutate(
+         n_ethnicity_new_5=ethnicity_new_5_black + ethnicity_new_5_white + ethnicity_new_5_other + ethnicity_new_5_mixed + ethnicity_new_5_asian,
+         n_ethnicity_5=ethnicity_5_black + ethnicity_5_white + ethnicity_5_other + ethnicity_5_mixed + ethnicity_5_asian,
+         n_ethnicity_primis_5=ethnicity_primis_5_black + ethnicity_primis_5_white + ethnicity_primis_5_other + ethnicity_primis_5_mixed + ethnicity_primis_5_asian
+                  )
+
+
 
 summary_full <- input %>% 
-  summarise_at(vars(ethnicity_5,ethnicity_new_5,ethnicity_primis_5), na.rm = TRUE,
+  summarise_at(vars(n_ethnicity_new_5,n_ethnicity_5,n_ethnicity_primis_5), na.rm = TRUE,
                list(min=min, Q1=~quantile(., probs = 0.25, na.rm = TRUE),
                     median=median, Q3=~quantile(., probs = 0.75, na.rm = TRUE),
                     max=max))
@@ -36,7 +40,7 @@ input_reg <-input %>%
   filter(registered)
 
 summary_reg <- input_reg %>%
-  summarise_at(vars(ethnicity_5,ethnicity_new_5,ethnicity_primis_5), na.rm = TRUE,
+  summarise_at(vars(n_ethnicity_new_5,n_ethnicity_5,n_ethnicity_primis_5), na.rm = TRUE,
                list(min=min, Q1=~quantile(., probs = 0.25, na.rm = TRUE),
                     median=median, Q3=~quantile(., probs = 0.75, na.rm = TRUE),
                     max=max))
