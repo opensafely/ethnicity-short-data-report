@@ -58,4 +58,10 @@ actions:
         plot: output/ons/ethnicity_*.png
         plot_na: output/ons/na_removed/ethnicity_*.png
 
-      
+  iqr: 
+    run: r:latest analysis/iqr.R
+    needs: [generate_study_population]
+    outputs:
+      moderately_sensitive:
+        full: output/simplified_output/5_group/tables/range_fullset.csv
+        registered: output/simplified_output/5_group/tables/range_registered.csv    
