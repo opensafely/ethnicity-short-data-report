@@ -63,4 +63,5 @@ actions:
     needs: [generate_study_population]
     outputs:
       moderately_sensitive:
-        data: output/simplified_output/5_group/tables/range.csv    
+        full: output/simplified_output/5_group/tables/range_fullset.csv
+        registered: output/simplified_output/5_group/tables/range_registered.csv    
