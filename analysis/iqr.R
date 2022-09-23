@@ -8,6 +8,7 @@ library("dplyr")
 
 
 fs::dir_create(here::here("output", "simplified_output","5_group","tables"))
+fs::dir_create(here::here("output", "simplified_output","5_group","figures"))
 
 input<-arrow::read_feather(here::here("output","data","input.feather")) %>%
   mutate(
@@ -41,9 +42,13 @@ input_reg <-input %>%
 
 summary_reg <- input_reg %>%
   summarise_at(vars(n_ethnicity_new_5,n_ethnicity_5,n_ethnicity_primis_5), na.rm = TRUE,
-               list(min=min, Q1=~quantile(., probs = 0.25, na.rm = TRUE),
+               list(
+                    perc10=~quantile(., probs = 0.10, na.rm = TRUE), 
+                    Q1=~quantile(., probs = 0.25, na.rm = TRUE),
                     median=median, Q3=~quantile(., probs = 0.75, na.rm = TRUE),
-                    max=max))
+                    perc90=~quantile(., probs = 0.90, na.rm = TRUE)
+                    )
+               )
 
   summary_reg<-summary_reg  %>% pivot_longer(
   everything(),
@@ -52,7 +57,40 @@ summary_reg <- input_reg %>%
   values_to = "value"
 )  %>% pivot_wider(names_from = measure, values_from = value) %>%
   rowwise() %>%
-  mutate(n_max = nrow(input_reg[which(input_reg[,codelist]==max),]),
-         n_min = nrow(input_reg[which(input_reg[,codelist]==min),]))
+  mutate(n_max = nrow(input_reg[which(input_reg[,codelist]==perc10),]),
+         n_min = nrow(input_reg[which(input_reg[,codelist]==perc90),]))
 
 write_csv(summary_reg,here::here("output", "simplified_output","5_group","tables","range_registered.csv"))
+
+
+density_data<-input  %>% 
+  select(n_ethnicity_new_5,n_ethnicity_5,n_ethnicity_primis_5) %>%
+  na_if( 0) 
+
+density_plot <-density_data  %>% pivot_longer(
+  everything(),
+  names_to = c( "codelist"),
+  names_pattern = "(.*)",
+  values_to = "value"
+) %>%
+ggplot( aes(value, fill = codelist, colour = codelist)) +
+  geom_density(alpha = 0.1)
+
+ggsave(here::here("output", "simplified_output","5_group","figures","density_fullset.svg"),density_plot)
+
+
+density_data_reg<-input_reg  %>% 
+  select(n_ethnicity_new_5,n_ethnicity_5,n_ethnicity_primis_5) %>%
+  na_if( 0) 
+
+
+density_plot_reg <-density_data_reg  %>% pivot_longer(
+  everything(),
+  names_to = c( "codelist"),
+  names_pattern = "(.*)",
+  values_to = "value"
+) %>%
+  ggplot( aes(value, fill = codelist, colour = codelist)) +
+  geom_density(alpha = 0.1)
+
+ggsave(here::here("output", "simplified_output","5_group","figures","density_reg.svg"),density_plot_reg)
