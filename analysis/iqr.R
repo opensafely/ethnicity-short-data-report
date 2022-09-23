@@ -8,6 +8,7 @@ library("dplyr")
 
 
 fs::dir_create(here::here("output", "simplified_output","5_group","tables"))
+fs::dir_create(here::here("output", "simplified_output","5_group","figures"))
 
 input<-arrow::read_feather(here::here("output","data","input.feather")) %>%
   mutate(
