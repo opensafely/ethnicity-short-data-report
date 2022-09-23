@@ -65,3 +65,4 @@ actions:
       moderately_sensitive:
         full: output/simplified_output/5_group/tables/range_fullset.csv
         registered: output/simplified_output/5_group/tables/range_registered.csv    
+        figures: output/simplified_output/5_group/figures/density*.svg    
