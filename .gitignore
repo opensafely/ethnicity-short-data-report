@@ -8,5 +8,5 @@ metadata/*
 venv/
 .Rproj.user
 */Rhistory
-Rhistory
+.Rhistory
 */test.ipynb
