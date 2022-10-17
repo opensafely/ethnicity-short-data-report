@@ -66,3 +66,11 @@ actions:
         full: output/simplified_output/5_group/tables/range_fullset.csv
         registered: output/simplified_output/5_group/tables/range_registered.csv    
         figures: output/simplified_output/5_group/figures/density*.svg    
+
+### Only to be run locally
+  # generate_report:
+  #   run: python:latest jupyter nbconvert /workspace/notebooks_jupyter/local_report_ethnicity.ipynb --execute --to html --template basic --output-dir=/workspace/output --ExecutePreprocessor.timeout=86400 --no-input
+  #   needs: []
+  #   outputs:
+  #     moderately_sensitive:
+  #       notebook: output/local_report_ethnicity.html
