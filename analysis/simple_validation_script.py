@@ -32,15 +32,15 @@ other_vars = ["white", "mixed", "asian", "black", "other"]
 other_vars_combined = [x + "_" + y for x in definitions for y in other_vars]
 
 # Restrict to registered as of index date
-registered = True
+registered = False
 reg = "fullset"
 if registered == True:
     reg = "registered"
 
 # Dates
 dates = True
-date_min = "1900-01-01"
-date_max = "2022-01-02"
+date_min = ""
+date_max = ""
 time_delta = ""
 
 # Min/max range
