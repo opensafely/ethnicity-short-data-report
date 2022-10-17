@@ -98,13 +98,13 @@ other_vars_combined = [x + "_" + y for x in definitions for y in other_vars]
 
 
 # Restrict to registered as of index date
-registered = True
+registered = False
 reg = "fullset"
 if registered == True:
     reg = "registered"
 
 # Dates
-dates = False
+dates = True
 date_min = ""
 date_max = ""
 time_delta = ""
@@ -178,7 +178,10 @@ def main():
     simple_state_change(
         df_clean, definitions,reg, other_vars_combined, output_path,grouping, missing_check=True
     )
-
+    # records over time
+    records_over_time(
+        df_clean, definitions, demographic_covariates, clinical_covariates, output_path, "",grouping,reg
+        )
 
 ########################## DO NOT EDIT – RUNS SCRIPT ##############################
 
