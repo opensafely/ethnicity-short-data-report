@@ -32,7 +32,7 @@ other_vars = ["white", "mixed", "asian", "black", "other"]
 other_vars_combined = [x + "_" + y for x in definitions for y in other_vars]
 
 # Restrict to registered as of index date
-registered = False
+registered = True
 reg = "fullset"
 if registered == True:
     reg = "registered"
@@ -123,7 +123,6 @@ if __name__ == "__main__":
     main()
 
 registered = False
-reg = "fullset"
 
 if __name__ == "__main__":
     main()
