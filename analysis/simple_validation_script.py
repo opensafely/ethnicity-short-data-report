@@ -123,6 +123,7 @@ if __name__ == "__main__":
     main()
 
 registered = False
+reg = "fullset"
 
 if __name__ == "__main__":
     main()
