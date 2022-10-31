@@ -212,7 +212,7 @@ ethnicity_plot_eng_na <- ethnicity_plot_na_diff %>%
   xlab("") + ylab("\nPercentage of all ethnicities") +
   theme(legend.position="bottom",
         legend.title=element_blank()) +
-  geom_text(aes(x=Ethnic_Group,y=percentage,label=ifelse(cohort=="ONS","",paste0(round(diff,digits =1),"%"))), size=3.4, position =position_dodge(width=0.9), vjust=-0.5,hjust = -0.2)
+  geom_text(aes(x=Ethnic_Group,y=percentage,label=ifelse(cohort=="ONS","",paste0(round(diff,digits =1),"%"))), size=3.4, position =position_dodge(width=0.9), vjust=0,hjust = -0.2)
 
 ggsave(
   filename = here::here(

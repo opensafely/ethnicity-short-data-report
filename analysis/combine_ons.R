@@ -38,7 +38,7 @@ eth_new_5 <- df_input %>%
   ungroup %>%
   group_by(region) %>% 
   mutate(Total = sum(N),
-         cohort="CTV3",
+         cohort="SNOMED",
          group=5)
 
 eth_5 <- df_input %>%
@@ -53,7 +53,23 @@ eth_5 <- df_input %>%
   ungroup %>%
   group_by(region) %>% 
   mutate(Total = sum(N),
-         cohort="SNOMED",
+         cohort="CTV3",
+         group=5)
+
+
+eth_primis_5 <- df_input %>%
+  mutate(Ethnic_Group=case_when(
+    ethnicity_primis_5 == "1" ~ "White",
+    ethnicity_primis_5 == "2" ~ "Mixed",
+    ethnicity_primis_5 == "3" ~ "Asian",
+    ethnicity_primis_5 == "4" ~ "Black",
+    ethnicity_primis_5 == "5" ~ "Other"))  %>%
+  group_by(region,Ethnic_Group) %>%
+  summarise(N=n()) %>%
+  ungroup %>%
+  group_by(region) %>% 
+  mutate(Total = sum(N),
+         cohort="PRIMIS",
          group=5)
 
 eth_16 <- df_input %>%
@@ -108,12 +124,39 @@ eth_new_16 <- df_input %>%
          cohort="SNOMED",
          group=16)
 
+eth_primis_16 <- df_input %>%
+  mutate(Ethnic_Group=case_when(
+    ethnicity_primis_16 == "1" ~ "White British",
+    ethnicity_primis_16 == "2" ~ "White Irish",
+    ethnicity_primis_16 == "3" ~ "Other White",
+    ethnicity_primis_16 == "4" ~ "White and Black Caribbean",
+    ethnicity_primis_16 == "5" ~ "White and Black African",
+    ethnicity_primis_16 == "6" ~ "White and Asian",
+    ethnicity_primis_16 == "7" ~ "Other Mixed",
+    ethnicity_primis_16 == "8" ~ "Indian",
+    ethnicity_primis_16 == "9" ~ "Pakistani",
+    ethnicity_primis_16 == "10" ~ "Bangladeshi",
+    ethnicity_primis_16 == "11" ~ "Other Asian",
+    ethnicity_primis_16 == "12" ~ "Caribbean",
+    ethnicity_primis_16 == "13" ~ "African",
+    ethnicity_primis_16 == "14" ~ "Other Black",
+    ethnicity_primis_16 == "15" ~ "Chinese",
+    ethnicity_primis_16 == "16" ~ "Any other ethnic group"))  %>%
+  group_by(region,Ethnic_Group) %>%
+  summarise(N=n()) %>%
+  ungroup %>%
+  group_by(region) %>% 
+  mutate(Total = sum(N),
+         cohort="PRIMIS",
+         group=16)
 
 
 ethnicity<-eth_16 %>%
   bind_rows(eth_5) %>%
   bind_rows(eth_new_16) %>%
   bind_rows(eth_new_5) %>%
+  bind_rows(eth_primis_5) %>%
+  bind_rows(eth_primis_16) %>%
   bind_rows(eth_ons) 
 
 ### Add England
