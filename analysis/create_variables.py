@@ -435,7 +435,8 @@ demographic_variables = dict(
                     "West Midlands": 0.1,
                     "East of England": 0.1,
                     "London": 0.2,
-                    "South East": 0.2,
+                    "South East": 0.1,
+                    "South West": 0.1,
                 }
             }
         },
