@@ -434,4 +434,54 @@ def records_over_time(df_clean, definitions, demographic_covariates, clinical_co
                 df_time.to_csv(f'output/{output_path}/{grouping}/tables/records_over_time_{definition}_{group}{filepath}_{reg}.csv')
                 plt.savefig(f'output/{output_path}/{grouping}/figures/records_over_time_{definition}_{group}{filepath}_{reg}.png')
             
-  
+def records_over_time_perc(df_clean, definitions, demographic_covariates, clinical_covariates, output_path, filepath,grouping,reg):
+    """
+    Count the number of records over time as a percentage of all records
+    
+    Arguments:
+        df_clean: a dataframe that has been cleaned using import_clean()
+        definitions: a list of derived variables to be evaluated
+        demographic_covariates: a list of demographic covariates 
+        clinical_covariates: a list of clinical covariates
+        output_path: filepath to the output folder
+        filepath: filepath to the output file
+       
+    Returns:
+        .csv file (underlying data)
+        .png file (line plot)
+    """
+    li_df = []
+    for definition in definitions:
+        df_grouped = df_clean[[definition+'_date',definition]].groupby(
+            definition+'_date'
+        ).count().reset_index().rename(columns={definition+'_date':'date'}).set_index('date')
+        li_df.append(redact_round_table(df_grouped))
+    df_all_time = pd.concat(li_df).stack().reset_index().rename(columns={'level_1':'variable',0:'value'})
+    df_all_time['sum']=df_all_time.groupby('variable', sort=False)['value'].transform('sum')
+    df_all_time['value']=df_all_time['value']/df_all_time['sum']
+    del li_df 
+    
+    fig, ax = plt.subplots(figsize=(12, 8))
+    fig.autofmt_xdate()
+    sns.lineplot(x = 'date', y = 'value', hue='variable', data = df_all_time, ax=ax).set_title('New records by month')
+    ax.legend().set_title('')
+    if len(df_all_time) > 0:
+        df_all_time.to_csv(f'output/{output_path}/{grouping}/tables/records_over_time{filepath}_{reg}.csv')
+        plt.savefig(f'output/{output_path}/{grouping}/figures/records_over_time{filepath}_{reg}.png')
+
+    for group in demographic_covariates + clinical_covariates:
+        for definition in definitions:
+            df_grouped = df_clean[[definition+'_date',definition,group]].groupby(
+                                  [definition+'_date',group]).count().reset_index().rename(columns={definition+'_date':'date'}).set_index(['date', group])
+            df_time=redact_round_table(df_grouped).reset_index()
+            df_time['sum']=df_time.groupby(group, sort=False)[definition].transform('sum')
+            df_time[definition]=df_time[definition]/df_time['sum']*100
+            fig, ax = plt.subplots(figsize=(12, 8))
+            fig.autofmt_xdate()
+            sns.lineplot(x = 'date', y = definition, hue=group, data = df_time, ax=ax).set_title(f'{definition} recorded by {group} and month')
+            ax.legend().set_title('')
+            if len(df_time) > 0:
+                df_time.to_csv(f'output/{output_path}/{grouping}/tables/records_over_time_{definition}_{group}{filepath}_{reg}.csv')
+                plt.savefig(f'output/{output_path}/{grouping}/figures/records_over_time_{definition}_{group}{filepath}_{reg}.png')
+            
+   
