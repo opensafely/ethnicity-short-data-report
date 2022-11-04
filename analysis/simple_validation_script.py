@@ -113,7 +113,7 @@ def main():
         df_clean, definitions,reg, other_vars_combined, output_path,grouping, missing_check=True
     )
     # records over time
-    records_over_time(
+    records_over_time_perc(
         df_clean, definitions, demographic_covariates, clinical_covariates, output_path, "",grouping,reg
         )
 
