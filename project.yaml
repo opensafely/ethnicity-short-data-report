@@ -69,8 +69,8 @@ actions:
 
 ## Only to be run locally
   generate_report:
-    run: python:latest jupyter nbconvert /workspace/notebooks_jupyter/local_report_ethnicity.ipynb --execute --to html --template basic --output-dir=/workspace/output --ExecutePreprocessor.timeout=86400 --no-input
+    run: python:latest jupyter nbconvert /workspace/notebooks_jupyter/draft_report_ethnicity.ipynb --execute --to html --template basic --output-dir=/workspace/output --ExecutePreprocessor.timeout=86400 --no-input
     needs: [execute_simple_validation_analyses,execute_simple_validation_analyses_16]
     outputs:
       moderately_sensitive:
-        notebook: output/local_report_ethnicity.html
+        notebook: output/draft_report_ethnicity.html
