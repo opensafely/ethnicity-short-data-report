@@ -55,7 +55,6 @@ actions:
     needs: [combine_ons]
     outputs:
       moderately_sensitive:
-        plot: output/ons/ethnicity_*.png
         plot_na: output/ons/na_removed/ethnicity_*.png
 
   iqr: 
