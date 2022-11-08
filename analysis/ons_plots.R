@@ -3,10 +3,12 @@
 #
 # Input:  /output/tables/ethnic_group.csv
 #
+# Refactors 5 group ethnicity to match the 2011 census groups 
+#
 # output: output/ons/ethnicity_count.png
 #         output/ons/ethnicity_count_eng.png
-#         output/ons/ethnicity16_count.png
-#         output/ons/ethnicity16_count_eng.png
+#         output/ons/ethnicity_16_count.png
+#         output/ons/ethnicity_16_count_eng.png
 #
 # Author: Colm D Andrews
 # Date:   14/07/2022
@@ -22,117 +24,129 @@ library(ggsci)
 fs::dir_create(here::here("output", "ons"))
 fs::dir_create(here::here("output", "ons", "na_removed"))
 
-############### ethnicity
-ethnicity <-
-  read_csv(here::here("output", "ons", "ethnic_group_registered.csv"))
-
-ethnicity_plot <- ethnicity %>%
-  filter(region != "England", group == "5") %>%
-  ggplot(aes(x = Ethnic_Group, y = percentage, fill = cohort)) +
-  geom_bar(stat = "identity", position = "dodge") +
-  facet_wrap( ~ region) +
-  theme_classic() +
-  theme(text = element_text(size = 20)) +
-  theme(axis.text.x = element_text(
-    size = 20,
-    hjust = 0,
-    vjust = 0
-  )) +
-  coord_flip() +
-  xlab("") + ylab("Percentage of all ethnicities")
-
-
-
-ggsave(
-  filename = here::here("output", "ons", "ethnicity_count.png"),
-  ethnicity_plot,
-  dpi = 600,
-  width = 45,
-  height = 30,
-  units = "cm"
-)
-
-
-
-ethnicity_plot_eng <- ethnicity %>%
-  filter(region == "England", group == "5") %>%
-  ggplot(aes(x = Ethnic_Group, y = percentage, fill = cohort)) +
-  geom_bar(stat = "identity", position = "dodge") +
-  theme_classic() +
-  theme(text = element_text(size = 20)) +
-  theme(axis.text.x = element_text(
-    size = 20,
-    hjust = 0,
-    vjust = 0
-  )) +
-  coord_flip() +
-  xlab("") + ylab("Percentage of all ethnicities")
-
-ggsave(
-  filename = here::here("output", "ons", "ethnicity_count_eng.png"),
-  ethnicity_plot_eng,
-  dpi = 600,
-  width = 30,
-  height = 30,
-  units = "cm"
-)
-
-
-ethnicity_plot16 <- ethnicity %>%
-  filter(region != "England", group == "16") %>%
-  ggplot(aes(x = Ethnic_Group, y = percentage, fill = cohort)) +
-  geom_bar(stat = "identity", position = "dodge") +
-  facet_wrap( ~ region) +
-  theme_classic() +
-  theme(text = element_text(size = 20)) +
-  theme(axis.text.x = element_text(
-    size = 20,
-    hjust = 0,
-    vjust = 0
-  )) +
-  coord_flip() +
-  xlab("") + ylab("Percentage of all ethnicities")
-
-ggsave(
-  filename = here::here("output", "ons", "ethnicity16_count.png"),
-  ethnicity_plot16,
-  dpi = 600,
-  width = 45,
-  height = 30,
-  units = "cm"
-)
-
-ethnicity_plot16_eng <- ethnicity %>%
-  filter(region == "England", group == "16") %>%
-  ggplot(aes(x = Ethnic_Group, y = percentage, fill = cohort)) +
-  geom_bar(stat = "identity", position = "dodge") +
-  theme_classic() +
-  theme(text = element_text(size = 20)) +
-  theme(axis.text.x = element_text(
-    size = 20,
-    hjust = 0,
-    vjust = 0
-  )) +
-  coord_flip() +
-  xlab("") + ylab("Percentage of all ethnicities")
-
-ggsave(
-  filename = here::here("output", "ons", "ethnicity16_count_eng.png"),
-  ethnicity_plot16_eng,
-  dpi = 600,
-  width = 30,
-  height = 30,
-  units = "cm"
-)
-
+############### ethnicity with NA 
+# # read ethnicity produced by combine_ONS.R
+# ethnicity <-
+#   read_csv(here::here("output", "ons", "ethnic_group_registered.csv"))
+# 
+# ethnicity_2011 <-
+#   read_csv(here::here("output", "ons", "ethnic_group_2011_registered.csv"))
+#
+# ## use ethnicity_2011 for 5 group and ethnicity for 16 group
+# ethnicity_plot <- ethnicity_2011 %>%
+#   filter(region != "England", group == "5") %>%
+#   ggplot(aes(x = Ethnic_Group, y = percentage, fill = cohort)) +
+#   geom_bar(stat = "identity", position = "dodge") +
+#   facet_wrap( ~ region) +
+#   theme_classic() +
+#   theme(text = element_text(size = 20)) +
+#   theme(axis.text.x = element_text(
+#     size = 20,
+#     hjust = 0,
+#     vjust = 0
+#   )) +
+#   coord_flip() +
+#   xlab("") + ylab("Percentage of all ethnicities")
+# 
+# 
+# 
+# ggsave(
+#   filename = here::here("output", "ons", "ethnicity_count.png"),
+#   ethnicity_plot,
+#   dpi = 600,
+#   width = 45,
+#   height = 30,
+#   units = "cm"
+# )
+# 
+# 
+# 
+# ethnicity_plot_eng <- ethnicity_2011 %>%
+#   filter(region == "England", group == "5") %>%
+#   ggplot(aes(x = Ethnic_Group, y = percentage, fill = cohort)) +
+#   geom_bar(stat = "identity", position = "dodge") +
+#   theme_classic() +
+#   theme(text = element_text(size = 20)) +
+#   theme(axis.text.x = element_text(
+#     size = 20,
+#     hjust = 0,
+#     vjust = 0
+#   )) +
+#   coord_flip() +
+#   xlab("") + ylab("Percentage of all ethnicities")
+# 
+# ggsave(
+#   filename = here::here("output", "ons", "ethnicity_count_eng.png"),
+#   ethnicity_plot_eng,
+#   dpi = 600,
+#   width = 30,
+#   height = 30,
+#   units = "cm"
+# )
+# 
+# 
+# ethnicity_plot16 <- ethnicity %>%
+#   filter(region != "England", group == "16") %>%
+#   ggplot(aes(x = Ethnic_Group, y = percentage, fill = cohort)) +
+#   geom_bar(stat = "identity", position = "dodge") +
+#   facet_wrap( ~ region) +
+#   theme_classic() +
+#   theme(text = element_text(size = 20)) +
+#   theme(axis.text.x = element_text(
+#     size = 20,
+#     hjust = 0,
+#     vjust = 0
+#   )) +
+#   coord_flip() +
+#   xlab("") + ylab("Percentage of all ethnicities")
+# 
+# ggsave(
+#   filename = here::here("output", "ons", "ethnicity_16_count.png"),
+#   ethnicity_plot16,
+#   dpi = 600,
+#   width = 45,
+#   height = 30,
+#   units = "cm"
+# )
+# 
+# ethnicity_plot16_eng <- ethnicity %>%
+#   filter(region == "England", group == "16") %>%
+#   ggplot(aes(x = Ethnic_Group, y = percentage, fill = cohort)) +
+#   geom_bar(stat = "identity", position = "dodge") +
+#   theme_classic() +
+#   theme(text = element_text(size = 20)) +
+#   theme(axis.text.x = element_text(
+#     size = 20,
+#     hjust = 0,
+#     vjust = 0
+#   )) +
+#   coord_flip() +
+#   xlab("") + ylab("Percentage of all ethnicities")
+# 
+# ggsave(
+#   filename = here::here("output", "ons", "ethnicity_16_count_eng.png"),
+#   ethnicity_plot16_eng,
+#   dpi = 600,
+#   width = 30,
+#   height = 30,
+#   units = "cm"
+# )
+# 
 
 
 ####### NA removed
-
+# read ethnicity produced by combine_ONS.R
 ethnicity_na <-
   read_csv(here::here("output", "ons", "ethnic_group_NA_registered.csv")) %>%
   mutate(cohort = fct_relevel(cohort, "ONS", "CTV3","SNOMED","PRIMIS"))
 
+ethnicity_na_2011 <-
+  read_csv(here::here("output", "ons", "ethnic_group_2011_NA_registered.csv")) %>%
+  mutate(cohort = fct_relevel(cohort, "ONS", "CTV3","SNOMED","PRIMIS"))
+
+## use ethnicity_2011 for 5 group and ethnicity for 16 group
+
+# 16 group NA removed
 ethnicity_plot16_eng_na <-  ethnicity_na %>%
   filter(region == "England", group == "16") %>%
   ggplot(aes(x = Ethnic_Group, y = percentage, fill = cohort)) +
@@ -152,7 +166,7 @@ ggsave(
     "output",
     "ons",
     "na_removed",
-    "ethnicity16_count_eng_na.png"
+    "ethnicity_16_count_eng_na.png"
   ),
   ethnicity_plot16_eng_na,
   dpi = 600,
@@ -161,13 +175,15 @@ ggsave(
   units = "cm"
 )
 
-ethnicity_plot_na_diff <- ethnicity_na %>%
+## create difference in percentage between ONS and TPP (for plotting)
+ethnicity_plot_na_2011_diff <- ethnicity_na_2011 %>%
   group_by(Ethnic_Group,region,group) %>%
   arrange(cohort) %>%
   mutate(diff = percentage - first(percentage)) 
 
 
-ethnicity_plot_na <- ethnicity_plot_na_diff %>%
+## 5 group ethnicity plot NA removed for Regions
+ethnicity_plot_na <- ethnicity_plot_na_2011_diff %>%
   filter(region != "England", group == "5") %>%
   ggplot(aes(x = Ethnic_Group, y = percentage, fill = cohort)) +
   geom_bar(stat = "identity", position = "dodge") +
@@ -183,7 +199,7 @@ ethnicity_plot_na <- ethnicity_plot_na_diff %>%
   xlab("") + ylab("\nPercentage of all ethnicities")  +
   theme(legend.position="bottom",
         legend.title=element_blank()) +
-  geom_text(aes(x=Ethnic_Group,y=percentage,label=ifelse(cohort=="ONS","",paste0(round(diff,digits =1),"%"))), size=3.4, position =position_dodge(width=0.9), vjust=0.,hjust = -0.2) 
+  geom_text(aes(x=Ethnic_Group,y=percentage,label=ifelse(cohort=="ONS","",paste0(round(diff,digits =1),"%"))), size=3.4, position =position_dodge(width=0.9), vjust=0.3,hjust = -0.2) 
 
 
 ggsave(
@@ -196,8 +212,8 @@ ggsave(
 )
 
 
-
-ethnicity_plot_eng_na <- ethnicity_plot_na_diff %>%
+## 5 group ethnicity plot NA removed for England
+ethnicity_plot_eng_na <- ethnicity_plot_na_2011_diff %>%
   filter(region == "England", group == "5") %>%
   ggplot(aes(x = Ethnic_Group, y = percentage, fill = cohort)) +
   geom_bar(stat = "identity", position = "dodge") +
@@ -212,7 +228,7 @@ ethnicity_plot_eng_na <- ethnicity_plot_na_diff %>%
   xlab("") + ylab("\nPercentage of all ethnicities") +
   theme(legend.position="bottom",
         legend.title=element_blank()) +
-  geom_text(aes(x=Ethnic_Group,y=percentage,label=ifelse(cohort=="ONS","",paste0(round(diff,digits =1),"%"))), size=3.4, position =position_dodge(width=0.9), vjust=0,hjust = -0.2)
+  geom_text(aes(x=Ethnic_Group,y=percentage,label=ifelse(cohort=="ONS","",paste0(round(diff,digits =1),"%"))), size=3.4, position =position_dodge(width=0.9), vjust=0.3 ,hjust = -0.2)
 
 ggsave(
   filename = here::here(
@@ -229,145 +245,145 @@ ggsave(
 )
 
 
-
-ethnicity_plot16_na <- ethnicity_na %>%
-  filter(region != "England", group == "16") %>%
-  ggplot(aes(x = Ethnic_Group, y = percentage, fill = cohort)) +
-  geom_bar(stat = "identity", position = "dodge") +
-  facet_wrap( ~ region) +
-  theme_classic() +
-  theme(text = element_text(size = 20)) +
-  theme(axis.text.x = element_text(
-    size = 20,
-    hjust = 0,
-    vjust = 0
-  )) +
-  coord_flip() + scale_fill_lancet()  +
-  xlab("") + ylab("\nPercentage of all ethnicities")
-
-
-ggsave(
-  filename = here::here("output", "ons", "na_removed", "ethnicity16_count_na.png"),
-  ethnicity_plot16_na,
-  dpi = 600,
-  width = 45,
-  height = 30,
-  units = "cm"
-)
-
-
-##### remove white / white british
-ethnicity_plot_eng_nw <- ethnicity_na %>%
-  filter(region == "England",Ethnic_Group!="White", group == "5") %>%
-  ggplot(aes(x = Ethnic_Group, y = percentage, fill = cohort)) +
-  geom_bar(stat = "identity", position = "dodge") +
-  theme_classic() +
-  theme(text = element_text(size = 20)) +
-  theme(axis.text.x = element_text(
-    size = 20,
-    hjust = 0,
-    vjust = 0
-  )) +
-  coord_flip()  + scale_fill_lancet()  +
-  xlab("") + ylab("\nPercentage of all ethnicities")
-
-ggsave(
-  filename = here::here("output", "ons", "ethnicity_count_eng_nw.png"),
-  ethnicity_plot_eng_nw,
-  dpi = 600,
-  width = 30,
-  height = 30,
-  units = "cm"
-)
-
-ethnicity_plot_nw <- ethnicity_na %>%
-  filter(region != "England",Ethnic_Group!="White" ,group == "5") %>%
-  ggplot(aes(x = Ethnic_Group, y = percentage, fill = cohort)) +
-  geom_bar(stat = "identity", position = "dodge") +
-  facet_wrap( ~ region) +
-  theme_classic() +
-  theme(text = element_text(size = 20)) +
-  theme(axis.text.x = element_text(
-    size = 20,
-    hjust = 0,
-    vjust = 0
-  )) +
-  coord_flip()  + scale_fill_lancet()  +
-  xlab("") + ylab("\nPercentage of all ethnicities")
-
-ggsave(
-  filename = here::here("output", "ons", "ethnicity_count_nw.png"),
-  ethnicity_plot_nw,
-  dpi = 600,
-  width = 45,
-  height = 30,
-  units = "cm"
-)
-
-ethnicity_plot16_nw <- ethnicity_na %>%
-  filter(region != "England",Ethnic_Group!="White British", group == "16") %>%
-  ggplot(aes(x = Ethnic_Group, y = percentage, fill = cohort)) +
-  geom_bar(stat = "identity", position = "dodge") +
-  facet_wrap( ~ region) +
-  theme_classic() +
-  theme(text = element_text(size = 20)) +
-  theme(axis.text.x = element_text(
-    size = 20,
-    hjust = 0,
-    vjust = 0
-  )) +
-  coord_flip()  + scale_fill_lancet() +
-  xlab("") + ylab("\nPercentage of all ethnicities")
-
-ggsave(
-  filename = here::here("output", "ons", "ethnicity16_count_nw.png"),
-  ethnicity_plot16_nw,
-  dpi = 600,
-  width = 45,
-  height = 30,
-  units = "cm"
-)
-
-ethnicity_plot16_eng_nw <- ethnicity_na %>%
-  filter(region == "England",Ethnic_Group!="White British", group == "16") %>%
-  ggplot(aes(x = Ethnic_Group, y = percentage, fill = cohort)) +
-  geom_bar(stat = "identity", position = "dodge") +
-  theme_classic() +
-  theme(text = element_text(size = 20)) +
-  theme(axis.text.x = element_text(
-    size = 20,
-    hjust = 0,
-    vjust = 0
-  )) +
-  coord_flip()  + scale_fill_lancet() +
-  xlab("") + ylab("\nPercentage of all ethnicities")
-
-ggsave(
-  filename = here::here("output", "ons", "ethnicity16_count_eng_nw.png"),
-  ethnicity_plot16_eng_nw,
-  dpi = 600,
-  width = 30,
-  height = 30,
-  units = "cm"
-)
-
-
-
-ethnicity_5_16 <-
-  ggarrange(
-    ethnicity_plot_eng_na,
-    ethnicity_plot16_eng_na,
-    labels = c("A", "B"),
-    ncol = 1,
-    nrow = 2,
-    common.legend = T
-  )
-
-ggsave(
-  filename = here::here("output", "ons", "ethnicity_5_16_comb.png"),
-  ethnicity_5_16,
-  dpi = 600,
-  width = 30,
-  height = 45,
-  units = "cm"
-)
+# ## 16 group ethnicity plot NA removed for England
+# ethnicity_plot16_na <- ethnicity_na %>%
+#   filter(region != "England", group == "16") %>%
+#   ggplot(aes(x = Ethnic_Group, y = percentage, fill = cohort)) +
+#   geom_bar(stat = "identity", position = "dodge") +
+#   facet_wrap( ~ region) +
+#   theme_classic() +
+#   theme(text = element_text(size = 20)) +
+#   theme(axis.text.x = element_text(
+#     size = 20,
+#     hjust = 0,
+#     vjust = 0
+#   )) +
+#   coord_flip() + scale_fill_lancet()  +
+#   xlab("") + ylab("\nPercentage of all ethnicities")
+# 
+# 
+# ggsave(
+#   filename = here::here("output", "ons", "na_removed", "ethnicity_16_count_na.png"),
+#   ethnicity_plot16_na,
+#   dpi = 600,
+#   width = 45,
+#   height = 30,
+#   units = "cm"
+# )
+# 
+# 
+# ##### remove white / white british
+# ethnicity_plot_eng_nw <- ethnicity_na_2011 %>%
+#   filter(region == "England",Ethnic_Group!="White", group == "5") %>%
+#   ggplot(aes(x = Ethnic_Group, y = percentage, fill = cohort)) +
+#   geom_bar(stat = "identity", position = "dodge") +
+#   theme_classic() +
+#   theme(text = element_text(size = 20)) +
+#   theme(axis.text.x = element_text(
+#     size = 20,
+#     hjust = 0,
+#     vjust = 0
+#   )) +
+#   coord_flip()  + scale_fill_lancet()  +
+#   xlab("") + ylab("\nPercentage of all ethnicities")
+# 
+# ggsave(
+#   filename = here::here("output", "ons", "ethnicity_count_eng_nw.png"),
+#   ethnicity_plot_eng_nw,
+#   dpi = 600,
+#   width = 30,
+#   height = 30,
+#   units = "cm"
+# )
+# 
+# ethnicity_plot_nw <- ethnicity_na_2011 %>%
+#   filter(region != "England",Ethnic_Group!="White" ,group == "5") %>%
+#   ggplot(aes(x = Ethnic_Group, y = percentage, fill = cohort)) +
+#   geom_bar(stat = "identity", position = "dodge") +
+#   facet_wrap( ~ region) +
+#   theme_classic() +
+#   theme(text = element_text(size = 20)) +
+#   theme(axis.text.x = element_text(
+#     size = 20,
+#     hjust = 0,
+#     vjust = 0
+#   )) +
+#   coord_flip()  + scale_fill_lancet()  +
+#   xlab("") + ylab("\nPercentage of all ethnicities")
+# 
+# ggsave(
+#   filename = here::here("output", "ons", "ethnicity_count_nw.png"),
+#   ethnicity_plot_nw,
+#   dpi = 600,
+#   width = 45,
+#   height = 30,
+#   units = "cm"
+# )
+# 
+# ethnicity_plot16_nw <- ethnicity_na %>%
+#   filter(region != "England",Ethnic_Group!="White British", group == "16") %>%
+#   ggplot(aes(x = Ethnic_Group, y = percentage, fill = cohort)) +
+#   geom_bar(stat = "identity", position = "dodge") +
+#   facet_wrap( ~ region) +
+#   theme_classic() +
+#   theme(text = element_text(size = 20)) +
+#   theme(axis.text.x = element_text(
+#     size = 20,
+#     hjust = 0,
+#     vjust = 0
+#   )) +
+#   coord_flip()  + scale_fill_lancet() +
+#   xlab("") + ylab("\nPercentage of all ethnicities")
+# 
+# ggsave(
+#   filename = here::here("output", "ons", "ethnicity_16_count_nw.png"),
+#   ethnicity_plot16_nw,
+#   dpi = 600,
+#   width = 45,
+#   height = 30,
+#   units = "cm"
+# )
+# 
+# ethnicity_plot16_eng_nw <- ethnicity_na %>%
+#   filter(region == "England",Ethnic_Group!="White British", group == "16") %>%
+#   ggplot(aes(x = Ethnic_Group, y = percentage, fill = cohort)) +
+#   geom_bar(stat = "identity", position = "dodge") +
+#   theme_classic() +
+#   theme(text = element_text(size = 20)) +
+#   theme(axis.text.x = element_text(
+#     size = 20,
+#     hjust = 0,
+#     vjust = 0
+#   )) +
+#   coord_flip()  + scale_fill_lancet() +
+#   xlab("") + ylab("\nPercentage of all ethnicities")
+# 
+# ggsave(
+#   filename = here::here("output", "ons", "ethnicity_16_count_eng_nw.png"),
+#   ethnicity_plot16_eng_nw,
+#   dpi = 600,
+#   width = 30,
+#   height = 30,
+#   units = "cm"
+# )
+# 
+# 
+# 
+# ethnicity_5_16 <-
+#   ggarrange(
+#     ethnicity_plot_eng_na,
+#     ethnicity_plot16_eng_na,
+#     labels = c("A", "B"),
+#     ncol = 1,
+#     nrow = 2,
+#     common.legend = T
+#   )
+# 
+# ggsave(
+#   filename = here::here("output", "ons", "ethnicity_5_16_comb.png"),
+#   ethnicity_5_16,
+#   dpi = 600,
+#   width = 30,
+#   height = 45,
+#   units = "cm"
+# )
