@@ -49,6 +49,7 @@ actions:
       moderately_sensitive:
         data: output/ons/ethnic_group*.csv
         data2: output/ons/ethnic_group_NA*.csv
+        data3: output/ons/data_check*.csv
 
   ons_plot:
     run: r:latest analysis/ons_plots.R
