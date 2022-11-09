@@ -258,14 +258,15 @@ ethnicity_na_2011 <- ethnicity_na %>%
             group =5,
             percentage=round(N/Total*100,1)) 
 
-write_csv(ethnicity_na,here::here("output", "ons","ethnic_group_2011_NA_registered.csv"))
+write_csv(ethnicity_na_2011,here::here("output", "ons","ethnic_group_2011_NA_registered.csv"))
 
 # check new groups matches the old 5 group (Asian and Other should be the only groups wuth differences other than rounding errors)
 data_check_na<-ethnicity_na_2011 %>%
   full_join(ethnicity_na %>% filter(group == "5")%>%mutate(percentage=round(percentage,1)),by=c("cohort","region","Ethnic_Group","group")) %>%
   mutate(N_diff=N.x-N.y,
          Total_diff=Total.x-Total.y,
-         perc_diff=percentage.x-percentage.y) %>%
-  write.csv(here::here("output", "ons", "data_check_na.csv"))
+         perc_diff=percentage.x-percentage.y)
+  
+write.csv(data_check_na,here::here("output", "ons", "data_check_na.csv"))
 
 
