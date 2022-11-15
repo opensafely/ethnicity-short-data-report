@@ -484,4 +484,29 @@ def records_over_time_perc(df_clean, definitions, demographic_covariates, clinic
                 df_time.to_csv(f'output/{output_path}/{grouping}/tables/records_over_time_{definition}_{group}{filepath}_{reg}.csv')
                 plt.savefig(f'output/{output_path}/{grouping}/figures/records_over_time_{definition}_{group}{filepath}_{reg}.png')
             
-   
+
+def display_heatmap(df_clean, definitions, output_path):
+    # All with measurement
+    li_filled = []
+    for definition in definitions:
+        df_temp = df_clean[['patient_id']].drop_duplicates().set_index('patient_id')
+        df_temp[definition+'_filled'] = 1
+        df_temp = df_clean[['patient_id', definition+'_filled']].drop_duplicates().dropna().set_index('patient_id')
+        li_filled.append(df_temp)
+
+    # Prepare data for heatmap input
+    df_temp2 = pd.concat(li_filled, axis=1)
+    # Remove list from memory
+    del li_filled 
+    df_transform = df_temp2.replace(np.nan,0)
+    df_dot = redact_round_table(df_transform.T.dot(df_transform))
+    
+    # Create mask to eliminate duplicates in heatmap
+    mask = np.triu(np.ones_like(df_dot))
+    np.fill_diagonal(mask[::1], 0)
+
+    # Draw the heatmap with the mask
+    fig, ax = plt.subplots(figsize=(12, 8))
+    sns.heatmap(df_dot, annot=True, mask=mask, fmt='g', cmap="YlGnBu", vmin=0)
+    #plt.show()
+    plt.savefig(f'output/{output_path}/figures/heatmap.png')

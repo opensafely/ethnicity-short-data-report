@@ -74,3 +74,9 @@ actions:
     outputs:
       moderately_sensitive:
         notebook: output/draft_report_ethnicity.html
+
+  local_simple_run:
+    run: python:latest python analysis/local_simple_run.py
+    outputs:
+      moderately_sensitive: 
+        tables: output/from_jobserver/release_2022_11_11/made_locally/*.csv
