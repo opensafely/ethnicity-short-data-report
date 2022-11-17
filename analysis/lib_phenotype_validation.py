@@ -150,6 +150,10 @@ def import_clean(
     df_clean["all_missing"] = (
         df_clean[li_col_missing].sum(axis=1) == len(definitions)
     ).astype(int)
+    df_clean["any_filled"] = (
+        df_clean[li_col_filled].sum(axis=1) > 0
+    ).astype(int)
+
 
     return df_clean
 
@@ -510,3 +514,185 @@ def display_heatmap(df_clean, definitions, output_path):
     sns.heatmap(df_dot, annot=True, mask=mask, fmt='g', cmap="YlGnBu", vmin=0)
     #plt.show()
     plt.savefig(f'output/{output_path}/figures/heatmap.png')
+
+def simple_patient_counts_sus(
+    df_clean,
+    definitions_sus,
+    reg,
+    demographic_covariates,
+    clinical_covariates,
+    output_path,
+    grouping,
+    categories=False,
+):
+    suffix = "_filled"
+    subgroup = "with records"
+       
+    # All with measurement
+    li_filled = []
+    for definition in definitions_sus:
+        df_temp = (
+            df_clean[["patient_id", definition + suffix]]
+            .drop_duplicates()
+            .dropna()
+            .set_index("patient_id")
+        )
+        li_filled.append(df_temp)
+    df_temp = (
+            df_clean[["patient_id", "all_filled", "all_missing","any_filled"]]
+            .drop_duplicates()
+            .dropna()
+            .set_index("patient_id")
+        )
+    li_filled.append(df_temp)
+
+    df_temp2 = pd.concat(li_filled, axis=1)
+    df_temp2["population"] = 1
+    # Remove list from memory
+    del li_filled
+    df_all = pd.DataFrame(df_temp2.sum()).T
+    df_all["group"], df_all["subgroup"] = ["all", subgroup]
+    df_all = df_all.set_index(["group", "subgroup"])
+
+    # By group
+    li_group = []
+    for group in demographic_covariates + clinical_covariates:
+        li_filled_group = []
+        for definition in definitions_sus:
+            df_temp = (
+                df_clean[["patient_id", definition + suffix, group]]
+                .drop_duplicates()
+                .dropna()
+                .reset_index(drop=True)
+            )
+            li_filled_group.append(df_temp)
+
+        df_temp = (
+                    df_clean[["patient_id", "all_filled", "all_missing","any_filled",group]]
+                    .drop_duplicates()
+                    .dropna()
+                    .reset_index(drop=True)
+                )
+        li_filled_group.append(df_temp)
+
+        df_reduce = reduce(
+            lambda df1, df2: pd.merge(df1, df2, on=["patient_id", group], how="outer"),
+            li_filled_group,
+        )
+        df_reduce["population"] = 1
+        # Remove list from memory
+        del li_filled_group
+        df_reduce2 = (
+            df_reduce.sort_values(by=group)
+            .drop(columns=["patient_id"])
+            .groupby(group)
+            .sum()
+            .reset_index()
+        )
+        df_reduce2["group"] = group
+        df_reduce2 = df_reduce2.rename(columns={group: "subgroup"})
+        li_group.append(df_reduce2)
+    df_all_group = pd.concat(li_group, axis=0, ignore_index=True).set_index(
+        ["group", "subgroup"]
+    )
+    # Remove list from memory
+    del li_group
+
+    # Redact
+    df_append = redact_round_table(df_all.append(df_all_group))
+    df_append.to_csv(f"output/{output_path}/{grouping}/tables/simple_patient_counts_sus_{reg}.csv")
+
+def import_clean_sus(
+    input_path,
+    definitions_sus,
+    other_vars,
+    demographic_covariates,
+    clinical_covariates,
+    reg,
+    null,
+    date_min,
+    date_max,
+    time_delta,
+    output_path,
+    grouping,
+    code_dict="",
+    dates=False,
+    registered=True,
+    dates_check=True,
+):
+    # Import
+    df_import = pd.read_feather(input_path)
+    
+    # Check whether output paths exist or not, create if missing
+    path_tables = f"output/{output_path}/{grouping}/tables/"
+    path_figures = f"output/{output_path}/{grouping}/figures/"
+    li_filepaths = [path_tables, path_figures]
+
+    for filepath in li_filepaths:
+        exists = os.path.exists(filepath)
+        print(filepath)
+        if not exists:
+            print(filepath)
+            os.makedirs(filepath)
+
+    # restrict to registered as of index date
+    if registered == True:
+        df_import = df_import[df_import[reg]]
+
+    # Codes
+    if code_dict != "":
+        for key in code_dict:
+            df_import[key] = df_import[key].astype(float)
+            df_import[key] = df_import[key].replace(code_dict[key])
+    # Subset to relevant columns
+    if dates_check:
+        dates = [f"{definition}_date" for definition in definitions_sus]
+    df_clean = df_import[
+        ["patient_id"]
+        + definitions_sus
+        + other_vars
+        + demographic_covariates
+        + clinical_covariates
+    ]
+    # Limit to relevant date range
+    df_clean = df_clean.sort_values(by="patient_id").reset_index(drop=True)
+    # Set null values to nan
+    for definition in definitions_sus:
+        df_clean.loc[df_clean[definition].isin(null), definition] = np.nan
+    # Create order for categorical variables
+    for group in demographic_covariates + clinical_covariates:
+        if df_clean[group].dtype.name == "category":
+            li_order = sorted(df_clean[group].dropna().unique().tolist())
+            df_clean[group] = df_clean[group].cat.reorder_categories(
+                li_order, ordered=True
+            )
+    # Mark patients with value filled/missing for each definition
+    li_filled = []
+    for definition in definitions_sus:
+        df_fill = pd.DataFrame(
+            df_clean.groupby("patient_id")[definition].any().astype("int")
+        ).rename(columns={definition: definition + "_filled"})
+        df_fill[definition + "_missing"] = 1 - df_fill[definition + "_filled"]
+        li_filled.append(df_fill)
+
+    df_filled = pd.concat(li_filled, axis=1)
+    # Remove list from memory
+    del li_filled
+    df_clean = df_clean.merge(df_filled, on="patient_id")
+
+    # Flag all filled/all missing
+    li_col_filled = [col for col in df_clean.columns if col.endswith("_filled")]
+    li_col_missing = [col for col in df_clean.columns if col.endswith("_missing")]
+    
+    df_clean["any_filled"] = (
+        df_clean[li_col_filled].sum(axis=1) > 0
+    ).astype(int)
+
+    df_clean["all_filled"] = (
+        df_clean[li_col_filled].sum(axis=1) == len(definitions_sus)
+    ).astype(int)
+    df_clean["all_missing"] = (
+        df_clean[li_col_missing].sum(axis=1) == len(definitions_sus)
+    ).astype(int)
+
+    return df_clean

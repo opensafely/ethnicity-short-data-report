@@ -12,6 +12,12 @@ definitions = [
     "ethnicity_primis_5",
 ]
 
+definitions_sus = [
+    "ethnicity_new_5",
+    "ethnicity_sus_5",
+]
+
+
 # Code dictionary
 code_dict = {
     "imd": {
@@ -25,6 +31,7 @@ code_dict = {
     "ethnicity_5": {1: "White", 2: "Mixed", 3: "Asian", 4: "Black", 5: "Other"},
     "ethnicity_new_5": {1: "White", 2: "Mixed", 3: "Asian", 4: "Black", 5: "Other"},
     "ethnicity_primis_5": {1: "White", 2: "Mixed", 3: "Asian", 4: "Black", 5: "Other"},
+    "ethnicity_sus_5": {1: "White", 2: "Mixed", 3: "Asian", 4: "Black", 5: "Other"},
 }
 
 # Other variables to include
@@ -62,10 +69,65 @@ grouping = "5_group"
 
 
 def main():
-    # combine defintions and other_vars
-    df_clean = import_clean(
+    # # combine defintions and other_vars
+    # df_clean = import_clean(
+    #     input_path,
+    #     definitions,
+    #     other_vars_combined,
+    #     demographic_covariates,
+    #     clinical_covariates,
+    #     reg,
+    #     null,
+    #     date_min,
+    #     date_max,
+    #     time_delta,
+    #     output_path,
+    #     grouping,
+    #     code_dict,
+    #     dates=False,
+    #     registered = registered,
+    #     dates_check=True,
+    # )
+    # # Count patients with records
+    # simple_patient_counts(
+    #     df_clean, definitions,reg, demographic_covariates, clinical_covariates, output_path,grouping,
+    # )
+
+    # # Count patients by categories
+    # simple_patient_counts(
+    #     df_clean,
+    #     definitions,
+    #     reg,
+    #     demographic_covariates,
+    #     clinical_covariates,
+    #     output_path,
+    #     grouping,
+    #     categories=True,
+    # )
+    # # # Generate upset plot of overlapping definitions
+    # # upset(df_clean_reg, output_path, definitions[1], definitions[0])
+    # # upset_cat(df_clean, output_path, definitions[1], definitions[0], other_vars)
+    # # Latest v most common
+    # simple_latest_common_comparison(
+    #     df_clean, definitions,reg, other_vars_combined, output_path,grouping,
+    # )
+    # simple_latest_common_comparison(
+    #     df_clean, definitions,reg, other_vars_combined, output_path,grouping, missing_check=True,
+    # )
+    # # State change
+    # simple_state_change(df_clean, definitions,reg, other_vars_combined, output_path,grouping,)
+    # simple_state_change(
+    #     df_clean, definitions,reg, other_vars_combined, output_path,grouping, missing_check=True
+    # )
+    # # records over time
+    # records_over_time_perc(
+    #     df_clean, definitions, demographic_covariates, clinical_covariates, output_path, "",grouping,reg
+    #     )
+
+
+    df_clean_sus=import_clean_sus(
         input_path,
-        definitions,
+        definitions_sus,
         other_vars_combined,
         demographic_covariates,
         clinical_covariates,
@@ -81,49 +143,19 @@ def main():
         registered = registered,
         dates_check=True,
     )
-    # Count patients with records
-    simple_patient_counts(
-        df_clean, definitions,reg, demographic_covariates, clinical_covariates, output_path,grouping,
+    # Count patients with records with SUS
+    simple_patient_counts_sus(
+        df_clean_sus, definitions_sus,reg, demographic_covariates, clinical_covariates, output_path,grouping,
     )
 
-    # Count patients by categories
-    simple_patient_counts(
-        df_clean,
-        definitions,
-        reg,
-        demographic_covariates,
-        clinical_covariates,
-        output_path,
-        grouping,
-        categories=True,
-    )
-    # # Generate upset plot of overlapping definitions
-    # upset(df_clean_reg, output_path, definitions[1], definitions[0])
-    # upset_cat(df_clean, output_path, definitions[1], definitions[0], other_vars)
-    # Latest v most common
-    simple_latest_common_comparison(
-        df_clean, definitions,reg, other_vars_combined, output_path,grouping,
-    )
-    simple_latest_common_comparison(
-        df_clean, definitions,reg, other_vars_combined, output_path,grouping, missing_check=True,
-    )
-    # State change
-    simple_state_change(df_clean, definitions,reg, other_vars_combined, output_path,grouping,)
-    simple_state_change(
-        df_clean, definitions,reg, other_vars_combined, output_path,grouping, missing_check=True
-    )
-    # records over time
-    records_over_time_perc(
-        df_clean, definitions, demographic_covariates, clinical_covariates, output_path, "",grouping,reg
-        )
 
 ########################## DO NOT EDIT – RUNS SCRIPT ##############################
 
 if __name__ == "__main__":
     main()
 
-registered = False
-reg = "fullset"
+# registered = False
+# reg = "fullset"
 
-if __name__ == "__main__":
-    main()
+# if __name__ == "__main__":
+#     main()
