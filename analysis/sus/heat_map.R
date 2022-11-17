@@ -2,18 +2,37 @@ library(arrow)
 library(hrbrthemes)
 library(viridis)
 library(stringr)
+library(tidyverse)
 
 # data<-read_feather(here::here("output","data","input.feather"))
+df_sum = read_csv(here::here("output","sus","simplified_output","5_group","tables","simple_patient_counts_categories_registered.csv"))           
 
+df_sum2<-df_sum %>%
+  filter(group=="all") %>%
+  select(-starts_with("any"),-starts_with("all"),-population) %>%
+  pivot_longer(
+    cols = ends_with("filled"),
+    names_to = c("ethnicity","codelist"),
+    names_pattern = "(.*)_ethnicity_(.*)_5_filled",
+    values_to = "count"
+  )
+  
+  
+  
+  
+  pivot_longer(cols=ends_with("filled"),names_prefix ="ethnicity_new_5_",names_to = "common",values_to="val") %>%
+  mutate
 
-df_sum = read_csv(here::here("output","from_jobserver","release_2022_11_11","simple_latest_common_ethnicity_new_5_registered.csv"))           
-
-df_sum3<-df_sum %>%
-  ungroup() %>%
+  
   # mutate(across(-1)/rowSums(across(-1))) %>%
   mutate(latest=ethnicity_new_5) %>%
   select(-ethnicity_new_5) %>% 
-  pivot_longer(cols=starts_with("ethnicity_new_5"),names_prefix ="ethnicity_new_5_",names_to = "common",values_to="val") %>%
+
+
+
+
+
+%>%
   filter(latest!="White_British",latest!="White_Irish",latest!="Other_White",common!="White_British",common!="White_Irish",common!="Other_White") %>%
   mutate(common=str_to_title(common)) 
 
