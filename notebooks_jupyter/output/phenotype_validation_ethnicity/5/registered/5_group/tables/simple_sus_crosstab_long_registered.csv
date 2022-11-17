@@ -1,0 +1,37 @@
+ethnicity_new_5,ethnicity_sus_5,0
+ Unknown, Unknown,30.0
+ Unknown,Asian,25.0
+ Unknown,Black,30.0
+ Unknown,Mixed,20.0
+ Unknown,Other,25.0
+ Unknown,White,25.0
+Asian, Unknown,10.0
+Asian,Asian,10.0
+Asian,Black,10.0
+Asian,Mixed,10.0
+Asian,Other,
+Asian,White,
+Black, Unknown,15.0
+Black,Asian,10.0
+Black,Black,10.0
+Black,Mixed,10.0
+Black,Other,
+Black,White,
+Mixed, Unknown,10.0
+Mixed,Asian,
+Mixed,Black,10.0
+Mixed,Mixed,10.0
+Mixed,Other,10.0
+Mixed,White,10.0
+Other, Unknown,10.0
+Other,Asian,
+Other,Black,
+Other,Mixed,10.0
+Other,Other,
+Other,White,
+White, Unknown,75.0
+White,Asian,40.0
+White,Black,55.0
+White,Mixed,40.0
+White,Other,50.0
+White,White,40.0

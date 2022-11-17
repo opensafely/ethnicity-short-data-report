@@ -109,11 +109,8 @@ def import_clean(
         ["patient_id"]
         + definitions
         + other_vars
-        + date_vars
-        + date_diff_vars
         + demographic_covariates
         + clinical_covariates
-        + dates
     ]
     # Limit to relevant date range
     df_clean = df_clean.sort_values(by="patient_id").reset_index(drop=True)
@@ -144,11 +141,17 @@ def import_clean(
     # Flag all filled/all missing
     li_col_filled = [col for col in df_clean.columns if col.endswith("_filled")]
     li_col_missing = [col for col in df_clean.columns if col.endswith("_missing")]
-    df_clean["all_filled"] = (
-        df_clean[li_col_filled].sum(axis=1) == len(definitions)
+
+    df_clean["any_filled"] = (
+        df_clean[li_col_filled].sum(axis=1) > 0
     ).astype(int)
+
     df_clean["all_missing"] = (
         df_clean[li_col_missing].sum(axis=1) == len(definitions)
+    ).astype(int)
+
+    df_clean["all_filled"] = (
+        df_clean[li_col_filled].sum(axis=1) == len(definitions)
     ).astype(int)
 
     return df_clean
@@ -248,8 +251,10 @@ def simple_patient_counts(
             for definition in definitions:
                 df_clean.loc[df_clean[definition] == x, f"{x}_{definition}_filled"] = 1
                 li_cat_def.append(f"{x}_{definition}")
+            df_clean[f"{x}_any"]=(df_clean[df_clean.filter(regex=f'{x}').columns].sum(axis=1) > 0).astype(int)
         definitions = li_cat_def
-
+        li_cat_any = [x + "_any" for x in li_cat]
+    
     # All with measurement
     li_filled = []
     for definition in definitions:
@@ -260,13 +265,20 @@ def simple_patient_counts(
             .set_index("patient_id")
         )
         li_filled.append(df_temp)
-
-    df_temp = (
-        df_clean[["patient_id", "all_filled", "all_missing"]]
-        .drop_duplicates()
-        .dropna()
-        .set_index("patient_id")
-    )
+    if categories == True:  
+        df_temp = (
+            df_clean[["patient_id", "all_filled", "all_missing","any_filled"]+li_cat_any]
+            .drop_duplicates()
+            .dropna()
+            .set_index("patient_id")
+        )
+    else:
+        df_temp = (
+            df_clean[["patient_id", "all_filled", "all_missing","any_filled"]]
+            .drop_duplicates()
+            .dropna()
+            .set_index("patient_id")
+        )
     li_filled.append(df_temp)
 
     df_temp2 = pd.concat(li_filled, axis=1)
@@ -289,14 +301,22 @@ def simple_patient_counts(
                 .reset_index(drop=True)
             )
             li_filled_group.append(df_temp)
-
-        df_temp = (
-            df_clean[["patient_id", "all_filled", "all_missing", group]]
-            .drop_duplicates()
-            .dropna()
-            .reset_index(drop=True)
-        )
-        li_filled_group.append(df_temp)
+        if categories == True:  
+            df_temp = (
+                df_clean[["patient_id", "all_filled", "all_missing","any_filled",group]+li_cat_any]
+                .drop_duplicates()
+                .dropna()
+                .reset_index(drop=True)
+            )
+            li_filled_group.append(df_temp)
+        else:
+            df_temp = (
+                df_clean[["patient_id", "all_filled", "all_missing","any_filled",group]]
+                .drop_duplicates()
+                .dropna()
+                .reset_index(drop=True)
+            )
+            li_filled_group.append(df_temp)
 
         df_reduce = reduce(
             lambda df1, df2: pd.merge(df1, df2, on=["patient_id", group], how="outer"),
@@ -510,3 +530,20 @@ def display_heatmap(df_clean, definitions, output_path):
     sns.heatmap(df_dot, annot=True, mask=mask, fmt='g', cmap="YlGnBu", vmin=0)
     #plt.show()
     plt.savefig(f'output/{output_path}/figures/heatmap.png')
+
+def simple_sus_crosstab(
+    df_clean, output_path,grouping,reg
+):       
+    
+    df_clean.ethnicity_new_5 = df_clean.ethnicity_new_5.fillna(" Unknown")
+    df_clean.ethnicity_sus_5 = df_clean.ethnicity_sus_5.fillna(" Unknown")
+    data_crosstab = pd.crosstab(df_clean.ethnicity_new_5, 
+                                df_clean.ethnicity_sus_5, margins = False)
+    data_crosstab=redact_round_table(data_crosstab)                            
+    data_crosstab.to_csv(f"output/{output_path}/{grouping}/tables/simple_sus_crosstab_{reg}.csv")
+
+    df_clean=df_clean[["ethnicity_new_5","ethnicity_sus_5"]]    
+    data_crosstab_long = pd.DataFrame(df_clean.groupby(["ethnicity_new_5","ethnicity_sus_5"]).size())
+    data_crosstab_long=redact_round_table(data_crosstab_long) 
+    data_crosstab_long.to_csv(f"output/{output_path}/{grouping}/tables/simple_sus_crosstab_long_{reg}.csv")
+        
