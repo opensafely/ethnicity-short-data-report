@@ -2,13 +2,14 @@ library(arrow)
 library(hrbrthemes)
 library(viridis)
 library(stringr)
+library('glue')
 
 # data<-read_feather(here::here("output","data","input.feather"))
 
 
 df_sum = read_csv(here::here("output","from_jobserver","release_2022_11_11","simple_latest_common_ethnicity_new_5_registered.csv"))           
 
-df_sum3<-df_sum %>%
+df_sum2 <-df_sum %>%
   ungroup() %>%
   # mutate(across(-1)/rowSums(across(-1))) %>%
   mutate(latest=ethnicity_new_5) %>%

@@ -22,16 +22,21 @@ library(ggpubr)
 fs::dir_create(here::here("output", "local", "ons"))
 fs::dir_create(here::here("output", "local", "ons", "na_removed"))
 
+
+###### process ONS
+
+
+
 ####### NA removed
 
-ethnicity_na <-
-  read_csv(here::here("output","from_jobserver","release_2022_11_09","ethnic_group_NA_registered.csv"),col_types =(cols())) %>%
-  mutate(cohort = case_when(cohort=="SNOMED"~ "SNOMED:2022",
-                            cohort=="ONS"~"2011 Census",
-                            TRUE ~cohort),
-    cohort = fct_relevel(cohort, 
-                              "2011 Census", "CTV3","SNOMED:2022")) %>%
-  filter(cohort != "CTV3" & cohort != "PRIMIS")
+# ethnicity_na <-
+#   read_csv(here::here("output","from_jobserver","release_2022_11_09","ethnic_group_NA_registered.csv"),col_types =(cols())) %>%
+#   mutate(cohort = case_when(cohort=="SNOMED"~ "SNOMED:2022",
+#                             cohort=="ONS"~"2011 Census",
+#                             TRUE ~cohort),
+#     cohort = fct_relevel(cohort, 
+#                               "2011 Census", "CTV3","SNOMED:2022")) %>%
+#   filter(cohort != "CTV3" & cohort != "PRIMIS")
 
 
 
