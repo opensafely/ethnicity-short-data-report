@@ -12,6 +12,7 @@ actions:
 
   generate_study_population:
     run: cohortextractor:latest generate_cohort --study-definition study_definition_time --output-dir "output/time" --output-format feather
+    needs: [split_codelist]
     outputs:
       highly_sensitive:
         cohort: output/time/data/input_time.feather
