@@ -79,4 +79,4 @@ actions:
 #     run: python:latest python analysis/local_simple_run.py
 #     outputs:
 #       moderately_sensitive: 
-#         tables: output/from_jobserver/release_2022_11_11/made_locally/*.csv
+#         tables: output/from_jobserver/release_2022_11_18/made_locally/*.csv

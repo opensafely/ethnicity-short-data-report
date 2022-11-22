@@ -158,9 +158,11 @@ def local_state_change(
             )
 
 
-def local_latest_common(   definitions, input_path,output_path, code_dict="", definition_dict="",
+def local_latest_common(definitions, input_path,output_path, code_dict="", definition_dict="",suffix="",
 ):
     for definition in definitions:
+            if code_dict != "":
+                lowerlist_5 = [x.lower() for x in (list(code_dict[definition].values()))]
             df_sum = pd.read_csv(f'output/{input_path}/simple_latest_common_{definition}{suffix}_registered.csv').set_index(definition)
             # sort rows by category index
             df_sum.columns = df_sum.columns.str.replace(definition + "_", "")
@@ -189,11 +191,11 @@ def local_latest_common(   definitions, input_path,output_path, code_dict="", de
             df_out = df_out.set_index(f'Latest Ethnicity-\n{definition_dict[definition]}')
             df_out = df_out.replace(np.nan, "-")
             df_out.to_csv(
-                f"output/{output_path}/local_state_change_{definition}_registered.csv"
+                f"output/{output_path}/local_latest_common_{definition}_registered.csv"
             )
             
-            if code_dict_5 != "":
-                lowerlist_5 = [x.lower() for x in (list(code_dict_5[definition].values()))]
+            if code_dict != "":
+                lowerlist_5 = [x.lower() for x in (list(code_dict[definition].values()))]
                 df_sum = df_sum[lowerlist_5]
             else:
                 df_sum = df_sum.reindex(sorted(df_sum.columns), axis=1)
@@ -217,5 +219,5 @@ def local_latest_common(   definitions, input_path,output_path, code_dict="", de
             df_sum.rename(columns={f'{definition_dict[definition]}':f'Latest Ethnicity-\n{definition_dict[definition]}'}, inplace=True)
             df_sum = df_sum.set_index(f'Latest Ethnicity-\n{definition_dict[definition]}')
             df_sum.to_csv(
-                f"output/{output_path}/local_state_change_{definition}_expanded_registered.csv"
+                f"output/{output_path}/local_latest_common_{definition}_expanded_registered.csv"
             )

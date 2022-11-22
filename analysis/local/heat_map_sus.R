@@ -75,9 +75,9 @@ sus_heat_perc<- ggplot(df_sum_perc, aes( ethnicity_sus_5,ethnicity_new_5, fill= 
   geom_tile() +
   # scale_fill_viridis(discrete=FALSE,direction=-1) +
   # scale_fill_gradient(low="white", high="blue") +
-  scale_fill_distiller(palette = "OrRd",direction = 1,name = "Proportion of 'SNOMED'") +
+  scale_fill_distiller(palette = "OrRd",direction = 1,name = "Proportion of SNOMED:2022") +
   geom_text(aes(label=percentage)) +
-  ylab("SNOMED\n") + xlab("\nSUS") +
+  ylab("SNOMED:2022\n") + xlab("\nSNOMED:2022 supplemented with SUS") +
   theme_ipsum()
 
 ggsave(
@@ -107,9 +107,9 @@ sus_heat_perc_unk<- ggplot(df_sum_perc_unk, aes( ethnicity_sus_5,ethnicity_new_5
   geom_tile() +
   # scale_fill_viridis(discrete=FALSE,direction=-1) +
   # scale_fill_gradient(low="white", high="blue") +
-  scale_fill_distiller(palette = "OrRd",direction = 1,name = "Proportion of 'SNOMED'") +
+  scale_fill_distiller(palette = "OrRd",direction = 1,name = "Proportion of SNOMED:2022") +
   geom_text(aes(label=percentage)) +
-  ylab("SNOMED\n") + xlab("\nSUS") +
+  ylab("SNOMED:2022\n") + xlab("\nSNOMED:2022 supplemented with SUS") +
   theme_ipsum()
 
 ggsave(
@@ -135,9 +135,59 @@ latest_common_nowhite<- ggplot(df_sum_nowhite , aes(ethnicity_new_5, ethnicity_s
   # scale_fill_gradient(low="white", high="blue") +
   scale_fill_distiller(palette = "OrRd",direction = 1,name = "Proportion of 'Latest Ethnicity'") +
   geom_text(aes(label=scales::label_comma(accuracy = 1)(`0`))) +
-  ylab("SNOMED\n") + xlab("\nSUS") +
+  ylab("SNOMED:2022\n") + xlab("\nSNOMED:2022 supplemented with SUS") +
   theme_ipsum()
 
 ########### 
 
 perc_unk<- df_sum_perc_unk %>% mutate(matches=ethnicity_new_5==ethnicity_sus_5) %>% group_by(matches) %>% summarise(N=sum(`0`))
+
+############ state change
+
+# data<-read_feather(here::here("output","data","input.feather"))
+state_change  <-   read_csv(here::here("output","from_jobserver","release_2022_11_18","simple_state_change_ethnicity_new_5_registered.csv"),col_types =(cols())) %>%
+  select(-ethnicity_new_5_any_check,-...1) %>%
+  rename("latest"="ethnicity_new_5")
+
+state_change_long <- state_change %>%
+  pivot_longer(cols=starts_with("ethnicity_new_5"),
+               names_prefix ="ethnicity_new_5_",
+               names_to = "ethnicity",
+               values_to="val") %>%
+  mutate(percentage = round(val / n *100,1),
+         ethnicity = str_to_title(ethnicity),
+         latest = fct_relevel(latest,
+                                       "Unknown","Other","White","Mixed", "Black","Asian"),
+         ethnicity=fct_relevel(ethnicity,
+                                     "Asian","Black","Mixed", "White","Other","Any")
+  ) %>%
+  filter(latest!="Unknown")
+         
+               
+              
+
+plot_state_change <- ggplot(state_change_long, aes(ethnicity,latest, fill= percentage)) + 
+  geom_tile() +
+  # scale_fill_viridis(discrete=FALSE,direction=-1) +
+  # scale_fill_gradient(low="white", high="blue") +
+  scale_fill_distiller(palette = "OrRd",direction = 1,name = "Proportion of 'Latest Ethnicity'") +
+  geom_text(aes(label=percentage)) +
+  ylab("Latest recorded ethnicity\n") + xlab("\nAny recorded ethnicity") +
+  theme_ipsum()
+
+plot_state_change
+
+ggsave(
+  filename = here::here(
+    "output",
+    "from_jobserver",
+    "release_2022_11_18",
+    "made_locally",
+    "state_change.png"
+  ),
+  plot_state_change,
+  dpi = 600,
+  width = 30,
+  height = 10,
+  units = "cm"
+)
