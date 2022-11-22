@@ -27,7 +27,7 @@ code_dict_5 = {
     "ethnicity_new_5": {1: "Asian", 2: "Black", 3: "Mixed", 4: "White", 5: "Other"},
     "ethnicity_primis_5": {1: "Asian", 2: "Black", 3: "Mixed", 4: "White", 5: "Other"},
 }
-
+lowerlist_5 = [x.lower() for x in (list(code_dict_5["ethnicity_new_5"].values()))]
 # Code dictionary
 code_dict_16 = {
     "imd": {
@@ -120,7 +120,11 @@ def main():
     local_patient_counts(
             definitions_sus, input_path_5, output_path_5,code_dict_5,definition_dict, categories=True,missing=False
         )
-
+    local_latest_common(   ['ethnicity_new_5'], input_path_5,output_path_5, code_dict_5, definition_dict,suffix
+    )
+    local_state_change(
+    ['ethnicity_new_5'], input_path_5,output_path_5, code_dict_5, definition_dict,
+    )
 
 ########################## DO NOT EDIT – RUNS SCRIPT ##############################
 if __name__ == "__main__":

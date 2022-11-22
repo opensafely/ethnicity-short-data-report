@@ -7,7 +7,7 @@ library('glue')
 # data<-read_feather(here::here("output","data","input.feather"))
 
 
-df_sum = read_csv(here::here("output","from_jobserver","release_2022_11_11","simple_latest_common_ethnicity_new_5_registered.csv"))           
+df_sum = read_csv(here::here("output","from_jobserver","release_2022_11_18","simple_latest_common_ethnicity_new_5_registered.csv"))           
 
 df_sum2 <-df_sum %>%
   ungroup() %>%
@@ -35,7 +35,8 @@ df_sum2<-df_sum %>%
                                    "Asian","Black","Mixed", "White","Other"),
          latest = fct_relevel(latest,
                               "Other","White","Mixed", "Black","Asian")
-         )  #%>%
+         )  %>%
+  filter(latest!="Unknown")
 # filter(latest!="White_British",latest!="White_Irish",latest!="Other_White",common!="White_British",common!="White_Irish",common!="Other_White")
 
 
@@ -48,11 +49,14 @@ latest_common<- ggplot(df_sum2, aes(common, latest, fill= val)) +
   ylab("Latest Ethnicity\n") + xlab("\nMost Frequent Ethnicity") +
   theme_ipsum()
 
+latest_common
 
 ggsave(
   filename = here::here(
     "output",
-    "local",
+    "from_jobserver",
+    "release_2022_11_18",
+    "made_locally",
     "latest_common.png"
   ),
   latest_common,

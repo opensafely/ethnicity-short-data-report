@@ -10,14 +10,14 @@ fs::dir_create(here::here("output", "time"))
 input<-arrow::read_feather(here::here("output","time","data","input_time.feather"))
 
 counts_first <- input %>%
-  count(ethnicity_new_5_date_2) %>%
+  count(ethnicity_new_5_first) %>%
   mutate(measure = "First" ) %>% 
-  rename( "Date"="ethnicity_new_5_date_2")
+  rename( "Date"="ethnicity_new_5_first")
 
 counts <- input %>%
-  count(ethnicity_new_5_date_3) %>%
+  count(ethnicity_new_5_last) %>%
   mutate(measure = "Last" ) %>% 
-  rename( "Date"="ethnicity_new_5_date_3") %>%
+  rename( "Date"="ethnicity_new_5_last") %>%
   bind_rows(counts_first) %>%
   mutate(n = case_when(n>7~round(n/5,0)*5),
          Date=as.Date(Date)) %>%
@@ -57,8 +57,8 @@ covariates =c(demographic_covariates,clinical_covariates)
 df_group <- as.data.frame(NULL)
 
 for (i in covariates){
-  df<-input %>% group_by_at(i) %>%  count(ethnicity_new_5_date_2) %>% 
-  rename( "Date"="ethnicity_new_5_date_2") %>%
+  df<-input %>% group_by_at(i) %>%  count(ethnicity_new_5_last) %>% 
+  rename( "Date"="ethnicity_new_5_last") %>%
     mutate(
           n = case_when(n>7~round(n/5,0)*5),
           Date=as.Date(Date)) %>%

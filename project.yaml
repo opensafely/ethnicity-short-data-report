@@ -21,6 +21,6 @@ actions:
     run: r:latest analysis/time/times.R
     needs: [generate_study_population]
     outputs:
-      highly_sensitive:
+      moderately_sensitive:
         data: output/time/*.csv
         plots: output/time/*.png
