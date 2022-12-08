@@ -3,7 +3,7 @@ from lib_phenotype_validation import *
 ############################ CONFIGURE OPTIONS HERE ################################
 
 # Import file
-input_path = "output/data/input.feather"
+input_path = "output/extract/input.feather"
 
 # Definitions
 definitions = ["ethnicity_16", "ethnicity_new_16", "ethnicity_primis_16"]

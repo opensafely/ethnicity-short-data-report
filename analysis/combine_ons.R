@@ -21,7 +21,7 @@ fs::dir_create(here::here("output","ons"))
 ## import data
 eth_ons<-read_csv(here::here("data","ethnicity_ons.csv.gz"))
 
-df_input <- arrow::read_feather(file.path(here::here("output","data","input.feather"))) %>%
+df_input <- arrow::read_feather(file.path(here::here("output","extract","input.feather"))) %>%
   filter(registered==1) %>%
   mutate(age_band = factor(age_band,levels=c("0-19","20-29","30-39","40-49","50-59","60-69","70-79","80+")),
        sex = case_when(sex=="F"~"Female",sex=="M"~"Male"))

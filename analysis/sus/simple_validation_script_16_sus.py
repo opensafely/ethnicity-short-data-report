@@ -3,7 +3,7 @@ from lib_phenotype_validation_sus import *
 ############################ CONFIGURE OPTIONS HERE ################################
 
 # Import file
-input_path = "output/sus/extract/input_sus.feather"
+input_path = "output/extract/input.feather"
 
 # Definitions
 definitions = ["ethnicity_new_16", "ethnicity_sus_16"]
@@ -150,7 +150,7 @@ def main():
         df_clean, definitions,reg, other_vars_combined, output_path,grouping,
     )
     simple_latest_common_comparison(
-        df_clean, definitions,reg, other_vars_combined, output_path,grouping, missing_check=True,
+        df_clean, definitions,reg, other_vars_combined, output_path,grouping, missing_check=False,
     )
     # State change
     simple_state_change(df_clean, definitions,reg, other_vars_combined, output_path,grouping,)

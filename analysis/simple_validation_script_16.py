@@ -3,7 +3,7 @@ from lib_phenotype_validation import *
 ############################ CONFIGURE OPTIONS HERE ################################
 
 # Import file
-input_path = "output/data/input.feather"
+input_path = "output/extract/input.feather"
 
 # Definitions
 definitions = ["ethnicity_16", "ethnicity_new_16", "ethnicity_primis_16"]
@@ -145,7 +145,7 @@ def main():
         code_dict,
         dates=False,
         registered = registered,
-        dates_check=True,
+        dates_check=False,
     )
     # Count patients with records
     simple_patient_counts(
@@ -178,18 +178,18 @@ def main():
     simple_state_change(
         df_clean, definitions,reg, other_vars_combined, output_path,grouping, missing_check=True
     )
-    # records over time
-    records_over_time_perc(
-        df_clean, definitions, demographic_covariates, clinical_covariates, output_path, "",grouping,reg
-        )
+    # # records over time
+    # records_over_time_perc(
+    #     df_clean, definitions, demographic_covariates, clinical_covariates, output_path, "",grouping,reg
+    #     )
 
 ########################## DO NOT EDIT – RUNS SCRIPT ##############################
 
 if __name__ == "__main__":
     main()
 
-registered = False
-reg = "fullset"
+# registered = False
+# reg = "fullset"
 
-if __name__ == "__main__":
-    main()
+# if __name__ == "__main__":
+#     main()

@@ -201,14 +201,14 @@ def simple_state_change(
         df_subset[f"{definition}_any"] = df_subset[f"{definition}_any"].replace(1, np.nan)
         df_subset["n"] = 1
         ### check if any px have latest ethnicity but no recorded ethnicity (this should be impossible!) 
-        df_any_check=df_subset
-        df_any_check[f"{definition}_any_check"]=df_any_check[f"{definition}_any"]==0
-        df_any_check[f"{definition}_any_check"]=df_any_check[f"{definition}_any_check"].replace(False, np.nan)
-        df_any_check=df_any_check.groupby(definition).count()
-        df_any_check=df_any_check[f"{definition}_any_check"]
-        df_any_check.to_csv(
-                f"output/{output_path}/{grouping}/tables/simple_{definition}_any_check.csv"
-            )
+        # df_any_check=df_subset
+        # df_any_check[f"{definition}_any_check"]=df_any_check[f"{definition}_any"]==0
+        # df_any_check[f"{definition}_any_check"]=df_any_check[f"{definition}_any_check"].replace(False, np.nan)
+        # df_any_check=df_any_check.groupby(definition).count()
+        # df_any_check=df_any_check[f"{definition}_any_check"]
+        # df_any_check.to_csv(
+        #         f"output/{output_path}/{grouping}/tables/simple_{definition}_any_check.csv"
+        #     )
 
         # Count
         df_subset2 = df_subset.loc[~df_subset[definition].isna()]
