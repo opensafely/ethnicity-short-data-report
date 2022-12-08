@@ -3,7 +3,7 @@ from lib_phenotype_validation_sus import *
 ############################ CONFIGURE OPTIONS HERE ################################
 
 # Import file
-input_path = "output/data/input_sus.feather"
+input_path = "output/extract/input.feather"
 
 # Definitions
 definitions = [
@@ -77,7 +77,7 @@ def main():
         code_dict,
         dates=False,
         registered = registered,
-        dates_check=True,
+        dates_check=False,
     )
     # Count patients with records
     simple_patient_counts(

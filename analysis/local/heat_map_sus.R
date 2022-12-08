@@ -3,6 +3,8 @@ library(hrbrthemes)
 library(viridis)
 library(stringr)
 library('glue')
+library(ggplot2)
+library(tidyverse)
 
 # data<-read_feather(here::here("output","data","input.feather"))
 population  <-   read_csv(here::here("output","from_jobserver","release_2022_11_18","simple_patient_counts_registered.csv"),col_types =(cols())) %>%
@@ -77,7 +79,7 @@ sus_heat_perc<- ggplot(df_sum_perc, aes( ethnicity_sus_5,ethnicity_new_5, fill= 
   # scale_fill_gradient(low="white", high="blue") +
   scale_fill_distiller(palette = "OrRd",direction = 1,name = "Proportion of SNOMED:2022") +
   geom_text(aes(label=percentage)) +
-  ylab("SNOMED:2022\n") + xlab("\nSNOMED:2022 supplemented with SUS") +
+  ylab("SNOMED:2022\n") + xlab("\nSUS") +
   theme_ipsum()
 
 ggsave(
@@ -109,7 +111,7 @@ sus_heat_perc_unk<- ggplot(df_sum_perc_unk, aes( ethnicity_sus_5,ethnicity_new_5
   # scale_fill_gradient(low="white", high="blue") +
   scale_fill_distiller(palette = "OrRd",direction = 1,name = "Proportion of SNOMED:2022") +
   geom_text(aes(label=percentage)) +
-  ylab("SNOMED:2022\n") + xlab("\nSNOMED:2022 supplemented with SUS") +
+  ylab("SNOMED:2022\n") + xlab("\nSUS") +
   theme_ipsum()
 
 ggsave(
@@ -135,7 +137,7 @@ latest_common_nowhite<- ggplot(df_sum_nowhite , aes(ethnicity_new_5, ethnicity_s
   # scale_fill_gradient(low="white", high="blue") +
   scale_fill_distiller(palette = "OrRd",direction = 1,name = "Proportion of 'Latest Ethnicity'") +
   geom_text(aes(label=scales::label_comma(accuracy = 1)(`0`))) +
-  ylab("SNOMED:2022\n") + xlab("\nSNOMED:2022 supplemented with SUS") +
+  ylab("SNOMED:2022\n") + xlab("\nSUS") +
   theme_ipsum()
 
 ########### 
@@ -156,10 +158,12 @@ state_change_long <- state_change %>%
                values_to="val") %>%
   mutate(percentage = round(val / n *100,1),
          ethnicity = str_to_title(ethnicity),
+         ethnicity = case_when(ethnicity=="Any"~"Any discordant ethnicity",
+                               T ~ ethnicity),
          latest = fct_relevel(latest,
                                        "Unknown","Other","White","Mixed", "Black","Asian"),
          ethnicity=fct_relevel(ethnicity,
-                                     "Asian","Black","Mixed", "White","Other","Any")
+                                     "Asian","Black","Mixed", "White","Other","Any discordant ethnicity")
   ) %>%
   filter(latest!="Unknown")
          

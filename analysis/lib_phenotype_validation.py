@@ -105,6 +105,9 @@ def import_clean(
     # Subset to relevant columns
     if dates_check:
         dates = [f"{definition}_date" for definition in definitions]
+    else: 
+        dates = []
+
     df_clean = df_import[
         ["patient_id"]
         + definitions
@@ -162,8 +165,8 @@ def simple_latest_common_comparison(
     df_clean, definitions,reg, other_vars, output_path,grouping, missing_check=False
 ):
     for definition in definitions:
-        if missing_check:
-            df_clean = df_clean[df_clean[f"{definition}_date"] == "1900-01-01"]
+        # if missing_check:
+        #     df_clean = df_clean[df_clean[f"{definition}_date"] == "1900-01-01"]
         vars = [s for s in other_vars if s.startswith(definition)]
         df_subset = df_clean.loc[~df_clean[definition].isna()]
         df_subset = df_subset[[definition] + vars].set_index(definition)
@@ -185,8 +188,8 @@ def simple_state_change(
     df_clean, definitions,reg, other_vars, output_path,grouping, missing_check=False
 ):
     for definition in definitions:
-        if missing_check:
-            df_clean = df_clean[df_clean[f"{definition}_date"] == "1900-01-01"]
+        # if missing_check:
+        #     df_clean = df_clean[df_clean[f"{definition}_date"] == "1900-01-01"]
         vars = [s for s in other_vars if s.startswith(definition)]
         df_subset = (
             df_clean[[definition] + vars]
@@ -202,14 +205,14 @@ def simple_state_change(
         df_subset[f"{definition}_any"] = df_subset[f"{definition}_any"].replace(1, np.nan)
         df_subset["n"] = 1
         ### check if any px have latest ethnicity but no recorded ethnicity (this should be impossible!) 
-        df_any_check=df_subset
-        df_any_check[f"{definition}_any_check"]=df_any_check[f"{definition}_any"]==0
-        df_any_check[f"{definition}_any_check"]=df_any_check[f"{definition}_any_check"].replace(False, np.nan)
-        df_any_check=df_any_check.groupby(definition).count()
-        df_any_check=df_any_check[f"{definition}_any_check"]
-        df_any_check.to_csv(
-                f"output/{output_path}/{grouping}/tables/simple_{definition}_any_check.csv"
-            )
+        # df_any_check=df_subset
+        # df_any_check[f"{definition}_any_check"]=df_any_check[f"{definition}_any"]==0
+        # df_any_check[f"{definition}_any_check"]=df_any_check[f"{definition}_any_check"].replace(False, np.nan)
+        # df_any_check=df_any_check.groupby(definition).count()
+        # df_any_check=df_any_check[f"{definition}_any_check"]
+        # df_any_check.to_csv(
+        #         f"output/{output_path}/{grouping}/tables/simple_{definition}_any_check.csv"
+        #     )
 
         # Count
         df_subset2 = df_subset.loc[~df_subset[definition].isna()]

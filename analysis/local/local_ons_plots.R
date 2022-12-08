@@ -137,12 +137,12 @@ fs::dir_create(here::here("output", "ons", "na_removed"))
 ####### NA removed
 # read ethnicity produced by combine_ONS.R
 ethnicity_na <-
-  read_csv(here::here("output", "from_jobserver","release_2022_11_18","made_locally",  "ethnic_group_registered.csv")) %>%
+  read_csv(here::here("output", "from_jobserver","release_2022_11_18","made_locally",  "ethnic_group_registered_2021.csv")) %>%
   mutate(
-    cohort = case_when(cohort=="ONS"~"2011 Census",
+    cohort = case_when(cohort=="ONS"~"2021 Census",
                        cohort=="new"~"SNOMED:2022",
                        cohort=="any"~"SNOMED:2022 supplemented with SUS data"),
-    cohort = fct_relevel(cohort, "2011 Census","SNOMED:2022", "SNOMED:2022 supplemented with SUS data"),
+    cohort = fct_relevel(cohort, "2021 Census","SNOMED:2022", "SNOMED:2022 supplemented with SUS data"),
     Ethnic_Group = fct_relevel(Ethnic_Group,
                                "Asian","Black","Mixed", "White","Other"))
 
@@ -203,11 +203,11 @@ ethnicity_plot_na <- ethnicity_na %>%
   xlab("") + ylab("\nProportion of ethnicities")  +
   theme(legend.position="bottom",
         legend.title=element_blank()) +
-  geom_text(aes(x=Ethnic_Group,y=percentage,label=ifelse(cohort=="2011 Census","",paste0(round(diff,digits =1),"%"))), size=3.4, position =position_dodge(width=0.9), vjust=0.3,hjust = -0.2) 
+  geom_text(aes(x=Ethnic_Group,y=percentage,label=ifelse(cohort=="2021 Census","",paste0(round(diff,digits =1),"%"))), size=3.4, position =position_dodge(width=0.9), vjust=0.3,hjust = -0.2) 
 
 
 ggsave(
-  filename =here::here("output", "from_jobserver","release_2022_11_18","made_locally",  "ONS_ethnicity_regions.png"),
+  filename =here::here("output", "from_jobserver","release_2022_11_18","made_locally",  "ONS_ethnicity_regions_2021.png"),
   ethnicity_plot_na,
   dpi = 600,
   width = 50,
@@ -232,10 +232,10 @@ ethnicity_plot_eng_na <- ethnicity_na %>%
   xlab("") + ylab("\nProportion of ethnicities") +
   theme(legend.position="bottom",
         legend.title=element_blank()) +
-  geom_text(aes(x=Ethnic_Group,y=percentage,label=ifelse(cohort=="2011 Census","",paste0(round(diff,digits =1),"%"))), size=3.4, position =position_dodge(width=0.9), vjust=0.3 ,hjust = -0.2)
+  geom_text(aes(x=Ethnic_Group,y=percentage,label=ifelse(cohort=="2021 Census","",paste0(round(diff,digits =1),"%"))), size=3.4, position =position_dodge(width=0.9), vjust=0.3 ,hjust = -0.2)
 
 ggsave(
-  filename =here::here("output", "from_jobserver","release_2022_11_18","made_locally", "ONS_ethnicity_eng.png"
+  filename =here::here("output", "from_jobserver","release_2022_11_18","made_locally", "ONS_ethnicity_eng_2021.png"
   ),
   ethnicity_plot_eng_na,
   dpi = 600,

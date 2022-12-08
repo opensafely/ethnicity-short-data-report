@@ -3,7 +3,7 @@ from lib_phenotype_validation import *
 ############################ CONFIGURE OPTIONS HERE ################################
 
 # Import file
-input_path = "output/data/input.feather"
+input_path = "output/extract/input.feather"
 
 # Definitions
 definitions = [
@@ -69,65 +69,10 @@ grouping = "5_group"
 
 
 def main():
-    # # combine defintions and other_vars
-    # df_clean = import_clean(
-    #     input_path,
-    #     definitions,
-    #     other_vars_combined,
-    #     demographic_covariates,
-    #     clinical_covariates,
-    #     reg,
-    #     null,
-    #     date_min,
-    #     date_max,
-    #     time_delta,
-    #     output_path,
-    #     grouping,
-    #     code_dict,
-    #     dates=False,
-    #     registered = registered,
-    #     dates_check=True,
-    # )
-    # # Count patients with records
-    # simple_patient_counts(
-    #     df_clean, definitions,reg, demographic_covariates, clinical_covariates, output_path,grouping,
-    # )
-
-    # # Count patients by categories
-    # simple_patient_counts(
-    #     df_clean,
-    #     definitions,
-    #     reg,
-    #     demographic_covariates,
-    #     clinical_covariates,
-    #     output_path,
-    #     grouping,
-    #     categories=True,
-    # )
-    # # # Generate upset plot of overlapping definitions
-    # # upset(df_clean_reg, output_path, definitions[1], definitions[0])
-    # # upset_cat(df_clean, output_path, definitions[1], definitions[0], other_vars)
-    # # Latest v most common
-    # simple_latest_common_comparison(
-    #     df_clean, definitions,reg, other_vars_combined, output_path,grouping,
-    # )
-    # simple_latest_common_comparison(
-    #     df_clean, definitions,reg, other_vars_combined, output_path,grouping, missing_check=True,
-    # )
-    # # State change
-    # simple_state_change(df_clean, definitions,reg, other_vars_combined, output_path,grouping,)
-    # simple_state_change(
-    #     df_clean, definitions,reg, other_vars_combined, output_path,grouping, missing_check=True
-    # )
-    # # records over time
-    # records_over_time_perc(
-    #     df_clean, definitions, demographic_covariates, clinical_covariates, output_path, "",grouping,reg
-    #     )
-
-
-    df_clean_sus=import_clean_sus(
+    # combine defintions and other_vars
+    df_clean = import_clean(
         input_path,
-        definitions_sus,
+        definitions,
         other_vars_combined,
         demographic_covariates,
         clinical_covariates,
@@ -143,10 +88,65 @@ def main():
         registered = registered,
         dates_check=True,
     )
-    # Count patients with records with SUS
-    simple_patient_counts_sus(
-        df_clean_sus, definitions_sus,reg, demographic_covariates, clinical_covariates, output_path,grouping,
+    # Count patients with records
+    simple_patient_counts(
+        df_clean, definitions,reg, demographic_covariates, clinical_covariates, output_path,grouping,
     )
+
+    # Count patients by categories
+    simple_patient_counts(
+        df_clean,
+        definitions,
+        reg,
+        demographic_covariates,
+        clinical_covariates,
+        output_path,
+        grouping,
+        categories=True,
+    )
+    # # Generate upset plot of overlapping definitions
+    # upset(df_clean_reg, output_path, definitions[1], definitions[0])
+    # upset_cat(df_clean, output_path, definitions[1], definitions[0], other_vars)
+    # Latest v most common
+    simple_latest_common_comparison(
+        df_clean, definitions,reg, other_vars_combined, output_path,grouping,
+    )
+    simple_latest_common_comparison(
+        df_clean, definitions,reg, other_vars_combined, output_path,grouping, missing_check=True,
+    )
+    # State change
+    simple_state_change(df_clean, definitions,reg, other_vars_combined, output_path,grouping,)
+    simple_state_change(
+        df_clean, definitions,reg, other_vars_combined, output_path,grouping, missing_check=True
+    )
+    # # records over time
+    # records_over_time_perc(
+    #     df_clean, definitions, demographic_covariates, clinical_covariates, output_path, "",grouping,reg
+    #     )
+
+
+    # df_clean_sus=import_clean_sus(
+    #     input_path,
+    #     definitions_sus,
+    #     other_vars_combined,
+    #     demographic_covariates,
+    #     clinical_covariates,
+    #     reg,
+    #     null,
+    #     date_min,
+    #     date_max,
+    #     time_delta,
+    #     output_path,
+    #     grouping,
+    #     code_dict,
+    #     dates=False,
+    #     registered = registered,
+    #     dates_check=True,
+    # )
+    # # Count patients with records with SUS
+    # simple_patient_counts_sus(
+    #     df_clean_sus, definitions_sus,reg, demographic_covariates, clinical_covariates, output_path,grouping,
+    # )
 
 
 ########################## DO NOT EDIT – RUNS SCRIPT ##############################
