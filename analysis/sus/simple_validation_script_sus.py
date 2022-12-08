@@ -3,7 +3,7 @@ from lib_phenotype_validation_sus import *
 ############################ CONFIGURE OPTIONS HERE ################################
 
 # Import file
-input_path = "output/data/input_sus.feather"
+input_path = "output/sus/extract/input_sus.feather"
 
 # Definitions
 definitions = [

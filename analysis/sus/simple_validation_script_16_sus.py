@@ -3,7 +3,7 @@ from lib_phenotype_validation_sus import *
 ############################ CONFIGURE OPTIONS HERE ################################
 
 # Import file
-input_path = "output/data/input_sus.feather"
+input_path = "output/sus/extract/input_sus.feather"
 
 # Definitions
 definitions = ["ethnicity_new_16", "ethnicity_sus_16"]
@@ -18,7 +18,7 @@ code_dict = {
         4: "4",
         5: "5 Least deprived",
     },
-    "ethnicity_16": {
+    "ethnicity_sus_16": {
         1: "White_British",
         2: "White_Irish",
         3: "Other_White",
@@ -37,24 +37,6 @@ code_dict = {
         16: "Any_other_ethnic_group",
     },
     "ethnicity_new_16": {
-        1: "White_British",
-        2: "White_Irish",
-        3: "Other_White",
-        4: "White_and_Black_Caribbean",
-        5: "White_and_Black_African",
-        6: "White_and_Asian",
-        7: "Other_Mixed",
-        8: "Indian",
-        9: "Pakistani",
-        10: "Bangladeshi",
-        11: "Other_Asian",
-        12: "Caribbean",
-        13: "African",
-        14: "Other_Black",
-        15: "Chinese",
-        16: "Any_other_ethnic_group",
-    },
-    "ethnicity_primis_16": {
         1: "White_British",
         2: "White_Irish",
         3: "Other_White",
@@ -104,7 +86,7 @@ if registered == True:
     reg = "registered"
 
 # Dates
-dates = True
+dates = False
 date_min = ""
 date_max = ""
 time_delta = ""
@@ -145,7 +127,7 @@ def main():
         code_dict,
         dates=False,
         registered = registered,
-        dates_check=True,
+        dates_check=False,
     )
     # Count patients with records
     simple_patient_counts(
@@ -163,9 +145,6 @@ def main():
         grouping,
         categories=True,
     )
-    # # Generate upset plot of overlapping definitions
-    # upset(df_clean_reg, output_path, definitions[1], definitions[0])
-    # upset_cat(df_clean, output_path, definitions[1], definitions[0], other_vars)
     # Latest v most common
     simple_latest_common_comparison(
         df_clean, definitions,reg, other_vars_combined, output_path,grouping,
@@ -175,21 +154,18 @@ def main():
     )
     # State change
     simple_state_change(df_clean, definitions,reg, other_vars_combined, output_path,grouping,)
-    simple_state_change(
-        df_clean, definitions,reg, other_vars_combined, output_path,grouping, missing_check=True
-    )
-    # records over time
-    records_over_time_perc(
-        df_clean, definitions, demographic_covariates, clinical_covariates, output_path, "",grouping,reg
-        )
+    # # records over time
+    # records_over_time_perc(
+    #     df_clean, definitions, demographic_covariates, clinical_covariates, output_path, "",grouping,reg
+    #     )
 
 ########################## DO NOT EDIT – RUNS SCRIPT ##############################
 
 if __name__ == "__main__":
     main()
 
-registered = False
-reg = "fullset"
+# registered = False
+# reg = "fullset"
 
-if __name__ == "__main__":
-    main()
+# if __name__ == "__main__":
+#     main()

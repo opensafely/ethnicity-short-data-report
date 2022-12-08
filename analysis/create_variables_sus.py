@@ -149,7 +149,203 @@ clinical_variables = dict(
                     },
             ),
 
+    ethnicity_sus_16_White_British= patients.categorised_as(
+                        {"0": "DEFAULT",
+                        "1": "ethnicity_sus_16='1'",},
+                    return_expectations={
+                        "category": {
+                            "ratios": {
+                                "1": 1,
+                            }
+                        },
+                        "incidence": 0.2,
+                    },
+            ),
 
+    ethnicity_sus_16_White_Irish= patients.categorised_as(
+                        {"0": "DEFAULT",
+                        "1": "ethnicity_sus_16='2'",},
+                    return_expectations={
+                        "category": {
+                            "ratios": {
+                                "1": 1,
+                            }
+                        },
+                        "incidence": 0.2,
+                    },
+            ),
+  
+    ethnicity_sus_16_Other_White= patients.categorised_as(
+                        {"0": "DEFAULT",
+                        "1": "ethnicity_sus_16='3'",},
+                    return_expectations={
+                        "category": {
+                            "ratios": {
+                                "1": 1,
+                            }
+                        },
+                        "incidence": 0.2,
+                    },
+            ),
+
+    ethnicity_sus_16_White_and_Black_Caribbean= patients.categorised_as(
+                        {"0": "DEFAULT",
+                        "1": "ethnicity_sus_16='4'",},
+                    return_expectations={
+                        "category": {
+                            "ratios": {
+                                "1": 1,
+                            }
+                        },
+                        "incidence": 0.2,
+                    },
+            ),
+
+    ethnicity_sus_16_White_and_Black_African= patients.categorised_as(
+                        {"0": "DEFAULT",
+                        "1": "ethnicity_sus_16='5'",},
+                    return_expectations={
+                        "category": {
+                            "ratios": {
+                                "1": 1,
+                            }
+                        },
+                        "incidence": 0.2,
+                    },
+            ),
+    ethnicity_sus_16_White_and_Asian= patients.categorised_as(
+                        {"0": "DEFAULT",
+                        "1": "ethnicity_sus_16='6'",},
+                    return_expectations={
+                        "category": {
+                            "ratios": {
+                                "1": 1,
+                            }
+                        },
+                        "incidence": 0.2,
+                    },
+            ),
+    ethnicity_sus_16_Other_Mixed= patients.categorised_as(
+                        {"0": "DEFAULT",
+                        "1": "ethnicity_sus_16='7'",},
+                    return_expectations={
+                        "category": {
+                            "ratios": {
+                                "1": 1,
+                            }
+                        },
+                        "incidence": 0.2,
+                    },
+            ),
+    ethnicity_sus_16_Indian= patients.categorised_as(
+                        {"0": "DEFAULT",
+                        "1": "ethnicity_sus_16='8'",},
+                    return_expectations={
+                        "category": {
+                            "ratios": {
+                                "1": 1,
+                            }
+                        },
+                        "incidence": 0.2,
+                    },
+            ),
+    ethnicity_sus_16_Pakistani= patients.categorised_as(
+                        {"0": "DEFAULT",
+                        "1": "ethnicity_sus_16='9'",},
+                    return_expectations={
+                        "category": {
+                            "ratios": {
+                                "1": 1,
+                            }
+                        },
+                        "incidence": 0.2,
+                    },
+            ),
+    ethnicity_sus_16_Bangladeshi= patients.categorised_as(
+                        {"0": "DEFAULT",
+                        "1": "ethnicity_sus_16='10'",},
+                    return_expectations={
+                        "category": {
+                            "ratios": {
+                                "1": 1,
+                            }
+                        },
+                        "incidence": 0.2,
+                    },
+            ),            
+    ethnicity_sus_16_Other_Asian= patients.categorised_as(
+                        {"0": "DEFAULT",
+                        "1": "ethnicity_sus_16='11'",},
+                    return_expectations={
+                        "category": {
+                            "ratios": {
+                                "1": 1,
+                            }
+                        },
+                        "incidence": 0.2,
+                    },
+            ),
+    ethnicity_sus_16_Caribbean= patients.categorised_as(
+                        {"0": "DEFAULT",
+                        "1": "ethnicity_sus_16='12'",},
+                    return_expectations={
+                        "category": {
+                            "ratios": {
+                                "1": 1,
+                            }
+                        },
+                        "incidence": 0.2,
+                    },
+            ),
+
+    ethnicity_sus_16_African= patients.categorised_as(
+                        {"0": "DEFAULT",
+                        "1": "ethnicity_sus_16='13'",},
+                    return_expectations={
+                        "category": {
+                            "ratios": {
+                                "1": 1,
+                            }
+                        },
+                        "incidence": 0.2,
+                    },
+            ),
+    ethnicity_sus_16_Other_Black= patients.categorised_as(
+                        {"0": "DEFAULT",
+                        "1": "ethnicity_sus_16='14'",},
+                    return_expectations={
+                        "category": {
+                            "ratios": {
+                                "1": 1,
+                            }
+                        },
+                        "incidence": 0.2,
+                    },
+            ),
+    ethnicity_sus_16_Chinese= patients.categorised_as(
+                        {"0": "DEFAULT",
+                        "1": "ethnicity_sus_16='15'",},
+                    return_expectations={
+                        "category": {
+                            "ratios": {
+                                "1": 1,
+                            }
+                        },
+                        "incidence": 0.2,
+                    },
+            ),
+    ethnicity_sus_16_Any_other_ethnic_group= patients.categorised_as(
+                        {"0": "DEFAULT",
+                        "1": "ethnicity_sus_16='16'",},
+                    return_expectations={
+                        "category": {
+                            "ratios": {
+                                "1": 1,
+                            }
+                        },
+                        "incidence": 0.2,
+                    },
+            ),
     # -------------------
     # Clinical conditions
     # -------------------
