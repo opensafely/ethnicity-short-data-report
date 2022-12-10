@@ -34,12 +34,6 @@ def loop_over_codes(code_list):
     return variables
 
 
-## STUDY POPULATION
-
-
-## STUDY POPULATION
-# Defines both the study population and points to the important covariates
-
 study = StudyDefinition(
     default_expectations={
         "date": {"earliest": "1970-01-01", "latest": "today"},
@@ -50,10 +44,26 @@ study = StudyDefinition(
     # STUDY POPULATION
     population=patients.satisfying(
         """
-        (sex = "M" OR sex = "F")
+        (sex = "M" OR sex = "F") AND
+        registered
         """,
+        # registered
+        registered=patients.registered_as_of("2022-01-01"),
+        
+        # SEX
+        sex=patients.sex(
+            return_expectations={
+                "rate": "universal",
+                "category": {"ratios": {"M": 0.49, "F": 0.51}},
+            }
+        ),
     ),
-    
+
+    ethnicity=patients.with_these_clinical_events(
+        group1,
+        return_expectations={"incidence": 0.50},
+    ),
+
     **loop_over_codes(group1),
     first_ethnicity_code=patients.with_these_clinical_events(
         group1,
