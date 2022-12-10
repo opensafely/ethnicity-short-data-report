@@ -21,25 +21,21 @@ def with_these_clinical_events_date_X(name, codelist, index_date, n, return_expe
         variables.update(var_signature(f"{name}_{i}", codelist, f"{name}_{i-1} + 1 day", return_expectations))
     return variables
 
-clinical_variables = dict(
-    # ----
-    # Ethnicity_CTV3
-    # ----
-    # Ethnicity using CTV3 codes - returns latest in period
+ethnicity_overtime_variables = dict(
 
     **with_these_clinical_events_date_X(
-        name="ethnicity_new_5_date",
-        codelist=ethnicity_codes_snomed,
-        index_date="1800-01-01",
-        n=5,
-        return_expectations={
-            "date": {"earliest": "1900-01-01", "latest": "2022-01-01"},
-            "rate": "uniform",
-            "incidence": 0.99,
-        },
-    ),
+            name="ethnicity_new_5_date",
+            codelist=ethnicity_codes_snomed,
+            index_date="1800-01-01",
+            n=5,
+            return_expectations={
+                "date": {"earliest": "1900-01-01", "latest": "2022-01-01"},
+                "rate": "uniform",
+                "incidence": 0.99,
+            },
+        ),
 
-        ethnicity_new_5_date=patients.with_these_clinical_events(
+    ethnicity_new_5_latest=patients.with_these_clinical_events(
         ethnicity_codes_snomed,
         returning="date",
         find_last_match_in_period=True,
@@ -54,7 +50,7 @@ clinical_variables = dict(
     ethnicity_new_5_first=patients.with_these_clinical_events(
         ethnicity_codes_snomed,
         returning="date",
-        find_last_match_in_period=True,
+        find_first_match_in_period=True,
         include_date_of_match=False,
         return_expectations={
             "date": {"earliest": "1900-01-01", "latest": "2022-01-01"},
@@ -63,7 +59,10 @@ clinical_variables = dict(
         },
     ),
 
-    ethnicity_new_16=patients.with_these_clinical_events(
+)
+
+ethnicity_16_variables = dict(
+      ethnicity_new_16=patients.with_these_clinical_events(
         ethnicity_codes_snomed_16,
         returning="category",
         find_last_match_in_period=True,
@@ -92,25 +91,7 @@ clinical_variables = dict(
             "incidence": 0.75,
         },
     ),
-    ethnicity_5=patients.with_these_clinical_events(
-        ethnicity_codes_ctv3,
-        returning="category",
-        find_last_match_in_period=True,
-        include_date_of_match=False,
-        return_expectations={
-            "category": {"ratios": {"1": 0.2, "2": 0.2, "3": 0.2, "4": 0.2, "5": 0.2}},
-            "incidence": 0.75,
-        },
-    ),
-    ethnicity_5_date=patients.with_these_clinical_events(
-        ethnicity_codes_ctv3,
-        returning="date",
-        find_last_match_in_period=True,
-        return_expectations={
-            "date": {"earliest": "1960-01-01", "latest": "2022-01-02"}
-        },
-    ),
-    ethnicity_16=patients.with_these_clinical_events(
+  ethnicity_16=patients.with_these_clinical_events(
         ethnicity_codes_ctv3_16,
         returning="category",
         find_last_match_in_period=True,
@@ -139,49 +120,7 @@ clinical_variables = dict(
             "incidence": 0.75,
         },
     ),
-    ethnicity_individual_new=patients.with_these_clinical_events(
-        ethnicity_codes_individual_snomed,
-        returning="category",
-        find_last_match_in_period=True,
-        include_date_of_match=False,
-        return_expectations={
-            "category": {"ratios": {"Guamians": 0.6, "Fijian": 0.1, "Oceanian": 0.1, "Samoan": 0.1, "Senegalese": 0.1}},
-            "incidence": 0.75,
-        },
-    ),
 
-    ethnicity_new_5=patients.with_these_clinical_events(
-        ethnicity_codes_snomed,
-        returning="category",
-        find_last_match_in_period=True,
-        include_date_of_match=False,
-        return_expectations={
-            "category": {"ratios": {"1": 0.6, "2": 0.1, "3": 0.1, "4": 0.1, "5": 0.1}},
-            "incidence": 0.75,
-        },
-    ),
-
-
- 
-    # Ethnicity using SNOMED codes - returns latest in period
-    ethnicity_primis_5=patients.with_these_clinical_events(
-        eth2001,
-        returning="category",
-        find_last_match_in_period=True,
-        include_date_of_match=False,
-        return_expectations={
-            "category": {"ratios": {"1": 0.2, "2": 0.2, "3": 0.2, "4": 0.2, "5": 0.2}},
-            "incidence": 0.75,
-        },
-    ),
-    ethnicity_primis_5_date=patients.with_these_clinical_events(
-        eth2001,
-        returning="date",
-        find_last_match_in_period=True,
-        return_expectations={
-            "date": {"earliest": "1960-01-01", "latest": "2022-01-02"}
-        },
-    ),
     ethnicity_primis_16=patients.with_these_clinical_events(
         eth2001_16,
         returning="category",
@@ -210,14 +149,6 @@ clinical_variables = dict(
             },
             "incidence": 0.75,
         },
-    ),
-     ethnicity_sus_5 = patients.with_ethnicity_from_sus(
-        returning="group_6",  
-        use_most_frequent_code=True,
-        return_expectations={
-            "category": {"ratios": {"1": 0.2, "2": 0.2, "3": 0.2, "4": 0.2, "5": 0.2}},
-            "incidence": 0.75,
-            },
     ),
 
     ethnicity_sus_16=patients.with_ethnicity_from_sus(
@@ -248,97 +179,6 @@ clinical_variables = dict(
                 },
     ), 
     
-    ethnicity_sus_5_white= patients.categorised_as(
-                        {"0": "DEFAULT",
-                        "1": "ethnicity_sus_5='1'",},
-                    return_expectations={
-                        "category": {
-                            "ratios": {
-                                "1": 1,
-                            }
-                        },
-                        "incidence": 0.2,
-                    },
-            ),
-
-    ethnicity_sus_5_mixed= patients.categorised_as(
-                        {"0": "DEFAULT",
-                        "1": "ethnicity_sus_5='2'",},
-                    return_expectations={
-                        "category": {
-                            "ratios": {
-                                "1": 1,
-                            }
-                        },
-                        "incidence": 0.2,
-                    },
-            ),
-  
-    ethnicity_sus_5_asian= patients.categorised_as(
-                        {"0": "DEFAULT",
-                        "1": "ethnicity_sus_5='3'",},
-                    return_expectations={
-                        "category": {
-                            "ratios": {
-                                "1": 1,
-                            }
-                        },
-                        "incidence": 0.2,
-                    },
-            ),
-
-    ethnicity_sus_5_black= patients.categorised_as(
-                        {"0": "DEFAULT",
-                        "1": "ethnicity_sus_5='4'",},
-                    return_expectations={
-                        "category": {
-                            "ratios": {
-                                "1": 1,
-                            }
-                        },
-                        "incidence": 0.2,
-                    },
-            ),
-
-    ethnicity_sus_5_other= patients.categorised_as(
-                        {"0": "DEFAULT",
-                        "1": "ethnicity_sus_5='5'",},
-                    return_expectations={
-                        "category": {
-                            "ratios": {
-                                "1": 1,
-                            }
-                        },
-                        "incidence": 0.2,
-                    },
-            ),
-
-    ethnicity_sus_16_White_British= patients.categorised_as(
-                        {"0": "DEFAULT",
-                        "1": "ethnicity_sus_16='1'",},
-                    return_expectations={
-                        "category": {
-                            "ratios": {
-                                "1": 1,
-                            }
-                        },
-                        "incidence": 0.2,
-                    },
-            ),
-
-    ethnicity_sus_16_White_Irish= patients.categorised_as(
-                        {"0": "DEFAULT",
-                        "1": "ethnicity_sus_16='2'",},
-                    return_expectations={
-                        "category": {
-                            "ratios": {
-                                "1": 1,
-                            }
-                        },
-                        "incidence": 0.2,
-                    },
-            ),
-  
     ethnicity_sus_16_Other_White= patients.categorised_as(
                         {"0": "DEFAULT",
                         "1": "ethnicity_sus_16='3'",},
@@ -510,7 +350,191 @@ clinical_variables = dict(
                         "incidence": 0.2,
                     },
             ),
+    ethnicity_sus_16_White_British= patients.categorised_as(
+                        {"0": "DEFAULT",
+                        "1": "ethnicity_sus_16='1'",},
+                    return_expectations={
+                        "category": {
+                            "ratios": {
+                                "1": 1,
+                            }
+                        },
+                        "incidence": 0.2,
+                    },
+            ),
+
+    ethnicity_sus_16_White_Irish= patients.categorised_as(
+                        {"0": "DEFAULT",
+                        "1": "ethnicity_sus_16='2'",},
+                    return_expectations={
+                        "category": {
+                            "ratios": {
+                                "1": 1,
+                            }
+                        },
+                        "incidence": 0.2,
+                    },
+            ),
+)
+
+ethnicity_5_variables = dict(
+    # ----
+    # Ethnicity_CTV3
+    # ----
+    # Ethnicity using CTV3 codes - returns latest in period
+
+    ethnicity_new_5_date=patients.with_these_clinical_events(
+        ethnicity_codes_snomed,
+        returning="date",
+        find_last_match_in_period=True,
+        include_date_of_match=False,
+        return_expectations={
+            "date": {"earliest": "1900-01-01", "latest": "2022-01-01"},
+            "rate": "exponential_increase",
+            "incidence": 0.99,
+        },
+    ),
+      ethnicity_5=patients.with_these_clinical_events(
+        ethnicity_codes_ctv3,
+        returning="category",
+        find_last_match_in_period=True,
+        include_date_of_match=False,
+        return_expectations={
+            "category": {"ratios": {"1": 0.2, "2": 0.2, "3": 0.2, "4": 0.2, "5": 0.2}},
+            "incidence": 0.75,
+        },
+    ),
+    ethnicity_5_date=patients.with_these_clinical_events(
+        ethnicity_codes_ctv3,
+        returning="date",
+        find_last_match_in_period=True,
+        return_expectations={
+            "date": {"earliest": "1960-01-01", "latest": "2022-01-02"}
+        },
+    ),
   
+    ethnicity_individual_new=patients.with_these_clinical_events(
+        ethnicity_codes_individual_snomed,
+        returning="category",
+        find_last_match_in_period=True,
+        include_date_of_match=False,
+        return_expectations={
+            "category": {"ratios": {"Guamians": 0.6, "Fijian": 0.1, "Oceanian": 0.1, "Samoan": 0.1, "Senegalese": 0.1}},
+            "incidence": 0.75,
+        },
+    ),
+
+    ethnicity_new_5=patients.with_these_clinical_events(
+        ethnicity_codes_snomed,
+        returning="category",
+        find_last_match_in_period=True,
+        include_date_of_match=False,
+        return_expectations={
+            "category": {"ratios": {"1": 0.6, "2": 0.1, "3": 0.1, "4": 0.1, "5": 0.1}},
+            "incidence": 0.75,
+        },
+    ),
+
+
+ 
+    # Ethnicity using SNOMED codes - returns latest in period
+    ethnicity_primis_5=patients.with_these_clinical_events(
+        eth2001,
+        returning="category",
+        find_last_match_in_period=True,
+        include_date_of_match=False,
+        return_expectations={
+            "category": {"ratios": {"1": 0.2, "2": 0.2, "3": 0.2, "4": 0.2, "5": 0.2}},
+            "incidence": 0.75,
+        },
+    ),
+    ethnicity_primis_5_date=patients.with_these_clinical_events(
+        eth2001,
+        returning="date",
+        find_last_match_in_period=True,
+        return_expectations={
+            "date": {"earliest": "1960-01-01", "latest": "2022-01-02"}
+        },
+    ),
+
+     ethnicity_sus_5 = patients.with_ethnicity_from_sus(
+        returning="group_6",  
+        use_most_frequent_code=True,
+        return_expectations={
+            "category": {"ratios": {"1": 0.2, "2": 0.2, "3": 0.2, "4": 0.2, "5": 0.2}},
+            "incidence": 0.75,
+            },
+    ),
+
+    ethnicity_sus_5_white= patients.categorised_as(
+                        {"0": "DEFAULT",
+                        "1": "ethnicity_sus_5='1'",},
+                    return_expectations={
+                        "category": {
+                            "ratios": {
+                                "1": 1,
+                            }
+                        },
+                        "incidence": 0.2,
+                    },
+            ),
+
+    ethnicity_sus_5_mixed= patients.categorised_as(
+                        {"0": "DEFAULT",
+                        "1": "ethnicity_sus_5='2'",},
+                    return_expectations={
+                        "category": {
+                            "ratios": {
+                                "1": 1,
+                            }
+                        },
+                        "incidence": 0.2,
+                    },
+            ),
+  
+    ethnicity_sus_5_asian= patients.categorised_as(
+                        {"0": "DEFAULT",
+                        "1": "ethnicity_sus_5='3'",},
+                    return_expectations={
+                        "category": {
+                            "ratios": {
+                                "1": 1,
+                            }
+                        },
+                        "incidence": 0.2,
+                    },
+            ),
+
+    ethnicity_sus_5_black= patients.categorised_as(
+                        {"0": "DEFAULT",
+                        "1": "ethnicity_sus_5='4'",},
+                    return_expectations={
+                        "category": {
+                            "ratios": {
+                                "1": 1,
+                            }
+                        },
+                        "incidence": 0.2,
+                    },
+            ),
+
+    ethnicity_sus_5_other= patients.categorised_as(
+                        {"0": "DEFAULT",
+                        "1": "ethnicity_sus_5='5'",},
+                    return_expectations={
+                        "category": {
+                            "ratios": {
+                                "1": 1,
+                            }
+                        },
+                        "incidence": 0.2,
+                    },
+            ),
+
+
+    )
+
+clinical_variables = dict(
     # -------------------
     # Clinical conditions
     # -------------------
