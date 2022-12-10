@@ -48,31 +48,12 @@ study = StudyDefinition(
     },
 
     # STUDY POPULATION
-   population=patients.registered_with_one_practice_between("2021-07-01","2021-07-01"),
-
-    ## DEMOGRAPHIC COVARIATES
-    # AGE
-    age=patients.age_as_of(
-        "2021-07-01",
-        return_expectations={
-            "rate": "universal",
-            "int": {"distribution": "population_ages"},
-        },
+    population=patients.satisfying(
+        """
+        (sex = "M" OR sex = "F")
+        """,
     ),
-
-    # SEX
-    sex=patients.sex(
-        return_expectations={
-            "rate": "universal",
-            "category": {"ratios": {"M": 0.49, "F": 0.51}},
-        }
-    ),
-
-    ethnicity=patients.with_these_clinical_events(
-        group1,
-        return_expectations={"incidence": 0.50},
-    ),
-
+    
     **loop_over_codes(group1),
     first_ethnicity_code=patients.with_these_clinical_events(
         group1,

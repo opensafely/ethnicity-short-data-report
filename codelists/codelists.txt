@@ -1,4 +1,5 @@
 opensafely/ethnicity-uk-categories/516dea7b
+opensafely/ethnicity-snomed-0removed/2e641f61
 user/rohini-mathur/ethnicity_group1/159ff414
 user/rohini-mathur/ethnicity_group2/7c9080de
 user/rohini-mathur/ethnicity_group3/63810da9
