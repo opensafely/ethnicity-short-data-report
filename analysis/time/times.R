@@ -7,7 +7,7 @@ library(lubridate)
 
 fs::dir_create(here::here("output", "time"))
 
-input<-arrow::read_feather(here::here("output","extract","input.feather"))
+input<-arrow::read_feather(here::here("output","extract_time","input_time.feather"))
 
 counts_first <- input %>%
   group_by(month = lubridate::floor_date(ethnicity_new_5_first, "month")) %>%
@@ -19,7 +19,7 @@ counts_first <- input %>%
 
 
 counts <- input %>%
-  group_by(month = floor_date(ethnicity_new_5_date, "month")) %>%
+  group_by(month = floor_date(ethnicity_new_5_latest, "month")) %>%
   count(month) %>%
   mutate(
     measure = "last") %>%
@@ -46,7 +46,7 @@ counts_first_year <- input %>%
 
 
 counts_year <- input %>%
-  group_by(year = floor_date(ethnicity_new_5_date, "year")) %>%
+  group_by(year = floor_date(ethnicity_new_5_latest, "year")) %>%
   count(year) %>%
   mutate(
     measure = "last") %>%
@@ -127,7 +127,7 @@ df_group <- as.data.frame(NULL)
 
 for (i in covariates){
   df<-input %>% 
-    group_by(year = floor_date(ethnicity_new_5_date, "year")) %>%
+    group_by(year = floor_date(ethnicity_new_5_latest, "year")) %>%
     group_by_at(i) %>% 
     count(year) %>%
     mutate(

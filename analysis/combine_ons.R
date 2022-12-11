@@ -21,56 +21,56 @@ fs::dir_create(here::here("output","ons"))
 ## import data
 eth_ons<-read_csv(here::here("data","ethnicity_ons.csv.gz"))
 
-df_input <- arrow::read_feather(file.path(here::here("output","extract","input.feather"))) %>%
+df_input <- arrow::read_feather(file.path(here::here("output","extract_16","input_16.feather"))) %>%
   filter(registered==1) %>%
   mutate(age_band = factor(age_band,levels=c("0-19","20-29","30-39","40-49","50-59","60-69","70-79","80+")),
        sex = case_when(sex=="F"~"Female",sex=="M"~"Male"))
 
-eth_new_5 <- df_input %>%
-  mutate(Ethnic_Group=case_when(
-    ethnicity_new_5 == "1" ~ "White",
-    ethnicity_new_5 == "2" ~ "Mixed",
-    ethnicity_new_5 == "3" ~ "Asian",
-    ethnicity_new_5 == "4" ~ "Black",
-    ethnicity_new_5 == "5" ~ "Other"))  %>%
-  group_by(region,Ethnic_Group) %>%
-  summarise(N=n()) %>%
-  ungroup %>%
-  group_by(region) %>% 
-  mutate(Total = sum(N),
-         cohort="SNOMED",
-         group=5)
+# eth_new_5 <- df_input %>%
+#   mutate(Ethnic_Group=case_when(
+#     ethnicity_new_5 == "1" ~ "White",
+#     ethnicity_new_5 == "2" ~ "Mixed",
+#     ethnicity_new_5 == "3" ~ "Asian",
+#     ethnicity_new_5 == "4" ~ "Black",
+#     ethnicity_new_5 == "5" ~ "Other"))  %>%
+#   group_by(region,Ethnic_Group) %>%
+#   summarise(N=n()) %>%
+#   ungroup %>%
+#   group_by(region) %>% 
+#   mutate(Total = sum(N),
+#          cohort="SNOMED",
+#          group=5)
 
-eth_5 <- df_input %>%
-  mutate(Ethnic_Group=case_when(
-    ethnicity_5 == "1" ~ "White",
-    ethnicity_5 == "2" ~ "Mixed",
-    ethnicity_5 == "3" ~ "Asian",
-    ethnicity_5 == "4" ~ "Black",
-    ethnicity_5 == "5" ~ "Other"))  %>%
-  group_by(region,Ethnic_Group) %>%
-  summarise(N=n()) %>%
-  ungroup %>%
-  group_by(region) %>% 
-  mutate(Total = sum(N),
-         cohort="CTV3",
-         group=5)
+# eth_5 <- df_input %>%
+#   mutate(Ethnic_Group=case_when(
+#     ethnicity_5 == "1" ~ "White",
+#     ethnicity_5 == "2" ~ "Mixed",
+#     ethnicity_5 == "3" ~ "Asian",
+#     ethnicity_5 == "4" ~ "Black",
+#     ethnicity_5 == "5" ~ "Other"))  %>%
+#   group_by(region,Ethnic_Group) %>%
+#   summarise(N=n()) %>%
+#   ungroup %>%
+#   group_by(region) %>% 
+#   mutate(Total = sum(N),
+#          cohort="CTV3",
+#          group=5)
 
 
-eth_primis_5 <- df_input %>%
-  mutate(Ethnic_Group=case_when(
-    ethnicity_primis_5 == "1" ~ "White",
-    ethnicity_primis_5 == "2" ~ "Mixed",
-    ethnicity_primis_5 == "3" ~ "Asian",
-    ethnicity_primis_5 == "4" ~ "Black",
-    ethnicity_primis_5 == "5" ~ "Other"))  %>%
-  group_by(region,Ethnic_Group) %>%
-  summarise(N=n()) %>%
-  ungroup %>%
-  group_by(region) %>% 
-  mutate(Total = sum(N),
-         cohort="PRIMIS",
-         group=5)
+# eth_primis_5 <- df_input %>%
+#   mutate(Ethnic_Group=case_when(
+#     ethnicity_primis_5 == "1" ~ "White",
+#     ethnicity_primis_5 == "2" ~ "Mixed",
+#     ethnicity_primis_5 == "3" ~ "Asian",
+#     ethnicity_primis_5 == "4" ~ "Black",
+#     ethnicity_primis_5 == "5" ~ "Other"))  %>%
+#   group_by(region,Ethnic_Group) %>%
+#   summarise(N=n()) %>%
+#   ungroup %>%
+#   group_by(region) %>% 
+#   mutate(Total = sum(N),
+#          cohort="PRIMIS",
+#          group=5)
 
 eth_16 <- df_input %>%
   mutate(Ethnic_Group=case_when(
