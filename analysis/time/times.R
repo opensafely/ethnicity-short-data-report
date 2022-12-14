@@ -26,7 +26,7 @@ counts <- input %>%
   bind_rows(counts_first) %>%
   mutate(Date=as_date(month)) %>%
   drop_na(Date) %>%
-  # mutate(n = case_when(n>7~round(n/5,0)*5))%>%
+  mutate(n = case_when(n>7~round(n/5,0)*5))%>%
   ungroup %>%
   complete( Date = seq(min(Date,na.rm = T), max(Date,na.rm = T), by = "months"),measure) %>%
   select(-month) %>%
@@ -82,7 +82,7 @@ counts_year <- input %>%
   bind_rows(counts_first_year) %>%
   mutate(Date=as_date(year)) %>%
   drop_na(Date) %>%
-  # mutate(n = case_when(n>7~round(n/5,0)*5))%>%
+  mutate(n = case_when(n>7~round(n/5,0)*5))%>%
   ungroup %>%
   complete( Date = seq(min(Date,na.rm = T), max(Date,na.rm = T), by = "years"),measure) %>%
   select(-year) %>%
@@ -138,7 +138,6 @@ for (i in covariates){
     group_by_at(i) %>% 
     count(year) %>%
     mutate(
-          n = case_when(n>7~round(n/5,0)*5),
           Date=as.Date(year)) %>%
     rename(subgroup=i) %>%
     ungroup() %>%
@@ -154,6 +153,7 @@ for (i in covariates){
   df_group <-df_group %>%
       bind_rows(df)
   
+
   
   assign(paste0("df_",i),df)
   
@@ -178,6 +178,11 @@ for (i in covariates){
   
 }
 
+
+
 write_csv(df_group,here::here("output", "time","across_time_covariates.csv"))
 
+df_group_round<- df_group %>%
+  mutate(n = case_when(n>7~round(n/5,0)*5))
 
+write_csv(df_group_round,here::here("output", "time","across_time_covariates_rounded.csv"))
