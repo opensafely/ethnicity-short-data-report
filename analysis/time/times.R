@@ -26,7 +26,7 @@ counts <- input %>%
   bind_rows(counts_first) %>%
   mutate(Date=as_date(month)) %>%
   drop_na(Date) %>%
-  mutate(n = case_when(n>7~round(n/5,0)*5))%>%
+  # mutate(n = case_when(n>7~round(n/5,0)*5))%>%
   ungroup %>%
   complete( Date = seq(min(Date,na.rm = T), max(Date,na.rm = T), by = "months"),measure) %>%
   select(-month) %>%
@@ -34,10 +34,39 @@ counts <- input %>%
   drop_na
 
 
+
+
+counts_plot <-counts %>%
+  ggplot(aes(x=Date,y= n,colour=measure))+
+  geom_line(stat="identity") + 
+  ylim(0, max(counts$n,na.rm = T)) +
+  scale_x_date(date_labels = "%Y", 
+               breaks = seq.Date(from = as.Date("1900-01-01"), 
+                                 to = as.Date("2022-01-01"), 
+                                 by = "20 years")) +
+  theme_bw()+
+  theme(axis.text.x = element_text(angle = 90, vjust=0.5), 
+        panel.grid.minor = element_blank())  + 
+  scale_color_lancet()   +
+  guides(colour=guide_legend(title=""))
+
+ggsave(
+  filename = here::here(
+    "output",
+    "time",
+    "first_last_plot_month.png"),
+  counts_plot,
+  dpi = 600,
+  width = 30,
+  height = 10,
+  units = "cm"
+)
+
+
 write_csv(counts,here::here("output", "time","across_time_months.csv"))
 
 counts_first_year <- input %>%
-  group_by(year = lubridate::floor_date(ethnicity_new_5_first, "year")) %>%
+  group_by(year = floor_date(ethnicity_new_5_first, "year")) %>%
   count(year) %>%
   mutate(
     measure = "First")
@@ -53,41 +82,18 @@ counts_year <- input %>%
   bind_rows(counts_first_year) %>%
   mutate(Date=as_date(year)) %>%
   drop_na(Date) %>%
-  mutate(n = case_when(n>7~round(n/5,0)*5))%>%
+  # mutate(n = case_when(n>7~round(n/5,0)*5))%>%
   ungroup %>%
   complete( Date = seq(min(Date,na.rm = T), max(Date,na.rm = T), by = "years"),measure) %>%
   select(-year) %>%
   replace_na(list(n = 0)) %>%
-  drop_na
+  drop_na  
 
 
-write_csv(counts,here::here("output", "time","across_time_years.csv"))
+
+write_csv(counts_year,here::here("output", "time","across_time_years.csv"))
 
 
-counts_plot <-counts %>%
-  ggplot(aes(x=Date,y= n,colour=measure))+
-  geom_line(stat="identity") + 
-  ylim(0, max(counts$n,na.rm = T)) +
-  scale_x_date(date_labels = "%Y", 
-               breaks = seq.Date(from = as.Date("1900-01-01"), 
-                                                     to = as.Date("2022-01-01"), 
-                                                     by = "20 years")) +
-  theme_bw()+
-  theme(axis.text.x = element_text(angle = 90, vjust=0.5), 
-        panel.grid.minor = element_blank())  + 
-  scale_color_lancet() 
-
-ggsave(
-  filename = here::here(
-    "output",
-    "time",
-    "first_last_plot.png"),
-    counts_plot,
-    dpi = 600,
-    width = 30,
-    height = 10,
-    units = "cm"
-  )
 
 
 
@@ -102,14 +108,15 @@ counts_plot_year <-counts_year %>%
   theme_bw()+
   theme(axis.text.x = element_text(angle = 90, vjust=0.5), 
         panel.grid.minor = element_blank())  + 
-  scale_color_lancet() 
+  scale_color_lancet()   +
+  guides(colour=guide_legend(title=""))
 
 ggsave(
   filename = here::here(
     "output",
     "time",
-    "first_last_plot.png"),
-  counts_plot,
+    "first_last_plot_year.png"),
+  counts_plot_year,
   dpi = 600,
   width = 30,
   height = 10,
@@ -135,7 +142,7 @@ for (i in covariates){
           Date=as.Date(year)) %>%
     rename(subgroup=i) %>%
     ungroup() %>%
-    complete( Date = seq(min(Date,na.rm = T), max(Date,na.rm = T), by = "day"),subgroup) %>%
+    complete( Date = seq(min(Date,na.rm = T), max(Date,na.rm = T), by = "year"),subgroup) %>%
     replace_na(list(n = 0)) %>%
     mutate(
       group=i,
@@ -151,7 +158,8 @@ for (i in covariates){
   assign(paste0("df_",i),df)
   
   plot_i <- df %>%   ggplot(aes(x=Date,y= n,colour=subgroup))+
-  geom_line(stat="identity") 
+  geom_line(stat="identity") +
+  guides(color=guide_legend(title=i))
 
   assign(paste0("plot_",i),plot_i)
   

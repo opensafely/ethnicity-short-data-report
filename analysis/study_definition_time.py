@@ -82,6 +82,5 @@ study = StudyDefinition(
     ),
     **ethnicity_overtime_variables,
     **demographic_variables,
-    **clinical_variables,
-    **codelists,
+    **clinical_variables
 )

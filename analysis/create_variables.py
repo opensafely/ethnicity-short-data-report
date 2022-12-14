@@ -39,6 +39,7 @@ ethnicity_overtime_variables = dict(
         ethnicity_codes_snomed,
         returning="date",
         find_last_match_in_period=True,
+        date_format="YYYY-MM-DD",
         include_date_of_match=False,
         return_expectations={
             "date": {"earliest": "1900-01-01", "latest": "2022-01-01"},
@@ -51,6 +52,7 @@ ethnicity_overtime_variables = dict(
         ethnicity_codes_snomed,
         returning="date",
         find_first_match_in_period=True,
+        date_format="YYYY-MM-DD",
         include_date_of_match=False,
         return_expectations={
             "date": {"earliest": "1900-01-01", "latest": "2022-01-01"},
