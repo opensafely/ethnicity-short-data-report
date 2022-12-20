@@ -72,6 +72,84 @@ df_input <- arrow::read_feather(file.path(here::here("output","extract_16","inpu
 #          cohort="PRIMIS",
 #          group=5)
 
+eth_5 <- df_input %>%
+  mutate(Ethnic_Group=case_when(
+    ethnicity_16 == "1" ~ "White",
+    ethnicity_16 == "2" ~ "White",
+    ethnicity_16 == "3" ~ "White",
+    ethnicity_16 == "4" ~ "Mixed",
+    ethnicity_16 == "5" ~ "Mixed",
+    ethnicity_16 == "6" ~ "Mixed",
+    ethnicity_16 == "7" ~ "Mixed",
+    ethnicity_16 == "8" ~ "Asian",
+    ethnicity_16 == "9" ~ "Asian",
+    ethnicity_16 == "10" ~ "Asian",
+    ethnicity_16 == "11" ~ "Asian",
+    ethnicity_16 == "12" ~ "Black",
+    ethnicity_16 == "13" ~ "Black",
+    ethnicity_16 == "14" ~ "Black",
+    ethnicity_16 == "15" ~ "Other",
+    ethnicity_16 == "16" ~ "Other"))  %>%
+  group_by(region,Ethnic_Group) %>%
+  summarise(N=n()) %>%
+  ungroup %>%
+  group_by(region) %>% 
+  mutate(Total = sum(N),
+         cohort="CTV3",
+         group=5)
+
+eth_new_5 <- df_input %>%
+ mutate(Ethnic_Group=case_when(
+    ethnicity_new_16 == "1" ~ "White",
+    ethnicity_new_16 == "2" ~ "White",
+    ethnicity_new_16 == "3" ~ "White",
+    ethnicity_new_16 == "4" ~ "Mixed",
+    ethnicity_new_16 == "5" ~ "Mixed",
+    ethnicity_new_16 == "6" ~ "Mixed",
+    ethnicity_new_16 == "7" ~ "Mixed",
+    ethnicity_new_16 == "8" ~ "Asian",
+    ethnicity_new_16 == "9" ~ "Asian",
+    ethnicity_new_16 == "10" ~ "Asian",
+    ethnicity_new_16 == "11" ~ "Asian",
+    ethnicity_new_16 == "12" ~ "Black",
+    ethnicity_new_16 == "13" ~ "Black",
+    ethnicity_new_16 == "14" ~ "Black",
+    ethnicity_new_16 == "15" ~ "Other",
+    ethnicity_new_16 == "16" ~ "Other"))  %>%
+  group_by(region,Ethnic_Group) %>%
+  summarise(N=n()) %>%
+  ungroup %>%
+  group_by(region) %>% 
+  mutate(Total = sum(N),
+         cohort="SNOMED",
+         group=5)
+
+eth_primis_5 <- df_input %>%
+  mutate(Ethnic_Group=case_when(
+    ethnicity_primis_16 == "1" ~ "White",
+    ethnicity_primis_16 == "2" ~ "White",
+    ethnicity_primis_16 == "3" ~ "White",
+    ethnicity_primis_16 == "4" ~ "Mixed",
+    ethnicity_primis_16 == "5" ~ "Mixed",
+    ethnicity_primis_16 == "6" ~ "Mixed",
+    ethnicity_primis_16 == "7" ~ "Mixed",
+    ethnicity_primis_16 == "8" ~ "Asian",
+    ethnicity_primis_16 == "9" ~ "Asian",
+    ethnicity_primis_16 == "10" ~ "Asian",
+    ethnicity_primis_16 == "11" ~ "Asian",
+    ethnicity_primis_16 == "12" ~ "Black",
+    ethnicity_primis_16 == "13" ~ "Black",
+    ethnicity_primis_16 == "14" ~ "Black",
+    ethnicity_primis_16 == "15" ~ "Other",
+    ethnicity_primis_16 == "16" ~ "Other"))  %>%
+  group_by(region,Ethnic_Group) %>%
+  summarise(N=n()) %>%
+  ungroup %>%
+  group_by(region) %>% 
+  mutate(Total = sum(N),
+         cohort="PRIMIS",
+         group=5)
+
 eth_16 <- df_input %>%
   mutate(Ethnic_Group=case_when(
     ethnicity_16 == "1" ~ "White British",
