@@ -86,12 +86,12 @@ actions:
         data2: output/ons/ethnic_group_NA*.csv
         data3: output/ons/data_check*.csv
 
-  ons_plot:
-    run: r:latest analysis/ons_plots.R
-    needs: [combine_ons]
-    outputs:
-      moderately_sensitive:
-        plot_na: output/ons/na_removed/ethnicity_*.png
+  # ons_plot:
+  #   run: r:latest analysis/ons_plots.R
+  #   needs: [combine_ons]
+  #   outputs:
+  #     moderately_sensitive:
+  #       plot_na: output/ons/na_removed/ethnicity_*.png
 
 
 # ## Only to be run locally
@@ -108,21 +108,21 @@ actions:
 #       moderately_sensitive: 
 #         tables: output/from_jobserver/release_2022_11_18/made_locally/*.csv
 
-# ######## SUS
-#   execute_simple_validation_analyses_sus:
-#     run: python:latest python analysis/sus/simple_validation_script_sus.py
-#     needs: [generate_study_population]
-#     outputs:
-#       moderately_sensitive: 
-#         tables: output/sus/simplified_output/5_group/tables/*.csv
-# #        figures: output/sus/simplified_output/5_group/figures/*.png
+######## SUS
+  execute_simple_validation_analyses_sus:
+    run: python:latest python analysis/sus/simple_validation_script_sus.py
+    needs: [generate_study_population_5]
+    outputs:
+      moderately_sensitive: 
+        tables: output/sus/simplified_output/5_group/tables/*.csv
+#        figures: output/sus/simplified_output/5_group/figures/*.png
 
-#   execute_simple_validation_analyses_16_sus:
-#     run: python:latest python analysis/sus/simple_validation_script_16_sus.py
-#     needs: [generate_study_population]
-#     outputs:
-#       moderately_sensitive: 
-#         tables: output/sus/simplified_output/16_group/tables/simpl*.csv
+  execute_simple_validation_analyses_16_sus:
+    run: python:latest python analysis/sus/simple_validation_script_16_sus.py
+    needs: [generate_study_population_16]
+    outputs:
+      moderately_sensitive: 
+        tables: output/sus/simplified_output/16_group/tables/simpl*.csv
 
 #   combine_ons:
 #     run: r:latest analysis/combine_ons.R
