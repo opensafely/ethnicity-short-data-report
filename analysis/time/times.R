@@ -7,7 +7,10 @@ library(lubridate)
 
 fs::dir_create(here::here("output", "time"))
 
-input<-arrow::read_feather(here::here("output","extract_time","input_time.feather"))
+input<-arrow::read_feather(here::here("output","extract_time","input_time.feather")) %>%
+  mutate(ethnicity_new_5_first=case_when(ethnicity_new_5_first<as.Date("1900-01-01") ~ as.Date("1899-12-01"),
+                                         ethnicity_new_5_first>as.Date("2022-12-21")~as.Date("2023-01-01"),
+                                         T~as.Date(ethnicity_new_5_first)))
 
 counts_first <- input %>%
   group_by(month = lubridate::floor_date(ethnicity_new_5_first, "month")) %>%
