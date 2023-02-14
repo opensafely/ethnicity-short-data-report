@@ -20,16 +20,15 @@ datecheck <- input %>%
   filter(ethnicity_new_5_latest >= as.Date("2010-01-01") & ethnicity_new_5_latest < as.Date("2011-03-01")) %>%
   count(ethnicity_new_5_latest)
 
-print("check dates over a year for non-January dates")
-print(datecheck)
+write_csv(datecheck,here::here("output", "time","datecheck.csv"))
 
  
 datecheck2 <- input %>%
   mutate(month = substr(ethnicity_new_5_latest,6,7)) %>%
   count(month)
 
-print("check for months other than January")
-print(datecheck2)
+write_csv(datecheck2,here::here("output", "time","datecheck2.csv"))
+
 
 counts_first <- input %>%
   group_by(month = lubridate::floor_date(ethnicity_new_5_first, "month")) %>%
