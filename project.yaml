@@ -157,11 +157,11 @@ actions:
 #       moderately_sensitive:
 #         notebook: output/draft_report_ethnicity.html
 
-#   local_simple_run:
-#     run: python:latest python analysis/local_simple_run.py
-#     outputs:
-#       moderately_sensitive: 
-#         tables: output/from_jobserver/release_2022_11_18/made_locally/*.csv
+  # local_simple_run:
+  #   run: python:latest python analysis/local_simple_run_sot.py
+  #   outputs:
+  #     moderately_sensitive: 
+  #       tables: output/released/*.csv
 
 ################## over time
 

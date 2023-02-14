@@ -15,6 +15,13 @@ input<-arrow::read_feather(here::here("output","extract_time","input_time.feathe
                                           ethnicity_new_5_latest>as.Date("2022-12-21")~as.Date("2023-01-01"),
                                          T~as.Date(ethnicity_new_5_latest)))
 
+### add check of dates
+datecheck <- input %>%
+  filter(ethnicity_new_5_latest > as.Date("2010-01-01") & ethnicity_new_5_latest < as.Date("2010-03-01")) %>%
+  count(ethnicity_new_5_latest)
+
+print(datecheck)
+
 counts_first <- input %>%
   group_by(month = lubridate::floor_date(ethnicity_new_5_first, "month")) %>%
   count(month) %>%
