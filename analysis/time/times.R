@@ -17,10 +17,19 @@ input<-arrow::read_feather(here::here("output","extract_time","input_time.feathe
 
 ### add check of dates
 datecheck <- input %>%
-  filter(ethnicity_new_5_latest > as.Date("2010-01-01") & ethnicity_new_5_latest < as.Date("2010-03-01")) %>%
+  filter(ethnicity_new_5_latest >= as.Date("2010-01-01") & ethnicity_new_5_latest < as.Date("2011-03-01")) %>%
   count(ethnicity_new_5_latest)
 
+print("check dates over a year for non-January dates")
 print(datecheck)
+
+ 
+datecheck2 <- input %>%
+  mutate(month = substr(ethnicity_new_5_latest,6,7)) %>%
+  count(month)
+
+print("check for months other than January")
+print(datecheck2)
 
 counts_first <- input %>%
   group_by(month = lubridate::floor_date(ethnicity_new_5_first, "month")) %>%
