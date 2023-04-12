@@ -1,3 +1,5 @@
+## splits the PRIMIS, CTV3 and SNOMED ethnicity codelists into 5 and 16 group categories
+
 library('tidyverse')
 library('sf')
 
@@ -13,7 +15,7 @@ for (i in 1:5){
   write_csv(list,here::here("codelists",paste0("ethnicity_5_",ethnicities[i],".csv"))) 
 }
 
-df_input <- read_csv(here::here("codelists","user-candrews-full_ethnicity_coded.csv")) %>%
+df_input <- read_csv(here::here("codelists","opensafely-ethnicity-snomed-0removed.csv")) %>%
   filter(Grouping_6!=0)
 group_split<-df_input %>%
   group_split(Grouping_6)
@@ -44,7 +46,7 @@ for (i in 1:16){
   write_csv(list,here::here("codelists",paste0("ethnicity_16_",ethnicities_16[i],".csv"))) 
 }
 
-df_input <- read_csv(here::here("codelists","user-candrews-full_ethnicity_coded.csv")) %>%
+df_input <- read_csv(here::here("codelists","opensafely-ethnicity-snomed-0removed.csv")) %>%
   filter(Grouping_16!=0)
 
 group_split<-df_input %>%
