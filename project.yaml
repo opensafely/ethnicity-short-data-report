@@ -19,6 +19,7 @@ actions:
       highly_sensitive:
         cohort: output/extract_5/input_5.feather
 
+  # dataset report from reusable action https://github.com/opensafely-actions/dataset-report
   generate_dataset_report_5:
     run: >
       dataset-report:v0.0.9
@@ -36,6 +37,7 @@ actions:
       highly_sensitive:
         cohort: output/extract_16/input_16.feather
 
+  # dataset report from reusable action https://github.com/opensafely-actions/dataset-report
   generate_dataset_report_16:
     run: >
       dataset-report:v0.0.9
@@ -53,6 +55,7 @@ actions:
       highly_sensitive:
         cohort: output/extract_time/input_time.feather
 
+  # dataset report from reusable action https://github.com/opensafely-actions/dataset-report
   generate_dataset_report_time:
     run: >
       dataset-report:v0.0.9
@@ -77,21 +80,6 @@ actions:
       moderately_sensitive: 
         tables: output/simplified_output/16_group/tables/simpl*.csv
 
-  combine_ons:
-    run: r:latest analysis/combine_ons.R
-    needs: [generate_study_population_16]
-    outputs:
-      moderately_sensitive:
-        data: output/ons/ethnic_group*.csv
-        data2: output/ons/ethnic_group_NA*.csv
-        data3: output/ons/data_check*.csv
-
-  ons_plot:
-    run: r:latest analysis/ons_plots.R
-    needs: [combine_ons]
-    outputs:
-      moderately_sensitive:
-        plot_na: output/ons/na_removed/ethnicity_*.png
 
 ######## SUS
   execute_simple_validation_analyses_sus:
@@ -109,44 +97,6 @@ actions:
       moderately_sensitive: 
         tables: output/sus/simplified_output/16_group/tables/simpl*.csv
 
-#   combine_ons:
-#     run: r:latest analysis/combine_ons.R
-#     needs: [generate_study_population]
-#     outputs:
-#       moderately_sensitive:
-#         data: output/ons/ethnic_group*.csv
-#         data2: output/ons/ethnic_group_NA*.csv
-#         data3: output/ons/data_check*.csv
-
-#   ons_plot:
-#     run: r:latest analysis/ons_plots.R
-#     needs: [combine_ons]
-#     outputs:
-#       moderately_sensitive:
-#         plot_na: output/ons/na_removed/ethnicity_*.png
-
-#   iqr: 
-#     run: r:latest analysis/iqr.R
-#     needs: [generate_study_population]
-#     outputs:
-#       moderately_sensitive:
-#         full: output/simplified_output/5_group/tables/range_fullset.csv
-#         registered: output/simplified_output/5_group/tables/range_registered.csv    
-#         figures: output/simplified_output/5_group/figures/density*.svg    
-
-# ## Only to be run locally
-#   generate_report:
-#     run: python:latest jupyter nbconvert /workspace/notebooks_jupyter/draft_report_ethnicity.ipynb --execute --to html --template basic --output-dir=/workspace/output --ExecutePreprocessor.timeout=86400 --no-input
-#     needs: [execute_simple_validation_analyses,execute_simple_validation_analyses_16]
-#     outputs:
-#       moderately_sensitive:
-#         notebook: output/draft_report_ethnicity.html
-
-  # local_simple_run:
-  #   run: python:latest python analysis/local_simple_run_sot.py
-  #   outputs:
-  #     moderately_sensitive: 
-  #       tables: output/released/*.csv
 
 ################## over time
 
@@ -165,3 +115,44 @@ actions:
     outputs:
       moderately_sensitive:
         notebook: output/draft_report_ethnicity.html
+
+###### run locally for manuscript
+##### local notebook
+  # generate_local_runs:
+  #   run: python:latest jupyter nbconvert /workspace/notebooks_jupyter/local_runs.ipynb --execute --to html --template basic --output-dir=/workspace/output --ExecutePreprocessor.timeout=86400 --no-input
+  #   needs: [execute_simple_validation_analyses,execute_simple_validation_analyses_16]
+  #   outputs:
+  #     moderately_sensitive:
+  #       csvs: output/released/made_locally/*.csv
+
+  # process_ons_census_data:
+  #   run: r:latest analysis/local/ons_process.R
+  #   outputs:
+  #     moderately_sensitive:
+  #       csvs: data/*.csv.gz
+
+  # generate_local_ons_comparisons:
+  #   run: r:latest analysis/local/combine_ons_sus.R
+  #   needs: [process_ons_census_data]
+  #   outputs:
+  #     moderately_sensitive:
+  #       csvs: output/released/made_locally/ethnic_group*.csv
+  #       tests: output/tests/*.csv
+
+## create outputs for the manuscript
+  ## library(hrbrthemes) not available on the OS R image
+  # generate_manuscript_plots:
+  #   run: r:latest analysis/local/local_manuscript_plots.R
+  #   outputs:
+  #     moderately_sensitive:
+  #       plots: output/released/made_locally/*.png
+
+## create outputs for the appendix
+# `row_group.as_column = TRUE` option not available on the OS R image
+  # generate_appendix:
+  #   run: r:latest analysis/appendix.R
+  #   needs: [generate_local_runs]
+  #   outputs:
+  #     moderately_sensitive:
+  #       html: output/released/made_locally/*.html
+  #       pdf: output/released/made_locally/*.pdf

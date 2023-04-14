@@ -47,7 +47,6 @@ SUS_gt <- SUS %>%
     locations = cells_column_labels(everything())
   ) %>%
     tab_options(
-    row_group.as_column = TRUE,
     table.font.size = 8,
     column_labels.border.top.width = px(3),
     column_labels.border.top.color = "transparent",
@@ -73,7 +72,7 @@ SUS5yesno <- read_csv(here::here("output","released","made_locally","local_patie
 
 SUS5<-read_csv(here::here("output","released","made_locally","local_patient_counts_categories_5_registered.csv")) %>%
   filter(subgroup != "Yes" & subgroup != "No") %>%
-  bind_rows(SUS6yesno) %>%
+  bind_rows(SUS5yesno) %>%
   mutate(group = case_when(group == 'age_band' ~ 'age band',
                            group == 'learning_disability' ~ 'learning disability',
                            group == "imd" ~ "IMD",
@@ -109,6 +108,7 @@ SUS5 <- SUS5 %>%
     locations = cells_column_labels(everything())
   ) %>%
   tab_options(
+    # row_group.as_column = TRUE option not available on the OS R image
     row_group.as_column = TRUE,
     table.font.size = 8,
     column_labels.border.top.width = px(3),
@@ -184,6 +184,7 @@ SUS16 <- SUS16 %>%
     locations = cells_column_labels(everything())
   ) %>%
   tab_options(
+    # row_group.as_column = TRUE option not available on the OS R image
     row_group.as_column = TRUE,
     table.font.size = 8,
     column_labels.border.top.width = px(3),
@@ -206,7 +207,6 @@ anyrepeated <- read_csv(here::here("output","released","made_locally","local_sta
   tab_spanner(label="Latest Recorded Ethnicity", columns=1) %>%
   tab_spanner(label="Any Recorded Ethnicity", columns=c(2:7)) %>%
     tab_options(
-      row_group.as_column = TRUE,
       table.font.size = 8,
       column_labels.border.top.width = px(3),
       column_labels.border.top.color = "transparent",
@@ -227,7 +227,6 @@ latestcommon <- read_csv(here::here("output","released","made_locally","local_la
   tab_spanner(label="Latest Recorded Ethnicity", columns=1) %>%
   tab_spanner(label="Most Frequent Ethnicity", columns=c(2:6)) %>%
   tab_options(
-    row_group.as_column = TRUE,
     table.font.size = 8,
     column_labels.border.top.width = px(3),
     column_labels.border.top.color = "transparent",
@@ -250,7 +249,6 @@ listed <- read_csv(here::here("output","released","ethnicity","snomed_ethnicity_
   gt( ) %>%
   cols_label(Snomedcode_count = "Count") %>%
   tab_options(
-    row_group.as_column = TRUE,
     table.font.size = 8,
     column_labels.border.top.width = px(3),
     column_labels.border.top.color = "transparent",
