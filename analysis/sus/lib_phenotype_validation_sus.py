@@ -252,9 +252,11 @@ def simple_patient_counts(
                 df_clean.loc[df_clean[definition] == x, f"{x}_{definition}_filled"] = 1
                 li_cat_def.append(f"{x}_{definition}")
             df_clean[f"{x}_any"]=(df_clean[df_clean.filter(regex=f'{x}').columns].sum(axis=1) > 0).astype(int)
+            # Assumes definition[1] is sus and definition[0] is the primary codelist
+            df_clean[f"{x}_supplemented"] =  ((df_clean[f"{x}_{definitions[0]}_filled"] == 1 )| (df_clean[definitions[0]].isnull() & (df_clean[f"{x}_{definitions[1]}_filled"]==1 ))).astype(int)
         definitions = li_cat_def
         li_cat_any = [x + "_any" for x in li_cat]
-    
+        li_cat_supplemented = [x + "_supplemented" for x in li_cat]
     # All with measurement
     li_filled = []
     for definition in definitions:
@@ -267,7 +269,7 @@ def simple_patient_counts(
         li_filled.append(df_temp)
     if categories == True:  
         df_temp = (
-            df_clean[["patient_id", "all_filled", "all_missing","any_filled"]+li_cat_any]
+            df_clean[["patient_id", "all_filled", "all_missing","any_filled"]+ li_cat_any + li_cat_supplemented]
             .drop_duplicates()
             .dropna()
             .set_index("patient_id")
@@ -303,7 +305,7 @@ def simple_patient_counts(
             li_filled_group.append(df_temp)
         if categories == True:  
             df_temp = (
-                df_clean[["patient_id", "all_filled", "all_missing","any_filled",group]+li_cat_any]
+                df_clean[["patient_id", "all_filled", "all_missing","any_filled",group] + li_cat_any + li_cat_supplemented]
                 .drop_duplicates()
                 .dropna()
                 .reset_index(drop=True)
@@ -345,10 +347,10 @@ def simple_patient_counts(
     df_append = redact_round_table(df_all.append(df_all_group))
     if categories:
         df_append.to_csv(
-            f"output/{output_path}/{grouping}/tables/simple_patient_counts_categories_{reg}.csv"
+            f"output/{output_path}/{grouping}/tables/simple_patient_counts_categories_{grouping}_{reg}.csv"
         )
     else:
-        df_append.to_csv(f"output/{output_path}/{grouping}/tables/simple_patient_counts_{reg}.csv")
+        df_append.to_csv(f"output/{output_path}/{grouping}/tables/simple_patient_counts_{grouping}_{reg}.csv")
 
 
 def upset(df_clean, output_path, comparator_1, comparator_2,grouping,):
