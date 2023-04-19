@@ -4,6 +4,7 @@ library('here')
 library('glue')
 library('stringr')
 library('ggsci')
+library('scales')
 
 # # patient counts 
 SUSyesno <- read_csv(here::here("output","released","made_locally","local_patient_counts_registered.csv")) %>%
@@ -22,8 +23,12 @@ SUS<-read_csv(here::here("output","released","made_locally","local_patient_count
                            TRUE ~ group),
          subgroup =recode(subgroup, F = "Female",
                           M = "Male"),
-         population=as.character(scales::comma(round(as.numeric(population),0)))
+         population=as.character(scales::comma(round(as.numeric(population),0))),
+         left_paren = "(",
+         right_paren = ")"
+         
   ) %>%
+  unite("5 SNOMED:2022 pp inc",left_paren,`5 SNOMED:2022 pp inc`,right_paren,sep = "") %>%
   filter(`5 SNOMED:2022` !="- (-)") %>%
   select(-`all filled`)
 
@@ -46,7 +51,8 @@ SUS_gt <- SUS %>%
     ),
     locations = cells_column_labels(everything())
   ) %>%
-    tab_options(
+  tab_options(
+    table.align = "left",
     table.font.size = 8,
     column_labels.border.top.width = px(3),
     column_labels.border.top.color = "transparent",
@@ -107,7 +113,8 @@ SUS5 <- SUS5 %>%
     ),
     locations = cells_column_labels(everything())
   ) %>%
-  tab_options(
+  tab_options(     
+    table.align = "left",
     # row_group.as_column = TRUE option not available on the OS R image
     row_group.as_column = TRUE,
     table.font.size = 8,
@@ -183,7 +190,8 @@ SUS16 <- SUS16 %>%
     ),
     locations = cells_column_labels(everything())
   ) %>%
-  tab_options(
+  tab_options(     
+    table.align = "left",
     # row_group.as_column = TRUE option not available on the OS R image
     row_group.as_column = TRUE,
     table.font.size = 8,
@@ -206,7 +214,8 @@ anyrepeated <- read_csv(here::here("output","released","made_locally","local_sta
   cols_label(Supplemented = "Any discordant") %>%
   tab_spanner(label="Latest Recorded Ethnicity", columns=1) %>%
   tab_spanner(label="Any Recorded Ethnicity", columns=c(2:7)) %>%
-    tab_options(
+    tab_options(     
+      table.align = "left",
       table.font.size = 8,
       column_labels.border.top.width = px(3),
       column_labels.border.top.color = "transparent",
@@ -226,7 +235,8 @@ latestcommon <- read_csv(here::here("output","released","made_locally","local_la
   cols_label(`Latest Ethnicity-\n5 Snomed:2022` = "") %>%
   tab_spanner(label="Latest Recorded Ethnicity", columns=1) %>%
   tab_spanner(label="Most Frequent Ethnicity", columns=c(2:6)) %>%
-  tab_options(
+  tab_options(     
+    table.align = "left",
     table.font.size = 8,
     column_labels.border.top.width = px(3),
     column_labels.border.top.color = "transparent",
@@ -248,7 +258,8 @@ listed <- read_csv(here::here("output","released","ethnicity","snomed_ethnicity_
   arrange(Term) %>%
   gt( ) %>%
   cols_label(Snomedcode_count = "Count") %>%
-  tab_options(
+  tab_options(     
+    table.align = "left",
     table.font.size = 8,
     column_labels.border.top.width = px(3),
     column_labels.border.top.color = "transparent",
@@ -301,3 +312,193 @@ ggsave(
   height = 10,
   units = "cm"
 )
+
+### ONS comparison
+####### NA removed
+# read ethnicity produced by combine_ONS_sus.R
+ethnicity_na <-
+  read_csv(here::here("output","released","made_locally",  "ethnic_group_2021_registered_with_2021_categories.csv")) %>%
+  mutate(
+    cohort = case_when(cohort=="ONS"~"2021 Census",
+                       cohort=="new"~"SNOMED:2022",
+                       cohort=="supplemented"~"SNOMED:2022 supplemented with SUS data"),
+    cohort = fct_relevel(cohort, "2021 Census","SNOMED:2022", "SNOMED:2022 supplemented with SUS data"),
+    Ethnic_Group = fct_relevel(Ethnic_Group,
+                               "Asian","Black","Mixed", "White","Other"))
+
+
+## create difference in percentage between ONS and TPP (for plotting)
+ethnicity_plot_na_diff <- ethnicity_na %>%
+  group_by(Ethnic_Group,region,group) %>%
+  arrange(cohort) %>%
+  mutate(diff = percentage - first(percentage)) %>%
+  select(region,Ethnic_Group,cohort,diff,group)
+
+ethnicity_na <-ethnicity_na %>% 
+  left_join(ethnicity_plot_na_diff, by=c("region","Ethnic_Group","cohort","group"))
+## 5 group ethnicity plot NA removed for Regions
+ethnicity_plot_na <- ethnicity_na %>%
+  filter(region != "England", group == "5") %>%
+  ggplot(aes(x = Ethnic_Group, y = percentage, fill = cohort)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  facet_wrap( ~ region) +
+  theme_classic() +
+  theme(text = element_text(size = 20)) +
+  theme(axis.text.x = element_text(
+    size = 12,
+    hjust = 0.75,
+    vjust = 0
+  )) +
+  coord_flip()  +  scale_fill_manual(values = c("#00468BFF", "#ED0000FF", "#925E9FFF")) +
+  xlab("") + ylab("\nProportion of ethnicities")  +
+  theme(legend.position="bottom",
+        legend.title=element_blank()) +
+  geom_text(aes(x=Ethnic_Group,y=percentage,label=ifelse(cohort=="2021 Census","",paste0(round(diff,digits =1),"%"))), size=3.4, position =position_dodge(width=0.9), vjust=0.3,hjust = -0.2) 
+
+
+ggsave(
+  filename =here::here("output","released","made_locally",  "ONS_ethnicity_regions_2021_with_2021_categories.pdf"),
+  ethnicity_plot_na,
+  dpi = 600,
+  width = 50,
+  height = 30,
+  units = "cm"
+)
+
+
+## 5 group ethnicity plot NA removed for England
+ethnicity_plot_eng_na <- ethnicity_na %>%
+  filter(region == "England", group == "5") %>%
+  ggplot(aes(x = Ethnic_Group, y = percentage, fill = cohort)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  theme_classic() +
+  theme(text = element_text(size = 20)) +
+  theme(axis.text.x = element_text(
+    size = 20,
+    hjust = 0,
+    vjust = 0
+  )) +
+  coord_flip()  + scale_fill_manual(values = c("#00468BFF", "#ED0000FF", "#925E9FFF")) +
+  xlab("") + ylab("\nProportion of ethnicities") +
+  theme(legend.position="bottom",
+        legend.title=element_blank()) +
+  geom_text(aes(x=Ethnic_Group,y=percentage,label=ifelse(cohort=="2021 Census","",paste0(round(diff,digits =1),"%"))), size=3.4, position =position_dodge(width=0.9), vjust=0.3 ,hjust = -0.2)
+
+ggsave(
+  filename =here::here("output","released","made_locally", "ONS_ethnicity_eng_2021_with_2021_categories.pdf"
+  ),
+  ethnicity_plot_eng_na,
+  dpi = 600,
+  width = 30,
+  height = 15,
+  units = "cm"
+)
+
+
+# ONS tables
+ONS_tab_2021 <- ethnicity_na %>%
+  mutate(
+    left_paren = " (",
+    right_paren = ")",
+    percentage = round(percentage,2),
+    N=comma(N)
+  ) %>%
+  unite("N_perc",N,left_paren,percentage,right_paren,sep = "") %>%
+  select(cohort,Ethnic_Group,region,N_perc) %>%
+  arrange(Ethnic_Group) %>%
+  pivot_wider(names_from = c("Ethnic_Group","cohort"),values_from = N_perc) %>%
+  mutate(region=fct_relevel(region, "England")) %>%
+  arrange(region)
+
+my_cols_ons <- setNames(c("Region",rep(c("SNOMED 2022\n(amended to 2021 grouping)","SNOMED 2022 with SUS data\n(amended to 2021 grouping)","2021 ONS Census"),5)),names(ONS_tab_2021))
+
+ONS_tab_2021 %>%
+  gt( groupname_col = "region") %>%
+  tab_spanner(label="Asian", columns=c(2,3,4)) %>%
+  tab_spanner(label="Black", columns=c(5,6,7)) %>%
+  tab_spanner(label="Mixed", columns=c(8,9,10)) %>%
+  tab_spanner(label="White", columns=c(11,12,13)) %>%
+  tab_spanner(label="Other", columns=c(14,15,16)) %>%
+  cols_label(!!!my_cols_ons) %>%
+  tab_style(
+    style = list(
+      cell_fill(color = "gray96")
+    ),
+    locations = cells_body(
+    )
+  ) %>%
+  tab_style(
+    style = list(
+      cell_text(weight = "bold")
+    ),
+    locations = cells_column_labels(everything())
+  ) %>%
+  tab_options(     
+    table.align = "left",
+    # row_group.as_column = TRUE option not available on the OS R image
+    row_group.as_column = TRUE,
+    table.font.size = 8,
+    column_labels.border.top.width = px(3),
+    column_labels.border.top.color = "transparent",
+    table.border.top.color = "transparent",
+    heading.align = "left"
+  ) %>%
+  tab_header(
+    title = md("Table 7:  Count of patients with a recorded ethnicity in OpenSAFELY TPP [amended to the 2021 ethnicity grouping] (proportion of registered TPP population) and 2021 ONS Census counts (proportion of 2021 ONS Census population). All counts are rounded to the nearest 5. "),
+  )  %>% 
+  gtsave(here::here("output","released","made_locally","ons_table_2021_with_2021_categories.html"))
+
+ethnicity_na_2001 <-
+  read_csv(here::here("output","released","made_locally",  "ethnic_group_2021_registered_with_2001_categories.csv"))
+
+ONS_tab_2001 <- ethnicity_na_2001 %>%
+  mutate(
+    left_paren = " (",
+    right_paren = ")",
+    percentage = round(percentage,2),
+    N=comma(N)
+  ) %>%
+  unite("N_perc",N,left_paren,percentage,right_paren,sep = "") %>%
+  select(cohort,Ethnic_Group,region,N_perc) %>%
+  arrange(Ethnic_Group) %>%
+  pivot_wider(names_from = c("Ethnic_Group","cohort"),values_from = N_perc) %>%
+  mutate(region=fct_relevel(region, "England")) %>%
+  arrange(region)
+
+my_cols_ons <- setNames(c("Region",rep(c("SNOMED 2022","SNOMED 2022 with  SUS data","2021 ONS Census [amended to 2001 grouping]"),5)),names(ONS_tab_2001))
+
+ONS_tab_2001 %>%
+  gt( groupname_col = "region") %>%
+  tab_spanner(label="Asian", columns=c(2,3,4)) %>%
+  tab_spanner(label="Black", columns=c(5,6,7)) %>%
+  tab_spanner(label="Mixed", columns=c(8,9,10)) %>%
+  tab_spanner(label="White", columns=c(11,12,13)) %>%
+  tab_spanner(label="Other", columns=c(14,15,16)) %>%
+  cols_label(!!!my_cols_ons) %>%
+  tab_style(
+    style = list(
+      cell_fill(color = "gray96")
+    ),
+    locations = cells_body(
+    )
+  ) %>%
+  tab_style(
+    style = list(
+      cell_text(weight = "bold")
+    ),
+    locations = cells_column_labels(everything())
+  ) %>%
+  tab_options(     
+    table.align = "left",
+    # row_group.as_column = TRUE option not available on the OS R image
+    row_group.as_column = TRUE,
+    table.font.size = 8,
+    column_labels.border.top.width = px(3),
+    column_labels.border.top.color = "transparent",
+    table.border.top.color = "transparent",
+    heading.align = "left"
+  ) %>%
+  tab_header(
+    title = md("Table 8:  Count of patients with a recorded ethnicity in OpenSAFELY TPP by ethnicity group (proportion of registered TPP population) and 2021 ONS Census counts [amended to 2021 grouping] (proportion of 2021 ONS Census population). All counts are rounded to the nearest 5. "),
+  )  %>% 
+  gtsave(here::here("output","released","made_locally","ons_table_2021_with_2001_categories.html"))

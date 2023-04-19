@@ -116,6 +116,7 @@ actions:
       moderately_sensitive:
         notebook: output/draft_report_ethnicity.html
 
+#### move released files to output/released
 ###### run locally for manuscript
 ##### local notebook
   # generate_local_runs:
@@ -140,7 +141,7 @@ actions:
   #       tests: output/tests/*.csv
 
 ## create outputs for the manuscript
-  ## library(hrbrthemes) not available on the OS R image
+  ## library(hrbrthemes) not currently available on the OS R image
   # generate_manuscript_plots:
   #   run: r:latest analysis/local/local_manuscript_plots.R
   #   outputs:
@@ -148,9 +149,9 @@ actions:
   #       plots: output/released/made_locally/*.png
 
 ## create outputs for the appendix
-# `row_group.as_column = TRUE` option not available on the OS R image
+# `row_group.as_column = TRUE` option not currently available on the OS R image
   # generate_appendix:
-  #   run: r:latest analysis/appendix.R
+  #   run: r:latest analysis/local/appendix.R
   #   needs: [generate_local_runs]
   #   outputs:
   #     moderately_sensitive:
