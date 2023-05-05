@@ -19,7 +19,7 @@ library(ggplot2)
 
 
 ####### NA removed
-ethnicity <-
+prop_reg <-
   read_csv(here::here("output","released","simple_patient_counts_5_sus_registered.csv"),col_types =(cols())) %>%
   select("group","subgroup",starts_with("ethnicity_new_5"),starts_with("any"),"population") %>%
   mutate(ethnicity_new_5_percentage = round(ethnicity_new_5_filled / population *100,1),
@@ -55,7 +55,7 @@ ethnicity <-
 
 
 
-ethnicity_plot<-  ethnicity %>%
+prop_reg_plot<-  prop_reg %>%
   ggplot(aes(x = subgroup, y = percentage,alpha=ethnicity, fill = group)) +
   scale_alpha_discrete(range = c(0.2, 1))+
   geom_hline(aes(yintercept=percentage[which(group=="All"& ethnicity =="SNOMED:2022")]),color="#00468BFF",alpha = 0.5) +
@@ -79,9 +79,9 @@ ggsave(
     "output",
     "released",
     "made_locally",
-    "ethnicity_plot.png"
+    "prop_reg_plot.png"
   ),
-  ethnicity_plot,
+  prop_reg_plot,
   dpi = 600,
   width = 50,
   height = 65,
@@ -89,7 +89,7 @@ ggsave(
 )
 
 ######### Categories
-ethnicity_cat <-
+prop_reg_cat <-
   read_csv(here::here("output","released","simple_patient_counts_categories_5_group_registered.csv"),col_types =(cols())) %>%
   rename_with(~sub("ethnicity_","",.),contains("ethnicity_")) %>%
   rename_with(~sub("_5_filled","",.),contains("_5_filled")) %>%
@@ -101,7 +101,7 @@ ethnicity_cat <-
          Other_supplementeddiff=Other_supplemented-Other_new,) 
 
 
-ethnicity_cat_pivot <- ethnicity_cat %>%
+prop_reg_cat_pivot <- prop_reg_cat %>%
   pivot_longer(
     cols = c(contains("_")),
     names_to = c( "ethnicity","codelist"),
@@ -133,23 +133,25 @@ ethnicity_cat_pivot <- ethnicity_cat %>%
                             "Asian","Black","Mixed", "White","Other")
   )
 
-ethnicityhline_new<-ethnicity_cat_pivot  %>% arrange(ethnicity,group) %>% group_by(ethnicity,codelist) %>% mutate(percentage=first(percentage))  %>% ungroup %>% filter(codelist=="new")
-ethnicityhline_supplemented<-ethnicity_cat_pivot  %>% arrange(ethnicity,group) %>% group_by(ethnicity,codelist) %>% mutate(percentage=first(percentage)) %>% ungroup %>% filter(codelist=="supplemented")
+prop_reg_cat_hline_new<-prop_reg_cat_pivot  %>% arrange(ethnicity,group) %>% group_by(ethnicity,codelist) %>% mutate(percentage=first(percentage))  %>% ungroup %>% filter(codelist=="new")
+prop_reg_cat_hline_supplemented<-prop_reg_cat_pivot  %>% arrange(ethnicity,group) %>% group_by(ethnicity,codelist) %>% mutate(percentage=first(percentage)) %>% ungroup %>% filter(codelist=="supplemented")
 
-ethnicity_cat_pivot <- ethnicity_cat_pivot %>%
+prop_reg_cat_pivot <- prop_reg_cat_pivot %>%
   mutate(codelist=case_when(codelist=="new"~"SNOMED:2022",
-                            codelist=="supplementeddiff"~"SNOMED:2022 supplemented with SUS data"),
+                            codelist=="supplementeddiff"~"SNOMED:2022 supplemented with SUS data",
+                            T ~ codelist ),
          codelist=fct_relevel(codelist,"supplemented","SNOMED:2022 supplemented with SUS data","SNOMED:2022"))
 
 
 
-ethnicity_cat_plot<-  ethnicity_cat_pivot %>%
-  filter(codelist!="supplemented") %>%
+prop_reg_cat_plot<-  prop_reg_cat_pivot %>%
+  filter(codelist!="supplemented",
+         subgroup!="missing") %>%
   ggplot(aes(x = subgroup, y = percentage,alpha = codelist, fill = group)) +
   scale_alpha_discrete(range = c(0.2, 1))+
-  geom_hline(data=ethnicityhline_new,
+  geom_hline(data=prop_reg_cat_hline_new,
              aes(yintercept=percentage),color="#00468BFF",alpha = 0.6) +
-  geom_hline(data=ethnicityhline_supplemented,
+  geom_hline(data=prop_reg_cat_hline_supplemented,
              aes(yintercept=percentage),color="#00468BFF",alpha = 0.1) +
   geom_bar(stat = "identity", position = "stack") +
   facet_grid( group~ethnicity, scales = "free", space = 'free') +
@@ -166,16 +168,16 @@ ethnicity_cat_plot<-  ethnicity_cat_pivot %>%
   theme(legend.position = "bottom", 
         panel.spacing = unit(1.1, "lines"))
 
-ethnicity_cat_plot
+prop_reg_cat_plot
 
 ggsave(
   filename = here::here(
     "output",
     "released",
     "made_locally",
-    "ethnicity_cat_plot.png"
+    "prop_reg_cat_plot.png"
   ),
-  ethnicity_cat_plot,
+  prop_reg_cat_plot,
   dpi = 600,
   width = 90,
   height = 65,
@@ -183,12 +185,18 @@ ggsave(
 )
 
 
-# data<-read_feather(here::here("output","data","input.feather"))
+
+### SUS and New codelist comparison
+df_sus_new_cross = read_csv(here::here("output","released","simple_sus_crosstab_long_5_registered.csv")) 
+
+
+### Get count of patients with unknown ethnicity 
 population  <-   read_csv(here::here("output","released","simple_patient_counts_5_sus_registered.csv"),col_types =(cols())) %>%
   filter( group=="all" ) %>%
   summarise(ethnicity_new_5 = "Unknown",
             population= population-ethnicity_new_5_filled) 
 
+### Get count of patients per 5 group ethnicity 
 ethnicity_cat <-
   read_csv(here::here("output","released","simple_patient_counts_categories_5_sus_registered.csv"),col_types =(cols())) %>%
   rename_with(~sub("ethnicity_","",.),contains("ethnicity_")) %>%
@@ -199,11 +207,6 @@ ethnicity_cat <-
          Mixed_anydiff=Mixed_any-Mixed_new,
          White_anydiff=White_any-White_new,
          Other_anydiff=Other_any-Other_new,) 
-
-
-
-# select("group","subgroup",ends_with("_5_filled"),"population")
-
 
 ethnicity_cat_pivot <- ethnicity_cat %>%
   pivot_longer(
@@ -218,29 +221,11 @@ ethnicity_cat_pivot <- ethnicity_cat %>%
   bind_rows(population)
 
 
-
-df_sum = read_csv(here::here("output","released","simple_sus_crosstab_long_5_registered.csv")) 
-
-latest_common<- ggplot(df_sum, aes(ethnicity_new_5, ethnicity_sus_5, fill= `0`)) + 
-  geom_tile() +
-  # scale_fill_viridis(discrete=FALSE,direction=-1) +
-  # scale_fill_gradient(low="white", high="blue") +
-  scale_fill_distiller(palette = "OrRd",direction = 1,name = "Proportion of 'Latest Ethnicity'") +
-  geom_text(aes(label=scales::label_comma(accuracy = 1)(`0`))) +
-  ylab("SNOMED\n") + xlab("\nSUS") +
-  theme_ipsum()
-
-df_sum_nowhite <- df_sum %>% 
+df_sus_new_cross_nowhite <- df_sus_new_cross %>% 
   filter(ethnicity_new_5!="White",ethnicity_sus_5!="White")
 
 
-ggplot(df_sum_nowhite, aes(ethnicity_new_5, ethnicity_sus_5, fill= `0`)) + 
-  geom_tile() +
-  scale_fill_gradient2(limits=c(0,max(df_sum_nowhite$`0`)),midpoint = max(df_sum_nowhite$`0`)/3, high = "navyblue",
-                       mid = "indianred", low = "ivory1",na.value = "white") 
-
-
-df_sum_perc <-df_sum %>%
+df_sus_new_cross_perc <-df_sus_new_cross %>%
   left_join(ethnicity_cat_pivot,by="ethnicity_new_5") %>%
   mutate(percentage=round(`0`/population*100,1)) %>%
   mutate(ethnicity_new_5 = fct_relevel(ethnicity_new_5,
@@ -250,7 +235,7 @@ df_sum_perc <-df_sum %>%
   )
   
 
-sus_heat_perc<- ggplot(df_sum_perc, aes( ethnicity_sus_5,ethnicity_new_5, fill= percentage)) + 
+sus_heat_perc<- ggplot(df_sus_new_cross_perc, aes( ethnicity_sus_5,ethnicity_new_5, fill= percentage)) + 
   geom_tile() +
   # scale_fill_viridis(discrete=FALSE,direction=-1) +
   # scale_fill_gradient(low="white", high="blue") +
@@ -273,7 +258,7 @@ ggsave(
   units = "cm"
 )
 
-df_sum_perc_unk <- df_sum_perc %>%
+df_sus_new_cross_perc_unk <- df_sus_new_cross_perc %>%
   filter(ethnicity_new_5!="Unknown",
          ethnicity_sus_5!="Unknown") %>%
   group_by(ethnicity_new_5 ) %>%
@@ -281,7 +266,7 @@ df_sum_perc_unk <- df_sum_perc %>%
   ungroup() %>%
   mutate(percentage=round(`0`/population*100,1))
   
-sus_heat_perc_unk<- ggplot(df_sum_perc_unk, aes( ethnicity_sus_5,ethnicity_new_5, fill= percentage)) + 
+sus_heat_perc_unk<- ggplot(df_sus_new_cross_perc_unk, aes( ethnicity_sus_5,ethnicity_new_5, fill= percentage)) + 
   geom_tile() +
   # scale_fill_viridis(discrete=FALSE,direction=-1) +
   # scale_fill_gradient(low="white", high="blue") +
@@ -304,20 +289,9 @@ ggsave(
   units = "cm"
 )
 
-
-
-latest_common_nowhite<- ggplot(df_sum_nowhite , aes(ethnicity_new_5, ethnicity_sus_5, fill= `0`)) + 
-  geom_tile() +
-  # scale_fill_viridis(discrete=FALSE,direction=-1) +
-  # scale_fill_gradient(low="white", high="blue") +
-  scale_fill_distiller(palette = "OrRd",direction = 1,name = "Proportion of 'Latest Ethnicity'") +
-  geom_text(aes(label=scales::label_comma(accuracy = 1)(`0`))) +
-  ylab("SNOMED:2022\n") + xlab("\nSUS") +
-  theme_ipsum()
-
 ########### 
 
-perc_unk<- df_sum_perc_unk %>% mutate(matches=ethnicity_new_5==ethnicity_sus_5) %>% group_by(matches) %>% summarise(N=sum(`0`))
+perc_unk<- df_sus_new_cross_perc_unk %>% mutate(matches=ethnicity_new_5==ethnicity_sus_5) %>% group_by(matches) %>% summarise(N=sum(`0`))
 
 ############ state change
 
@@ -370,9 +344,9 @@ ggsave(
 )
 
 ### latest common 2023
-df_sum = read_csv(here::here("output","released","simple_latest_common_ethnicity_new_5_registered.csv"))           
+df_lat_comm = read_csv(here::here("output","released","simple_latest_common_ethnicity_new_5_registered.csv"))           
 
-df_sum2<-df_sum %>%
+df_lat_comm<-df_lat_comm %>%
   ungroup() %>%
   mutate(across(-1)/rowSums(across(-1),na.rm = T)*100) %>%
   mutate(latest=ethnicity_new_5) %>%
@@ -388,7 +362,7 @@ df_sum2<-df_sum %>%
 # filter(latest!="White_British",latest!="White_Irish",latest!="Other_White",common!="White_British",common!="White_Irish",common!="Other_White")
 
 
-latest_common<- ggplot(df_sum2, aes(common, latest, fill= val)) + 
+latest_common<- ggplot(df_lat_comm, aes(common, latest, fill= val)) + 
   geom_tile() +
   # scale_fill_viridis(discrete=FALSE,direction=-1) +
   # scale_fill_gradient(low="white", high="blue") +
@@ -415,28 +389,28 @@ ggsave(
 ### ONS comparison
 ####### NA removed
 # read ethnicity produced by combine_ONS_sus.R
-ethnicity_na <-
+ons_na_removed <-
   read_csv(here::here("output","released","made_locally",  "ethnic_group_2021_registered_with_2001_categories.csv")) %>%
   mutate(
-    cohort = case_when(cohort=="ONS"~"2021 Census",
+    cohort = case_when(cohort=="ONS"~"2021 Census\n[amended to 2001 grouping]",
                        cohort=="new"~"SNOMED:2022",
                        cohort=="supplemented"~"SNOMED:2022 supplemented with SUS data"),
-    cohort = fct_relevel(cohort, "2021 Census","SNOMED:2022", "SNOMED:2022 supplemented with SUS data"),
+    cohort = fct_relevel(cohort, "2021 Census\n[amended to 2001 grouping]","SNOMED:2022", "SNOMED:2022 supplemented with SUS data"),
     Ethnic_Group = fct_relevel(Ethnic_Group,
                                "Asian","Black","Mixed", "White","Other"))
 
 
 ## create difference in percentage between ONS and TPP (for plotting)
-ethnicity_plot_na_diff <- ethnicity_na %>%
+ons_ethnicity_plot_na_diff <- ons_na_removed %>%
   group_by(Ethnic_Group,region,group) %>%
   arrange(cohort) %>%
   mutate(diff = percentage - first(percentage)) %>%
   select(region,Ethnic_Group,cohort,diff,group)
 
-ethnicity_na <-ethnicity_na %>% 
-  left_join(ethnicity_plot_na_diff, by=c("region","Ethnic_Group","cohort","group"))
+ons_na_removed <-ons_na_removed %>% 
+  left_join(ons_ethnicity_plot_na_diff, by=c("region","Ethnic_Group","cohort","group"))
 ## 5 group ethnicity plot NA removed for Regions
-ethnicity_plot_na <- ethnicity_na %>%
+ons_ethnicity_plot_na <- ons_na_removed %>%
   filter(region != "England", group == "5") %>%
   ggplot(aes(x = Ethnic_Group, y = percentage, fill = cohort)) +
   geom_bar(stat = "identity", position = "dodge") +
@@ -452,12 +426,12 @@ ethnicity_plot_na <- ethnicity_na %>%
   xlab("") + ylab("\nProportion of ethnicities")  +
   theme(legend.position="bottom",
         legend.title=element_blank()) +
-  geom_text(aes(x=Ethnic_Group,y=percentage,label=ifelse(cohort=="2021 Census","",paste0(round(diff,digits =1),"%"))), size=3.4, position =position_dodge(width=0.9), vjust=0.3,hjust = -0.2) 
+  geom_text(aes(x=Ethnic_Group,y=percentage,label=ifelse(cohort=="2021 Census\n[amended to 2001 grouping]","",paste0(round(diff,digits =1),"%"))), size=3.4, position =position_dodge(width=0.9), vjust=0.3,hjust = -0.2) 
 
 
 ggsave(
-  filename =here::here("output","released","made_locally",  "ONS_ethnicity_regions_2021.png"),
-  ethnicity_plot_na,
+  filename =here::here("output","released","made_locally",  "ONS_ethnicity_regions_2021_with_2001_regions.png"),
+  ons_ethnicity_plot_na,
   dpi = 600,
   width = 50,
   height = 30,
@@ -466,7 +440,7 @@ ggsave(
 
 
 ## 5 group ethnicity plot NA removed for England
-ethnicity_plot_eng_na <- ethnicity_na %>%
+ons_ethnicity_plot_eng_na <- ons_na_removed %>%
   filter(region == "England", group == "5") %>%
   ggplot(aes(x = Ethnic_Group, y = percentage, fill = cohort)) +
   geom_bar(stat = "identity", position = "dodge") +
@@ -481,12 +455,12 @@ ethnicity_plot_eng_na <- ethnicity_na %>%
   xlab("") + ylab("\nProportion of ethnicities") +
   theme(legend.position="bottom",
         legend.title=element_blank()) +
-  geom_text(aes(x=Ethnic_Group,y=percentage,label=ifelse(cohort=="2021 Census","",paste0(round(diff,digits =1),"%"))), size=3.4, position =position_dodge(width=0.9), vjust=0.3 ,hjust = -0.2)
+  geom_text(aes(x=Ethnic_Group,y=percentage,label=ifelse(cohort=="2021 Census\n[amended to 2001 grouping]","",paste0(round(diff,digits =1),"%"))), size=3.4, position =position_dodge(width=0.9), vjust=0.3 ,hjust = -0.2)
 
 ggsave(
-  filename =here::here("output","released","made_locally", "ONS_ethnicity_eng_2021.png"
+  filename =here::here("output","released","made_locally", "ONS_ethnicity_eng_2021_with_2001_regions.png"
   ),
-  ethnicity_plot_eng_na,
+  ons_ethnicity_plot_eng_na,
   dpi = 600,
   width = 30,
   height = 15,
