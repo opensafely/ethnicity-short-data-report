@@ -162,7 +162,7 @@ def import_clean(
 
 
 def simple_latest_common_comparison(
-    df_clean, definitions,reg, other_vars, output_path,grouping, missing_check=False
+    df_clean, definitions,reg, other_vars, output_path,grouping, code_dict, missing_check=False
 ):
     for definition in definitions:
         if missing_check:
