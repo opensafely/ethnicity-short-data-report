@@ -102,7 +102,7 @@ def main():
 
     # Latest v most common
     simple_latest_common_comparison(
-        df_clean, definitions,reg, other_vars_combined, output_path,grouping,
+        df_clean, definitions,reg, other_vars_combined, output_path,grouping,code_dict
     )
 
     # State change

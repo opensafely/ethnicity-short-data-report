@@ -158,18 +158,28 @@ def import_clean(
 
 
 def simple_latest_common_comparison(
-    df_clean, definitions,reg, other_vars, output_path,grouping, missing_check=False
+    df_clean, definitions,reg, other_vars, output_path,grouping,code_dict="", missing_check=False
 ):
     for definition in definitions:
         if missing_check:
             df_clean = df_clean[df_clean[f"{definition}_date"] == "1900-01-01"]
         vars = [s for s in other_vars if s.startswith(definition)]
         df_subset = df_clean.loc[~df_clean[definition].isna()]
+        df_subset = df_subset[df_subset[definition].isin(code_dict[definition].values())]
         df_subset = df_subset[[definition] + vars].set_index(definition)
         df_subset = df_subset.replace(0, np.nan)
-        df_subset2 = df_subset.where(df_subset.eq(df_subset.max(1), axis=0))
-        df_subset_3 = df_subset2.notnull().astype("int").reset_index()
-        df_sum = redact_round_table(df_subset_3.groupby(definition).sum())
+        # reorder columns
+        col_arrange = [f"{definition}_asian",f"{definition}_black",f"{definition}_mixed",f"{definition}_white",f"{definition}_other"]
+        df_subset=df_subset[col_arrange]
+        # find column with first instance of the maximum value
+        df_subset['max'] = df_subset.astype(float).idxmax(axis=1)    
+        df_subset2 = df_subset
+        # returning 1 for the first column that contains the highest value and 0 for everything else
+        for col in df_subset2.columns:
+	        df_subset2[col] = np.where(df_subset2['max'] == col, 1, 0)
+        # drop max column
+        df_subset2 = df_subset2[col_arrange]
+        df_sum = redact_round_table(df_subset2.groupby(definition).sum())
         if missing_check:
             df_sum.to_csv(
                 f"output/{output_path}/{grouping}/tables/simple_latest_common_{definition}_missing_{reg}.csv"
@@ -178,7 +188,6 @@ def simple_latest_common_comparison(
             df_sum.to_csv(
                 f"output/{output_path}/{grouping}/tables/simple_latest_common_{definition}_{reg}.csv"
             )
-
 
 def simple_state_change(
     df_clean, definitions,reg, other_vars, output_path,grouping, missing_check=False

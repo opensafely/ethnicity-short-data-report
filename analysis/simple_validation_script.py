@@ -109,10 +109,10 @@ def main():
     # upset_cat(df_clean, output_path, definitions[1], definitions[0], other_vars)
     # Latest v most common
     simple_latest_common_comparison(
-        df_clean, definitions,reg, other_vars_combined, output_path,grouping,
+        df_clean, definitions,reg, other_vars_combined, output_path,grouping, code_dict
     )
     simple_latest_common_comparison(
-        df_clean, definitions,reg, other_vars_combined, output_path,grouping, missing_check=True,
+        df_clean, definitions,reg, other_vars_combined, output_path,grouping, code_dict, missing_check=True,
     )
     # State change
     simple_state_change(df_clean, definitions,reg, other_vars_combined, output_path,grouping,)
