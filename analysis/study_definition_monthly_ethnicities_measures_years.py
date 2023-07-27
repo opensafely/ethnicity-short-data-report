@@ -94,7 +94,6 @@ measures = [ ]
 
 ### ethncicity measures
 for measure in ethnicity_combinations_5 + ['ethnicity_new_5_month']:
-    measure
     measures.extend([
         Measure(
         id=f"{measure}_rate",
@@ -105,11 +104,10 @@ for measure in ethnicity_combinations_5 + ['ethnicity_new_5_month']:
     ])
 
 for covar in demographic_covariates + clinical_covariates:
-    measure
     measures.extend([
         Measure(
         id=f"ethnicity_{covar}_rate",
-        numerator=measure,
+        numerator='ethnicity_new_5_month',
         denominator="population",
         group_by=[covar]
     )
