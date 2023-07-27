@@ -5,6 +5,11 @@ library('glue')
 library('stringr')
 library('ggsci')
 library('scales')
+library(Gmisc, quietly = TRUE)
+library(htmlTable)
+library(grid)
+library(magrittr)
+
 
 # # patient counts 
 SUSyesno <- read_csv(here::here("output","released","made_locally","local_patient_counts_registered.csv")) %>%
@@ -297,14 +302,14 @@ plot_time<- time %>%   ggplot(aes(x=Date,y= n,colour=measure))+
   theme(legend.title=element_blank()) +
   scale_x_date(breaks = breakvec, date_labels =  "%Y") +
   scale_y_continuous(name="Number of records", labels = scales::comma) + 
-  ggtitle("Figure 1: Recording of ethnicity over time for latest and first recorded ethnicity.Unknown dates of recording may be stored as '1900-01-01'")
+  ggtitle("Figure 4: Recording of ethnicity over time for latest and first recorded ethnicity. Unknown dates of recording may be stored as '1900-01-01'")
 
 ggsave(
   filename = here::here(
     "output",
     "released",
     "made_locally",
-    "plot_time.pdf"
+    "fig_4_plot_time.pdf"
   ),
   plot_time,
   dpi = 600,
@@ -615,6 +620,78 @@ df_sus_new_cross_table <- df_sus_new_cross_perc %>%
 df_sus_new_cross_table  %>% gtsave(here::here("output","released","made_locally","df_sus_new_cross_table.html"))
 
 
+### Heatmap for SUS with Unknown
+### Get count of patients with unknown ethnicity 
+population  <-   read_csv(here::here("output","released","simple_patient_counts_5_sus_registered.csv"),col_types =(cols())) %>%
+  filter( group=="all" ) %>%
+  summarise(ethnicity_new_5 = "Unknown",
+            population= population-ethnicity_new_5_filled) 
+
+### Get count of patients per 5 group ethnicity 
+ethnicity_cat <-
+  read_csv(here::here("output","released","simple_patient_counts_categories_5_sus_registered.csv"),col_types =(cols())) %>%
+  rename_with(~sub("ethnicity_","",.),contains("ethnicity_")) %>%
+  rename_with(~sub("_5_filled","",.),contains("_5_filled")) %>%
+  select(-contains("filled"),-contains("missing"),-contains("sus")) %>%
+  mutate(Asian_anydiff=Asian_any-Asian_new,
+         Black_anydiff=Black_any-Black_new,
+         Mixed_anydiff=Mixed_any-Mixed_new,
+         White_anydiff=White_any-White_new,
+         Other_anydiff=Other_any-Other_new,) 
+
+ethnicity_cat_pivot <- ethnicity_cat %>%
+  pivot_longer(
+    cols = c(contains("_")),
+    names_to = c( "ethnicity","codelist"),
+    names_pattern = "(.*)_(.*)",
+    values_to = "n"
+  ) %>%
+  filter(codelist=="new",group=="all") %>%
+  summarise(ethnicity_new_5 =ethnicity,
+            population=n) %>%
+  bind_rows(population)
+
+
+df_sus_new_cross_nowhite <- df_sus_new_cross %>% 
+  filter(ethnicity_new_5!="White",ethnicity_sus_5!="White")
+
+
+df_sus_new_cross_perc <-df_sus_new_cross %>%
+  left_join(ethnicity_cat_pivot,by="ethnicity_new_5") %>%
+  mutate(percentage=round(`0`/population*100,1)) %>%
+  mutate(ethnicity_new_5 = fct_relevel(ethnicity_new_5,
+                                       "Unknown","Other","White","Mixed", "Black","Asian"),
+         ethnicity_sus_5=fct_relevel(ethnicity_sus_5,
+                                     "Asian","Black","Mixed", "White","Other")
+  )
+
+
+sus_heat_perc<- ggplot(df_sus_new_cross_perc, aes( ethnicity_sus_5,ethnicity_new_5, fill= percentage)) + 
+  geom_tile() +
+  # scale_fill_viridis(discrete=FALSE,direction=-1) +
+  # scale_fill_gradient(low="white", high="blue") +
+  scale_fill_distiller(palette = "OrRd",direction = 1,name = "Proportion of SNOMED:2022") +
+  geom_text(aes(label=percentage)) +
+  ylab("SNOMED:2022\n") + xlab("\nSUS") +
+  theme_ipsum() +
+  theme(
+    plot.title=element_text(size=10)) +
+  ggtitle("Figure 1: Heat map showing frequency of pairwise occurrence of primary care and secondary care recorded ethnicity\nas a proportion of latest primary care recorded ethnicity")
+
+ggsave(
+  filename = here::here(
+    "output",
+    "released",
+    "made_locally",
+    "fig_1_sus_plot_time.png"
+  ),
+  sus_heat_perc,
+  dpi = 600,
+  width = 30,
+  height = 10,
+  units = "cm"
+)
+
 ### SUS and New codelist comparison without unknown
 df_sus_new_cross = read_csv(here::here("output","released","simple_sus_crosstab_long_5_registered.csv")) 
 
@@ -699,3 +776,5 @@ df_sus_new_cross_known_table <- df_sus_new_cross_known_perc %>%
 
 
 df_sus_new_cross_known_table  %>% gtsave(here::here("output","released","made_locally","df_sus_new_cross_known_table.html"))
+
+# 

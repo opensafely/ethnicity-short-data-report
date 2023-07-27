@@ -3,7 +3,6 @@
 #
 ################################################################################
 library(rlang)
-library(vctrs)
 library(tidyverse)
 library(scales)
 library(readr)
@@ -16,7 +15,8 @@ library(hrbrthemes)
 library(viridis)
 library(stringr)
 library(ggplot2)
-
+library(ggalluvial)
+library(ggrepel)
 
 ####### NA removed
 prop_reg <-
@@ -66,13 +66,15 @@ prop_reg_plot<-  prop_reg %>%
   theme(text = element_text(size = 20)) +
   theme(axis.text.x = element_text(
     size = 20,
-    hjust = 0,
+    hjust = 0.5,
     vjust = 0
   )) +
+  theme(strip.text.y = element_text(angle = 0)) +
   coord_flip()  + scale_fill_lancet() +
   xlab("") + ylab("\nProportion of registered TPP patients") +
   guides(fill = "none",alpha=guide_legend("")) +
   theme(legend.position = "bottom")
+
 
 ggsave(
   filename = here::here(
@@ -83,8 +85,8 @@ ggsave(
   ),
   prop_reg_plot,
   dpi = 600,
-  width = 50,
-  height = 65,
+  width = 25,
+  height = 30,
   units = "cm"
 )
 
@@ -154,14 +156,15 @@ prop_reg_cat_plot<-  prop_reg_cat_pivot %>%
   geom_hline(data=prop_reg_cat_hline_supplemented,
              aes(yintercept=percentage),color="#00468BFF",alpha = 0.1) +
   geom_bar(stat = "identity", position = "stack") +
-  facet_grid( group~ethnicity, scales = "free", space = 'free') +
+  facet_grid( group~ethnicity, scales = "free", space = 'free',shrink = FALSE) +
   theme_classic() +
-  theme(text = element_text(size = 20)) +
+  theme(text = element_text(size = 30)) +
   theme(axis.text.x = element_text(
-    size = 20,
+    size = 25,
     hjust = 0.5,
     vjust = 0
   )) +
+  theme(strip.text.y = element_text(angle = 0)) +
   coord_flip()  + scale_fill_lancet() +
   xlab("") + ylab("\nProportion of registered TPP patients") + 
   guides(fill = "none",alpha=guide_legend("")) +
@@ -179,8 +182,8 @@ ggsave(
   ),
   prop_reg_cat_plot,
   dpi = 600,
-  width = 90,
-  height = 65,
+  width = 100,
+  height = 60,
   units = "cm"
 )
 
@@ -239,9 +242,9 @@ sus_heat_perc<- ggplot(df_sus_new_cross_perc, aes( ethnicity_sus_5,ethnicity_new
   geom_tile() +
   # scale_fill_viridis(discrete=FALSE,direction=-1) +
   # scale_fill_gradient(low="white", high="blue") +
-  scale_fill_distiller(palette = "OrRd",direction = 1,name = "Proportion of SNOMED:2022") +
+  scale_fill_distiller(palette = "OrRd",direction = 1,name = "Proportion of primary care ethnicity group") +
   geom_text(aes(label=percentage)) +
-  ylab("SNOMED:2022\n") + xlab("\nSUS") +
+  ylab("primary care ethnicity\n") + xlab("\nSecondary care ethnicity") +
   theme_ipsum()
 
 ggsave(
@@ -292,6 +295,148 @@ ggsave(
 ########### 
 
 perc_unk<- df_sus_new_cross_perc_unk %>% mutate(matches=ethnicity_new_5==ethnicity_sus_5) %>% group_by(matches) %>% summarise(N=sum(`0`))
+
+
+######## primary vs secondary Denom = all patients
+
+df_secondary_new_cross_perc <-df_sus_new_cross %>%
+  # mutate(population = population$population[population$group=="all"]) %>%
+  # mutate(percentage=round(`0`/population*100,1)) %>%
+  mutate(ethnicity_new_5 = fct_relevel(ethnicity_new_5,
+                                       "Unknown","Other","White","Mixed", "Black","Asian"),
+         ethnicity_sus_5=fct_relevel(ethnicity_sus_5,
+                                     "Asian","Black","Mixed", "White","Other")
+  )
+
+bennett_pal<-c("#FFB700","#F20D52","#FF369C","#FF7CFE","#9C54E6","#5323B3")
+
+opt1<-c(
+"#FFB700",
+"#F20D52",
+"#FF369C",
+"#FF7CFE",
+"#9C54E6",
+"#5323B3"
+)
+
+opt2<-c(
+"#FFB700",
+"#F20D52",
+"#FF369C",
+"#9C54E6",
+"#5323B3",
+"#3FB5FF")
+
+opt3<-c(
+"#FFB700",
+"#F20D52",
+"#FF369C",
+"#9C54E6",
+"#5323B3",
+"#17D7E6")
+
+opt4<-c("#FFB700",
+"#F20D52",
+"#FF369C",
+"#5323B3",
+"#5A71F3",
+"#3FB5FF")
+
+opt5<-c("#FFB700",
+"#F20D52",
+"#FF369C",
+"#5323B3",
+"#5A71F3",
+"#17D7E6")
+
+opt6<-c("#FFD23B",
+"#F20D52",
+"#FF369C",
+"#FF7CFE",
+"#9C54E6",
+"#5323B3")
+
+opt7<-c("#FFD23B",
+"#F20D52",
+"#FF369C",
+"#9C54E6",
+"#5323B3",
+"#3FB5FF")
+
+opt8<-c("#FFD23B",
+"#F20D52",
+"#FF369C",
+"#9C54E6",
+"#5323B3",
+"#17D7E6")
+
+opt9<-c(
+"#FFD23B",
+"#F20D52",
+"#FF369C",
+"#5323B3",
+"#5A71F3",
+"#3FB5FF")
+
+opt10<-c("#FFD23B",
+"#F20D52",
+"#FF369C",
+"#5323B3",
+"#5A71F3",
+"#17D7E6")
+
+alluvial_func<-function(palette){
+alluvial<- ggplot(as.data.frame(df_secondary_new_cross_perc),
+       aes(y = `0`, axis1 = ethnicity_new_5, axis2 = ethnicity_sus_5)) +
+  geom_alluvium(aes(fill = ethnicity_new_5)) +
+  geom_stratum(aes(fill = ethnicity_sus_5)) +
+  geom_label(stat = "stratum", aes(label = after_stat(stratum))) +
+  scale_x_discrete(limits = c("ethnicity_new_5", "ethnicity_sus_5"), expand = c(.05, .05)) +
+  scale_fill_manual(values=rev(get(palette)), na.value = NA) +
+  theme_minimal() +
+  ggtitle("")
+
+#   scale_fill_manual(values=rev(c("#FFD23B","#F20D52","#FF7CFE","#5323B3","#3FB5FF","#17D7E6"))) +
+  
+  ggsave(filename = here::here(
+    "output",
+    "released",
+    "made_locally",
+    glue("alluvial_{palette}.png")
+  ),
+  alluvial,
+  dpi = 600,
+  width = 50,
+  height = 30,
+  units = "cm"
+  )
+}
+
+for(i in 1:10){
+alluvial_func(glue("opt{i}"))
+}
+  secondary_heat_perc_all_patients<- ggplot(df_secondary_new_cross_perc, aes( ethnicity_sus_5,ethnicity_new_5, fill= percentage)) + 
+  geom_tile() +
+  # scale_fill_viridis(discrete=FALSE,direction=-1) +
+  # scale_fill_gradient(low="white", high="blue") +
+  scale_fill_distiller(palette = "OrRd",direction = 1,name = "Proportion of all TPP patients") +
+  geom_text(aes(label=percentage)) +
+  ylab("Primary care ethnicity\n") + xlab("\nSecondary Care ethnicity") +
+  theme_ipsum()
+  
+  ggsave(filename = here::here(
+    "output",
+    "released",
+    "made_locally",
+    "second_care_all_pts.png"
+  ),
+  secondary_heat_perc_all_patients,
+  dpi = 600,
+  width = 30,
+  height = 10,
+  units = "cm"
+  )
+  
 
 ############ state change
 
@@ -377,6 +522,7 @@ ggsave(
   filename = here::here(
     "output",
     "released",
+    "made_locally",
     "latest_common.png"
   ),
   latest_common,
@@ -466,3 +612,87 @@ ggsave(
   height = 15,
   units = "cm"
 )
+
+
+
+#### in progress
+library(ggpattern)
+
+ggplot(df_sus_new_cross_perc, aes( ethnicity_sus_5,ethnicity_sus_5)) +
+  geom_bar(stat = "identity", aes(width = population, fill = ethnicity_new_5), col = "Black") +
+  geom_text(aes(label = as.character(var1), x = var1Center, y = 1.05)) 
+
+
+df_sus_new_cross_perc_1 <- df_sus_new_cross_perc %>%
+  mutate(highlight = case_when(ethnicity_sus_5 == ethnicity_new_5  ~ "yes", 
+                               TRUE ~ "no"),
+         type=case_when(ethnicity_new_5 == "White"  ~ "yes", 
+                           TRUE ~ "no"),
+         ethnicity_new_5 = fct_relevel(ethnicity_new_5,
+                                      "Asian","Black","Mixed","White", "Other","Unknown"))
+
+
+strip <- strip_themed(background_x = elem_list_rect(fill = rev(c("#80796BFF","#374E55FF","#6A6599FF","#B24745FF","#00A1D5FF"))))
+
+marimekko_nw <- ggplot(df_sus_new_cross_perc_1 %>% filter(ethnicity_new_5!="White"),
+                    aes(x = ethnicity_new_5, y = percentage, width = population, fill = ethnicity_sus_5,alpha = highlight,colour = highlight)) +
+  geom_bar(stat = "identity", position = "fill") +
+  scale_color_manual(values = c( "yes" = "black","no" = "white"), guide = "none") +
+  scale_alpha_discrete(range = c(0.8, 0.9)) +
+  geom_label_repel(aes(label = round(percentage,1)), position = position_fill(vjust = 0.5), direction = "x", size = 8/.pt,show.legend=FALSE) + # if labels are desired
+  facet_grid2(type~ethnicity_new_5, scales = "fixed", space = "fixed",strip = strip) +
+  scale_fill_manual(values=rev(c("#80796BFF","#374E55FF","#DF8F44FF","#6A6599FF","#B24745FF","#00A1D5FF")),guide="none") +
+  # theme(panel.spacing.x = unit(0, "npc")) + # if no spacing preferred between bars
+  theme_void()  +
+  theme(
+    strip.text.y = element_blank()) +
+  scale_x_discrete(
+    expand = expansion(add = 0.5)
+  ) + 
+  theme(panel.spacing = unit(0.1, "lines")) +
+  theme(
+    strip.background = element_rect(
+      color="black", fill=, linetype="solid"
+    )
+  ) +
+  guides(fill = guide_legend(""),alpha="none",colour="none")
+
+strip_white <- strip_themed(background_x = elem_list_rect(fill = c("#DF8F44FF")))
+
+marimekko_white <- ggplot(df_sus_new_cross_perc_1 %>% filter(ethnicity_new_5=="White"),
+                       aes(x = ethnicity_new_5, y = percentage, width = population, fill = ethnicity_sus_5,alpha = highlight,colour = highlight)) +
+  geom_bar(stat = "identity", position = "fill") +
+  scale_color_manual(values = c( "yes" = "black","no" = "white"), guide = "none") +
+  scale_alpha_discrete(range = c(0.8, 0.9)) +
+  geom_label_repel(aes(label = round(percentage,1)), position = position_fill(vjust = 0.5), direction = "x", size = 8/.pt,show.legend=FALSE) + # if labels are desired
+  facet_grid2(type~ethnicity_new_5, scales = "fixed", space = "fixed",strip = strip_white) +
+  scale_fill_manual(values=rev(c("#80796BFF","#374E55FF","#DF8F44FF","#6A6599FF","#B24745FF","#00A1D5FF")),guide=T) +
+  # theme(panel.spacing.x = unit(0, "npc")) + # if no spacing preferred between bars
+  theme_void()  +
+  theme(
+    strip.text.y = element_blank() )+
+  scale_x_discrete(
+    expand = expansion(add = 0.5)
+  ) + 
+  theme(panel.spacing = unit(0.1, "lines")) +
+  guides(fill = guide_legend(""),alpha="none",colour="none") 
+
+
+marimekko <- ggarrange(marimekko_nw, marimekko_white,nrow=2, common.legend = TRUE, legend="bottom")
+
+ggsave(
+  filename = here::here(
+    "output",
+    "released",
+    "made_locally",
+    "marimekko.png"
+  ),
+  marimekko,
+  dpi = 600,
+  width = 20,
+  height = 20,
+  units = "cm"
+)
+
+View(df_sus_new_cross_perc_1)
+
