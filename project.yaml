@@ -108,6 +108,440 @@ actions:
         data: output/time/*.csv
         plots: output/time/*.png
 
+
+  monthly_ethnicity_1990:
+    run: cohortextractor:latest generate_cohort --study-definition study_definition_monthly_ethnicities_measures_years
+        --index-date-range '1990-01-01 to 1990-01-01 by month' --output-dir=output/yearly
+        --output-format=feather
+    needs:
+    - split_codelist
+    outputs:
+      highly_sensitive:
+        extract: output/yearly/input_monthly_ethnicities_measures_years*.feather
+          
+  monthly_ethnicity_1991:
+    run: cohortextractor:latest generate_cohort --study-definition study_definition_monthly_ethnicities_measures_years
+        --index-date-range '1991-01-01 to 1991-01-01 by month' --output-dir=output/yearly
+        --output-format=feather
+    needs:
+    - split_codelist
+    outputs:
+      highly_sensitive:
+        extract: output/yearly/input_monthly_ethnicities_measures_year*.feather
+          
+  monthly_ethnicity_1992:
+    run: cohortextractor:latest generate_cohort --study-definition study_definition_monthly_ethnicities_measures_years
+        --index-date-range '1992-01-01 to 1992-01-01 by month' --output-dir=output/yearly
+        --output-format=feather
+    needs:
+    - split_codelist
+    outputs:
+      highly_sensitive:
+        extract: output/yearly/input_monthly_ethnicities_measures_yea*.feather
+
+          
+  monthly_ethnicity_1993:
+    run: cohortextractor:latest generate_cohort --study-definition study_definition_monthly_ethnicities_measures_years
+        --index-date-range '1993-01-01 to 1993-01-01 by month' --output-dir=output/yearly
+        --output-format=feather
+    needs:
+    - split_codelist
+    outputs:
+      highly_sensitive:
+        extract: output/yearly/input_monthly_ethnicities_measures_ye*.feather
+          
+  monthly_ethnicity_1994:
+    run: cohortextractor:latest generate_cohort --study-definition study_definition_monthly_ethnicities_measures_years
+        --index-date-range '1994-01-01 to 1994-01-01 by month' --output-dir=output/yearly
+        --output-format=feather
+    needs:
+    - split_codelist
+    outputs:
+      highly_sensitive:
+        extract: output/yearly/input_monthly_ethnicities_measures_y*.feather
+
+          
+  monthly_ethnicity_1995:
+    run: cohortextractor:latest generate_cohort --study-definition study_definition_monthly_ethnicities_measures_years
+        --index-date-range '1995-01-01 to 1995-01-01 by month' --output-dir=output/yearly
+        --output-format=feather
+    needs:
+    - split_codelist
+    outputs:
+      highly_sensitive:
+        extract: output/yearly/input_monthly_ethnicities_measures_*.feather
+
+          
+  monthly_ethnicity_1996:
+    run: cohortextractor:latest generate_cohort --study-definition study_definition_monthly_ethnicities_measures_years
+        --index-date-range '1996-01-01 to 1996-01-01 by month' --output-dir=output/yearly
+        --output-format=feather
+    needs:
+    - split_codelist
+    outputs:
+      highly_sensitive:
+        extract: output/yearly/input_monthly_ethnicities_measures*.feather
+
+          
+  monthly_ethnicity_1997:
+    run: cohortextractor:latest generate_cohort --study-definition study_definition_monthly_ethnicities_measures_years
+        --index-date-range '1997-01-01 to 1997-01-01 by month' --output-dir=output/yearly
+        --output-format=feather
+    needs:
+    - split_codelist
+    outputs:
+      highly_sensitive:
+        extract: output/yearly/input_monthly_ethnicities_measure*.feather
+
+          
+  monthly_ethnicity_1998:
+    run: cohortextractor:latest generate_cohort --study-definition study_definition_monthly_ethnicities_measures_years
+        --index-date-range '1998-01-01 to 1998-01-01 by month' --output-dir=output/yearly
+        --output-format=feather
+    needs:
+    - split_codelist
+    outputs:
+      highly_sensitive:
+        extract: output/yearly/input_monthly_ethnicities_measur*.feather
+
+          
+  monthly_ethnicity_1999:
+    run: cohortextractor:latest generate_cohort --study-definition study_definition_monthly_ethnicities_measures_years
+        --index-date-range '1999-01-01 to 1999-01-01 by month' --output-dir=output/yearly
+        --output-format=feather
+    needs:
+    - split_codelist
+    outputs:
+      highly_sensitive:
+        extract: output/yearly/input_monthly_ethnicities_measu*.feather
+
+
+  monthly_ethnicity_2000:
+    run: cohortextractor:latest generate_cohort --study-definition study_definition_monthly_ethnicities_measures_years
+        --index-date-range '2000-01-01 to 2000-01-01 by month' --output-dir=output/yearly
+        --output-format=feather
+    needs:
+    - split_codelist
+    outputs:
+      highly_sensitive:
+        extract: output/yearly/input_monthly_ethnicities_meas*.feather
+
+
+  monthly_ethnicity_2001:
+    run: cohortextractor:latest generate_cohort --study-definition study_definition_monthly_ethnicities_measures_years
+        --index-date-range '2001-01-01 to 2001-01-01 by month' --output-dir=output/yearly
+        --output-format=feather
+    needs:
+    - split_codelist
+    outputs:
+      highly_sensitive:
+        extract: output/yearly/input_monthly_ethnicities_mea*.feather
+
+        
+  monthly_ethnicity_2002:
+    run: cohortextractor:latest generate_cohort --study-definition study_definition_monthly_ethnicities_measures_years
+        --index-date-range '2002-01-01 to 2002-01-01 by month' --output-dir=output/yearly
+        --output-format=feather
+    needs:
+    - split_codelist
+    outputs:
+      highly_sensitive:
+        extract: output/yearly/input_monthly_ethnicities_me*.feather
+
+
+        
+  monthly_ethnicity_2003:
+    run: cohortextractor:latest generate_cohort --study-definition study_definition_monthly_ethnicities_measures_years
+        --index-date-range '2003-01-01 to 2003-01-01 by month' --output-dir=output/yearly
+        --output-format=feather
+    needs:
+    - split_codelist
+    outputs:
+      highly_sensitive:
+        extract: output/yearly/input_monthly_ethnicities_m*.feather
+
+
+        
+  monthly_ethnicity_2004:
+    run: cohortextractor:latest generate_cohort --study-definition study_definition_monthly_ethnicities_measures_years
+        --index-date-range '2004-01-01 to 2004-01-01 by month' --output-dir=output/yearly
+        --output-format=feather
+    needs:
+    - split_codelist
+    outputs:
+      highly_sensitive:
+        extract: output/yearly/input_monthly_ethnicities_*.feather
+
+
+        
+  monthly_ethnicity_2005:
+    run: cohortextractor:latest generate_cohort --study-definition study_definition_monthly_ethnicities_measures_years
+        --index-date-range '2005-01-01 to 2005-01-01 by month' --output-dir=output/yearly
+        --output-format=feather
+    needs:
+    - split_codelist
+    outputs:
+      highly_sensitive:
+        extract: output/yearly/input_monthly_ethnicities*.feather
+      
+  monthly_ethnicity_2006:
+    run: cohortextractor:latest generate_cohort --study-definition study_definition_monthly_ethnicities_measures_years
+        --index-date-range '2006-01-01 to 2006-01-01 by month' --output-dir=output/yearly
+        --output-format=feather
+    needs:
+    - split_codelist
+    outputs:
+      highly_sensitive:
+        extract: output/yearly/input_monthly_ethnicitie*.feather
+
+
+        
+  monthly_ethnicity_2007:
+    run: cohortextractor:latest generate_cohort --study-definition study_definition_monthly_ethnicities_measures_years
+        --index-date-range '2007-01-01 to 2007-01-01 by month' --output-dir=output/yearly
+        --output-format=feather
+    needs:
+    - split_codelist
+    outputs:
+      highly_sensitive:
+        extract: output/yearly/input_monthly_ethniciti*.feather
+
+
+        
+  monthly_ethnicity_2008:
+    run: cohortextractor:latest generate_cohort --study-definition study_definition_monthly_ethnicities_measures_years
+        --index-date-range '2008-01-01 to 2008-01-01 by month' --output-dir=output/yearly
+        --output-format=feather
+    needs:
+    - split_codelist
+    outputs:
+      highly_sensitive:
+        extract: output/yearly/input_monthly_ethnicit*.feather
+      
+  monthly_ethnicity_2009:
+    run: cohortextractor:latest generate_cohort --study-definition study_definition_monthly_ethnicities_measures_years
+        --index-date-range '2009-01-01 to 2009-01-01 by month' --output-dir=output/yearly
+        --output-format=feather
+    needs:
+    - split_codelist
+    outputs:
+      highly_sensitive:
+        extract: output/yearly/input_monthly_ethnici*.feather
+      
+  monthly_ethnicity_2010:
+    run: cohortextractor:latest generate_cohort --study-definition study_definition_monthly_ethnicities_measures_years
+        --index-date-range '2010-01-01 to 2010-01-01 by month' --output-dir=output/yearly
+        --output-format=feather
+    needs:
+    - split_codelist
+    outputs:
+      highly_sensitive:
+        extract: output/yearly/input_monthly_ethnic*.feather
+
+
+        
+  monthly_ethnicity_2011:
+    run: cohortextractor:latest generate_cohort --study-definition study_definition_monthly_ethnicities_measures_years
+        --index-date-range '2011-01-01 to 2011-01-01 by month' --output-dir=output/yearly
+        --output-format=feather
+    needs:
+    - split_codelist
+    outputs:
+      highly_sensitive:
+        extract: output/yearly/input_monthly_ethni*.feather
+
+
+        
+  monthly_ethnicity_2012:
+    run: cohortextractor:latest generate_cohort --study-definition study_definition_monthly_ethnicities_measures_years
+        --index-date-range '2012-01-01 to 2012-01-01 by month' --output-dir=output/yearly
+        --output-format=feather
+    needs:
+    - split_codelist
+    outputs:
+      highly_sensitive:
+        extract: output/yearly/input_monthly_ethn*.feather
+
+
+        
+  monthly_ethnicity_2013:
+    run: cohortextractor:latest generate_cohort --study-definition study_definition_monthly_ethnicities_measures_years
+        --index-date-range '2013-01-01 to 2013-01-01 by month' --output-dir=output/yearly
+        --output-format=feather
+    needs:
+    - split_codelist
+    outputs:
+      highly_sensitive:
+        extract: output/yearly/input_monthly_eth*.feather
+
+
+        
+  monthly_ethnicity_2014:
+    run: cohortextractor:latest generate_cohort --study-definition study_definition_monthly_ethnicities_measures_years
+        --index-date-range '2014-01-01 to 2014-01-01 by month' --output-dir=output/yearly
+        --output-format=feather
+    needs:
+    - split_codelist
+    outputs:
+      highly_sensitive:
+        extract: output/yearly/input_monthly_et*.feather
+
+
+        
+  monthly_ethnicity_2015:
+    run: cohortextractor:latest generate_cohort --study-definition study_definition_monthly_ethnicities_measures_years
+        --index-date-range '2015-01-01 to 2015-01-01 by month' --output-dir=output/yearly
+        --output-format=feather
+    needs:
+    - split_codelist
+    outputs:
+      highly_sensitive:
+        extract: output/yearly/input_monthly_e*.feather
+
+        
+  monthly_ethnicity_2016:
+    run: cohortextractor:latest generate_cohort --study-definition study_definition_monthly_ethnicities_measures_years
+        --index-date-range '2016-01-01 to 2016-01-01 by month' --output-dir=output/yearly
+        --output-format=feather
+    needs:
+    - split_codelist
+    outputs:
+      highly_sensitive:
+        extract: output/yearly/input_monthly_*.feather
+
+        
+  monthly_ethnicity_2017:
+    run: cohortextractor:latest generate_cohort --study-definition study_definition_monthly_ethnicities_measures_years
+        --index-date-range '2017-01-01 to 2017-01-01 by month' --output-dir=output/yearly
+        --output-format=feather
+    needs:
+    - split_codelist
+    outputs:
+      highly_sensitive:
+        extract: output/yearly/input_monthly*.feather
+
+  monthly_ethnicity_2018:
+    run: cohortextractor:latest generate_cohort --study-definition study_definition_monthly_ethnicities_measures_years
+        --index-date-range '2018-01-01 to 2018-01-01 by month' --output-dir=output/yearly
+        --output-format=feather
+    needs:
+    - split_codelist
+    outputs:
+      highly_sensitive:
+        extract: output/yearly/input_monthl*.feather
+      
+  monthly_ethnicity_2019:
+    run: cohortextractor:latest generate_cohort --study-definition study_definition_monthly_ethnicities_measures_years
+        --index-date-range '2019-01-01 to 2019-01-01 by month' --output-dir=output/yearly
+        --output-format=feather
+    needs:
+    - split_codelist
+    outputs:
+      highly_sensitive:
+        extract: output/yearly/input_month*.feather
+      
+  monthly_ethnicity_2020:
+    run: cohortextractor:latest generate_cohort --study-definition study_definition_monthly_ethnicities_measures_years
+        --index-date-range '2020-01-01 to 2020-01-01 by month' --output-dir=output/yearly
+        --output-format=feather
+    needs:
+    - split_codelist
+    outputs:
+      highly_sensitive:
+        extract: output/yearly/input_mont*.feather
+      
+  monthly_ethnicity_2021:
+    run: cohortextractor:latest generate_cohort --study-definition study_definition_monthly_ethnicities_measures_years
+        --index-date-range '2021-01-01 to 2021-01-01 by month' --output-dir=output/yearly
+        --output-format=feather
+    needs:
+    - split_codelist
+    outputs:
+      highly_sensitive:
+        extract: output/yearly/input_mon*.feather
+      
+  monthly_ethnicity_2022:
+    run: cohortextractor:latest generate_cohort --study-definition study_definition_monthly_ethnicities_measures_years
+        --index-date-range '2022-01-01 to 2022-01-01 by month' --output-dir=output/yearly
+        --output-format=feather
+    needs:
+    - split_codelist
+    outputs:
+      highly_sensitive:
+        extract: output/yearly/input_mo*.feather
+      
+  monthly_ethnicity_2023:
+    run: cohortextractor:latest generate_cohort --study-definition study_definition_monthly_ethnicities_measures_years
+        --index-date-range '2023-01-01 to 2023-01-01 by month' --output-dir=output/yearly
+        --output-format=feather
+    needs:
+    - split_codelist
+    outputs:
+      highly_sensitive:
+        extract: output/yearly/input_m*.feather
+
+        
+  monthly_ethnicity_2024:
+    run: cohortextractor:latest generate_cohort --study-definition study_definition_monthly_ethnicities_measures_years
+        --index-date-range '2024-01-01 to 2024-01-01 by month' --output-dir=output/yearly
+        --output-format=feather
+    needs:
+    - split_codelist
+    outputs:
+      highly_sensitive:
+        extract: output/yearly/input_*.feather
+     
+  monthly_ethnicity_measures:
+    run: cohortextractor:latest generate_measures --study-definition study_definition_monthly_ethnicities_measures_years --output-dir=output/yearly
+    needs:
+    - monthly_ethnicity_1990
+    - monthly_ethnicity_1991
+    - monthly_ethnicity_1992
+    - monthly_ethnicity_1993
+    - monthly_ethnicity_1994
+    - monthly_ethnicity_1995
+    - monthly_ethnicity_1996
+    - monthly_ethnicity_1997
+    - monthly_ethnicity_1998
+    - monthly_ethnicity_1999
+    - monthly_ethnicity_2000
+    - monthly_ethnicity_2001
+    - monthly_ethnicity_2002
+    - monthly_ethnicity_2003
+    - monthly_ethnicity_2004
+    - monthly_ethnicity_2005
+    - monthly_ethnicity_2006
+    - monthly_ethnicity_2007
+    - monthly_ethnicity_2008
+    - monthly_ethnicity_2009
+    - monthly_ethnicity_2010
+    - monthly_ethnicity_2011
+    - monthly_ethnicity_2012
+    - monthly_ethnicity_2013
+    - monthly_ethnicity_2014
+    - monthly_ethnicity_2015
+    - monthly_ethnicity_2016
+    - monthly_ethnicity_2017
+    - monthly_ethnicity_2018
+    - monthly_ethnicity_2019
+    - monthly_ethnicity_2020
+    - monthly_ethnicity_2021
+    - monthly_ethnicity_2022
+    - monthly_ethnicity_2023
+    - monthly_ethnicity_2024
+    - split_codelist
+    outputs:
+      moderately_sensitive:
+        measure_csv: output/yearly/measure_*.csv
+
+  time_rate_plots:
+    run: r:latest analysis/time/time_covariate_plots.R
+    needs: [monthly_ethnicity_measures]
+    outputs:
+      moderately_sensitive:
+        data: output/time/*rate.csv
+        plots: output/time/*rate.png
+
 ##### draft report
   generate_draft_report:
     run: python:latest jupyter nbconvert /workspace/notebooks_jupyter/draft_report_ethnicity.ipynb --execute --to html --template basic --output-dir=/workspace/output --ExecutePreprocessor.timeout=86400 --no-input
@@ -119,12 +553,12 @@ actions:
 #### move released files to output/released
 ###### run locally for manuscript
 ##### local notebook
-  # generate_local_runs:
-  #   run: python:latest jupyter nbconvert /workspace/notebooks_jupyter/local_runs.ipynb --execute --to html --template basic --output-dir=/workspace/output --ExecutePreprocessor.timeout=86400 --no-input
-  #   needs: [execute_simple_validation_analyses,execute_simple_validation_analyses_16]
-  #   outputs:
-  #     moderately_sensitive:
-  #       csvs: output/released/made_locally/*.csv
+  generate_local_runs:
+    run: python:latest jupyter nbconvert /workspace/notebooks_jupyter/local_runs.ipynb --execute --to html --template basic --output-dir=/workspace/output --ExecutePreprocessor.timeout=86400 --no-input
+    needs: [execute_simple_validation_analyses,execute_simple_validation_analyses_16]
+    outputs:
+      moderately_sensitive:
+        csvs: output/released/made_locally/*.csv
 
   # process_ons_census_data:
   #   run: r:latest analysis/local/ons_process.R
