@@ -16,7 +16,10 @@ fs::dir_create(here::here("output", "time"))
 for (covar in covariates){
 
   input<-read_csv(here::here("output","yearly",glue("measure_ethnicity_{covar}_rate.csv"))) 
-  
+  input<-input %>% mutate(ethnicity_new_5_month = case_when(ethnicity_new_5_month > 7 ~ round(ethnicity_new_5_month/5,0)*5),
+                          population = case_when(population > 7 ~ round(population/5,0)*5),
+                          value = ethnicity_new_5_month / population)
+
   ifelse(covar %in% clinical_covariates,
     input<-input %>%   mutate(covariant := 
                case_when(get(covar) == TRUE ~ "Present",
@@ -31,6 +34,8 @@ for (covar in covariates){
                                    T~as.character(get(covar))))
   )
   
+  
+
   write_csv(input,here::here("output", "time",glue("{covar}_rate.csv")))
   
   counts_plot <-input %>%
@@ -75,7 +80,11 @@ for (eth in eth_5){
   }
   df<-df %>% bind_rows(input)  
   
+  
 }
+df<-df %>% mutate(N = case_when(N > 7 ~ round(N/5,0)*5),
+                        population = case_when(population > 7 ~ round(population/5,0)*5),
+                        value = N / population)
 write_csv(df,here::here("output", "time","ethnicity_5_rate.csv"))
 
 counts_plot <-df %>%
