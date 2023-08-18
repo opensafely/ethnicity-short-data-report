@@ -17,6 +17,7 @@ library(stringr)
 library(ggplot2)
 library(ggalluvial)
 library(ggrepel)
+library(ggh4x)
 
 ####### NA removed
 prop_reg <-
@@ -310,99 +311,134 @@ df_secondary_new_cross_perc <-df_sus_new_cross %>%
 
 bennett_pal<-c("#FFB700","#F20D52","#FF369C","#FF7CFE","#9C54E6","#5323B3")
 
-opt1<-c(
-"#FFB700",
-"#F20D52",
-"#FF369C",
-"#FF7CFE",
-"#9C54E6",
-"#5323B3"
-)
+# opt1<-c(
+# "#FFB700",
+# "#F20D52",
+# "#FF369C",
+# "#FF7CFE",
+# "#9C54E6",
+# "#5323B3"
+# )
+# 
+# opt2<-c(
+# "#FFB700",
+# "#F20D52",
+# "#FF369C",
+# "#9C54E6",
+# "#5323B3",
+# "#3FB5FF")
+# 
+# opt3<-c(
+# "#FFB700",
+# "#F20D52",
+# "#FF369C",
+# "#9C54E6",
+# "#5323B3",
+# "#17D7E6")
+# 
+# opt4<-c("#FFB700",
+# "#F20D52",
+# "#FF369C",
+# "#5323B3",
+# "#5A71F3",
+# "#3FB5FF")
+# 
+# opt5<-c("#FFB700",
+# "#F20D52",
+# "#FF369C",
+# "#5323B3",
+# "#5A71F3",
+# "#17D7E6")
+# 
+# opt6<-c("#FFD23B",
+# "#F20D52",
+# "#FF369C",
+# "#FF7CFE",
+# "#9C54E6",
+# "#5323B3")
+# 
+# opt7<-c("#FFD23B",
+# "#F20D52",
+# "#FF369C",
+# "#9C54E6",
+# "#5323B3",
+# "#3FB5FF")
+# 
+# opt8<-c("#FFD23B",
+# "#F20D52",
+# "#FF369C",
+# "#9C54E6",
+# "#5323B3",
+# "#17D7E6")
+# 
+# opt9<-c(
+# "#FFD23B",
+# "#F20D52",
+# "#FF369C",
+# "#5323B3",
+# "#5A71F3",
+# "#3FB5FF")
+# 
+# opt10<-c("#FFD23B",
+# "#F20D52",
+# "#FF369C",
+# "#5323B3",
+# "#5A71F3",
+# "#17D7E6")
 
-opt2<-c(
-"#FFB700",
-"#F20D52",
-"#FF369C",
-"#9C54E6",
-"#5323B3",
-"#3FB5FF")
+# alluvial_func<-function(palette){
+# alluvial<- ggplot(as.data.frame(df_secondary_new_cross_perc),
+#        aes(y = `0`, axis1 = ethnicity_new_5, axis2 = ethnicity_sus_5)) +
+#   geom_alluvium(aes(fill = ethnicity_new_5)) +
+#   geom_stratum(aes(fill = ethnicity_sus_5)) +
+#   geom_label(stat = "stratum", aes(label = after_stat(stratum))) +
+#   scale_x_discrete(limits = c("ethnicity_new_5", "ethnicity_sus_5"), expand = c(.05, .05)) +
+#   scale_fill_manual(values=rev(get(palette)), na.value = NA) +
+#   theme_minimal() +
+#   ggtitle("")
+# 
+# #   scale_fill_manual(values=rev(c("#FFD23B","#F20D52","#FF7CFE","#5323B3","#3FB5FF","#17D7E6"))) +
+#   
+#   ggsave(filename = here::here(
+#     "output",
+#     "released",
+#     "made_locally",
+#     glue("alluvial_{palette}.png")
+#   ),
+#   alluvial,
+#   dpi = 600,
+#   width = 50,
+#   height = 30,
+#   units = "cm"
+#   )
+# }
 
-opt3<-c(
-"#FFB700",
-"#F20D52",
-"#FF369C",
-"#9C54E6",
-"#5323B3",
-"#17D7E6")
+# for(i in 1:10){
+# alluvial_func(glue("opt{i}"))
+# }
 
-opt4<-c("#FFB700",
-"#F20D52",
-"#FF369C",
-"#5323B3",
-"#5A71F3",
-"#3FB5FF")
-
-opt5<-c("#FFB700",
-"#F20D52",
-"#FF369C",
-"#5323B3",
-"#5A71F3",
-"#17D7E6")
-
-opt6<-c("#FFD23B",
-"#F20D52",
-"#FF369C",
-"#FF7CFE",
-"#9C54E6",
-"#5323B3")
-
-opt7<-c("#FFD23B",
-"#F20D52",
-"#FF369C",
-"#9C54E6",
-"#5323B3",
-"#3FB5FF")
-
-opt8<-c("#FFD23B",
-"#F20D52",
-"#FF369C",
-"#9C54E6",
-"#5323B3",
-"#17D7E6")
-
-opt9<-c(
-"#FFD23B",
-"#F20D52",
-"#FF369C",
-"#5323B3",
-"#5A71F3",
-"#3FB5FF")
-
-opt10<-c("#FFD23B",
-"#F20D52",
-"#FF369C",
-"#5323B3",
-"#5A71F3",
-"#17D7E6")
-
-alluvial_func<-function(palette){
 alluvial<- ggplot(as.data.frame(df_secondary_new_cross_perc),
-       aes(y = `0`, axis1 = ethnicity_new_5, axis2 = ethnicity_sus_5)) +
-  geom_alluvium(aes(fill = ethnicity_new_5)) +
-  geom_stratum(aes(fill = ethnicity_sus_5)) +
-  geom_label(stat = "stratum", aes(label = after_stat(stratum))) +
-  scale_x_discrete(limits = c("ethnicity_new_5", "ethnicity_sus_5"), expand = c(.05, .05)) +
-  scale_fill_manual(values=rev(get(palette)), na.value = NA) +
-  theme_minimal() +
-  ggtitle("")
+                         aes(y = `0`, axis1 = ethnicity_new_5, axis2 = ethnicity_sus_5)) +
+                    geom_alluvium(aes(fill = ethnicity_new_5)) +
+                    geom_stratum(aes(fill = ethnicity_sus_5)) +
+                    geom_text(stat = "stratum", aes(label = after_stat(stratum)),colour = "white") +
+                    scale_x_discrete(limits = c("ethnicity_new_5", "ethnicity_sus_5"), expand = c(.05, .05),labels=c("ethnicity_new_5" = "Primary Care ethnicity", "ethnicity_sus_5" = "Secondary Care ethnicity"),position = "top") +
+                    scale_fill_manual(values=rev(c("#FFD23B","#808080","#FF7C00","#5323B3","#5A71F3","#17D7E6")), na.value = NA) +
+                    theme_minimal() +
+                    ggtitle("") +
+                    theme(axis.title.y=element_blank(),
+                          axis.text.y=element_blank(),
+                          axis.ticks.y=element_blank()) + 
+                    theme(panel.grid.major = element_blank(),
+                          panel.grid.minor = element_blank()) +   
+                    theme(legend.position="bottom",
+                          legend.title=element_blank())
 
-#   scale_fill_manual(values=rev(c("#FFD23B","#F20D52","#FF7CFE","#5323B3","#3FB5FF","#17D7E6"))) +
-  
   ggsave(filename = here::here(
     "output",
     "released",
     "made_locally",
-    glue("alluvial_{palette}.png")
+    glue("secondary_care_alluvial.png")
   ),
   alluvial,
   dpi = 600,
@@ -410,12 +446,8 @@ alluvial<- ggplot(as.data.frame(df_secondary_new_cross_perc),
   height = 30,
   units = "cm"
   )
-}
 
-for(i in 1:10){
-alluvial_func(glue("opt{i}"))
-}
-  secondary_heat_perc_all_patients<- ggplot(df_secondary_new_cross_perc, aes( ethnicity_sus_5,ethnicity_new_5, fill= percentage)) + 
+  secondary_heat_perc_all_patients<- ggplot(df_secondary_new_cross_perc, aes( ethnicity_sus_5,ethnicity_new_5, fill= percentage)) +
   geom_tile() +
   # scale_fill_viridis(discrete=FALSE,direction=-1) +
   # scale_fill_gradient(low="white", high="blue") +
@@ -423,7 +455,7 @@ alluvial_func(glue("opt{i}"))
   geom_text(aes(label=percentage)) +
   ylab("Primary care ethnicity\n") + xlab("\nSecondary Care ethnicity") +
   theme_ipsum()
-  
+
   ggsave(filename = here::here(
     "output",
     "released",
@@ -436,7 +468,7 @@ alluvial_func(glue("opt{i}"))
   height = 10,
   units = "cm"
   )
-  
+
 
 ############ state change
 
@@ -488,12 +520,15 @@ ggsave(
   units = "cm"
 )
 
+ggplot(state_change_long %>% filter(as.character(ethnicity)!=as.character(latest)), aes(fill=ethnicity, y=percentage, x=latest)) + 
+  geom_bar(position="stack", stat="identity")
+
 ### latest common 2023
 df_lat_comm = read_csv(here::here("output","released","simple_latest_common_ethnicity_new_5_registered.csv"))           
 
 df_lat_comm<-df_lat_comm %>%
   ungroup() %>%
-  mutate(across(-1)/rowSums(across(-1),na.rm = T)*100) %>%
+  # mutate(across(-1)/rowSums(across(-1),na.rm = T)*100) %>%
   mutate(latest=ethnicity_new_5) %>%
   select(-ethnicity_new_5) %>% 
   pivot_longer(cols=starts_with("ethnicity_new_5"),names_prefix ="ethnicity_new_5_",names_to = "common",values_to="val") %>%
@@ -531,6 +566,38 @@ ggsave(
   height = 10,
   units = "cm"
 )
+
+
+alluvial_frequent<- ggplot(as.data.frame(df_lat_comm),
+                  aes(y = val, axis1 = latest, axis2 = common)) +
+  geom_alluvium(aes(fill = latest)) +
+  geom_stratum(aes(fill = common)) +
+  geom_text(stat = "stratum", aes(label = after_stat(stratum)),colour = "white") +
+  scale_x_discrete(limits = c("latest", "common"), expand = c(.05, .05),labels=c("latest" = "Latest recorded ethnicity", "common" = "Most frequently recorded ethnicity"),position = "top") +
+  scale_fill_manual(values=rev(c("#FFD23B","#FF7C00","#5323B3","#5A71F3","#17D7E6")), na.value = NA) +
+  theme_minimal() +
+  ggtitle("") +
+  theme(axis.title.y=element_blank(),
+        axis.text.y=element_blank(),
+        axis.ticks.y=element_blank()) + 
+  theme(panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank()) +   
+  theme(legend.position="bottom",
+        legend.title=element_blank())
+
+ggsave(filename = here::here(
+  "output",
+  "released",
+  "made_locally",
+  glue("Frequent_care_alluvial.png")
+),
+alluvial_frequent,
+dpi = 600,
+width = 50,
+height = 30,
+units = "cm"
+)
+
 
 ### ONS comparison
 ####### NA removed
