@@ -112,3 +112,22 @@ ggsave(
   height = 10,
   units = "cm"
 )
+
+
+input<-read_csv(here::here("output","yearly","nulldates","measure_nulldate_rate.csv"))
+input<-input %>% mutate(population_living = case_when(population_living > 7 ~ round(population_living/5,0)*5),
+                        population = case_when(population > 7 ~ round(population/5,0)*5),
+                        value = population_living / population)
+write_csv(input,here::here("output", "time","nulldate_rate.csv"))
+
+input<-read_csv(here::here("output","yearly","nulldates","measure_nulldate_age_band_rate.csv"))
+input<-input %>% mutate(null_date = case_when(null_date > 7 ~ round(null_date/5,0)*5),
+                        population_living = case_when(population_living > 7 ~ round(population_living/5,0)*5),
+                        value = null_date / population_living)
+write_csv(input,here::here("output", "time","nulldate_age_band_rate.csv"))
+
+input<-read_csv(here::here("output","yearly","nulldates","measure_nulldate_age_band_allpt_rate.csv"))
+input<-input %>% mutate(null_date = case_when(null_date > 7 ~ round(null_date/5,0)*5),
+                        population = case_when(population > 7 ~ round(population/5,0)*5),
+                        value = null_date / population)
+write_csv(input,here::here("output", "time","nulldate_age_band_allpts_rate.csv"))
