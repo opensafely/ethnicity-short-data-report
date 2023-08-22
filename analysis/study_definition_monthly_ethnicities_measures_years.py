@@ -51,10 +51,10 @@ study = StudyDefinition(
         """,
     ),
 
-    # registered=patients.registered_as_of(
-    #         "index_date",
-    #         return_expectations={"incidence": 0.9},
-    #     ),
+    registered=patients.registered_as_of(
+            "index_date",
+            return_expectations={"incidence": 0.9},
+        ),
 
     null_date=patients.with_these_clinical_events(
         ethnicity_codes_snomed,
