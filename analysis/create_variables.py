@@ -739,5 +739,5 @@ demographic_variables = dict(
         },
     ),
     # registered
-    registered=patients.registered_as_of(index_date),
+    registered=patients.registered_as_of("index_date"),
 )
