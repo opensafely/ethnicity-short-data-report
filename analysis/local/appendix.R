@@ -73,69 +73,67 @@ SUS_gt  %>% gtsave(here::here("output","released","made_locally","patient_counts
 
 
 
-# patient counts 5 group
-SUS5yesno <- read_csv(here::here("output","released","made_locally","local_patient_counts_categories_5_registered.csv")) %>%
-  filter(subgroup == "Yes" | subgroup == "No") %>%
-  mutate(subgroup =recode(subgroup, Yes = "Present",
-                          No = "Absent"
-  )) %>%
-  arrange(group,rev(subgroup))
-
-SUS5<-read_csv(here::here("output","released","made_locally","local_patient_counts_categories_5_registered.csv")) %>%
-  filter(subgroup != "Yes" & subgroup != "No") %>%
-  bind_rows(SUS5yesno) %>%
-  mutate(group = case_when(group == 'age_band' ~ 'age band',
-                           group == 'learning_disability' ~ 'learning disability',
-                           group == "imd" ~ "IMD",
-                         TRUE ~ group),
-         subgroup =recode(subgroup, F = "Female",
-                          M = "Male"
-         )
-         ) %>%
-  filter(`Asian 5 SNOMED:2022` !="- (-)") 
-  
-my_cols <- setNames(c("group","",rep(c("SNOMED 2022","SNOMED 2022 with  SUS data"),5)),names(SUS5))
-
-
-SUS5 <- SUS5 %>%
-  gt( groupname_col = "group") %>%
-  tab_spanner(label="Asian", columns=c(3,4)) %>%
-  tab_spanner(label="Black", columns=c(5,6)) %>%
-  tab_spanner(label="Mixed", columns=c(7,8)) %>%
-  tab_spanner(label="White", columns=c(9,10)) %>%
-  tab_spanner(label="Other", columns=c(11,12)) %>%
-  cols_label(!!!my_cols) %>%
-  tab_style(
-    style = list(
-      cell_fill(color = "gray96")
-    ),
-    locations = cells_body(
-    )
-  ) %>%
-  tab_style(
-    style = list(
-      cell_text(weight = "bold")
-    ),
-    locations = cells_column_labels(everything())
-  ) %>%
-  tab_options(     
-    table.align = "left",
-    # row_group.as_column = TRUE option not available on the OS R image
-    row_group.as_column = TRUE,
-    table.font.size = 8,
-    column_labels.border.top.width = px(3),
-    column_labels.border.top.color = "transparent",
-    table.border.top.color = "transparent",
-    heading.align = "left"
-  ) %>%
-  tab_header(
-    title = md("Table 2:  Count of patients with a recorded ethnicity in OpenSAFELY TPP by ethnicity group (proportion of registered TPP population) and clinical and demographic subgroups. All counts are rounded to the nearest 5. "),
-  )
-
-
-
-SUS5  %>% gtsave(here::here("output","released","made_locally","patient_counts_5_group.html"))
-
+# # patient counts 5 group
+# SUS5yesno <- read_csv(here::here("output","released","made_locally","local_patient_counts_categories_5_registered.csv")) %>%
+#   filter(subgroup == "Yes" | subgroup == "No") %>%
+#   mutate(subgroup =recode(subgroup, Yes = "Present",
+#                           No = "Absent"
+#   )) %>%
+#   arrange(group,rev(subgroup))
+# 
+# SUS5<-read_csv(here::here("output","released","made_locally","local_patient_counts_categories_5_registered.csv")) %>%
+#   filter(subgroup != "Yes" & subgroup != "No") %>%
+#   bind_rows(SUS5yesno) %>%
+#   mutate(group = case_when(group == 'age_band' ~ 'age band',
+#                            group == 'learning_disability' ~ 'learning disability',
+#                            group == "imd" ~ "IMD",
+#                          TRUE ~ group),
+#          subgroup =recode(subgroup, F = "Female",
+#                           M = "Male"
+#          )
+#          ) %>%
+#   filter(`Asian 5 SNOMED:2022` !="- (-)") 
+#   
+# my_cols <- setNames(c("group","",rep(c("SNOMED 2022","SNOMED 2022 with  SUS data"),5)),names(SUS5))
+# 
+#
+# SUS5 <- SUS5 %>%
+#   gt( groupname_col = "group") %>%
+#   tab_spanner(label="Asian", columns=c(3,4)) %>%
+#   tab_spanner(label="Black", columns=c(5,6)) %>%
+#   tab_spanner(label="Mixed", columns=c(7,8)) %>%
+#   tab_spanner(label="White", columns=c(9,10)) %>%
+#   tab_spanner(label="Other", columns=c(11,12)) %>%
+#   cols_label(!!!my_cols) %>%
+#   tab_style(
+#     style = list(
+#       cell_fill(color = "gray96")
+#     ),
+#     locations = cells_body(
+#     )
+#   ) %>%
+#   tab_style(
+#     style = list(
+#       cell_text(weight = "bold")
+#     ),
+#     locations = cells_column_labels(everything())
+#   ) %>%
+#   tab_options(     
+#     table.align = "left",
+#     # row_group.as_column = TRUE option not available on the OS R image
+#     row_group.as_column = TRUE,
+#     table.font.size = 8,
+#     column_labels.border.top.width = px(3),
+#     column_labels.border.top.color = "transparent",
+#     table.border.top.color = "transparent",
+#     heading.align = "left"
+#   ) %>%
+#   tab_header(
+#     title = md("Table 2:  Count of patients with a recorded ethnicity in OpenSAFELY TPP by ethnicity group (proportion of registered TPP population) and clinical and demographic subgroups. All counts are rounded to the nearest 5. "),
+#   )
+# 
+# SUS5  %>% gtsave(here::here("output","released","made_locally","patient_counts_5_group.html"))
+# 
 
 
 
@@ -206,32 +204,32 @@ SUS16 <- SUS16 %>%
     heading.align = "left"
   ) %>%
   tab_header(
-    title = md("Table 3:  Count of patients with a recorded ethnicity in OpenSAFELY TPP by ethnicity group (proportion of registered TPP population) and clinical and demographic subgroups. All counts are rounded to the nearest 5."),
+    title = md("Table 2:  Count of patients with a recorded ethnicity in OpenSAFELY TPP by ethnicity group (proportion of registered TPP population) and clinical and demographic subgroups. All counts are rounded to the nearest 5."),
   )
 
 SUS16 %>% gtsave(here::here("output","released","made_locally","patient_counts_16_group.html"))
 
-# latest / any recorded ethnicity
-anyrepeated <- read_csv(here::here("output","released","made_locally","local_state_change_ethnicity_new_5_registered.csv")) %>%
-    rename_with(str_to_title) %>%
-    gt( ) %>%
-  cols_label(`Latest Ethnicity-\n5 Snomed:2022` = "") %>%
-  cols_label(Supplemented = "Any discordant") %>%
-  tab_spanner(label="Latest Recorded Ethnicity", columns=1) %>%
-  tab_spanner(label="Any Recorded Ethnicity", columns=c(2:7)) %>%
-    tab_options(     
-      table.align = "left",
-      table.font.size = 8,
-      column_labels.border.top.width = px(3),
-      column_labels.border.top.color = "transparent",
-      table.border.top.color = "transparent",
-      heading.align = "left"
-    ) %>%
-    tab_header(
-      title = md("Table 4: Count of patients with at least one recording of each ethnicity (proportion of latest ethnicity)."),
-    )
-  
-anyrepeated %>% gtsave(here::here("output","released","made_locally","latest_any.html"))
+# # latest / any recorded ethnicity
+# anyrepeated <- read_csv(here::here("output","released","made_locally","local_state_change_ethnicity_new_5_registered.csv")) %>%
+#     rename_with(str_to_title) %>%
+#     gt( ) %>%
+#   cols_label(`Latest Ethnicity-\n5 Snomed:2022` = "") %>%
+#   cols_label(Supplemented = "Any discordant") %>%
+#   tab_spanner(label="Latest Recorded Ethnicity", columns=1) %>%
+#   tab_spanner(label="Any Recorded Ethnicity", columns=c(2:7)) %>%
+#     tab_options(     
+#       table.align = "left",
+#       table.font.size = 8,
+#       column_labels.border.top.width = px(3),
+#       column_labels.border.top.color = "transparent",
+#       table.border.top.color = "transparent",
+#       heading.align = "left"
+#     ) %>%
+#     tab_header(
+#       title = md("Table 4: Count of patients with at least one recording of each ethnicity (proportion of latest ethnicity)."),
+#     )
+#   
+# anyrepeated %>% gtsave(here::here("output","released","made_locally","latest_any.html"))
 
 # latest / most frequent recorded ethnicity
 latestcommon <- read_csv(here::here("output","released","made_locally","local_latest_common_ethnicity_new_5_expanded_registered.csv")) %>%
@@ -249,7 +247,7 @@ latestcommon <- read_csv(here::here("output","released","made_locally","local_la
     heading.align = "left"
   ) %>%
   tab_header(
-    title = md("Table 5: Count of patients’ most frequently recorded ethnicity (proportion of latest ethnicity). "),
+    title = md("Table 3: Count of patients’ most frequently recorded ethnicity (proportion of latest ethnicity). "),
   )
 
 latestcommon %>% gtsave(here::here("output","released","made_locally","latest_frequent.html"))
@@ -272,7 +270,7 @@ listed <- read_csv(here::here("output","released","ethnicity","snomed_ethnicity_
     heading.align = "left"
   ) %>%
   tab_header(
-    title = md("Table 10: Count of individual ethnicity code use"),
+    title = md("Table 8: Count of individual ethnicity code use"),
   )
 
 listed %>% gtsave(here::here("output","released","made_locally","percodelist.html"))
@@ -379,7 +377,7 @@ ONS_tab_2021 %>%
     heading.align = "left"
   ) %>%
   tab_header(
-    title = md("Table 9:  Count of patients with a recorded ethnicity in OpenSAFELY TPP [amended to the 2021 ethnicity grouping] (proportion of registered TPP population) and 2021 ONS Census counts (proportion of 2021 ONS Census population). All counts are rounded to the nearest 5. "),
+    title = md("Table 7:  Count of patients with a recorded ethnicity in OpenSAFELY TPP [amended to the 2021 ethnicity grouping] (proportion of registered TPP population) and 2021 ONS Census counts (proportion of 2021 ONS Census population). All counts are rounded to the nearest 5. "),
   )  %>% 
   gtsave(here::here("output","released","made_locally","ons_table_2021_with_2021_categories.html"))
 
@@ -436,7 +434,7 @@ ONS_tab_2001 %>%
     heading.align = "left"
   ) %>%
   tab_header(
-    title = md("Table 8:  Count of patients with a recorded ethnicity in OpenSAFELY TPP by ethnicity group (proportion of registered TPP population) and 2021 ONS Census counts [amended to 2001 grouping] (proportion of 2021 ONS Census population). All counts are rounded to the nearest 5. "),
+    title = md("Table 6:  Count of patients with a recorded ethnicity in OpenSAFELY TPP by ethnicity group (proportion of registered TPP population) and 2021 ONS Census counts [amended to 2001 grouping] (proportion of 2021 ONS Census population). All counts are rounded to the nearest 5. "),
   )  %>% 
   gtsave(here::here("output","released","made_locally","ons_table_2021_with_2001_categories.html"))
 
@@ -613,7 +611,7 @@ df_sus_new_cross_table <- df_sus_new_cross_perc %>%
     heading.align = "left"
   ) %>%
   tab_header(
-    title = md("Table 6:  Count of patients with a recorded ethnicity in SUS by ethnicity group (proportion of SNOMED:2022 population). All counts are rounded to the nearest 5. "),
+    title = md("Table 4:  Count of patients with a recorded ethnicity in SUS by ethnicity group (proportion of SNOMED:2022 population). All counts are rounded to the nearest 5. "),
   )
 
 
@@ -666,31 +664,31 @@ df_sus_new_cross_perc <-df_sus_new_cross %>%
   )
 
 
-sus_heat_perc<- ggplot(df_sus_new_cross_perc, aes( ethnicity_sus_5,ethnicity_new_5, fill= percentage)) + 
-  geom_tile() +
-  # scale_fill_viridis(discrete=FALSE,direction=-1) +
-  # scale_fill_gradient(low="white", high="blue") +
-  scale_fill_distiller(palette = "OrRd",direction = 1,name = "Proportion of SNOMED:2022") +
-  geom_text(aes(label=percentage)) +
-  ylab("SNOMED:2022\n") + xlab("\nSUS") +
-  theme_ipsum() +
-  theme(
-    plot.title=element_text(size=10)) +
-  ggtitle("Figure 1: Heat map showing frequency of pairwise occurrence of primary care and secondary care recorded ethnicity\nas a proportion of latest primary care recorded ethnicity")
-
-ggsave(
-  filename = here::here(
-    "output",
-    "released",
-    "made_locally",
-    "fig_1_sus_plot_time.png"
-  ),
-  sus_heat_perc,
-  dpi = 600,
-  width = 30,
-  height = 10,
-  units = "cm"
-)
+# sus_heat_perc<- ggplot(df_sus_new_cross_perc, aes( ethnicity_sus_5,ethnicity_new_5, fill= percentage)) + 
+#   geom_tile() +
+#   # scale_fill_viridis(discrete=FALSE,direction=-1) +
+#   # scale_fill_gradient(low="white", high="blue") +
+#   scale_fill_distiller(palette = "OrRd",direction = 1,name = "Proportion of SNOMED:2022") +
+#   geom_text(aes(label=percentage)) +
+#   ylab("SNOMED:2022\n") + xlab("\nSUS") +
+#   theme_ipsum() +
+#   theme(
+#     plot.title=element_text(size=10)) +
+#   ggtitle("Figure 1: Heat map showing frequency of pairwise occurrence of primary care and secondary care recorded ethnicity\nas a proportion of latest primary care recorded ethnicity")
+# 
+# ggsave(
+#   filename = here::here(
+#     "output",
+#     "released",
+#     "made_locally",
+#     "fig_1_sus_plot_time.png"
+#   ),
+#   sus_heat_perc,
+#   dpi = 600,
+#   width = 30,
+#   height = 10,
+#   units = "cm"
+# )
 
 ### SUS and New codelist comparison without unknown
 df_sus_new_cross = read_csv(here::here("output","released","simple_sus_crosstab_long_5_registered.csv")) 
@@ -771,10 +769,356 @@ df_sus_new_cross_known_table <- df_sus_new_cross_known_perc %>%
     heading.align = "left"
   ) %>%
   tab_header(
-    title = md("Table 7:  Count of patients with a recorded ethnicity in SUS by ethnicity group excluding Unknown ethnicites (proportion of SNOMED:2022 population). All counts are rounded to the nearest 5. "),
+    title = md("Table 5:  Count of patients with a recorded ethnicity in SUS by ethnicity group excluding Unknown ethnicites (proportion of SNOMED:2022 population). All counts are rounded to the nearest 5. "),
   )
 
 
 df_sus_new_cross_known_table  %>% gtsave(here::here("output","released","made_locally","df_sus_new_cross_known_table.html"))
 
-# 
+###### across time measures framework
+
+demographic_covariates = c("age_band", "sex", "region", "imd")
+clinical_covariates = c("dementia", "diabetes", "hypertension", "learning_disability")
+covariates =c(demographic_covariates,clinical_covariates)
+
+input<-read_csv(here::here("output","released",glue("ethnicity_5_rate.csv"))) 
+counts_plot <-input %>%
+  ggplot(aes(x=date,y= value,colour=factor(ethnicity)))+
+  geom_line(stat="identity") +
+  ylim(0, 1) +
+  scale_x_date(date_labels = "%Y",
+               breaks = seq.Date(from = as.Date("1900-01-01"),
+                                 to = as.Date("2022-01-01"),
+                                 by = "5 years")) +
+  geom_vline(xintercept = as.numeric(as.Date("2006-01-01"))) +
+  geom_vline(xintercept = as.numeric(as.Date("2012-01-01"))) +
+  theme_bw()+
+  theme(axis.text.x = element_text(angle = 90, vjust=0.5),
+        panel.grid.minor = element_blank())  +
+  scale_color_lancet()   +
+  guides(colour=guide_legend(title="")) +
+  ggtitle("Ethncity")
+ggsave(
+  filename = here::here(
+    "output",
+    "released",
+    "made_locally",
+    glue("qof_ethnicity_rate.png")),
+  counts_plot,
+  dpi = 600,
+  width = 30,
+  height = 10,
+  units = "cm"
+)
+
+for (covar in covariates){
+  input<-read_csv(here::here("output","released",glue("{covar}_rate.csv"))) 
+  fact<-names(input[,1])
+  counts_plot <-input %>%
+    ggplot(aes(x=date,y= value,colour=factor(covariant)))+
+    geom_line(stat="identity") +
+    ylim(0, 1) +
+    scale_x_date(date_labels = "%Y",
+                 breaks = seq.Date(from = as.Date("1900-01-01"),
+                                   to = as.Date("2022-01-01"),
+                                   by = "5 years")) +
+    geom_vline(xintercept = as.numeric(as.Date("2006-01-01"))) +
+    geom_vline(xintercept = as.numeric(as.Date("2012-01-01"))) +
+    theme_bw()+
+    theme(axis.text.x = element_text(angle = 90, vjust=0.5),
+          panel.grid.minor = element_blank())  +
+    scale_color_lancet()   +
+    guides(colour=guide_legend(title="")) +
+    ggtitle(covar)
+  counts_plot
+  ggsave(
+    filename = here::here(
+      "output",
+      "released",
+      "made_locally",
+      glue("qof_{covar}_rate.png")),
+    counts_plot,
+    dpi = 600,
+    width = 30,
+    height = 10,
+    units = "cm"
+  )
+}
+
+
+### null dates
+
+input<-read_csv(here::here("output","released","nulldate_rate.csv")) 
+counts_plot <-input %>%
+  ggplot(aes(x=date,y= null_date))+
+  # geom_line(aes(x=date,y= population_living)) +
+  geom_line(stat="identity") +
+  scale_x_date(date_labels = "%Y",
+               breaks = seq.Date(from = as.Date("1900-01-01"),
+                                 to = as.Date("2022-01-01"),
+                                 by = "5 years")) +
+  # geom_vline(xintercept = as.numeric(as.Date("2006-01-01"))) +
+  # geom_vline(xintercept = as.numeric(as.Date("2012-01-01"))) +
+  theme_bw()+
+  theme(axis.text.x = element_text(angle = 90, vjust=0.5),
+        panel.grid.minor = element_blank())  +
+  scale_color_lancet()   +
+  guides(colour=guide_legend(title="")) +
+  ggtitle("Null Dates") + 
+  scale_y_continuous(label=comma,"n")
+
+counts_plot
+ggsave(
+  filename = here::here(
+    "output",
+    "released",
+    "made_locally",
+    glue("null_dates.png")),
+  counts_plot,
+  dpi = 600,
+  width = 30,
+  height = 10,
+  units = "cm"
+)
+
+input<-read_csv(here::here("output","released","nulldate_rate.csv")) 
+counts_plot <-input %>%
+  ggplot(aes(x=date,y= null_date, color = "null dates"))+
+  geom_line(aes(x=date,y= population_living, color= "population")) +
+  geom_line(stat="identity") +
+  scale_x_date(date_labels = "%Y",
+               breaks = seq.Date(from = as.Date("1900-01-01"),
+                                 to = as.Date("2022-01-01"),
+                                 by = "5 years")) +
+  # geom_vline(xintercept = as.numeric(as.Date("2006-01-01"))) +
+  # geom_vline(xintercept = as.numeric(as.Date("2012-01-01"))) +
+  theme_bw()+
+  theme(axis.text.x = element_text(angle = 90, vjust=0.5),
+        panel.grid.minor = element_blank())  +
+  scale_color_lancet()   +
+  guides(colour=guide_legend(title="")) +
+  ggtitle("Null Dates") + 
+  scale_y_continuous(label=comma,"n")
+
+counts_plot
+ggsave(
+  filename = here::here(
+    "output",
+    "released",
+    "made_locally",
+    glue("popn_null_dates.png")),
+  counts_plot,
+  dpi = 600,
+  width = 30,
+  height = 10,
+  units = "cm"
+)
+
+
+######### Categories
+prop_reg_cat <-
+  read_csv(here::here("output", "released", "simple_patient_counts_categories_5_group_registered.csv"), col_types = (cols())) %>%
+  rename_with(~ sub("ethnicity_", "", .), contains("ethnicity_")) %>%
+  rename_with(~ sub("_5_filled", "", .), contains("_5_filled")) %>%
+  select(-contains("filled"), -contains("missing"), -contains("sus"), -contains("any")) %>%
+  mutate(
+    Asian_supplementeddiff = Asian_supplemented - Asian_new,
+    Black_supplementeddiff = Black_supplemented - Black_new,
+    Mixed_supplementeddiff = Mixed_supplemented - Mixed_new,
+    White_supplementeddiff = White_supplemented - White_new,
+    Other_supplementeddiff = Other_supplemented - Other_new,
+  )
+
+
+prop_reg_cat_pivot <- prop_reg_cat %>%
+  pivot_longer(
+    cols = c(contains("_")),
+    names_to = c("ethnicity", "codelist"),
+    names_pattern = "(.*)_(.*)",
+    values_to = "n"
+  ) %>%
+  mutate(
+    percentage = round(n / population * 100, 1),
+    group = case_when(
+      group == "age_band" ~ "Age\nBand",
+      group == "all" ~ "All",
+      group == "dementia" ~ "Dementia",
+      group == "diabetes" ~ "Diabetes",
+      group == "hypertension" ~ "Hypertension",
+      group == "imd" ~ "IMD",
+      group == "learning_disability" ~ "Learning\nDisability",
+      group == "region" ~ "Region",
+      group == "sex" ~ "Sex"
+    ),
+    group = fct_relevel(
+      group,
+      "All", "Age\nBand", "Sex", "Region", "IMD",
+      "Dementia", "Diabetes", "Hypertension", "Learning\nDisability"
+    ),
+    subgroup = case_when(
+      subgroup == "M" ~ "Male",
+      subgroup == "F" ~ "Female",
+      TRUE ~ subgroup
+    ),
+    across("subgroup", str_replace, "True", "Present"),
+    across("subgroup", str_replace, "False", "Absent"),
+    across("ethnicity", str_replace, "_ethnicity_new_5_filled", "")
+  ) %>%
+  mutate(
+    ethnicity = fct_relevel(
+      ethnicity,
+      "Asian", "Black", "Mixed", "White", "Other"
+    )
+  )
+
+prop_reg_cat_hline_new <- prop_reg_cat_pivot %>%
+  arrange(ethnicity, group) %>%
+  group_by(ethnicity, codelist) %>%
+  mutate(percentage = first(percentage)) %>%
+  ungroup() %>%
+  filter(codelist == "new")
+prop_reg_cat_hline_supplemented <- prop_reg_cat_pivot %>%
+  arrange(ethnicity, group) %>%
+  group_by(ethnicity, codelist) %>%
+  mutate(percentage = first(percentage)) %>%
+  ungroup() %>%
+  filter(codelist == "supplemented")
+
+prop_reg_cat_pivot <- prop_reg_cat_pivot %>%
+  mutate(
+    codelist = case_when(
+      codelist == "new" ~ "SNOMED:2022",
+      codelist == "supplementeddiff" ~ "SNOMED:2022 supplemented with SUS data",
+      T ~ codelist
+    ),
+    codelist = fct_relevel(codelist, "supplemented", "SNOMED:2022 supplemented with SUS data", "SNOMED:2022")
+  )
+
+
+### completeness proportion categorical
+prop_reg_cat <-
+  read_csv(here::here("output", "released", "simple_patient_counts_categories_5_group_registered.csv"), col_types = (cols())) %>%
+  rename_with(~ sub("ethnicity_", "", .), contains("ethnicity_")) %>%
+  rename_with(~ sub("_5_filled", "", .), contains("_5_filled")) %>%
+  select(-contains("filled"), -contains("missing"), -contains("sus"), -contains("any")) %>%
+  mutate(
+    Asian_supplementeddiff = Asian_supplemented - Asian_new,
+    Black_supplementeddiff = Black_supplemented - Black_new,
+    Mixed_supplementeddiff = Mixed_supplemented - Mixed_new,
+    White_supplementeddiff = White_supplemented - White_new,
+    Other_supplementeddiff = Other_supplemented - Other_new,
+  )
+
+prop_reg_cat_pivot <- prop_reg_cat %>%
+  pivot_longer(
+    cols = c(contains("_")),
+    names_to = c("ethnicity", "codelist"),
+    names_pattern = "(.*)_(.*)",
+    values_to = "n"
+  ) %>%
+  mutate(
+    percentage = round(n / population * 100, 1),
+    group = case_when(
+      group == "age_band" ~ "Age\nBand",
+      group == "all" ~ "All",
+      group == "dementia" ~ "Dementia",
+      group == "diabetes" ~ "Diabetes",
+      group == "hypertension" ~ "Hypertension",
+      group == "imd" ~ "IMD",
+      group == "learning_disability" ~ "Learning\nDisability",
+      group == "region" ~ "Region",
+      group == "sex" ~ "Sex"
+    ),
+    group = fct_relevel(
+      group,
+      "All", "Age\nBand", "Sex", "Region", "IMD",
+      "Dementia", "Diabetes", "Hypertension", "Learning\nDisability"
+    ),
+    subgroup = case_when(
+      subgroup == "M" ~ "Male",
+      subgroup == "F" ~ "Female",
+      TRUE ~ subgroup
+    ),
+    across("subgroup", str_replace, "True", "Present"),
+    across("subgroup", str_replace, "False", "Absent"),
+    across("ethnicity", str_replace, "_ethnicity_new_5_filled", "")
+  ) %>%
+  mutate(
+    ethnicity = fct_relevel(
+      ethnicity,
+      "Asian", "Black", "Mixed", "White", "Other"
+    )
+  )
+
+prop_reg_cat_hline_new <- prop_reg_cat_pivot %>%
+  arrange(ethnicity, group) %>%
+  group_by(ethnicity, codelist) %>%
+  mutate(percentage = first(percentage)) %>%
+  ungroup() %>%
+  filter(codelist == "new")
+prop_reg_cat_hline_supplemented <- prop_reg_cat_pivot %>%
+  arrange(ethnicity, group) %>%
+  group_by(ethnicity, codelist) %>%
+  mutate(percentage = first(percentage)) %>%
+  ungroup() %>%
+  filter(codelist == "supplemented")
+
+prop_reg_cat_pivot <- prop_reg_cat_pivot %>%
+  mutate(
+    codelist = case_when(
+      codelist == "new" ~ "SNOMED:2022",
+      codelist == "supplementeddiff" ~ "SNOMED:2022 supplemented with SUS data",
+      T ~ codelist
+    ),
+    codelist = fct_relevel(codelist, "supplemented", "SNOMED:2022 supplemented with SUS data", "SNOMED:2022")
+  )
+
+
+prop_reg_cat_plot <- prop_reg_cat_pivot %>%
+  filter(
+    codelist != "supplemented",
+    subgroup != "missing"
+  ) %>%
+  ggplot(aes(x = subgroup, y = percentage, alpha = codelist, fill = group)) +
+  scale_alpha_discrete(range = c(0.2, 1)) +
+  geom_hline(
+    data = prop_reg_cat_hline_new,
+    aes(yintercept = percentage), color = "#00468BFF", alpha = 0.6
+  ) +
+  geom_hline(
+    data = prop_reg_cat_hline_supplemented,
+    aes(yintercept = percentage), color = "#00468BFF", alpha = 0.1
+  ) +
+  geom_bar(stat = "identity", position = "stack") +
+  facet_grid(group ~ ethnicity, scales = "free", space = "free", shrink = FALSE) +
+  theme_classic() +
+  theme(text = element_text(size = 30)) +
+  theme(axis.text.x = element_text(
+    size = 25,
+    hjust = 0.5,
+    vjust = 0
+  )) +
+  theme(strip.text.y = element_text(angle = 0)) +
+  coord_flip() +
+  scale_fill_lancet() +
+  xlab("") +
+  ylab("\nProportion of registered TPP patients") +
+  guides(fill = "none", alpha = guide_legend("")) +
+  theme(
+    legend.position = "bottom",
+    panel.spacing = unit(1.1, "lines")
+  )  + 
+  ggtitle("Figure 1: Barplot showing proportion of registered TPP population with a recorded ethnicity by clinical and demographic subgroups,\nbased on primary care records (solid bars) and when supplemented with secondary care data (pale bars).")
+
+
+prop_reg_cat_plot
+
+ggsave(
+  filename =here::here("output","released","made_locally", "completeness_cat.pdf"
+  ),
+  prop_reg_cat_plot,
+  dpi = 600,
+  width = 100,
+  height = 60,
+  units = "cm"
+)
