@@ -21,7 +21,7 @@ code_dict = {
         4: "4",
         5: "5 Least deprived",
     },
-    "ethnicity_new_5": {1: "White", 2: "Mixed", 3: "Asian", 4: "Black", 5: "Other"},
+    "ethnicity_5": {1: "White", 2: "Mixed", 3: "Asian", 4: "Black", 5: "Other"},
     "ethnicity_sus_5": {1: "White", 2: "Mixed", 3: "Asian", 4: "Black", 5: "Other"},
 }
 
@@ -79,55 +79,8 @@ def main():
         registered=registered,
         dates_check=False,
     )
-    # Count patients with records
-    simple_patient_counts(
-        df_clean,
-        definitions,
-        reg,
-        demographic_covariates,
-        clinical_covariates,
-        output_path,
-        grouping,
-    )
 
-    # Count patients by categories
-    simple_patient_counts(
-        df_clean,
-        definitions,
-        reg,
-        demographic_covariates,
-        clinical_covariates,
-        output_path,
-        grouping,
-        categories=True,
-    )
-
-    simple_sus_crosstab(df_clean, output_path, grouping, reg)
-
-    # Latest v most common
-    simple_latest_common_comparison(
-        df_clean,
-        definitions,
-        reg,
-        other_vars_combined,
-        output_path,
-        grouping,
-        code_dict,
-    )
-
-    # State change
-    simple_state_change(
-        df_clean,
-        definitions,
-        reg,
-        other_vars_combined,
-        output_path,
-        grouping,
-    )
-    # # records over time
-    # records_over_time_perc(
-    #     df_clean, definitions, demographic_covariates, clinical_covariates, output_path, "",grouping,reg
-    #     )
+    simple_ctv3_sus_crosstab(df_clean, output_path, grouping, reg)
 
 
 ########################## DO NOT EDIT – RUNS SCRIPT ##############################
