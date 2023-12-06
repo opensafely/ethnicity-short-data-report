@@ -494,25 +494,34 @@ alluvial <- ggplot(
 ) +
   geom_alluvium(aes(fill = ethnicity_new_5)) +
   geom_stratum(aes(fill = ethnicity_sus_5)) +
-  geom_text(stat = "stratum", aes(label = after_stat(stratum)), colour = "white") +
+  # geom_text(stat = "stratum", aes(label = after_stat(stratum)), colour = "white",size = 10) +
   scale_x_discrete(limits = c("ethnicity_new_5", "ethnicity_sus_5"), expand = c(.05, .05), labels = c("ethnicity_new_5" = "Primary Care ethnicity", "ethnicity_sus_5" = "Secondary Care ethnicity"), position = "top") +
   scale_fill_manual(values = rev(c("#FFD23B", "#808080", "#FF7C00", "#5323B3", "#5A71F3", "#17D7E6")), na.value = NA) +
-  theme_minimal() +
+  #theme_minimal() +
   ggtitle("") +
   theme(
     axis.title.y = element_blank(),
     axis.text.y = element_blank(),
     axis.ticks.y = element_blank(),
-    axis.text.x = element_text(size = 15)
+    axis.text.x = element_text(size = 20)
   ) +
   theme(
+    panel.background = element_rect(fill = "black"),
     panel.grid.major = element_blank(),
     panel.grid.minor = element_blank()
   ) +
   theme(
     legend.position = "bottom",
     legend.title = element_blank()
-  )
+  ) +
+  geom_label_repel(stat = "stratum", 
+                   aes(label = after_stat(stratum),
+                       fill = after_stat(stratum)),
+                   colour = "white",
+                   size = 10,
+                   fontface = 'bold',
+                   direction = "x",
+                   show.legend = F)
 
 ggsave(
   filename = here::here(
@@ -527,6 +536,103 @@ ggsave(
   height = 30,
   units = "cm"
 )
+ 
+##### only discrepancy alluvial
+df_secondary_new_cross_perc <- df_secondary_new_cross_perc %>%
+  mutate(ethnicity_new_5_na = case_when(ethnicity_new_5=="Unknown"~ethnicity_sus_5),
+         ethnicity_new_5_na = fct_relevel(
+           ethnicity_new_5_na,
+          "Unknown", "Other", "White", "Mixed", "Black", "Asian"
+          ))
+
+alluvial_sus_pick <- ggplot(
+  as.data.frame(df_secondary_new_cross_perc),
+  aes(y = `0`, axis1 = ethnicity_new_5, axis2 = ethnicity_sus_5)
+) +
+  geom_alluvium(aes(fill = ethnicity_new_5_na)) +
+  geom_stratum(aes(fill = ethnicity_sus_5)) +
+  # geom_text(stat = "stratum", aes(label = after_stat(stratum)), colour = "white",size = 10) +
+  scale_x_discrete(limits = c("ethnicity_new_5", "ethnicity_sus_5"), expand = c(.05, .05), labels = c("ethnicity_new_5" = "Primary Care ethnicity", "ethnicity_sus_5" = "Secondary Care ethnicity"), position = "top") +
+  scale_fill_manual(values = c( "#808080", "#FF7C00", "#5323B3", "#5A71F3","#FFD23B", "#17D7E6"), na.value = NA) +
+  #theme_minimal() +
+  ggtitle("") +
+  theme(
+    axis.title.y = element_blank(),
+    axis.text.y = element_blank(),
+    axis.ticks.y = element_blank(),
+    axis.text.x = element_text(size = 20)
+  ) +
+  theme(
+    panel.background = element_rect(fill = "black"),
+    panel.grid.major = element_blank(),
+    panel.grid.minor = element_blank()
+  ) +
+  theme(
+    legend.position = "bottom",
+    legend.title = element_blank()
+  ) 
+
+ggsave(
+  filename = here::here(
+    "output",
+    "released",
+    "made_locally",
+    glue("secondary_care_alluvial_sus_pick.png")
+  ),
+  alluvial_sus_pick,
+  dpi = 600,
+  width = 50,
+  height = 30,
+  units = "cm"
+)
+
+# alluvial picked up from SUS data
+##### only discrepancy alluvial
+df_secondary_new_cross_perc <- df_secondary_new_cross_perc %>%
+  mutate(ethnicity_new_5_na = case_when(ethnicity_new_5=="Unknown" & ethnicity_sus_5 !="Unknown" & ethnicity_new_5!=ethnicity_sus_5~ethnicity_new_5))
+
+alluvial_disc <- ggplot(
+  as.data.frame(df_secondary_new_cross_perc),
+  aes(y = `0`, axis1 = ethnicity_new_5, axis2 = ethnicity_sus_5)
+) +
+  geom_alluvium(aes(fill = ethnicity_new_5_na)) +
+  geom_stratum(aes(fill = ethnicity_sus_5)) +
+  # geom_text(stat = "stratum", aes(label = after_stat(stratum)), colour = "white",size = 10) +
+  scale_x_discrete(limits = c("ethnicity_new_5", "ethnicity_sus_5"), expand = c(.05, .05), labels = c("ethnicity_new_5" = "Primary Care ethnicity", "ethnicity_sus_5" = "Secondary Care ethnicity"), position = "top") +
+  scale_fill_manual(values = rev(c("#FFD23B", "#808080", "#FF7C00", "#5323B3", "#5A71F3", "#17D7E6")), na.value = NA) +
+  #theme_minimal() +
+  ggtitle("") +
+  theme(
+    axis.title.y = element_blank(),
+    axis.text.y = element_blank(),
+    axis.ticks.y = element_blank(),
+    axis.text.x = element_text(size = 20)
+  ) +
+  theme(
+    panel.background = element_rect(fill = "black"),
+    panel.grid.major = element_blank(),
+    panel.grid.minor = element_blank()
+  ) +
+  theme(
+    legend.position = "bottom",
+    legend.title = element_blank()
+  ) 
+
+ggsave(
+  filename = here::here(
+    "output",
+    "released",
+    "made_locally",
+    glue("secondary_care_alluvial_disc.png")
+  ),
+  alluvial_disc,
+  dpi = 600,
+  width = 50,
+  height = 30,
+  units = "cm"
+)
+
+
 
 secondary_heat_perc_all_patients <- ggplot(df_secondary_new_cross_perc, aes(ethnicity_sus_5, ethnicity_new_5, fill = percentage)) +
   geom_tile() +
@@ -673,16 +779,15 @@ alluvial_frequent <- ggplot(
 ) +
   geom_alluvium(aes(fill = latest)) +
   geom_stratum(aes(fill = common)) +
-  geom_text(stat = "stratum", aes(label = after_stat(stratum)), colour = "white") +
   scale_x_discrete(limits = c("latest", "common"), expand = c(.05, .05), labels = c("latest" = "Latest recorded ethnicity", "common" = "Most frequently recorded ethnicity"), position = "top") +
   scale_fill_manual(values = rev(c("#FFD23B", "#FF7C00", "#5323B3", "#5A71F3", "#17D7E6")), na.value = NA) +
-  theme_minimal() +
+  # theme_minimal() +
   ggtitle("") +
   theme(
     axis.title.y = element_blank(),
     axis.text.y = element_blank(),
     axis.ticks.y = element_blank(),
-    axis.text.x = element_text(size = 15)
+    axis.text.x = element_text(size = 20)
   ) +
   theme(
     panel.grid.major = element_blank(),
@@ -691,7 +796,15 @@ alluvial_frequent <- ggplot(
   theme(
     legend.position = "bottom",
     legend.title = element_blank()
-  )
+  ) +
+  geom_label_repel(stat = "stratum", 
+                   aes(label = after_stat(stratum),
+                       fill = after_stat(stratum)),
+                   colour = "white",
+                   size = 10,
+                   fontface = 'bold',
+                   direction = "x",
+                   show.legend = F)
 
 ggsave(
   filename = here::here(
