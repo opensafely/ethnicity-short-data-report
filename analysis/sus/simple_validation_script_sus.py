@@ -7,7 +7,18 @@ input_path = "output/extract_5/input_5.feather"
 
 # Definitions
 definitions = [
+    "ethnicity_5",
     "ethnicity_new_5",
+    "ethnicity_sus_5",
+]
+
+definitions_new = [
+    "ethnicity_new_5",
+    "ethnicity_sus_5",
+]
+
+definitions_ctv3 = [
+    "ethnicity_5",
     "ethnicity_sus_5",
 ]
 
@@ -22,13 +33,15 @@ code_dict = {
         5: "5 Least deprived",
     },
     "ethnicity_new_5": {1: "White", 2: "Mixed", 3: "Asian", 4: "Black", 5: "Other"},
+    "ethnicity_5": {1: "White", 2: "Mixed", 3: "Asian", 4: "Black", 5: "Other"},
     "ethnicity_sus_5": {1: "White", 2: "Mixed", 3: "Asian", 4: "Black", 5: "Other"},
 }
 
 # Other variables to include
 other_vars = ["white", "mixed", "asian", "black", "other"]
-other_vars_combined = [x + "_" + y for x in definitions for y in other_vars]
-
+other_vars_combined_new = [x + "_" + y for x in definitions_new for y in other_vars]
+other_vars_combined_ctv3 = [x + "_" + y for x in definitions_ctv3 for y in other_vars]
+other_vars_combined = other_vars_combined_new + other_vars_combined_ctv3
 # Restrict to registered as of index date
 registered = True
 reg = "fullset"
@@ -76,19 +89,38 @@ def main():
         grouping,
         code_dict,
         dates=False,
-        registered = registered,
+        registered=registered,
         dates_check=False,
     )
     # Count patients with records
     simple_patient_counts(
-        df_clean, definitions,reg, demographic_covariates, clinical_covariates, output_path,grouping,
+        df_clean,
+        definitions_new,
+        reg,
+        "new_sus",
+        demographic_covariates,
+        clinical_covariates,
+        output_path,
+        grouping,
+    )
+
+    simple_patient_counts(
+        df_clean,
+        definitions_ctv3,
+        reg,
+        "ctv3_sus",
+        demographic_covariates,
+        clinical_covariates,
+        output_path,
+        grouping,
     )
 
     # Count patients by categories
     simple_patient_counts(
         df_clean,
-        definitions,
+        definitions_new,
         reg,
+        "new_sus",
         demographic_covariates,
         clinical_covariates,
         output_path,
@@ -96,21 +128,47 @@ def main():
         categories=True,
     )
 
-    simple_sus_crosstab(
-     df_clean, output_path,grouping,reg
+    simple_patient_counts(
+        df_clean,
+        definitions_ctv3,
+        reg,
+        "ctv3_sus",
+        demographic_covariates,
+        clinical_covariates,
+        output_path,
+        grouping,
+        categories=True,
     )
 
-    # Latest v most common
-    simple_latest_common_comparison(
-        df_clean, definitions,reg, other_vars_combined, output_path,grouping,code_dict
-    )
+    simple_sus_crosstab(df_clean, output_path, definitions_new, grouping, "new", reg)
 
-    # State change
-    simple_state_change(df_clean, definitions,reg, other_vars_combined, output_path,grouping,)
+    simple_sus_crosstab(df_clean, output_path, definitions_ctv3, grouping, "ctv3", reg)
+
+    # # Latest v most common
+    # simple_latest_common_comparison(
+    #     df_clean,
+    #     definitions_new,
+    #     reg,
+    #     other_vars_combined_ctv3,
+    #     output_path,
+    #     grouping,
+    #     code_dict,
+    # )
+
+    # # State change
+    # simple_state_change(
+    #     df_clean,
+    #     definitions_new,
+    #     reg,
+    #     other_vars_combined_ctv3,
+    #     output_path,
+    #     grouping,
+    # )
     # # records over time
     # records_over_time_perc(
     #     df_clean, definitions, demographic_covariates, clinical_covariates, output_path, "",grouping,reg
     #     )
+
 
 ########################## DO NOT EDIT – RUNS SCRIPT ##############################
 

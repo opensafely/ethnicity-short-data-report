@@ -12,22 +12,21 @@ definitions_snomed_16 = ["ethnicity_new_16", "ethnicity_primis_16"]
 
 other_vars = ["white", "mixed", "asian", "black", "other"]
 other_vars_16 = [
-    "White_British",
-    "White_Irish",
-    "Other_White",
-    "White_and_Black_Caribbean",
-    "White_and_Black_African",
-    "White_and_Asian",
-    "Other_Mixed",
-    "Indian",
-    "Pakistani",
-    "Bangladeshi",
-    "Other_Asian",
-    "Caribbean",
-    "African",
-    "Other_Black",
-    "Chinese",
-    "Any_other_ethnic_group",
+"Pakistani",
+"Bangladeshi",
+"Other_Asian",
+"Caribbean",
+"African",
+"Other_Black",
+"White_and_Black_Caribbean",
+"White_and_Black_African",
+"White_and_Asian",
+"Other_Mixed",
+"White_British",
+"White_Irish",
+"Other_White",
+"Chinese",
+"Any_other_ethnic_group",
 ]
 
 ethnicity_combinations_ctv3 = [
