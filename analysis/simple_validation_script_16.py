@@ -6,7 +6,7 @@ from lib_phenotype_validation import *
 input_path = "output/extract_16/input_16.feather"
 
 # Definitions
-definitions = ["ethnicity_16", "ethnicity_new_16", "ethnicity_primis_16"]
+definitions = ["ethnicity_16", "ethnicity_new_16"]
 
 # Code dictionary
 code_dict = {
@@ -19,56 +19,56 @@ code_dict = {
         5: "5 Least deprived",
     },
     "ethnicity_16": {
-        1: "White_British",
-        2: "White_Irish",
-        3: "Other_White",
-        4: "White_and_Black_Caribbean",
-        5: "White_and_Black_African",
-        6: "White_and_Asian",
-        7: "Other_Mixed",
-        8: "Indian",
-        9: "Pakistani",
-        10: "Bangladeshi",
-        11: "Other_Asian",
-        12: "Caribbean",
-        13: "African",
-        14: "Other_Black",
+        1: "Indian",
+        2: "Pakistani",
+        3: "Bangladeshi",
+        4: "Other_Asian",
+        5: "Caribbean",
+        6: "African",
+        7: "Other_Black",
+        8: "White_and_Black_Caribbean",
+        9: "White_and_Black_African",
+        10: "White_and_Asian",
+        11: "Other_Mixed",
+        12: "White_British",
+        13: "White_Irish",
+        14: "Other_White",
         15: "Chinese",
         16: "Any_other_ethnic_group",
     },
     "ethnicity_new_16": {
-        1: "White_British",
-        2: "White_Irish",
-        3: "Other_White",
-        4: "White_and_Black_Caribbean",
-        5: "White_and_Black_African",
-        6: "White_and_Asian",
-        7: "Other_Mixed",
-        8: "Indian",
-        9: "Pakistani",
-        10: "Bangladeshi",
-        11: "Other_Asian",
-        12: "Caribbean",
-        13: "African",
-        14: "Other_Black",
+        1: "Indian",
+        2: "Pakistani",
+        3: "Bangladeshi",
+        4: "Other_Asian",
+        5: "Caribbean",
+        6: "African",
+        7: "Other_Black",
+        8: "White_and_Black_Caribbean",
+        9: "White_and_Black_African",
+        10: "White_and_Asian",
+        11: "Other_Mixed",
+        12: "White_British",
+        13: "White_Irish",
+        14: "Other_White",
         15: "Chinese",
         16: "Any_other_ethnic_group",
     },
     "ethnicity_primis_16": {
-        1: "White_British",
-        2: "White_Irish",
-        3: "Other_White",
-        4: "White_and_Black_Caribbean",
-        5: "White_and_Black_African",
-        6: "White_and_Asian",
-        7: "Other_Mixed",
-        8: "Indian",
-        9: "Pakistani",
-        10: "Bangladeshi",
-        11: "Other_Asian",
-        12: "Caribbean",
-        13: "African",
-        14: "Other_Black",
+        1: "Indian",
+        2: "Pakistani",
+        3: "Bangladeshi",
+        4: "Other_Asian",
+        5: "Caribbean",
+        6: "African",
+        7: "Other_Black",
+        8: "White_and_Black_Caribbean",
+        9: "White_and_Black_African",
+        10: "White_and_Asian",
+        11: "Other_Mixed",
+        12: "White_British",
+        13: "White_Irish",
+        14: "Other_White",
         15: "Chinese",
         16: "Any_other_ethnic_group",
     },
@@ -77,13 +77,6 @@ code_dict = {
 
 # Other variables to include
 other_vars = [
-    "White_British",
-    "White_Irish",
-    "Other_White",
-    "White_and_Black_Caribbean",
-    "White_and_Black_African",
-    "White_and_Asian",
-    "Other_Mixed",
     "Indian",
     "Pakistani",
     "Bangladeshi",
@@ -91,6 +84,13 @@ other_vars = [
     "Caribbean",
     "African",
     "Other_Black",
+    "White_and_Black_Caribbean",
+    "White_and_Black_African",
+    "White_and_Asian",
+    "Other_Mixed",
+    "White_British",
+    "White_Irish",
+    "Other_White",
     "Chinese",
     "Any_other_ethnic_group",
 ]
@@ -144,12 +144,19 @@ def main():
         grouping,
         code_dict,
         dates=False,
-        registered = registered,
+        registered=registered,
         dates_check=False,
     )
     # Count patients with records
     simple_patient_counts(
-        df_clean, definitions,reg, demographic_covariates, clinical_covariates, output_path,grouping,
+        df_clean,
+        definitions,
+        reg,
+        "new_ctv3",
+        demographic_covariates,
+        clinical_covariates,
+        output_path,
+        grouping,
     )
 
     # Count patients by categories
@@ -157,6 +164,7 @@ def main():
         df_clean,
         definitions,
         reg,
+        "new_ctv3",
         demographic_covariates,
         clinical_covariates,
         output_path,
@@ -168,20 +176,30 @@ def main():
     # upset_cat(df_clean, output_path, definitions[1], definitions[0], other_vars)
     # Latest v most common
     simple_latest_common_comparison(
-        df_clean, definitions,reg, other_vars_combined, output_path,grouping,
+        df_clean,
+        definitions,
+        reg,
+        other_vars_combined,
+        output_path,
+        grouping,
+        code_dict,
     )
-    simple_latest_common_comparison(
-        df_clean, definitions,reg, other_vars_combined, output_path,grouping, missing_check=True,
-    )
+
     # State change
-    simple_state_change(df_clean, definitions,reg, other_vars_combined, output_path,grouping,)
     simple_state_change(
-        df_clean, definitions,reg, other_vars_combined, output_path,grouping, missing_check=True
+        df_clean,
+        definitions,
+        reg,
+        other_vars_combined,
+        output_path,
+        grouping,
     )
+
     # # records over time
     # records_over_time_perc(
     #     df_clean, definitions, demographic_covariates, clinical_covariates, output_path, "",grouping,reg
     #     )
+
 
 ########################## DO NOT EDIT – RUNS SCRIPT ##############################
 

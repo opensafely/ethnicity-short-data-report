@@ -254,6 +254,7 @@ def simple_patient_counts(
     df_clean,
     definitions,
     reg,
+    defin,
     demographic_covariates,
     clinical_covariates,
     output_path,
@@ -390,11 +391,11 @@ def simple_patient_counts(
     df_append = redact_round_table(df_all.append(df_all_group))
     if categories:
         df_append.to_csv(
-            f"output/{output_path}/{grouping}/tables/simple_patient_counts_categories_{grouping}_{reg}.csv"
+            f"output/{output_path}/{grouping}/tables/simple_patient_counts_categories_{grouping}_{defin}_{reg}.csv"
         )
     else:
         df_append.to_csv(
-            f"output/{output_path}/{grouping}/tables/simple_patient_counts_{grouping}_{reg}.csv"
+            f"output/{output_path}/{grouping}/tables/simple_patient_counts_{grouping}_{defin}_{reg}.csv"
         )
 
 
@@ -679,43 +680,43 @@ def display_heatmap(df_clean, definitions, output_path):
     plt.savefig(f"output/{output_path}/figures/heatmap.png")
 
 
-def simple_sus_crosstab(df_clean, output_path, grouping, reg):
-    df_clean.ethnicity_new_5 = df_clean.ethnicity_new_5.fillna(" Unknown")
-    df_clean.ethnicity_sus_5 = df_clean.ethnicity_sus_5.fillna(" Unknown")
+def simple_sus_crosstab(df_clean, output_path, definitions, grouping, defin, reg):
+    df_clean[definitions[0]] = df_clean[definitions[0]].fillna(" Unknown")
+    df_clean[definitions[1]] = df_clean[definitions[1]].fillna(" Unknown")
     data_crosstab = pd.crosstab(
-        df_clean.ethnicity_new_5, df_clean.ethnicity_sus_5, margins=False
+        df_clean[definitions[0]], df_clean[definitions[1]], margins=False
     )
     data_crosstab = redact_round_table(data_crosstab)
     data_crosstab.to_csv(
-        f"output/{output_path}/{grouping}/tables/simple_sus_crosstab_{reg}.csv"
+        f"output/{output_path}/{grouping}/tables/simple_{defin}_sus_crosstab_{reg}.csv"
     )
 
-    df_clean = df_clean[["ethnicity_new_5", "ethnicity_sus_5"]]
+    df_clean = df_clean[definitions]
     data_crosstab_long = pd.DataFrame(
-        df_clean.groupby(["ethnicity_new_5", "ethnicity_sus_5"]).size()
+        df_clean.groupby([definitions[0], definitions[1]]).size()
     )
     data_crosstab_long = redact_round_table(data_crosstab_long)
     data_crosstab_long.to_csv(
-        f"output/{output_path}/{grouping}/tables/simple_sus_crosstab_long_{reg}.csv"
+        f"output/{output_path}/{grouping}/tables/simple_{defin}_sus_crosstab_long_{reg}.csv"
     )
 
 
-def simple_ctv3_sus_crosstab(df_clean, output_path, grouping, reg):
-    df_clean.ethnicity_5 = df_clean.ethnicity_5.fillna(" Unknown")
-    df_clean.ethnicity_sus_5 = df_clean.ethnicity_sus_5.fillna(" Unknown")
-    data_crosstab = pd.crosstab(
-        df_clean.ethnicity_5, df_clean.ethnicity_sus_5, margins=False
-    )
-    data_crosstab = redact_round_table(data_crosstab)
-    data_crosstab.to_csv(
-        f"output/{output_path}/{grouping}/tables/simple_sus_crosstab_{reg}.csv"
-    )
+# def simple_ctv3_sus_crosstab(df_clean, output_path, grouping, reg):
+#     df_clean.ethnicity_5 = df_clean.ethnicity_5.fillna(" Unknown")
+#     df_clean.ethnicity_sus_5 = df_clean.ethnicity_sus_5.fillna(" Unknown")
+#     data_crosstab = pd.crosstab(
+#         df_clean.ethnicity_5, df_clean.ethnicity_sus_5, margins=False
+#     )
+#     data_crosstab = redact_round_table(data_crosstab)
+#     data_crosstab.to_csv(
+#         f"output/{output_path}/{grouping}/tables/simple_sus_crosstab_{reg}.csv"
+#     )
 
-    df_clean = df_clean[["ethnicity_5", "ethnicity_sus_5"]]
-    data_crosstab_long = pd.DataFrame(
-        df_clean.groupby(["ethnicity_5", "ethnicity_sus_5"]).size()
-    )
-    data_crosstab_long = redact_round_table(data_crosstab_long)
-    data_crosstab_long.to_csv(
-        f"output/{output_path}/{grouping}/tables/simple_ctv3_sus_crosstab_long_{reg}.csv"
-    )
+#     df_clean = df_clean[["ethnicity_5", "ethnicity_sus_5"]]
+#     data_crosstab_long = pd.DataFrame(
+#         df_clean.groupby(["ethnicity_5", "ethnicity_sus_5"]).size()
+#     )
+#     data_crosstab_long = redact_round_table(data_crosstab_long)
+#     data_crosstab_long.to_csv(
+#         f"output/{output_path}/{grouping}/tables/simple_ctv3_sus_crosstab_long_{reg}.csv"
+#     )

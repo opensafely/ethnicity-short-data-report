@@ -6,11 +6,7 @@ from lib_phenotype_validation import *
 input_path = "output/extract_5/input_5.feather"
 
 # Definitions
-definitions = [
-    "ethnicity_5",
-    "ethnicity_new_5",
-    "ethnicity_primis_5",
-]
+definitions = ["ethnicity_5", "ethnicity_new_5"]
 
 definitions_sus = [
     "ethnicity_new_5",
@@ -28,14 +24,14 @@ code_dict = {
         4: "4",
         5: "5 Least deprived",
     },
-    "ethnicity_5": {1: "White", 2: "Mixed", 3: "Asian", 4: "Black", 5: "Other"},
+    "ethnicity_5": {1: "Asian", 2: "Black", 3: "Mixed", 4: "White", 5: "Other"},
     "ethnicity_new_5": {1: "White", 2: "Mixed", 3: "Asian", 4: "Black", 5: "Other"},
     "ethnicity_primis_5": {1: "White", 2: "Mixed", 3: "Asian", 4: "Black", 5: "Other"},
     "ethnicity_sus_5": {1: "White", 2: "Mixed", 3: "Asian", 4: "Black", 5: "Other"},
 }
 
 # Other variables to include
-other_vars = ["white", "mixed", "asian", "black", "other"]
+other_vars = ["asian", "black", "mixed", "white", "other"]
 other_vars_combined = [x + "_" + y for x in definitions for y in other_vars]
 
 # Restrict to registered as of index date
@@ -85,12 +81,19 @@ def main():
         grouping,
         code_dict,
         dates=False,
-        registered = registered,
+        registered=registered,
         dates_check=True,
     )
     # Count patients with records
     simple_patient_counts(
-        df_clean, definitions,reg, demographic_covariates, clinical_covariates, output_path,grouping,
+        df_clean,
+        definitions,
+        reg,
+        "new_ctv3",
+        demographic_covariates,
+        clinical_covariates,
+        output_path,
+        grouping,
     )
 
     # Count patients by categories
@@ -98,6 +101,7 @@ def main():
         df_clean,
         definitions,
         reg,
+        "new_ctv3",
         demographic_covariates,
         clinical_covariates,
         output_path,
@@ -109,21 +113,27 @@ def main():
     # upset_cat(df_clean, output_path, definitions[1], definitions[0], other_vars)
     # Latest v most common
     simple_latest_common_comparison(
-        df_clean, definitions,reg, other_vars_combined, output_path,grouping, code_dict
-    )
-    simple_latest_common_comparison(
-        df_clean, definitions,reg, other_vars_combined, output_path,grouping, code_dict, missing_check=True,
+        df_clean,
+        definitions,
+        reg,
+        other_vars_combined,
+        output_path,
+        grouping,
+        code_dict,
     )
     # State change
-    simple_state_change(df_clean, definitions,reg, other_vars_combined, output_path,grouping,)
     simple_state_change(
-        df_clean, definitions,reg, other_vars_combined, output_path,grouping, missing_check=True
+        df_clean,
+        definitions,
+        reg,
+        other_vars_combined,
+        output_path,
+        grouping,
     )
     # # records over time
     # records_over_time_perc(
     #     df_clean, definitions, demographic_covariates, clinical_covariates, output_path, "",grouping,reg
     #     )
-
 
     # df_clean_sus=import_clean_sus(
     #     input_path,
