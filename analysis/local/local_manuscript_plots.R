@@ -506,7 +506,7 @@ alluvial <- ggplot(
     axis.text.x = element_text(size = 20)
   ) +
   theme(
-    panel.background = element_rect(fill = "black"),
+    panel.background = element_rect(fill = "white"),
     panel.grid.major = element_blank(),
     panel.grid.minor = element_blank()
   ) +
@@ -553,7 +553,7 @@ alluvial_sus_pick <- ggplot(
   geom_stratum(aes(fill = ethnicity_sus_5)) +
   # geom_text(stat = "stratum", aes(label = after_stat(stratum)), colour = "white",size = 10) +
   scale_x_discrete(limits = c("ethnicity_new_5", "ethnicity_sus_5"), expand = c(.05, .05), labels = c("ethnicity_new_5" = "Primary Care ethnicity", "ethnicity_sus_5" = "Secondary Care ethnicity"), position = "top") +
-  scale_fill_manual(values = c( "#808080", "#FF7C00", "#5323B3", "#5A71F3","#FFD23B", "#17D7E6"), na.value = NA) +
+  scale_fill_manual(values = c( "#808080", "#FF7C00","#FFD23B", "#5323B3", "#5A71F3", "#17D7E6"), na.value = NA) +
   #theme_minimal() +
   ggtitle("") +
   theme(
@@ -589,8 +589,8 @@ ggsave(
 # alluvial picked up from SUS data
 ##### only discrepancy alluvial
 df_secondary_new_cross_perc <- df_secondary_new_cross_perc %>%
-  mutate(ethnicity_new_5_na = case_when(ethnicity_new_5=="Unknown" & ethnicity_sus_5 !="Unknown" & ethnicity_new_5!=ethnicity_sus_5~ethnicity_new_5))
-
+  mutate(ethnicity_new_5_na = case_when(ethnicity_new_5!="Unknown" & ethnicity_sus_5 !="Unknown" & ethnicity_new_5!=ethnicity_sus_5~ethnicity_new_5))
+  
 alluvial_disc <- ggplot(
   as.data.frame(df_secondary_new_cross_perc),
   aes(y = `0`, axis1 = ethnicity_new_5, axis2 = ethnicity_sus_5)
@@ -627,12 +627,103 @@ ggsave(
   ),
   alluvial_disc,
   dpi = 600,
-  width = 50,
+  width = 25,
+  height = 30,
+  units = "cm"
+)
+
+##### only discrepancy alluvial CTV3
+df_sus_new_cross_ctv3 <- read_csv(here::here("output", "released", "simple_ctv3_sus_crosstab_long_registered.csv"))
+
+df_secondary_new_cross_ctv3_perc <- df_sus_new_cross_ctv3 %>%
+  mutate(ethnicity_5_na = case_when(ethnicity_5!="Unknown" & ethnicity_sus_5 !="Unknown" & ethnicity_5!=ethnicity_sus_5~ethnicity_5),
+         ethnicity_5_na = fct_relevel(
+           ethnicity_5_na,
+            "Unknown", "Other", "White", "Mixed", "Black","Asian"
+         ),
+         ethnicity_5 = fct_relevel(
+           ethnicity_5,
+           "Unknown", "Other", "White", "Mixed", "Black","Asian"
+         ),
+         ethnicity_sus_5 = fct_relevel(
+           ethnicity_sus_5,
+           "Asian","Black","Mixed", "White","Other", "Unknown" 
+         )
+         )
+
+
+alluvial_disc_ctv3 <- ggplot(
+  as.data.frame(df_secondary_new_cross_ctv3_perc),
+  aes(y = `0`, axis1 = ethnicity_5, axis2 = ethnicity_sus_5)
+) +
+  geom_alluvium(aes(fill = ethnicity_5_na)) +
+  geom_stratum(aes(fill = ethnicity_sus_5)) +
+  # geom_text(stat = "stratum", aes(label = after_stat(stratum)), colour = "white",size = 10) +
+  scale_x_discrete(limits = c("ethnicity_5", "ethnicity_sus_5"), expand = c(.05, .05), labels = c("ethnicity_5" = "Primary Care ethnicity", "ethnicity_sus_5" = "Secondary Care ethnicity"), position = "top") +
+  scale_fill_manual(values = rev(c("#FFD23B", "#808080", "#FF7C00", "#5323B3", "#5A71F3", "#17D7E6")), na.value = NA) +
+  #theme_minimal() +
+  ggtitle("") +
+  theme(
+    axis.title.y = element_blank(),
+    axis.text.y = element_blank(),
+    axis.ticks.y = element_blank(),
+    axis.text.x = element_text(size = 20)
+  ) +
+  theme(
+    panel.background = element_rect(fill = "black"),
+    panel.grid.major = element_blank(),
+    panel.grid.minor = element_blank()
+  ) +
+  theme(
+    legend.position = "bottom",
+    legend.title = element_blank()
+  ) 
+
+ggsave(
+  filename = here::here(
+    "output",
+    "released",
+    "made_locally",
+    glue("secondary_care_alluvial_ctv3_disc.png")
+  ),
+  alluvial_disc_ctv3,
+  dpi = 600,
+  width = 25,
   height = 30,
   units = "cm"
 )
 
 
+#### percentage discordant
+snomed_popn<-df_secondary_new_cross_perc %>% 
+  filter(ethnicity_sus_5!="Unknown") %>%
+  group_by(ethnicity_new_5) %>% 
+  summarise(total = sum(`0`))
+
+snomed_disc<-df_secondary_new_cross_perc %>% 
+  filter(ethnicity_sus_5=="Asian",
+          ethnicity_new_5=="Other") %>%
+  group_by(ethnicity_new_5) %>%
+  summarise(total_disc = sum(`0`)) %>%
+  inner_join(snomed_popn,join_by(ethnicity_new_5==ethnicity_new_5)) %>%
+  mutate(perc = total_disc / total *100 )
+
+snomed_popn_ctv3<-df_secondary_new_cross_ctv3_perc %>% 
+  filter(ethnicity_sus_5!="Unknown") %>%
+  group_by(ethnicity_5) %>% 
+  summarise(total = sum(`0`))
+
+snomed_disc_ctv3<-df_secondary_new_cross_ctv3_perc %>% 
+  filter(ethnicity_sus_5=="Asian",
+         ethnicity_5=="Other") %>%
+  group_by(ethnicity_5) %>%
+  summarise(total_disc = sum(`0`)) %>%
+  inner_join(snomed_popn_ctv3,join_by(ethnicity_5==ethnicity_5)) %>%
+  mutate(perc = total_disc / total *100 )
+
+
+
+######
 
 secondary_heat_perc_all_patients <- ggplot(df_secondary_new_cross_perc, aes(ethnicity_sus_5, ethnicity_new_5, fill = percentage)) +
   geom_tile() +
