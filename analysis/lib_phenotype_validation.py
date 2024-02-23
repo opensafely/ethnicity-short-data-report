@@ -39,7 +39,7 @@ def import_clean(
 ):
     # Import
     df_import = pd.read_feather(input_path)
-    
+
     # Check whether output paths exist or not, create if missing
     path_tables = f"output/{output_path}/{grouping}/tables/"
     path_figures = f"output/{output_path}/{grouping}/figures/"
@@ -105,7 +105,7 @@ def import_clean(
     # Subset to relevant columns
     if dates_check:
         dates = [f"{definition}_date" for definition in definitions]
-    else: 
+    else:
         dates = []
 
     df_clean = df_import[
@@ -153,36 +153,41 @@ def import_clean(
     df_clean["all_missing"] = (
         df_clean[li_col_missing].sum(axis=1) == len(definitions)
     ).astype(int)
-    df_clean["any_filled"] = (
-        df_clean[li_col_filled].sum(axis=1) > 0
-    ).astype(int)
-
+    df_clean["any_filled"] = (df_clean[li_col_filled].sum(axis=1) > 0).astype(int)
 
     return df_clean
 
 
 def simple_latest_common_comparison(
-    df_clean, definitions,reg, other_vars, output_path,grouping, code_dict, missing_check=False
+    df_clean,
+    definitions,
+    reg,
+    other_vars,
+    output_path,
+    grouping,
+    code_dict,
+    missing_check=False,
 ):
     for definition in definitions:
         if missing_check:
             df_clean = df_clean[df_clean[f"{definition}_date"] == "1900-01-01"]
         vars = [s for s in other_vars if s.startswith(definition)]
         df_subset = df_clean.loc[~df_clean[definition].isna()]
-        df_subset = df_subset[df_subset[definition].isin(code_dict[definition].values())]
+        df_subset = df_subset[
+            df_subset[definition].isin(code_dict[definition].values())
+        ]
         df_subset = df_subset[[definition] + vars].set_index(definition)
         df_subset = df_subset.replace(0, np.nan)
         # reorder columns
-        col_arrange = [f"{definition}_asian",f"{definition}_black",f"{definition}_mixed",f"{definition}_white",f"{definition}_other"]
-        df_subset=df_subset[col_arrange]
+        df_subset = df_subset[vars]
         # find column with first instance of the maximum value
-        df_subset['max'] = df_subset.astype(float).idxmax(axis=1)    
+        df_subset["max"] = df_subset.astype(float).idxmax(axis=1)
         df_subset2 = df_subset
         # returning 1 for the first column that contains the highest value and 0 for everything else
         for col in df_subset2.columns:
-	        df_subset2[col] = np.where(df_subset2['max'] == col, 1, 0)
+            df_subset2[col] = np.where(df_subset2["max"] == col, 1, 0)
         # drop max column
-        df_subset2 = df_subset2[col_arrange]
+        df_subset2 = df_subset2[vars]
         df_sum = redact_round_table(df_subset2.groupby(definition).sum())
         if missing_check:
             df_sum.to_csv(
@@ -195,7 +200,7 @@ def simple_latest_common_comparison(
 
 
 def simple_state_change(
-    df_clean, definitions,reg, other_vars, output_path,grouping, missing_check=False
+    df_clean, definitions, reg, other_vars, output_path, grouping, missing_check=False
 ):
     for definition in definitions:
         # if missing_check:
@@ -208,13 +213,15 @@ def simple_state_change(
             .reset_index()
         )
         ### sum all 'vars' which are not null
-        df_subset[f"{definition}_any"]=df_subset[vars].notnull().sum(axis=1)
-        ### all px with a latest ethnicity must have at least 1 defined ethnicity 
+        df_subset[f"{definition}_any"] = df_subset[vars].notnull().sum(axis=1)
+        ### all px with a latest ethnicity must have at least 1 defined ethnicity
         ### If they only have 1 recorded ethnicity this must equal the latest ethnicity
         ### replace 1 with NULL and count all with over one recorded ethnicity (i.e. latest plus another ethnicity)
-        df_subset[f"{definition}_any"] = df_subset[f"{definition}_any"].replace(1, np.nan)
+        df_subset[f"{definition}_any"] = df_subset[f"{definition}_any"].replace(
+            1, np.nan
+        )
         df_subset["n"] = 1
-        ### check if any px have latest ethnicity but no recorded ethnicity (this should be impossible!) 
+        ### check if any px have latest ethnicity but no recorded ethnicity (this should be impossible!)
         # df_any_check=df_subset
         # df_any_check[f"{definition}_any_check"]=df_any_check[f"{definition}_any"]==0
         # df_any_check[f"{definition}_any_check"]=df_any_check[f"{definition}_any_check"].replace(False, np.nan)
@@ -243,6 +250,7 @@ def simple_patient_counts(
     df_clean,
     definitions,
     reg,
+    defin,
     demographic_covariates,
     clinical_covariates,
     output_path,
@@ -342,13 +350,21 @@ def simple_patient_counts(
     df_append = redact_round_table(df_all.append(df_all_group))
     if categories:
         df_append.to_csv(
-            f"output/{output_path}/{grouping}/tables/simple_patient_counts_categories_{reg}.csv"
+            f"output/{output_path}/{grouping}/tables/simple_patient_counts_categories_{grouping}_{defin}_{reg}.csv"
         )
     else:
-        df_append.to_csv(f"output/{output_path}/{grouping}/tables/simple_patient_counts_{reg}.csv")
+        df_append.to_csv(
+            f"output/{output_path}/{grouping}/tables/simple_patient_counts_{grouping}_{defin}_{reg}.csv"
+        )
 
 
-def upset(df_clean, output_path, comparator_1, comparator_2,grouping,):
+def upset(
+    df_clean,
+    output_path,
+    comparator_1,
+    comparator_2,
+    grouping,
+):
     # create csv for output checking
     upset_output_check = df_clean[[comparator_1, comparator_2]]
     upset_output_check[comparator_1] = df_clean[comparator_1].fillna("Unknown")
@@ -370,10 +386,19 @@ def upset(df_clean, output_path, comparator_1, comparator_2,grouping,):
     )
 
     upset.plot()
-    plt.savefig(f"output/{output_path}/{grouping}/figures/upset_{comparator_1}_{comparator_2}.png")
+    plt.savefig(
+        f"output/{output_path}/{grouping}/figures/upset_{comparator_1}_{comparator_2}.png"
+    )
 
 
-def upset_cat(df_clean, output_path, comparator_1, comparator_2, other_vars,grouping,):
+def upset_cat(
+    df_clean,
+    output_path,
+    comparator_1,
+    comparator_2,
+    other_vars,
+    grouping,
+):
     upset_cat_df = pd.DataFrame(df_clean[comparator_1])
     for definition in [comparator_1, comparator_2]:
         for var in other_vars:
@@ -405,128 +430,214 @@ def upset_cat(df_clean, output_path, comparator_1, comparator_2, other_vars,grou
         f"output/{output_path}/{grouping}/figures/upset_category_{comparator_1}_{comparator_2}.png"
     )
 
-def records_over_time(df_clean, definitions, demographic_covariates, clinical_covariates, output_path, filepath,grouping,reg):
+
+def records_over_time(
+    df_clean,
+    definitions,
+    demographic_covariates,
+    clinical_covariates,
+    output_path,
+    filepath,
+    grouping,
+    reg,
+):
     """
     Count the number of records over time
-    
+
     Arguments:
         df_clean: a dataframe that has been cleaned using import_clean()
         definitions: a list of derived variables to be evaluated
-        demographic_covariates: a list of demographic covariates 
+        demographic_covariates: a list of demographic covariates
         clinical_covariates: a list of clinical covariates
         output_path: filepath to the output folder
         filepath: filepath to the output file
-       
+
     Returns:
         .csv file (underlying data)
         .png file (line plot)
     """
     li_df = []
     for definition in definitions:
-        df_grouped = df_clean[[definition+'_date',definition]].groupby(
-            definition+'_date'
-        ).count().reset_index().rename(columns={definition+'_date':'date'}).set_index('date')
+        df_grouped = (
+            df_clean[[definition + "_date", definition]]
+            .groupby(definition + "_date")
+            .count()
+            .reset_index()
+            .rename(columns={definition + "_date": "date"})
+            .set_index("date")
+        )
         li_df.append(redact_round_table(df_grouped))
-    df_all_time = pd.concat(li_df).stack().reset_index().rename(columns={'level_1':'variable',0:'value'})
-    del li_df 
-    
+    df_all_time = (
+        pd.concat(li_df)
+        .stack()
+        .reset_index()
+        .rename(columns={"level_1": "variable", 0: "value"})
+    )
+    del li_df
+
     fig, ax = plt.subplots(figsize=(12, 8))
     fig.autofmt_xdate()
-    sns.lineplot(x = 'date', y = 'value', hue='variable', data = df_all_time, ax=ax).set_title('New records by month')
-    ax.legend().set_title('')
+    sns.lineplot(
+        x="date", y="value", hue="variable", data=df_all_time, ax=ax
+    ).set_title("New records by month")
+    ax.legend().set_title("")
     if len(df_all_time) > 0:
-        df_all_time.to_csv(f'output/{output_path}/{grouping}/tables/records_over_time{filepath}_{reg}.csv')
-        plt.savefig(f'output/{output_path}/{grouping}/figures/records_over_time{filepath}_{reg}.png')
+        df_all_time.to_csv(
+            f"output/{output_path}/{grouping}/tables/records_over_time{filepath}_{reg}.csv"
+        )
+        plt.savefig(
+            f"output/{output_path}/{grouping}/figures/records_over_time{filepath}_{reg}.png"
+        )
 
     for group in demographic_covariates + clinical_covariates:
         for definition in definitions:
-            df_grouped = df_clean[[definition+'_date',definition,group]].groupby(
-                                  [definition+'_date',group]).count().reset_index().rename(columns={definition+'_date':'date'}).set_index(['date', group])
-            df_time=redact_round_table(df_grouped).reset_index()
+            df_grouped = (
+                df_clean[[definition + "_date", definition, group]]
+                .groupby([definition + "_date", group])
+                .count()
+                .reset_index()
+                .rename(columns={definition + "_date": "date"})
+                .set_index(["date", group])
+            )
+            df_time = redact_round_table(df_grouped).reset_index()
             fig, ax = plt.subplots(figsize=(12, 8))
             fig.autofmt_xdate()
-            sns.lineplot(x = 'date', y = definition, hue=group, data = df_time, ax=ax).set_title(f'{definition} recorded by {group} and month')
-            ax.legend().set_title('')
+            sns.lineplot(
+                x="date", y=definition, hue=group, data=df_time, ax=ax
+            ).set_title(f"{definition} recorded by {group} and month")
+            ax.legend().set_title("")
             if len(df_time) > 0:
-                df_time.to_csv(f'output/{output_path}/{grouping}/tables/records_over_time_{definition}_{group}{filepath}_{reg}.csv')
-                plt.savefig(f'output/{output_path}/{grouping}/figures/records_over_time_{definition}_{group}{filepath}_{reg}.png')
-            
-def records_over_time_perc(df_clean, definitions, demographic_covariates, clinical_covariates, output_path, filepath,grouping,reg):
+                df_time.to_csv(
+                    f"output/{output_path}/{grouping}/tables/records_over_time_{definition}_{group}{filepath}_{reg}.csv"
+                )
+                plt.savefig(
+                    f"output/{output_path}/{grouping}/figures/records_over_time_{definition}_{group}{filepath}_{reg}.png"
+                )
+
+
+def records_over_time_perc(
+    df_clean,
+    definitions,
+    demographic_covariates,
+    clinical_covariates,
+    output_path,
+    filepath,
+    grouping,
+    reg,
+):
     """
     Count the number of records over time as a percentage of all records
-    
+
     Arguments:
         df_clean: a dataframe that has been cleaned using import_clean()
         definitions: a list of derived variables to be evaluated
-        demographic_covariates: a list of demographic covariates 
+        demographic_covariates: a list of demographic covariates
         clinical_covariates: a list of clinical covariates
         output_path: filepath to the output folder
         filepath: filepath to the output file
-       
+
     Returns:
         .csv file (underlying data)
         .png file (line plot)
     """
     li_df = []
     for definition in definitions:
-        df_grouped = df_clean[[definition+'_date',definition]].groupby(
-            definition+'_date'
-        ).count().reset_index().rename(columns={definition+'_date':'date'}).set_index('date')
+        df_grouped = (
+            df_clean[[definition + "_date", definition]]
+            .groupby(definition + "_date")
+            .count()
+            .reset_index()
+            .rename(columns={definition + "_date": "date"})
+            .set_index("date")
+        )
         li_df.append(redact_round_table(df_grouped))
-    df_all_time = pd.concat(li_df).stack().reset_index().rename(columns={'level_1':'variable',0:'value'})
-    df_all_time['sum']=df_all_time.groupby('variable', sort=False)['value'].transform('sum')
-    df_all_time['value']=df_all_time['value']/df_all_time['sum']
-    del li_df 
-    
+    df_all_time = (
+        pd.concat(li_df)
+        .stack()
+        .reset_index()
+        .rename(columns={"level_1": "variable", 0: "value"})
+    )
+    df_all_time["sum"] = df_all_time.groupby("variable", sort=False)["value"].transform(
+        "sum"
+    )
+    df_all_time["value"] = df_all_time["value"] / df_all_time["sum"]
+    del li_df
+
     fig, ax = plt.subplots(figsize=(12, 8))
     fig.autofmt_xdate()
-    sns.lineplot(x = 'date', y = 'value', hue='variable', data = df_all_time, ax=ax).set_title('New records by month')
-    ax.legend().set_title('')
+    sns.lineplot(
+        x="date", y="value", hue="variable", data=df_all_time, ax=ax
+    ).set_title("New records by month")
+    ax.legend().set_title("")
     if len(df_all_time) > 0:
-        df_all_time.to_csv(f'output/{output_path}/{grouping}/tables/records_over_time{filepath}_{reg}.csv')
-        plt.savefig(f'output/{output_path}/{grouping}/figures/records_over_time{filepath}_{reg}.png')
+        df_all_time.to_csv(
+            f"output/{output_path}/{grouping}/tables/records_over_time{filepath}_{reg}.csv"
+        )
+        plt.savefig(
+            f"output/{output_path}/{grouping}/figures/records_over_time{filepath}_{reg}.png"
+        )
 
     for group in demographic_covariates + clinical_covariates:
         for definition in definitions:
-            df_grouped = df_clean[[definition+'_date',definition,group]].groupby(
-                                  [definition+'_date',group]).count().reset_index().rename(columns={definition+'_date':'date'}).set_index(['date', group])
-            df_time=redact_round_table(df_grouped).reset_index()
-            df_time['sum']=df_time.groupby(group, sort=False)[definition].transform('sum')
-            df_time[definition]=df_time[definition]/df_time['sum']*100
+            df_grouped = (
+                df_clean[[definition + "_date", definition, group]]
+                .groupby([definition + "_date", group])
+                .count()
+                .reset_index()
+                .rename(columns={definition + "_date": "date"})
+                .set_index(["date", group])
+            )
+            df_time = redact_round_table(df_grouped).reset_index()
+            df_time["sum"] = df_time.groupby(group, sort=False)[definition].transform(
+                "sum"
+            )
+            df_time[definition] = df_time[definition] / df_time["sum"] * 100
             fig, ax = plt.subplots(figsize=(12, 8))
             fig.autofmt_xdate()
-            sns.lineplot(x = 'date', y = definition, hue=group, data = df_time, ax=ax).set_title(f'{definition} recorded by {group} and month')
-            ax.legend().set_title('')
+            sns.lineplot(
+                x="date", y=definition, hue=group, data=df_time, ax=ax
+            ).set_title(f"{definition} recorded by {group} and month")
+            ax.legend().set_title("")
             if len(df_time) > 0:
-                df_time.to_csv(f'output/{output_path}/{grouping}/tables/records_over_time_{definition}_{group}{filepath}_{reg}.csv')
-                plt.savefig(f'output/{output_path}/{grouping}/figures/records_over_time_{definition}_{group}{filepath}_{reg}.png')
-            
+                df_time.to_csv(
+                    f"output/{output_path}/{grouping}/tables/records_over_time_{definition}_{group}{filepath}_{reg}.csv"
+                )
+                plt.savefig(
+                    f"output/{output_path}/{grouping}/figures/records_over_time_{definition}_{group}{filepath}_{reg}.png"
+                )
+
 
 def display_heatmap(df_clean, definitions, output_path):
     # All with measurement
     li_filled = []
     for definition in definitions:
-        df_temp = df_clean[['patient_id']].drop_duplicates().set_index('patient_id')
-        df_temp[definition+'_filled'] = 1
-        df_temp = df_clean[['patient_id', definition+'_filled']].drop_duplicates().dropna().set_index('patient_id')
+        df_temp = df_clean[["patient_id"]].drop_duplicates().set_index("patient_id")
+        df_temp[definition + "_filled"] = 1
+        df_temp = (
+            df_clean[["patient_id", definition + "_filled"]]
+            .drop_duplicates()
+            .dropna()
+            .set_index("patient_id")
+        )
         li_filled.append(df_temp)
 
     # Prepare data for heatmap input
     df_temp2 = pd.concat(li_filled, axis=1)
     # Remove list from memory
-    del li_filled 
-    df_transform = df_temp2.replace(np.nan,0)
+    del li_filled
+    df_transform = df_temp2.replace(np.nan, 0)
     df_dot = redact_round_table(df_transform.T.dot(df_transform))
-    
+
     # Create mask to eliminate duplicates in heatmap
     mask = np.triu(np.ones_like(df_dot))
     np.fill_diagonal(mask[::1], 0)
 
     # Draw the heatmap with the mask
     fig, ax = plt.subplots(figsize=(12, 8))
-    sns.heatmap(df_dot, annot=True, mask=mask, fmt='g', cmap="YlGnBu", vmin=0)
-    #plt.show()
-    plt.savefig(f'output/{output_path}/figures/heatmap.png')
+    sns.heatmap(df_dot, annot=True, mask=mask, fmt="g", cmap="YlGnBu", vmin=0)
+    # plt.show()
+    plt.savefig(f"output/{output_path}/figures/heatmap.png")
+
 
 def simple_patient_counts_sus(
     df_clean,
@@ -540,7 +651,7 @@ def simple_patient_counts_sus(
 ):
     suffix = "_filled"
     subgroup = "with records"
-       
+
     # All with measurement
     li_filled = []
     for definition in definitions_sus:
@@ -552,11 +663,11 @@ def simple_patient_counts_sus(
         )
         li_filled.append(df_temp)
     df_temp = (
-            df_clean[["patient_id", "all_filled", "all_missing","any_filled"]]
-            .drop_duplicates()
-            .dropna()
-            .set_index("patient_id")
-        )
+        df_clean[["patient_id", "all_filled", "all_missing", "any_filled"]]
+        .drop_duplicates()
+        .dropna()
+        .set_index("patient_id")
+    )
     li_filled.append(df_temp)
 
     df_temp2 = pd.concat(li_filled, axis=1)
@@ -581,11 +692,11 @@ def simple_patient_counts_sus(
             li_filled_group.append(df_temp)
 
         df_temp = (
-                    df_clean[["patient_id", "all_filled", "all_missing","any_filled",group]]
-                    .drop_duplicates()
-                    .dropna()
-                    .reset_index(drop=True)
-                )
+            df_clean[["patient_id", "all_filled", "all_missing", "any_filled", group]]
+            .drop_duplicates()
+            .dropna()
+            .reset_index(drop=True)
+        )
         li_filled_group.append(df_temp)
 
         df_reduce = reduce(
@@ -613,7 +724,10 @@ def simple_patient_counts_sus(
 
     # Redact
     df_append = redact_round_table(df_all.append(df_all_group))
-    df_append.to_csv(f"output/{output_path}/{grouping}/tables/simple_patient_counts_sus_{reg}.csv")
+    df_append.to_csv(
+        f"output/{output_path}/{grouping}/tables/simple_patient_counts_sus_{reg}.csv"
+    )
+
 
 def import_clean_sus(
     input_path,
@@ -635,7 +749,7 @@ def import_clean_sus(
 ):
     # Import
     df_import = pd.read_feather(input_path)
-    
+
     # Check whether output paths exist or not, create if missing
     path_tables = f"output/{output_path}/{grouping}/tables/"
     path_figures = f"output/{output_path}/{grouping}/figures/"
@@ -696,10 +810,8 @@ def import_clean_sus(
     # Flag all filled/all missing
     li_col_filled = [col for col in df_clean.columns if col.endswith("_filled")]
     li_col_missing = [col for col in df_clean.columns if col.endswith("_missing")]
-    
-    df_clean["any_filled"] = (
-        df_clean[li_col_filled].sum(axis=1) > 0
-    ).astype(int)
+
+    df_clean["any_filled"] = (df_clean[li_col_filled].sum(axis=1) > 0).astype(int)
 
     df_clean["all_filled"] = (
         df_clean[li_col_filled].sum(axis=1) == len(definitions_sus)
