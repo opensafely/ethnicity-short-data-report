@@ -4,7 +4,7 @@ from itertools import product
 import numpy as np
 
 
-def local_patient_counts(
+def report_patient_counts(
     definitions,
     group,
     defin,
@@ -140,21 +140,21 @@ def local_patient_counts(
 
     if categories:
         df_patient_counts.to_csv(
-            f"output/{output_path}/local_patient_counts_categories_{group}_{defin}_registered.csv"
+            f"output/{output_path}/report_patient_counts_categories_{group}_{defin}_registered.csv"
         )
         print(
-            f"saved: output/{output_path}/local_patient_counts_categories_{group}_{defin}_registered.csv"
+            f"saved: output/{output_path}/report_patient_counts_categories_{group}_{defin}_registered.csv"
         )
     else:
         df_patient_counts.to_csv(
-            f"output/{output_path}/local_patient_counts_{group}_{defin}_registered.csv"
+            f"output/{output_path}/report_patient_counts_{group}_{defin}_registered.csv"
         )
         print(
-            f"saved: output/{output_path}/local_patient_counts_{group}_{defin}_registered.csv"
+            f"saved: output/{output_path}/report_patient_counts_{group}_{defin}_registered.csv"
         )
 
 
-def local_latest_common(
+def report_latest_common(
     definitions,
     input_path,
     output_path,
@@ -222,7 +222,7 @@ def local_latest_common(
         df_out = df_out.set_index(f"Latest Ethnicity-\n{definition_dict[definition]}")
         df_out = df_out.replace(np.nan, "-")
         df_out.to_csv(
-            f"output/{output_path}/local_latest_common_{definition}_registered.csv"
+            f"output/{output_path}/report_latest_common_{definition}_registered.csv"
         )
 
         if code_dict != "":
@@ -255,11 +255,11 @@ def local_latest_common(
         )
         df_sum = df_sum.set_index(f"Latest Ethnicity-\n{definition_dict[definition]}")
         df_sum.to_csv(
-            f"output/{output_path}/local_latest_common_{defin}_{group}_expanded_registered.csv"
+            f"output/{output_path}/report_latest_common_{defin}_{group}_expanded_registered.csv"
         )
 
 
-def local_state_change(
+def report_state_change(
     definitions,
     input_path,
     output_path,
@@ -313,7 +313,7 @@ def local_state_change(
             f"Latest Ethnicity-\n{definition_dict[definition]}"
         )
         df_state_change.to_csv(
-            f"output/{output_path}/local_state_change_{defin}_{group}_registered.csv"
+            f"output/{output_path}/report_state_change_{defin}_{group}_registered.csv"
         )
 
 
@@ -502,7 +502,7 @@ if not exists:
 
 
 def main():
-    local_patient_counts(
+    report_patient_counts(
         definitions_sus_5,
         group_5,
         "new_sus",
@@ -513,7 +513,7 @@ def main():
         categories=False,
         missing=False,
     )
-    local_patient_counts(
+    report_patient_counts(
         definitions_sus_5,
         group_5,
         "new_sus",
@@ -524,7 +524,7 @@ def main():
         categories=True,
         missing=False,
     )
-    local_patient_counts(
+    report_patient_counts(
         definitions_sus_5_ctv3,
         group_5,
         "ctv3_sus",
@@ -535,7 +535,7 @@ def main():
         categories=False,
         missing=False,
     )
-    local_patient_counts(
+    report_patient_counts(
         definitions_5,
         group_5,
         "new_ctv3",
@@ -546,7 +546,7 @@ def main():
         categories=False,
         missing=False,
     )
-    local_patient_counts(
+    report_patient_counts(
         definitions_supplemented_ctv3_5,
         group_5,
         "ctv3_sus",
@@ -559,7 +559,7 @@ def main():
     )
 
     #### 16 group
-    local_patient_counts(
+    report_patient_counts(
         definitions_sus_16,
         group_16,
         "new_sus",
@@ -570,7 +570,7 @@ def main():
         categories=False,
         missing=False,
     )
-    local_patient_counts(
+    report_patient_counts(
         definitions_sus_16_ctv3,
         group_16,
         "ctv3_sus",
@@ -581,7 +581,7 @@ def main():
         categories=False,
         missing=False,
     )
-    local_patient_counts(
+    report_patient_counts(
         definitions_16,
         group_16,
         "new_ctv3",
@@ -592,7 +592,7 @@ def main():
         categories=False,
         missing=False,
     )
-    local_patient_counts(
+    report_patient_counts(
         definitions_supplemented_ctv3_16,
         group_16,
         "ctv3_sus",
@@ -604,7 +604,7 @@ def main():
         missing=False,
     )
 
-    local_patient_counts(
+    report_patient_counts(
         definitions_supplemented_16,
         group_16,
         "new_sus",
@@ -616,7 +616,7 @@ def main():
         missing=False,
     )
     #  Most recent vs most common
-    local_latest_common(
+    report_latest_common(
         ["ethnicity_new_5"],
         input_path_new,
         output_path,
@@ -626,7 +626,7 @@ def main():
         definition_dict_new,
         suffix,
     )
-    local_latest_common(
+    report_latest_common(
         ["ethnicity_new_16"],
         input_path_new,
         output_path,
@@ -636,7 +636,7 @@ def main():
         definition_dict_new,
         suffix,
     )
-    local_latest_common(
+    report_latest_common(
         ["ethnicity_5"],
         input_path_new,
         output_path,
@@ -646,7 +646,7 @@ def main():
         definition_dict_ctv3,
         suffix,
     )
-    local_latest_common(
+    report_latest_common(
         ["ethnicity_16"],
         input_path_new,
         output_path,
@@ -657,7 +657,7 @@ def main():
         suffix,
     )
     #  Most recent vs any
-    local_state_change(
+    report_state_change(
         ["ethnicity_new_5"],
         input_path_new,
         output_path,
@@ -666,7 +666,7 @@ def main():
         code_dict_5,
         definition_dict_new,
     )
-    local_state_change(
+    report_state_change(
         ["ethnicity_new_16"],
         input_path_new,
         output_path,
@@ -675,7 +675,7 @@ def main():
         code_dict_16,
         definition_dict_new,
     )
-    local_state_change(
+    report_state_change(
         ["ethnicity_5"],
         input_path_new,
         output_path,
@@ -684,7 +684,7 @@ def main():
         code_dict_5,
         definition_dict_new,
     )
-    local_state_change(
+    report_state_change(
         ["ethnicity_16"],
         input_path_new,
         output_path,

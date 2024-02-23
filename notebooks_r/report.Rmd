@@ -173,7 +173,7 @@ Around `r codelist_counts %>% filter(group=="all")%>%pull(all_filled)/1000000` m
 ```{r}
 # # patient counts
 ### New SUS
-new_sus_prop_table_yesno <- read_csv(here::here("output", "report_tables", "local_patient_counts_5_new_sus_registered.csv")) %>%
+new_sus_prop_table_yesno <- read_csv(here::here("output", "report_tables", "report_patient_counts_5_new_sus_registered.csv")) %>%
   filter(subgroup == "Yes" | subgroup == "No") %>%
   mutate(subgroup = recode(subgroup,
     Yes = "Present",
@@ -181,7 +181,7 @@ new_sus_prop_table_yesno <- read_csv(here::here("output", "report_tables", "loca
   )) %>%
   arrange(group, rev(subgroup))
 
-new_sus_prop_table <- read_csv(here::here("output", "report_tables", "local_patient_counts_5_new_sus_registered.csv")) %>%
+new_sus_prop_table <- read_csv(here::here("output", "report_tables", "report_patient_counts_5_new_sus_registered.csv")) %>%
   filter(subgroup != "Yes" & subgroup != "No") %>%
   bind_rows(new_sus_prop_table_yesno) %>%
   mutate(
@@ -205,7 +205,7 @@ new_sus_prop_table <- read_csv(here::here("output", "report_tables", "local_pati
 
 
 #### CTV3 SUS
-ctv3_sus_prop_table_yesno <- read_csv(here::here("output", "report_tables", "local_patient_counts_5_ctv3_sus_registered.csv")) %>%
+ctv3_sus_prop_table_yesno <- read_csv(here::here("output", "report_tables", "report_patient_counts_5_ctv3_sus_registered.csv")) %>%
   filter(subgroup == "Yes" | subgroup == "No") %>%
   mutate(subgroup = recode(subgroup,
     Yes = "Present",
@@ -213,7 +213,7 @@ ctv3_sus_prop_table_yesno <- read_csv(here::here("output", "report_tables", "loc
   )) %>%
   arrange(group, rev(subgroup))
 
-ctv3_sus_prop_table <- read_csv(here::here("output", "report_tables", "local_patient_counts_5_ctv3_sus_registered.csv")) %>%
+ctv3_sus_prop_table <- read_csv(here::here("output", "report_tables", "report_patient_counts_5_ctv3_sus_registered.csv")) %>%
   filter(subgroup != "Yes" & subgroup != "No") %>%
   bind_rows(ctv3_sus_prop_table_yesno) %>%
   mutate(
@@ -236,7 +236,7 @@ ctv3_sus_prop_table <- read_csv(here::here("output", "report_tables", "local_pat
   select(-`all filled`)
 
 #### CTV3 New
-new_ctv3_prop_table_yesno <- read_csv(here::here("output", "report_tables", "local_patient_counts_5_new_ctv3_registered.csv")) %>%
+new_ctv3_prop_table_yesno <- read_csv(here::here("output", "report_tables", "report_patient_counts_5_new_ctv3_registered.csv")) %>%
   filter(subgroup == "Yes" | subgroup == "No") %>%
   mutate(subgroup = recode(subgroup,
     Yes = "Present",
@@ -244,7 +244,7 @@ new_ctv3_prop_table_yesno <- read_csv(here::here("output", "report_tables", "loc
   )) %>%
   arrange(group, rev(subgroup))
 
-new_ctv3_prop_table <- read_csv(here::here("output", "report_tables", "local_patient_counts_5_new_ctv3_registered.csv")) %>%
+new_ctv3_prop_table <- read_csv(here::here("output", "report_tables", "report_patient_counts_5_new_ctv3_registered.csv")) %>%
   filter(subgroup != "Yes" & subgroup != "No") %>%
   bind_rows(new_ctv3_prop_table_yesno) %>%
   mutate(
@@ -446,7 +446,7 @@ The SNOMED:2022 is the most well-populated codelist for White (`r label_number_n
 
 ```{r}
 # patient counts 5 group
-new_SUS5yesno <- read_csv(here::here("output", "report_tables", "local_patient_counts_categories_5_new_sus_registered.csv")) %>%
+new_SUS5yesno <- read_csv(here::here("output", "report_tables", "report_patient_counts_categories_5_new_sus_registered.csv")) %>%
   filter(subgroup == "Yes" | subgroup == "No") %>%
   mutate(subgroup = recode(subgroup,
     Yes = "Present",
@@ -454,7 +454,7 @@ new_SUS5yesno <- read_csv(here::here("output", "report_tables", "local_patient_c
   )) %>%
   arrange(group, rev(subgroup))
 
-new_SUS5 <- read_csv(here::here("output", "report_tables", "local_patient_counts_categories_5_new_sus_registered.csv")) %>%
+new_SUS5 <- read_csv(here::here("output", "report_tables", "report_patient_counts_categories_5_new_sus_registered.csv")) %>%
   filter(subgroup != "Yes" & subgroup != "No") %>%
   bind_rows(new_SUS5yesno) %>%
   mutate(
@@ -472,7 +472,7 @@ new_SUS5 <- read_csv(here::here("output", "report_tables", "local_patient_counts
   filter(`Asian 5 SNOMED:2022` != "- (-)")
 
 ### CTV3
-ctv3_SUS5yesno <- read_csv(here::here("output", "report_tables", "local_patient_counts_categories_5_ctv3_sus_registered.csv")) %>%
+ctv3_SUS5yesno <- read_csv(here::here("output", "report_tables", "report_patient_counts_categories_5_ctv3_sus_registered.csv")) %>%
   filter(subgroup == "Yes" | subgroup == "No") %>%
   mutate(subgroup = recode(subgroup,
     Yes = "Present",
@@ -480,7 +480,7 @@ ctv3_SUS5yesno <- read_csv(here::here("output", "report_tables", "local_patient_
   )) %>%
   arrange(group, rev(subgroup))
 
-ctv3_SUS5 <- read_csv(here::here("output", "report_tables", "local_patient_counts_categories_5_ctv3_sus_registered.csv")) %>%
+ctv3_SUS5 <- read_csv(here::here("output", "report_tables", "report_patient_counts_categories_5_ctv3_sus_registered.csv")) %>%
   filter(subgroup != "Yes" & subgroup != "No") %>%
   bind_rows(ctv3_SUS5yesno) %>%
   mutate(
@@ -709,7 +709,7 @@ codelist_counts_categories_16 <- read_csv(here::here("output", "simplified_outpu
 In the 16 group ethnicity the Other ethnic group is expanded to Chinese and Any other ethnic group. For Chinese the SNOMED:2022 codelist is most well-populated (`r label_number_n(signif(codelist_counts_categories_16 %>% filter(group=="all")%>% pull(Chinese_ethnicity_new_16_filled),3))`) and for Any other ethnic group the CTV3:2020 codelist is most well populated (`r label_number_n(signif(codelist_counts_categories_16 %>% filter(group=="all")%>% pull(Any_other_ethnic_group_ethnicity_16_filled),3))`) .
 
 ```{r, fig.width=12, fig.height=18}
-new_SUS16yesno <- read_csv(here::here("output", "report_tables", "local_patient_counts_categories_16_new_sus_registered.csv")) %>%
+new_SUS16yesno <- read_csv(here::here("output", "report_tables", "report_patient_counts_categories_16_new_sus_registered.csv")) %>%
   filter(subgroup == "Yes" | subgroup == "No") %>%
   mutate(subgroup = recode(subgroup,
     Yes = "Present",
@@ -718,7 +718,7 @@ new_SUS16yesno <- read_csv(here::here("output", "report_tables", "local_patient_
 
 # patient counts 16 group
 # New Snomed codelist
-new_SUS16 <- read_csv(here::here("output", "report_tables", "local_patient_counts_categories_16_new_sus_registered.csv")) %>%
+new_SUS16 <- read_csv(here::here("output", "report_tables", "report_patient_counts_categories_16_new_sus_registered.csv")) %>%
   filter(subgroup != "Yes" & subgroup != "No") %>%
   bind_rows(new_SUS16yesno) %>%
   mutate(
@@ -736,7 +736,7 @@ new_SUS16 <- read_csv(here::here("output", "report_tables", "local_patient_count
   filter(`Indian 16 SNOMED:2022` != "- (-)")
 
 ### CTV3 codelist
-ctv3_SUS16yesno <- read_csv(here::here("output", "report_tables", "local_patient_counts_categories_16_ctv3_sus_registered.csv")) %>%
+ctv3_SUS16yesno <- read_csv(here::here("output", "report_tables", "report_patient_counts_categories_16_ctv3_sus_registered.csv")) %>%
   filter(subgroup == "Yes" | subgroup == "No") %>%
   mutate(subgroup = recode(subgroup,
     Yes = "Present",
@@ -744,7 +744,7 @@ ctv3_SUS16yesno <- read_csv(here::here("output", "report_tables", "local_patient
   ))
 
 # patient counts 16 group
-ctv3_SUS16 <- read_csv(here::here("output", "report_tables", "local_patient_counts_categories_16_ctv3_sus_registered.csv")) %>%
+ctv3_SUS16 <- read_csv(here::here("output", "report_tables", "report_patient_counts_categories_16_ctv3_sus_registered.csv")) %>%
   filter(subgroup != "Yes" & subgroup != "No") %>%
   bind_rows(ctv3_SUS16yesno) %>%
   mutate(
@@ -830,13 +830,13 @@ SUS16
 ## Changes in coded ethnicity groups
 ### 5 Group
 ```{r}
-change_new <- read_csv(here::here("output", "report_tables", glue("local_state_change_new_5_registered.csv"))) %>%
+change_new <- read_csv(here::here("output", "report_tables", glue("report_state_change_new_5_registered.csv"))) %>%
   rename(
     latest = contains("Latest Ethnicity"),
     discordant = contains("Supplemented")
   )
 
-change_ctv3 <- read_csv(here::here("output", "report_tables", glue("local_state_change_ctv3_5_registered.csv"))) %>%
+change_ctv3 <- read_csv(here::here("output", "report_tables", glue("report_state_change_ctv3_5_registered.csv"))) %>%
   rename(
     latest = contains("Latest Ethnicity"),
     discordant = contains("Supplemented")
@@ -849,7 +849,7 @@ Patients whose latest recorded ethnicity were grouped as Mixed were most likely 
 for (codelist in c("new", "ctv3")) {
   ifelse(codelist == "new", codelist_name <- "SNOMED:2022", codelist_name <- "CTV3:2020")
 
-  anyrepeated <- read_csv(here::here("output", "report_tables", glue("local_state_change_{codelist}_5_registered.csv"))) %>%
+  anyrepeated <- read_csv(here::here("output", "report_tables", glue("report_state_change_{codelist}_5_registered.csv"))) %>%
     rename_with(~ gsub("SNOMED:2022 ", "", .)) %>%
     rename_with(str_to_title) %>%
     rename(codelist = contains("Latest Ethnicity")) %>%
@@ -888,13 +888,13 @@ anyrepeated_ctv3
 ### 16 Group
 
 ```{r}
-change_new_16 <- read_csv(here::here("output", "report_tables", glue("local_state_change_new_16_registered.csv"))) %>%
+change_new_16 <- read_csv(here::here("output", "report_tables", glue("report_state_change_new_16_registered.csv"))) %>%
   rename(
     latest = contains("Latest Ethnicity"),
     discordant = contains("Supplemented")
   )
 
-change_ctv3_16 <- read_csv(here::here("output", "report_tables", glue("local_state_change_ctv3_16_registered.csv"))) %>%
+change_ctv3_16 <- read_csv(here::here("output", "report_tables", glue("report_state_change_ctv3_16_registered.csv"))) %>%
   rename(
     latest = contains("Latest Ethnicity"),
     discordant = contains("Supplemented")
@@ -908,7 +908,7 @@ Patients whose latest recorded ethnicity were grouped as Other Black were most l
 for (codelist in c("new", "ctv3")) {
   ifelse(codelist == "new", codelist_name <- "SNOMED:2022", codelist_name <- "CTV3:2020")
 
-  anyrepeated <- read_csv(here::here("output", "report_tables", glue("local_state_change_{codelist}_16_registered.csv"))) %>%
+  anyrepeated <- read_csv(here::here("output", "report_tables", glue("report_state_change_{codelist}_16_registered.csv"))) %>%
     rename_with(~ gsub("SNOMED:2022 ", "", .)) %>%
     rename_with(~ gsub("_", " ", .)) %>%
     rename_with(str_to_title) %>%
@@ -974,7 +974,7 @@ for (codelist in c("new", "ctv3")) {
     discordant <- discordant_full %>%
       select(ethnicity, discordantcombined)
 
-    latestcommon <- read_csv(here::here("output", "report_tables", glue("local_latest_common_{codelist}_{group}_expanded_registered.csv"))) %>%
+    latestcommon <- read_csv(here::here("output", "report_tables", glue("report_latest_common_{codelist}_{group}_expanded_registered.csv"))) %>%
       rename_with(str_to_title) %>%
       rename(ethnicity = contains("Latest Ethnicity")) %>%
       inner_join(discordant, by = "ethnicity") %>%
