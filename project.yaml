@@ -874,13 +874,27 @@ actions:
         data: output/time/*rate.csv
         plots: output/time/*rate.png
 
-##### draft report
-  generate_draft_report:
-    run: python:latest jupyter nbconvert /workspace/notebooks_jupyter/draft_report_ethnicity.ipynb --execute --to html --template basic --output-dir=/workspace/output --ExecutePreprocessor.timeout=86400 --no-input
-    needs: [execute_simple_validation_analyses,execute_simple_validation_analyses_16]
+  report_tables:
+    run: python:latest python analysis/report_tables.py
+    needs: [execute_simple_validation_analyses_16_sus, execute_simple_validation_analyses_ctv3_sus,execute_simple_validation_analyses_sus,execute_simple_validation_analyses,execute_simple_validation_analyses_16]
+    outputs:
+      moderately_sensitive: 
+        tables: output/report_tables/*.csv
+
+  generate_ons_comparisons:
+    run: r:latest analysis/sus/combine_ons_sus.R
+    needs: [execute_simple_validation_analyses_16_sus,execute_simple_validation_analyses_sus]
     outputs:
       moderately_sensitive:
-        notebook: output/draft_report_ethnicity.html
+        csvs: output/sus/simplified_output/*/tables/ethnic_group*.csv
+
+##### draft report
+  generate_draft_report_rmd:
+    run: r:latest -e 'rmarkdown::render("notebooks_r/report.Rmd", knit_root_dir = "/workspace", output_dir="/workspace/output/report")'
+    needs: [generate_ons_comparisons,report_tables, execute_simple_validation_analyses,execute_simple_validation_analyses_16,execute_simple_validation_analyses_sus,execute_simple_validation_analyses_16_sus]
+    outputs:
+      moderately_sensitive:
+        html: output/report/report.html
 
 #### move released files to output/released
 ###### run locally for manuscript

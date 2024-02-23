@@ -1,0 +1,1664 @@
+---
+title: "Identifying Ethnicity in OpenSAFELY-TPP"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+
+# Import libraries
+library("here")
+library("tidyverse")
+library("gt")
+library("gtsummary")
+library("cowplot")
+library("RColorBrewer")
+library("knitr")
+library("ggsci")
+library("glue")
+library("ggalluvial")
+library("ggrepel")
+library("scales")
+
+label_number_n <- label_number(1, 1, big.mark = ",")
+
+levels_16 <- c("Indian", "Pakistani", "Bangladeshi", "Other_Asian", "Caribbean", "African", "Other_Black", "White_and_Black_Caribbean", "White_and_Black_African", "White_and_Asian", "Other_Mixed", "White_British", "White_Irish", "Other_White", "Chinese", "Any_other_ethnic_group")
+
+levels_5 <- c("Asian", "Black", "Mixed", "White", "Other")
+```
+ 
+<br>
+ 
+This short report describes how ethnicity can be identified in the OpenSAFELY-TPP database, and the strengths and weaknesses of the methods. Ethnicity is known to be an important determinant of health outcomes, particularly during the COVID-19 outbreak where a complex interplay of social and biological factors resulted in increased exposure, reduced protection, and increased severity of illness. The recording of patients' ethnic group in primary care can support efforts to achieve equity in service provision and outcomes. 
+
+The [NHS Data Model and Dictionary](https://www.datadictionary.nhs.uk/data_elements/ethnic_category.html?hl=ethnicity) states that ethnic data groups defined in the [2001 census](https://www.ethnicity-facts-figures.service.gov.uk/style-guide/ethnic-groups#2001-census) is the national mandatory standard for the collection and analysis of ethnicity.
+
+In OpenSAFELY-TPP, there is no categorical "ethnicity" variable to record this information. Rather, ethnicity is recorded using clinical codes, like any other clinical or administrative event, with specific codes relating to specific ethnic groups. 
+
+We define two codelists to capture primary care ethnicity in OpenSAFELY-TPP :  One Clinical Terms Version 3 (CTV3) Codelist "[CTV3:2020](https://www.opencodelists.org/codelist/opensafely/ethnicity/2020-04-27)", and one systematised nomenclature of medicine clinical terms (SNOMED CT) codelist "[SNOMED:2022](https://www.opencodelists.org/codelist/opensafely/ethnicity-snomed-0removed/2e641f61/)".
+
+It is common for OpenSAFELY studies to supplement the primary care recorded ethnicity, where missing, with ethnicity data from the Secondary Uses Service (SUS). This report has focussed solely on the primary care recorded ethnicity. The representativeness of the CTV3:2020 coded ethnicity supplemented with SUS data has been [reported previously](https://wellcomeopenresearch.org/articles/7-191/v1).
+
+This is a living document that will be updated to reflect changes to the OpenSAFELY-TPP database and the patient records within.
+
+## OpenSAFELY
+
+OpenSAFELY is an analytics platform for conducting analyses on Electronic Health Records inside the secure environment where the records are held. This has multiple benefits: 
+
+* We don't transport large volumes of potentially disclosive pseudonymised patient data outside of the secure environments for analysis
+
+* Analyses can run in near real-time as records are ready for analysis as soon as they appear in the secure environment
+
+* All infrastructure and analysis code is stored in GitHub repositories, which are open for security review, scientific review, and re-use
+
+A key feature of OpenSAFELY is the use of study definitions, which are formal specifications of the datasets to be generated from the OpenSAFELY database. This takes care of much of the complex Electronic Healthcare Records (EHR) data wrangling required to create a dataset in an analysis-ready format. It also creates a library of standardised and validated variable definitions that can be deployed consistently across multiple projects. 
+
+The purpose of this report is to describe the main variables that relate ethnicity, and their relative strengths and weaknesses.
+
+## Available Records
+
+OpenSAFELY-TPP runs inside TPP's data centre which contains the primary care records for all patients registered at practices using TPP's SystmOne Clinical Information System. This data centre also imports external datasets from other sources, including A&E attendances and hospital admissions from NHS Digital's Secondary Use Service, and death registrations from the ONS. More information on available data sources can be found within the [OpenSAFELY documentation](https://docs.opensafely.org/data-sources/intro/). 
+
+## Methods
+
+We define two codelists to capture primary care ethnicity in OpenSAFELY-TPP : "[CTV3:2020](https://www.opencodelists.org/codelist/opensafely/ethnicity/2020-04-27)" and "[SNOMED:2022](https://www.opencodelists.org/codelist/opensafely/ethnicity-snomed-0removed/2e641f61/)".
+
+## Completeness of ethnicity data
+
+To evaluate how well each of these codelists are populated, the proportion of patients with ethnicity recorded (that is, the presence of any code in the codelist in the patient record) was calculated for patients registered as of 1 January 2022. 
+
+We examine trends across the whole population and by each of the following demographic and clinical subgroups to detect any inequalities.
+
+Demographic covariates:
+
+- Age band
+
+- Sex
+
+- Ethnicity
+
+- Region
+
+- IMD
+
+Clinical covariates:
+
+- Dementia
+
+- Diabetes
+
+- Learning disability
+
+Ethnicity by group
+
+These codes were grouped into one of two ethnicity groups based on the 2001 Census groups: 
+
+5-level group: 
+
+- Asian or Asian British
+
+- Black or Black British 
+
+- Mixed 
+
+- White 
+
+- Chinese or other ethnic group 
+
+16-level group: 
+
+- Asian or Asian British
+
+    - Indian
+
+    - Pakistani
+
+    - Bangladeshi
+
+    - Any other Asian background
+
+- Black or Black British 
+
+    - Caribbean
+
+    - African
+
+    - Any other Black background
+
+- Mixed 
+
+    - White and Black Caribbean
+
+    - White and Black African
+
+    - White and Asian
+
+    - Any other Mixed background
+
+- White 
+
+    - British
+
+    - Irish
+
+    - Any other White background
+
+- Chinese or other ethnic group 
+
+    - Chinese
+
+    - Any other
+
+For patients with multiple ethnicity records, the most recent record was chosen (even if this is later than the cohort date). The proportion of patients with each ethnicity groups was calculated, within each clinical and demographic subgroup.
+
+## Changes in coded ethnicity groups
+
+In order to investigate the extent of discrepancies within individual patients' recorded grouped ethnicity the proportion of patients with any grouped ethnicity recorded which does not match their 'latest' recorded grouped ethnicity was calculated for each of the five ethnic groups. 
+
+## Comparison of 'Latest' and 'Most Frequent' coded ethnicity
+
+The proportion of patients with a recorded latest ethnicity whose most frequently recorded ethnicity does not match their latest recorded ethnicity was calculated for each of the five ethnic groups.
+
+All patient counts are rounded to the nearest 5. Percentages may not add to exactly 100 due to rounding.
+
+# Results
+
+## Completeness of ethnicity data  
+```{r}
+codelist_counts <- read_csv(here::here("output", "simplified_output", "5_group", "tables", "simple_patient_counts_5_group_new_ctv3_registered.csv"))
+```
+
+Around `r codelist_counts %>% filter(group=="all")%>%pull(all_filled)/1000000` million patients who have been registered in OpenSAFELY-TPP are identified in all three codelists. CTV3:2020 is the most well-populated with `r codelist_counts %>% filter(group=="all")%>%pull(ethnicity_5_filled)/1000000` million patients having at least one CTV3:2020 recording of ethnicity.
+
+```{r}
+# # patient counts
+### New SUS
+new_sus_prop_table_yesno <- read_csv(here::here("output", "report_tables", "local_patient_counts_5_new_sus_registered.csv")) %>%
+  filter(subgroup == "Yes" | subgroup == "No") %>%
+  mutate(subgroup = recode(subgroup,
+    Yes = "Present",
+    No = "Absent"
+  )) %>%
+  arrange(group, rev(subgroup))
+
+new_sus_prop_table <- read_csv(here::here("output", "report_tables", "local_patient_counts_5_new_sus_registered.csv")) %>%
+  filter(subgroup != "Yes" & subgroup != "No") %>%
+  bind_rows(new_sus_prop_table_yesno) %>%
+  mutate(
+    group = case_when(
+      group == "age_band" ~ "age band",
+      group == "learning_disability" ~ "learning disability",
+      group == "imd" ~ "IMD",
+      TRUE ~ group
+    ),
+    subgroup = recode(subgroup,
+      F = "Female",
+      M = "Male"
+    ),
+    population = as.character(scales::comma(round(as.numeric(population), 0))),
+    left_paren = "(",
+    right_paren = ")"
+  ) %>%
+  unite("5 SNOMED:2022 pp inc", left_paren, `5 SNOMED:2022 pp inc`, right_paren, sep = "") %>%
+  filter(`5 SNOMED:2022` != "- (-)") %>%
+  select(-`all filled`)
+
+
+#### CTV3 SUS
+ctv3_sus_prop_table_yesno <- read_csv(here::here("output", "report_tables", "local_patient_counts_5_ctv3_sus_registered.csv")) %>%
+  filter(subgroup == "Yes" | subgroup == "No") %>%
+  mutate(subgroup = recode(subgroup,
+    Yes = "Present",
+    No = "Absent"
+  )) %>%
+  arrange(group, rev(subgroup))
+
+ctv3_sus_prop_table <- read_csv(here::here("output", "report_tables", "local_patient_counts_5_ctv3_sus_registered.csv")) %>%
+  filter(subgroup != "Yes" & subgroup != "No") %>%
+  bind_rows(ctv3_sus_prop_table_yesno) %>%
+  mutate(
+    group = case_when(
+      group == "age_band" ~ "age band",
+      group == "learning_disability" ~ "learning disability",
+      group == "imd" ~ "IMD",
+      TRUE ~ group
+    ),
+    subgroup = recode(subgroup,
+      F = "Female",
+      M = "Male"
+    ),
+    population = as.character(scales::comma(round(as.numeric(population), 0))),
+    left_paren = "(",
+    right_paren = ")"
+  ) %>%
+  unite("5 CTV3:2020 pp inc", left_paren, `5 CTV3:2020 pp inc`, right_paren, sep = "") %>%
+  filter(`5 CTV3:2020` != "- (-)") %>%
+  select(-`all filled`)
+
+#### CTV3 New
+new_ctv3_prop_table_yesno <- read_csv(here::here("output", "report_tables", "local_patient_counts_5_new_ctv3_registered.csv")) %>%
+  filter(subgroup == "Yes" | subgroup == "No") %>%
+  mutate(subgroup = recode(subgroup,
+    Yes = "Present",
+    No = "Absent"
+  )) %>%
+  arrange(group, rev(subgroup))
+
+new_ctv3_prop_table <- read_csv(here::here("output", "report_tables", "local_patient_counts_5_new_ctv3_registered.csv")) %>%
+  filter(subgroup != "Yes" & subgroup != "No") %>%
+  bind_rows(new_ctv3_prop_table_yesno) %>%
+  mutate(
+    group = case_when(
+      group == "age_band" ~ "age band",
+      group == "learning_disability" ~ "learning disability",
+      group == "imd" ~ "IMD",
+      TRUE ~ group
+    ),
+    subgroup = recode(subgroup,
+      F = "Female",
+      M = "Male"
+    ),
+    population = as.character(scales::comma(round(as.numeric(population), 0))),
+  ) %>%
+  filter(`5 CTV3:2020` != "- (-)") %>%
+  select(group, subgroup, `all filled`, population)
+
+
+### combine tables
+combined_prop_table <- new_sus_prop_table %>%
+  left_join(ctv3_sus_prop_table, by = c("group", "subgroup", "population")) %>%
+  left_join(new_ctv3_prop_table, by = c("group", "subgroup", "population"))  %>% 
+  relocate(population, .after = last_col())
+
+
+
+table_cols <- setNames(c("group", "", "SNOMED 2022", "SNOMED 2022 with SUS data", "SNOMED 2022 Percentage point increase\n with SUS data", "CTV3 2020", "CTV3 2020 with SUS data", "CTV3 2020 Percentage point increase\n with SUS data", "In both SNOMED and CTV3","Population"), names(combined_prop_table))
+
+
+SUS_gt <- combined_prop_table %>%
+  gt(groupname_col = "group") %>%
+  cols_label(!!!table_cols) %>%
+  tab_style(
+    style = list(
+      cell_fill(color = "gray96")
+    ),
+    locations = cells_body()
+  ) %>%
+  tab_style(
+    style = list(
+      cell_text(weight = "bold")
+    ),
+    locations = cells_column_labels(everything())
+  ) %>%
+  tab_options(
+    table.align = "left",
+    table.font.size = 8,
+    column_labels.border.top.width = px(3),
+    column_labels.border.top.color = "transparent",
+    table.border.top.color = "transparent",
+    heading.align = "left",
+    data_row.padding = px(0)
+  ) %>%
+  tab_header(
+    title = md("Table 1: Count of patients with a recorded ethnicity in OpenSAFELY-TPP (proportion of registered TPP population) by clinical and demographic subgroups. All counts are rounded to the nearest 5."),
+  ) 
+
+SUS_gt
+```
+
+<br>
+
+```{r, fig.width=25, fig.height=18}
+ctv3_prop_reg <-
+  read_csv(here::here("output", "sus", "simplified_output", "5_group", "tables", "simple_patient_counts_5_group_ctv3_sus_registered.csv"), col_types = (cols())) %>%
+  select("group", "subgroup", starts_with("ethnicity_5"), starts_with("any"), "population") %>%
+  mutate(
+    ethnicity_5_percentage = round(ethnicity_5_filled / population * 100, 1),
+    any_percentage = round(any_filled / population * 100, 1),
+    group = case_when(
+      group == "age_band" ~ "Age\nBand",
+      group == "all" ~ "All",
+      group == "dementia" ~ "Dementia",
+      group == "diabetes" ~ "Diabetes",
+      group == "hypertension" ~ "Hypertension",
+      group == "imd" ~ "IMD",
+      group == "learning_disability" ~ "Learning\nDisability",
+      group == "region" ~ "Region",
+      group == "sex" ~ "Sex"
+    ),
+    group = fct_relevel(
+      group,
+      "All", "Age\nBand", "Sex", "Region", "IMD",
+      "Dementia", "Diabetes", "Hypertension", "Learning\nDisability"
+    ),
+    subgroup = case_when(
+      subgroup == "M" ~ "Male",
+      subgroup == "F" ~ "Female",
+      TRUE ~ subgroup
+    ),
+    across("subgroup", str_replace, "True", "Present"),
+    across("subgroup", str_replace, "False", "Absent")
+  ) %>%
+  filter(subgroup != "missing") %>%
+  mutate(any_percentage = any_percentage - ethnicity_5_percentage) %>%
+  pivot_longer(
+    cols = c(starts_with("ethnicity_5"), starts_with("any")),
+    names_to = c("ethnicity", ".value"),
+    names_pattern = "(.*)_(.*)"
+  ) %>%
+  mutate(
+    ethnicity = case_when(
+      ethnicity == "ethnicity_5" ~ "Primary Care only",
+      ethnicity == "any" ~ "Supplemented with SUS data"
+    ),
+    ethnicity = fct_relevel(ethnicity, "Supplemented with SUS data", "Primary Care only"),
+    codelist = "CTV3 2020"
+  )
+
+new_prop_reg <-
+  read_csv(here::here("output", "sus", "simplified_output", "5_group", "tables", "simple_patient_counts_5_group_new_sus_registered.csv"), col_types = (cols())) %>%
+  select("group", "subgroup", starts_with("ethnicity_new_5"), starts_with("any"), "population") %>%
+  mutate(
+    ethnicity_new_5_percentage = round(ethnicity_new_5_filled / population * 100, 1),
+    any_percentage = round(any_filled / population * 100, 1),
+    group = case_when(
+      group == "age_band" ~ "Age\nBand",
+      group == "all" ~ "All",
+      group == "dementia" ~ "Dementia",
+      group == "diabetes" ~ "Diabetes",
+      group == "hypertension" ~ "Hypertension",
+      group == "imd" ~ "IMD",
+      group == "learning_disability" ~ "Learning\nDisability",
+      group == "region" ~ "Region",
+      group == "sex" ~ "Sex"
+    ),
+    group = fct_relevel(
+      group,
+      "All", "Age\nBand", "Sex", "Region", "IMD",
+      "Dementia", "Diabetes", "Hypertension", "Learning\nDisability"
+    ),
+    subgroup = case_when(
+      subgroup == "M" ~ "Male",
+      subgroup == "F" ~ "Female",
+      TRUE ~ subgroup
+    ),
+    across("subgroup", str_replace, "True", "Present"),
+    across("subgroup", str_replace, "False", "Absent")
+  ) %>%
+  filter(subgroup != "missing") %>%
+  mutate(any_percentage = any_percentage - ethnicity_new_5_percentage) %>%
+  pivot_longer(
+    cols = c(starts_with("ethnicity_new_5"), starts_with("any")),
+    names_to = c("ethnicity", ".value"),
+    names_pattern = "(.*)_(.*)"
+  ) %>%
+  mutate(
+    ethnicity = case_when(
+      ethnicity == "ethnicity_new_5" ~ "Primary Care only",
+      ethnicity == "any" ~ "Supplemented with SUS data"
+    ),
+    ethnicity = fct_relevel(ethnicity, "Supplemented with SUS data", "Primary Care only"),
+    codelist = "SNOMED 2022"
+  )
+
+
+prop_reg <- new_prop_reg %>%
+  bind_rows(ctv3_prop_reg)
+
+
+prop_reg_plot <- prop_reg %>%
+  ggplot(aes(x = subgroup, y = percentage, alpha = ethnicity, fill = group)) +
+  scale_alpha_discrete(range = c(0.2, 1)) +
+  geom_hline(data = prop_reg %>% filter(codelist == "CTV3 2020"), aes(yintercept = percentage[which(group == "All" & ethnicity == "Primary Care only" & codelist == "CTV3 2020")]), color = "#00468BFF", alpha = 0.5) +
+  geom_hline(data = prop_reg %>% filter(codelist == "CTV3 2020"), aes(yintercept = sum(percentage[which(group == "All" & codelist == "CTV3 2020")])), color = "#00468BFF", alpha = 0.1) +
+  geom_hline(data = prop_reg %>% filter(codelist == "SNOMED 2022"), aes(yintercept = percentage[which(group == "All" & ethnicity == "Primary Care only" & codelist == "SNOMED 2022")]), color = "#00468BFF", alpha = 0.5) +
+  geom_hline(data = prop_reg %>% filter(codelist == "SNOMED 2022"), aes(yintercept = sum(percentage[which(group == "All" & codelist == "SNOMED 2022")])), color = "#00468BFF", alpha = 0.1) +
+  geom_bar(stat = "identity", position = "stack") +
+  facet_grid(group + codelist ~ ., scales = "free_y", space = "free_y") +
+  theme_classic() +
+  theme(text = element_text(size = 20)) +
+  theme(axis.text.x = element_text(
+    size = 20,
+    hjust = 0.5,
+    vjust = 0
+  )) +
+  theme(strip.text.y = element_text(angle = 0)) +
+  coord_flip() +
+  scale_fill_lancet() +
+  xlab("") +
+  ylab("\nProportion of registered TPP patients") +
+  guides(fill = "none", alpha = guide_legend("")) +
+  theme(legend.position = "bottom")
+
+prop_reg_plot
+```
+
+<br>
+
+## Ethnicity by group  
+
+### 5 Group
+```{r}
+codelist_counts_categories <- read_csv(here::here("output", "simplified_output", "5_group", "tables", "simple_patient_counts_categories_5_group_new_ctv3_registered.csv"))
+```
+
+The SNOMED:2022 is the most well-populated codelist for White (`r label_number_n(signif(codelist_counts_categories %>% filter(group=="all")%>% pull( White_ethnicity_new_5_filled),3))`), Mixed (`r label_number_n(signif(codelist_counts_categories %>% filter(group=="all")%>% pull( Mixed_ethnicity_new_5_filled),3))`), Asian (`r label_number_n(signif(codelist_counts_categories %>% filter(group=="all")%>% pull( Asian_ethnicity_new_5_filled),3))`) and Black (`r label_number_n(signif(codelist_counts_categories %>% filter(group=="all")%>% pull( Black_ethnicity_new_5_filled),3))`) ethnicities. The CTV3:2020 codelist classifies more people as Other than the SNOMED:2022 codelist (`r label_number_n(signif(codelist_counts_categories %>% filter(group=="all")%>% pull( Other_ethnicity_5_filled),3))` and `r label_number_n(signif(codelist_counts_categories %>% filter(group=="all")%>% pull( Other_ethnicity_new_5_filled),3))` respectively), however, the CTV3:2020 codelist includes some codes relating to religion rather than ethnicity (e.g. "XaJSe: Muslim - ethnic category 2001 census") which were excluded from the SNOMED:2022 codelist.
+
+```{r}
+# patient counts 5 group
+new_SUS5yesno <- read_csv(here::here("output", "report_tables", "local_patient_counts_categories_5_new_sus_registered.csv")) %>%
+  filter(subgroup == "Yes" | subgroup == "No") %>%
+  mutate(subgroup = recode(subgroup,
+    Yes = "Present",
+    No = "Absent"
+  )) %>%
+  arrange(group, rev(subgroup))
+
+new_SUS5 <- read_csv(here::here("output", "report_tables", "local_patient_counts_categories_5_new_sus_registered.csv")) %>%
+  filter(subgroup != "Yes" & subgroup != "No") %>%
+  bind_rows(new_SUS5yesno) %>%
+  mutate(
+    group = case_when(
+      group == "age_band" ~ "age band",
+      group == "learning_disability" ~ "learning disability",
+      group == "imd" ~ "IMD",
+      TRUE ~ group
+    ),
+    subgroup = recode(subgroup,
+      F = "Female",
+      M = "Male"
+    )
+  ) %>%
+  filter(`Asian 5 SNOMED:2022` != "- (-)")
+
+### CTV3
+ctv3_SUS5yesno <- read_csv(here::here("output", "report_tables", "local_patient_counts_categories_5_ctv3_sus_registered.csv")) %>%
+  filter(subgroup == "Yes" | subgroup == "No") %>%
+  mutate(subgroup = recode(subgroup,
+    Yes = "Present",
+    No = "Absent"
+  )) %>%
+  arrange(group, rev(subgroup))
+
+ctv3_SUS5 <- read_csv(here::here("output", "report_tables", "local_patient_counts_categories_5_ctv3_sus_registered.csv")) %>%
+  filter(subgroup != "Yes" & subgroup != "No") %>%
+  bind_rows(ctv3_SUS5yesno) %>%
+  mutate(
+    group = case_when(
+      group == "age_band" ~ "age band",
+      group == "learning_disability" ~ "learning disability",
+      group == "imd" ~ "IMD",
+      TRUE ~ group
+    ),
+    subgroup = recode(subgroup,
+      F = "Female",
+      M = "Male"
+    )
+  ) %>%
+  filter(`Asian 5 CTV3:2020` != "- (-)")
+
+
+combined_prop_5_table <- ctv3_SUS5 %>%
+  left_join(new_SUS5, by = c("group", "subgroup")) %>%
+  rename_with(~ gsub(" 5", "", .)) %>% # remove extra 5
+  rename_with(~ gsub("CTV3 ", "CTV3:2020 ", .)) %>% # remove extra 5
+  select("group", "subgroup", sort(names(.)))
+
+
+
+my_cols <- setNames(c("group", "", rep(c("CTV3 2020", "CTV3 2020 with SUS", "SNOMED 2022", "SNOMED 2022 with SUS"), 5)), names(combined_prop_5_table))
+
+
+SUS5 <- combined_prop_5_table %>%
+  gt(groupname_col = "group") %>%
+  tab_spanner(label = "Asian", columns = c(3:6)) %>%
+  tab_spanner(label = "Black", columns = c(7:10)) %>%
+  tab_spanner(label = "Mixed", columns = c(11:14)) %>%
+  tab_spanner(label = "White", columns = c(15:18)) %>%
+  tab_spanner(label = "Other", columns = c(19:22)) %>%
+  cols_label(!!!my_cols) %>%
+  tab_style(
+    style = list(
+      cell_fill(color = "gray96")
+    ),
+    locations = cells_body()
+  ) %>%
+  tab_style(
+    style = list(
+      cell_text(weight = "bold")
+    ),
+    locations = cells_column_labels(everything())
+  ) %>%
+  tab_options(
+    table.align = "left",
+    # row_group.as_column = TRUE option not available on the OS R image
+    table.font.size = 8,
+    column_labels.border.top.width = px(3),
+    column_labels.border.top.color = "transparent",
+    table.border.top.color = "transparent",
+    heading.align = "left"
+  ) %>%
+  tab_header(
+    title = md("Table 2:  Count of patients with a recorded ethnicity in OpenSAFELY TPP by ethnicity group (proportion of registered TPP population) and clinical and demographic subgroups. All counts are rounded to the nearest 5. "),
+  ) %>%
+  tab_options(., container.width = 1200) %>%
+  tab_options(
+    data_row.padding = px(0)
+  )
+
+
+
+SUS5
+```
+
+<br>
+
+```{r, fig.width=25, fig.height=30}
+new_prop_reg_cat <-
+  read_csv(here::here("output", "sus", "simplified_output", "5_group", "tables", "simple_patient_counts_categories_5_group_new_sus_registered.csv"), col_types = (cols())) %>%
+  rename_with(~ sub("ethnicity_", "", .), contains("ethnicity_")) %>%
+  rename_with(~ sub("_5_filled", "", .), contains("_5_filled")) %>%
+  select(-contains("filled"), -contains("missing"), -contains("sus"), -contains("any")) %>%
+  mutate(
+    Asian_supplementeddiff = Asian_supplemented - Asian_new,
+    Black_supplementeddiff = Black_supplemented - Black_new,
+    Mixed_supplementeddiff = Mixed_supplemented - Mixed_new,
+    White_supplementeddiff = White_supplemented - White_new,
+    Other_supplementeddiff = Other_supplemented - Other_new,
+    cohort = "SNOMED 2022"
+  )
+
+ctv3_prop_reg_cat <-
+  read_csv(here::here("output", "sus", "simplified_output", "5_group", "tables", "simple_patient_counts_categories_5_group_ctv3_sus_registered.csv"), col_types = (cols())) %>%
+  rename_with(~ sub("ethnicity_", "new_", .), contains("ethnicity_")) %>%
+  rename_with(~ sub("_5_filled", "", .), contains("_5_filled")) %>%
+  select(-contains("filled"), -contains("missing"), -contains("sus"), -contains("any")) %>%
+  mutate(
+    Asian_supplementeddiff = Asian_supplemented - Asian_new,
+    Black_supplementeddiff = Black_supplemented - Black_new,
+    Mixed_supplementeddiff = Mixed_supplemented - Mixed_new,
+    White_supplementeddiff = White_supplemented - White_new,
+    Other_supplementeddiff = Other_supplemented - Other_new,
+    cohort = "CTV3 2020"
+  )
+
+prop_reg_cat <- new_prop_reg_cat %>%
+  bind_rows(ctv3_prop_reg_cat)
+
+
+prop_reg_cat_pivot <- prop_reg_cat %>%
+  pivot_longer(
+    cols = c(contains("_")),
+    names_to = c("ethnicity", "codelist"),
+    names_pattern = "(.*)_(.*)",
+    values_to = "n"
+  ) %>%
+  mutate(
+    percentage = round(n / population * 100, 1),
+    group = case_when(
+      group == "age_band" ~ "Age\nBand",
+      group == "all" ~ "All",
+      group == "dementia" ~ "Dementia",
+      group == "diabetes" ~ "Diabetes",
+      group == "hypertension" ~ "Hypertension",
+      group == "imd" ~ "IMD",
+      group == "learning_disability" ~ "Learning\nDisability",
+      group == "region" ~ "Region",
+      group == "sex" ~ "Sex"
+    ),
+    group = fct_relevel(
+      group,
+      "All", "Age\nBand", "Sex", "Region", "IMD",
+      "Dementia", "Diabetes", "Hypertension", "Learning\nDisability"
+    ),
+    subgroup = case_when(
+      subgroup == "M" ~ "Male",
+      subgroup == "F" ~ "Female",
+      TRUE ~ subgroup
+    ),
+    across("subgroup", str_replace, "True", "Present"),
+    across("subgroup", str_replace, "False", "Absent"),
+    across("ethnicity", str_replace, "_ethnicity_new_5_filled", "")
+  ) %>%
+  mutate(
+    ethnicity = fct_relevel(
+      ethnicity,
+      levels_5
+    )
+  )
+
+prop_reg_cat_hline_new <- prop_reg_cat_pivot %>%
+  arrange(ethnicity, group) %>%
+  group_by(ethnicity, codelist) %>%
+  mutate(percentage = first(percentage)) %>%
+  ungroup() %>%
+  filter(codelist == "Primary Care only")
+
+prop_reg_cat_hline_supplemented <- prop_reg_cat_pivot %>%
+  arrange(ethnicity, group) %>%
+  group_by(ethnicity, codelist) %>%
+  mutate(percentage = first(percentage)) %>%
+  ungroup() %>%
+  filter(codelist == "supplemented")
+
+prop_reg_cat_pivot <- prop_reg_cat_pivot %>%
+  mutate(
+    codelist = case_when(
+      codelist == "new" ~ "Primary Care only",
+      codelist == "supplementeddiff" ~ "Supplemented with SUS data",
+      T ~ codelist
+    ),
+    codelist = fct_relevel(codelist, "Supplemented with SUS data", "Primary Care only"),
+  )
+
+
+
+prop_reg_cat_plot <- prop_reg_cat_pivot %>%
+  filter(
+    codelist != "supplemented",
+    subgroup != "missing"
+  ) %>%
+  ggplot(aes(x = subgroup, y = percentage, alpha = codelist, fill = group)) +
+  scale_alpha_discrete(range = c(0.2, 1)) +
+  # geom_hline(
+  #   data = prop_reg_cat_hline_new,
+  #   aes(yintercept = percentage), color = "#00468BFF", alpha = 0.6
+  # ) +
+  # geom_hline(
+  #   data = prop_reg_cat_hline_supplemented,
+  #   aes(yintercept = percentage), color = "#00468BFF", alpha = 0.1
+  # ) +
+
+  # geom_hline(data = prop_reg_cat_hline_new %>% filter(cohort == "CTV3 2020" & codelist == "Primary Care only"),aes(yintercept = percentage[which(group == "All" & codelist == "Primary Care only" & cohort=="CTV3 2020")]), color = "#00468BFF", alpha = 0.5) +
+  # # geom_hline(data = prop_reg_cat_hline_new %>% filter(cohort == "CTV3 2020"), aes(yintercept = percentage), color = "#00468BFF", alpha = 0.1) +
+  # # geom_hline(data = prop_reg_cat_hline_supplemented %>% filter(cohort == "SNOMED 2022"),aes(yintercept = percentage), color = "#00468BFF", alpha = 0.5) +
+  # # geom_hline(data = prop_reg_cat_hline_supplemented %>% filter(cohort == "SNOMED 2022"), aes(yintercept = percentage), color = "#00468BFF", alpha = 0.1) +
+  # #
+  # #
+
+
+  geom_bar(stat = "identity", position = "stack") +
+  facet_grid(group + cohort ~ ethnicity, scales = "free", space = "free", shrink = FALSE) +
+  theme_classic() +
+  theme(text = element_text(size = 30)) +
+  theme(axis.text.x = element_text(
+    size = 25,
+    hjust = 0.5,
+    vjust = 0
+  )) +
+  theme(strip.text.y = element_text(angle = 0)) +
+  coord_flip() +
+  scale_fill_lancet() +
+  xlab("") +
+  ylab("\nProportion of registered TPP patients") +
+  guides(fill = "none", alpha = guide_legend("")) +
+  theme(
+    legend.position = "bottom",
+    panel.spacing = unit(1.1, "lines")
+  )
+
+prop_reg_cat_plot
+```
+
+### 16 Group
+
+```{r}
+codelist_counts_categories_16 <- read_csv(here::here("output", "simplified_output", "16_group", "tables", "simple_patient_counts_categories_16_group_new_ctv3_registered.csv"))
+```
+
+In the 16 group ethnicity the Other ethnic group is expanded to Chinese and Any other ethnic group. For Chinese the SNOMED:2022 codelist is most well-populated (`r label_number_n(signif(codelist_counts_categories_16 %>% filter(group=="all")%>% pull(Chinese_ethnicity_new_16_filled),3))`) and for Any other ethnic group the CTV3:2020 codelist is most well populated (`r label_number_n(signif(codelist_counts_categories_16 %>% filter(group=="all")%>% pull(Any_other_ethnic_group_ethnicity_16_filled),3))`) .
+
+```{r, fig.width=12, fig.height=18}
+new_SUS16yesno <- read_csv(here::here("output", "report_tables", "local_patient_counts_categories_16_new_sus_registered.csv")) %>%
+  filter(subgroup == "Yes" | subgroup == "No") %>%
+  mutate(subgroup = recode(subgroup,
+    Yes = "Present",
+    No = "Absent"
+  ))
+
+# patient counts 16 group
+# New Snomed codelist
+new_SUS16 <- read_csv(here::here("output", "report_tables", "local_patient_counts_categories_16_new_sus_registered.csv")) %>%
+  filter(subgroup != "Yes" & subgroup != "No") %>%
+  bind_rows(new_SUS16yesno) %>%
+  mutate(
+    group = case_when(
+      group == "age_band" ~ "age band",
+      group == "learning_disability" ~ "learning disability",
+      group == "imd" ~ "IMD",
+      TRUE ~ group
+    ),
+    subgroup = recode(subgroup,
+      F = "Female",
+      M = "Male"
+    )
+  ) %>%
+  filter(`Indian 16 SNOMED:2022` != "- (-)")
+
+### CTV3 codelist
+ctv3_SUS16yesno <- read_csv(here::here("output", "report_tables", "local_patient_counts_categories_16_ctv3_sus_registered.csv")) %>%
+  filter(subgroup == "Yes" | subgroup == "No") %>%
+  mutate(subgroup = recode(subgroup,
+    Yes = "Present",
+    No = "Absent"
+  ))
+
+# patient counts 16 group
+ctv3_SUS16 <- read_csv(here::here("output", "report_tables", "local_patient_counts_categories_16_ctv3_sus_registered.csv")) %>%
+  filter(subgroup != "Yes" & subgroup != "No") %>%
+  bind_rows(ctv3_SUS16yesno) %>%
+  mutate(
+    group = case_when(
+      group == "age_band" ~ "age band",
+      group == "learning_disability" ~ "learning disability",
+      group == "imd" ~ "IMD",
+      TRUE ~ group
+    ),
+    subgroup = recode(subgroup,
+      F = "Female",
+      M = "Male"
+    )
+  ) %>%
+  filter(`White British 16 CTV3:2020` != "- (-)")
+
+ethnicity_16 <- c("Indian", "Pakistani", "Bangladeshi", "Other Asian", "Caribbean", "African", "Other Black", "White and Black Caribbean", "White and Black African", "White and Asian", "Other Mixed", "White British", "White Irish", "Other White", "Chinese", "Any other ethnic group")
+
+codelist <- c("CTV3:2020", "CTV3:2020 Supplemented", "SNOMED:2022", "SNOMED:2022 Supplemented")
+columns_combined <- paste(rep(ethnicity_16, each = length(codelist)), codelist, sep = " ")
+
+## combine CTV3 and Snomed tables
+combined_prop_16_table <- ctv3_SUS16 %>%
+  left_join(new_SUS16, by = c("group", "subgroup")) %>%
+  rename_with(~ gsub(" 16", "", .)) %>% # remove extra 5
+  rename_with(~ gsub("CTV3 ", "CTV3:2020 ", .)) %>% # remove extra 5
+  select("group", "subgroup", columns_combined)
+
+
+my_cols <- setNames(c("group", "", rep(c("CTV3 2020", "CTV3 2020 with SUS", "SNOMED 2022", "SNOMED 2022 with SUS"), 16)), names(combined_prop_16_table))
+
+
+SUS16 <- combined_prop_16_table %>%
+  gt(groupname_col = "group") %>%
+  tab_spanner(label = "Indian", columns = c(3:6)) %>%
+  tab_spanner(label = "Pakistani", columns = c(7:10)) %>%
+  tab_spanner(label = "Bangladeshi", columns = c(11:14)) %>%
+  tab_spanner(label = "Other Asian", columns = c(15:18)) %>%
+  tab_spanner(label = "Caribbean", columns = c(19:22)) %>%
+  tab_spanner(label = "African", columns = c(23:26)) %>%
+  tab_spanner(label = "Other Black", columns = c(27:30)) %>%
+  tab_spanner(label = "White and Black Caribbean", columns = c(31:34)) %>%
+  tab_spanner(label = "White and Black African", columns = c(35:38)) %>%
+  tab_spanner(label = "White and Asian", columns = c(39:42)) %>%
+  tab_spanner(label = "Other Mixed", columns = c(43:46)) %>%
+  tab_spanner(label = "White British", columns = c(47:50)) %>%
+  tab_spanner(label = "White Irish", columns = c(51:54)) %>%
+  tab_spanner(label = "Other White", columns = c(55:58)) %>%
+  tab_spanner(label = "Chinese", columns = c(59:62)) %>%
+  tab_spanner(label = "Any other ethnic group", columns = c(63:66)) %>%
+  cols_label(!!!my_cols) %>%
+  tab_style(
+    style = list(
+      cell_fill(color = "gray96")
+    ),
+    locations = cells_body()
+  ) %>%
+  tab_style(
+    style = list(
+      cell_text(weight = "bold")
+    ),
+    locations = cells_column_labels(everything())
+  ) %>%
+  tab_options(
+    table.align = "left",
+    # row_group.as_column = TRUE option not available on the OS R image
+    table.font.size = 8,
+    column_labels.border.top.width = px(3),
+    column_labels.border.top.color = "transparent",
+    table.border.top.color = "transparent",
+    heading.align = "left"
+  ) %>%
+  tab_header(
+    title = md("Count of patients with a recorded ethnicity in OpenSAFELY TPP by ethnicity group (proportion of registered TPP population) and clinical and demographic subgroups. All counts are rounded to the nearest 5."),
+  ) %>%
+  tab_options(., container.width = 3000) %>%
+  tab_options(
+    data_row.padding = px(0)
+  )
+
+SUS16
+```
+## Changes in coded ethnicity groups
+### 5 Group
+```{r}
+change_new <- read_csv(here::here("output", "report_tables", glue("local_state_change_new_5_registered.csv"))) %>%
+  rename(
+    latest = contains("Latest Ethnicity"),
+    discordant = contains("Supplemented")
+  )
+
+change_ctv3 <- read_csv(here::here("output", "report_tables", glue("local_state_change_ctv3_5_registered.csv"))) %>%
+  rename(
+    latest = contains("Latest Ethnicity"),
+    discordant = contains("Supplemented")
+  )
+```
+Patients whose latest recorded ethnicity were grouped as Mixed were most likely to have a discordant ethnicity recording (`r stringr::str_extract(change_new %>% filter(str_detect(latest, "Mixed")) %>%pull(discordant), pattern = "(?<=\\().*(?=\\))")`% SNOMED:2022, `r stringr::str_extract(change_ctv3 %>% filter(str_detect(latest, "Mixed")) %>%pull(discordant), pattern = "(?<=\\().*(?=\\))")` CTV3:2020). Both codelists had patients with latest recorded ethnicity grouped as Black who also had a recorded ethnicity of White (`r stringr::str_extract(change_new %>% filter(str_detect(latest, "Black")) %>%pull(white), pattern = "(?<=\\().*(?=\\))")`% SNOMED:2022, `r stringr::str_extract(change_ctv3 %>% filter(str_detect(latest, "Black")) %>%pull(white), pattern = "(?<=\\().*(?=\\))")`% CTV3:2020).
+
+
+```{r}
+for (codelist in c("new", "ctv3")) {
+  ifelse(codelist == "new", codelist_name <- "SNOMED:2022", codelist_name <- "CTV3:2020")
+
+  anyrepeated <- read_csv(here::here("output", "report_tables", glue("local_state_change_{codelist}_5_registered.csv"))) %>%
+    rename_with(~ gsub("SNOMED:2022 ", "", .)) %>%
+    rename_with(str_to_title) %>%
+    rename(codelist = contains("Latest Ethnicity")) %>%
+    gt() %>%
+    cols_label(codelist = codelist_name) %>%
+    cols_label(Supplemented = "Any discordant") %>%
+    tab_spanner(label = "Latest Recorded Ethnicity", columns = 1) %>%
+    tab_spanner(label = "Any Recorded Ethnicity", columns = c(2:7)) %>%
+    tab_options(
+      table.align = "left",
+      table.font.size = 8,
+      column_labels.border.top.width = px(3),
+      column_labels.border.top.color = "transparent",
+      table.border.top.color = "transparent",
+      heading.align = "left"
+    ) %>%
+    tab_header(
+      title = md("Table 4: Count of patients with at least one recording of each ethnicity (proportion of latest ethnicity)."),
+    ) %>%
+    tab_options(
+      data_row.padding = px(0)
+    )
+
+  assign(glue("anyrepeated_{codelist}"), anyrepeated)
+}
+```
+
+```{r}
+anyrepeated_new
+```
+<br>
+```{r}
+anyrepeated_ctv3
+```
+
+### 16 Group
+
+```{r}
+change_new_16 <- read_csv(here::here("output", "report_tables", glue("local_state_change_new_16_registered.csv"))) %>%
+  rename(
+    latest = contains("Latest Ethnicity"),
+    discordant = contains("Supplemented")
+  )
+
+change_ctv3_16 <- read_csv(here::here("output", "report_tables", glue("local_state_change_ctv3_16_registered.csv"))) %>%
+  rename(
+    latest = contains("Latest Ethnicity"),
+    discordant = contains("Supplemented")
+  )
+```
+
+
+Patients whose latest recorded ethnicity were grouped as Other Black were most likely to have a discordant ethnicity recording (`r stringr::str_extract(change_new_16 %>% filter(str_detect(latest, "Other_Black")) %>%pull(discordant), pattern = "(?<=\\().*(?=\\))")`% SNOMED:2022, `r stringr::str_extract(change_ctv3_16 %>% filter(str_detect(latest, "Other_Black")) %>%pull(discordant), pattern = "(?<=\\().*(?=\\))")`% CTV3:2020).
+
+```{r}
+for (codelist in c("new", "ctv3")) {
+  ifelse(codelist == "new", codelist_name <- "SNOMED:2022", codelist_name <- "CTV3:2020")
+
+  anyrepeated <- read_csv(here::here("output", "report_tables", glue("local_state_change_{codelist}_16_registered.csv"))) %>%
+    rename_with(~ gsub("SNOMED:2022 ", "", .)) %>%
+    rename_with(~ gsub("_", " ", .)) %>%
+    rename_with(str_to_title) %>%
+    rename(codelist = contains("Latest Ethnicity")) %>%
+    mutate(codelist = gsub("_", " ", codelist)) %>%
+    gt() %>%
+    cols_label(codelist = codelist_name) %>%
+    cols_label(Supplemented = "Any discordant") %>%
+    tab_spanner(label = "Latest Recorded Ethnicity", columns = 1) %>%
+    tab_spanner(label = "Any Recorded Ethnicity", columns = c(2:18)) %>%
+    tab_options(
+      table.align = "left",
+      table.font.size = 8,
+      column_labels.border.top.width = px(3),
+      column_labels.border.top.color = "transparent",
+      table.border.top.color = "transparent",
+      heading.align = "left"
+    ) %>%
+    tab_header(
+      title = md("Table 4: Count of patients with at least one recording of each ethnicity (proportion of latest ethnicity)."),
+    ) %>%
+    tab_options(
+      data_row.padding = px(0)
+    )
+
+  assign(glue("anyrepeated_{codelist}"), anyrepeated)
+}
+```
+
+
+```{r}
+anyrepeated_new
+```
+<br>
+```{r}
+anyrepeated_ctv3
+```
+## Comparison of 'Latest' and 'Most Frequent' coded ethnicity
+
+
+```{r}
+for (codelist in c("new", "ctv3")) {
+  for (group in c(5, 16)) {
+    ifelse(codelist == "new", codelist_path <- glue("ethnicity_new_{group}"), codelist_path <- glue("ethnicity_{group}"))
+    ifelse(codelist == "new", codelist_name <- "SNOMED:2022", codelist_name <- "CTV3:2020")
+
+    discordant_full <-
+      read_csv(here::here("output", "simplified_output", glue("{group}_group"), "tables", glue("simple_latest_common_{codelist_path}_registered.csv"))) %>%
+      mutate(
+        ethnicity = fct_relevel(!!as.name(codelist_path), get(glue("levels_{group}"))),
+        sum = rowSums(across(where(is.numeric)), na.rm = T)
+      ) %>%
+      arrange(ethnicity) %>%
+      replace(., col(.) == row(.) + 1, NA) %>%
+      mutate(
+        any_discordant = rowSums(across(where(is.numeric)), na.rm = T) - sum,
+        any_discordant_perc = round(any_discordant / sum * 100, 0),
+        discordantcombined = glue("{any_discordant} ({any_discordant_perc})")
+      )
+
+    assign(glue("discordant_{codelist}_{group}"), discordant_full)
+
+    discordant <- discordant_full %>%
+      select(ethnicity, discordantcombined)
+
+    latestcommon <- read_csv(here::here("output", "report_tables", glue("local_latest_common_{codelist}_{group}_expanded_registered.csv"))) %>%
+      rename_with(str_to_title) %>%
+      rename(ethnicity = contains("Latest Ethnicity")) %>%
+      inner_join(discordant, by = "ethnicity") %>%
+      gt() %>%
+      cols_label(
+        ethnicity = codelist_name,
+        discordantcombined = ""
+      ) %>%
+      tab_spanner(label = "Latest Recorded Ethnicity", columns = 1) %>%
+      tab_spanner(label = "Most Frequent Ethnicity", columns = c(2:(group + 1))) %>%
+      tab_spanner(label = "Any Discordant Ethnicity", columns = c(group + 2)) %>%
+      tab_options(
+        table.align = "left",
+        table.font.size = 8,
+        column_labels.border.top.width = px(3),
+        column_labels.border.top.color = "transparent",
+        table.border.top.color = "transparent",
+        heading.align = "left"
+      ) %>%
+      tab_options(
+        data_row.padding = px(0)
+      )
+
+    assign(glue("latestcommon_{codelist}_{group}"), latestcommon)
+  }
+}
+```
+
+
+### 5 Group
+
+Overall `r round((1 - (sum(discordant_new_5$any_discordant)/sum(discordant_new_5$sum))) *100,0)`% of the latest 5 group ethnicity matched the most frequent 5 group ethnicity for all codelists. `r round((1 - (discordant_new_5 %>% filter(ethnicity_new_5=="White") %>% select(any_discordant) / discordant_new_5 %>% filter(ethnicity_new_5=="White") %>% select(sum))) *100,0)`% of those with the most recent ethnicity classified as White also had the most frequent ethnicity White for both codelists. Mixed was the least concordant for all both codelists with `r round(((discordant_new_5 %>% filter(ethnicity_new_5=="Mixed") %>% select(any_discordant) / discordant_new_5 %>% filter(ethnicity_new_5=="Mixed") %>% select(sum))) *100,0)`% of those with the most recent ethnicity Mixed also had the most frequent ethnicity Mixed. Of those with latest ethnicity Black `r round(((discordant_new_5 %>% filter(ethnicity_new_5=="Black") %>% select(ethnicity_new_5_white) / discordant_new_5 %>% filter(ethnicity_new_5=="Black") %>% select(sum))) *100,0)`% also had the most frequent ethnicity White.
+
+
+
+
+```{r}
+latestcommon_new_5
+```
+<br>
+```{r}
+latestcommon_ctv3_5
+```
+
+### 16 group
+
+Expanding to the 16 group the percentage of latest ethnicity that match the most frequent ethnicity falls to `r round((1 - (sum(discordant_new_16$any_discordant)/sum(discordant_new_16$sum))) *100,0)`% for both SNOMED:2022 and CTV3:2020. White British was the most concordant for both SNOMED:2022 and CTV3:2020 with `r round((1 - (discordant_new_16 %>% filter(ethnicity_new_16=="White_British") %>% select(any_discordant) / discordant_new_16 %>% filter(ethnicity_new_16=="White_British") %>% select(sum))) *100,0)`% and `r round((1 - (discordant_ctv3_16 %>% filter(ethnicity_16=="White_British") %>% select(any_discordant) / discordant_ctv3_16 %>% filter(ethnicity_16=="White_British") %>% select(sum))) *100,0)`%, respectively, of those with the most recent ethnicity classified as White British also had the most frequent ethnicity White British. For both SNOMED:2022 and CTV3:2020 Other Black was the least concordant, `r round((1 - (discordant_new_16 %>% filter(ethnicity_new_16=="Other_Black") %>% select(any_discordant) / discordant_new_16 %>% filter(ethnicity_new_16=="Other_Black") %>% select(sum))) *100,0)`% of those with the most recent ethnicity Other Black also had the most frequent ethnicity Other Black.
+
+```{r}
+latestcommon_new_16 %>%
+  tab_options(., container.width = 1600)
+```
+<br>
+```{r}
+latestcommon_ctv3_16 %>%
+  tab_options(., container.width = 1600)
+```
+# Consistency of ethnicity recording across data sources (primary care versus secondary care)
+```{r}
+for (codelist in c("new", "ctv3")) {
+  ifelse(codelist == "new", codelist_name <- "SNOMED:2022", codelist_name <- "CTV3:2020")
+  df_sus_new_cross <- read_csv(here::here("output", "sus", "simplified_output", "5_group", "tables", glue("simple_{codelist}_sus_crosstab_long_registered.csv"))) %>%
+    rename_with(~"ethnicity", contains("ethnicity_") & !contains("sus"))
+
+  ethnicity_cat <-
+    read_csv(here::here("output", "sus", "simplified_output", "5_group", "tables", glue("simple_patient_counts_categories_5_group_{codelist}_sus_registered.csv")), col_types = (cols())) %>%
+    rename_with(~ sub("ethnicity_", "", .), contains("ethnicity_")) %>%
+    rename_with(~ sub("_new", "", .), contains("_new")) %>%
+    rename_with(~ sub("_ctv3", "", .), contains("_ctv3")) %>%
+    rename_with(~ sub("_5_filled", "", .), contains("_5_filled")) %>%
+    select(-contains("filled"), -contains("missing"), -contains("sus")) %>%
+    mutate(
+      Asian_anydiff = Asian_any - Asian,
+      Black_anydiff = Black_any - Black,
+      Mixed_anydiff = Mixed_any - Mixed,
+      White_anydiff = White_any - White,
+      Other_anydiff = Other_any - Other,
+    )
+
+  ethnicity_cat_pivot <- ethnicity_cat %>%
+    pivot_longer(
+      cols = c(contains("_")),
+      names_to = c("ethnicity", "codelist"),
+      names_pattern = "(.*)_(.*)",
+      values_to = "n"
+    ) %>%
+    filter(codelist == "new", group == "all") %>%
+    summarise(
+      ethnicity,
+      population = n
+    ) %>%
+    bind_rows(population)
+
+
+  df_sus_new_cross_perc <- df_sus_new_cross %>%
+    left_join(ethnicity_cat_pivot, by = "ethnicity") %>%
+    mutate(
+      percentage = round(`0` / population * 100, 1),
+      ethnicity = fct_relevel(
+        ethnicity,
+        levels_5
+      ),
+      ethnicity_sus_5 = fct_relevel(
+        ethnicity_sus_5,
+        levels_5
+      ),
+      left_paren = " (",
+      right_paren = ")",
+      N = scales::comma(as.numeric(`0`)),
+      population = scales::comma(as.numeric(population))
+    ) %>%
+    arrange(ethnicity, ethnicity_sus_5) %>%
+    unite("labl", N, left_paren, percentage, right_paren, sep = "", remove = F) %>%
+    unite("ethnicity", ethnicity, left_paren, population, right_paren, sep = "") %>%
+    select(-`0`, -percentage, -N) %>%
+    pivot_wider(names_from = c("ethnicity_sus_5"), values_from = labl) %>%
+    select(-year, -country)
+
+  my_cols <- setNames(c(codelist_name, "Asian", "Black", "Mixed", "White", "Other", "Unknown"), names(df_sus_new_cross_perc))
+
+  df_sus_new_cross_table <- df_sus_new_cross_perc %>%
+    gt(groupname_col = "") %>%
+    tab_spanner(label = "Primary Care ethnicity", columns = c(1)) %>%
+    tab_spanner(label = "Secondary Care ethnicity", columns = c(2:7)) %>%
+    cols_label(!!!my_cols) %>%
+    tab_style(
+      style = list(
+        cell_fill(color = "gray96")
+      ),
+      locations = cells_body()
+    ) %>%
+    tab_style(
+      style = list(
+        cell_text(weight = "bold")
+      ),
+      locations = cells_column_labels(everything())
+    ) %>%
+    tab_options(
+      table.align = "left",
+      # row_group.as_column = TRUE option not available on the OS R image
+      table.font.size = 8,
+      column_labels.border.top.width = px(3),
+      column_labels.border.top.color = "transparent",
+      table.border.top.color = "transparent",
+      heading.align = "left"
+    ) %>%
+    tab_header(
+      title = md("Table 5:  Count of patients with a recorded ethnicity in Secondary Care by ethnicity group (proportion of Primary Care population). All counts are rounded to the nearest 5. "),
+    ) %>%
+    tab_options(
+      data_row.padding = px(0)
+    )
+
+  assign(glue("df_sus_new_cross_table_{codelist}"), df_sus_new_cross_table)
+
+  ### sankey plot
+
+  df_secondary_new_cross_perc <- df_sus_new_cross %>%
+    mutate(
+      ethnicity = fct_relevel(
+        ethnicity,
+        "Unknown", "Other", "White", "Mixed", "Black", "Asian"
+      ),
+      ethnicity_sus_5 = fct_relevel(
+        ethnicity_sus_5,
+        "Asian", "Black", "Mixed", "White", "Other"
+      )
+    )
+
+  bennett_pal <- c("#FFB700", "#F20D52", "#FF369C", "#FF7CFE", "#9C54E6", "#5323B3")
+
+
+  assign(glue("alluvial_{codelist}"), ggplot(
+    as.data.frame(df_secondary_new_cross_perc),
+    aes(y = `0`, axis1 = ethnicity, axis2 = ethnicity_sus_5)
+  ) +
+    geom_alluvium(aes(fill = ethnicity)) +
+    geom_stratum(aes(fill = ethnicity_sus_5)) +
+    # geom_text(stat = "stratum", aes(label = after_stat(stratum)), colour = "white",size = 10) +
+    scale_x_discrete(limits = c("ethnicity", "ethnicity_sus_5"), expand = c(.05, .05), labels = c("ethnicity" = "Primary Care ethnicity", "ethnicity_sus_5" = "Secondary Care ethnicity"), position = "top") +
+    scale_fill_manual(values = rev(c("#FFD23B", "#808080", "#FF7C00", "#5323B3", "#5A71F3", "#17D7E6")), na.value = NA) +
+    # theme_minimal() +
+    ggtitle("") +
+    theme(
+      axis.title.y = element_blank(),
+      axis.text.y = element_blank(),
+      axis.ticks.y = element_blank(),
+      axis.text.x = element_text(size = 20)
+    ) +
+    theme(
+      panel.background = element_rect(fill = "white"),
+      panel.grid.major = element_blank(),
+      panel.grid.minor = element_blank()
+    ) +
+    theme(
+      legend.position = "bottom",
+      legend.title = element_blank()
+    ) +
+    geom_label_repel(
+      stat = "stratum",
+      aes(
+        label = after_stat(stratum),
+        fill = after_stat(stratum)
+      ),
+      colour = "white",
+      size = 10,
+      fontface = "bold",
+      direction = "x",
+      show.legend = F
+    ))
+}
+```
+
+
+```{r}
+df_sus_new_cross_table_new
+```
+
+<br>
+
+```{r, fig.width=12, fig.height=10}
+alluvial_new
+```
+
+<br>
+
+```{r}
+df_sus_new_cross_table_ctv3
+```
+<br>
+
+```{r, fig.width=12, fig.height=10}
+alluvial_new
+```
+
+<br>
+
+## 16 Group
+```{r}
+for (codelist in c("new", "ctv3")) {
+  ifelse(codelist == "new", codelist_name <- "SNOMED:2022", codelist_name <- "CTV3:2020")
+  df_sus_new_cross <- read_csv(here::here("output", "sus", "simplified_output", "16_group", "tables", glue("simple_{codelist}_sus_crosstab_long_registered.csv"))) %>%
+    rename_with(~"ethnicity", contains("ethnicity_") & !contains("sus"))
+
+  cols <- c("White_British", "White_Irish", "Other_White", "White_and_Black_Caribbean", "White_and_Black_African", "White_and_Asian", "Other_Mixed", "Indian", "Pakistani", "Bangladeshi", "Other_Asian", "Caribbean", "African", "Other_Black", "Chinese", "Any_other_ethnic_group")
+
+  ethnicity_cat <-
+    read_csv(here::here("output", "sus", "simplified_output", "16_group", "tables", glue("simple_patient_counts_categories_16_group_{codelist}_sus_registered.csv")), col_types = (cols())) %>%
+    rename_with(~ sub("ethnicity_", "", .), contains("ethnicity_")) %>%
+    rename_with(~ sub("_new", "", .), contains("_new")) %>%
+    rename_with(~ sub("_ctv3", "", .), contains("_ctv3")) %>%
+    rename_with(~ sub("_16_filled", "", .), contains("_16_filled")) %>%
+    select(-contains("filled"), -contains("missing"), -contains("sus")) %>%
+    mutate(
+      White_British_anydiff = White_British_any - White_British,
+      White_Irish_anydiff = White_Irish_any - White_Irish,
+      Other_White_anydiff = Other_White_any - Other_White,
+      White_and_Black_Caribbean_anydiff = White_and_Black_Caribbean_any - White_and_Black_Caribbean,
+      White_and_Black_African_anydiff = White_and_Black_African_any - White_and_Black_African,
+      White_and_Asian_anydiff = White_and_Asian_any - White_and_Asian,
+      Other_Mixed_anydiff = Other_Mixed_any - Other_Mixed,
+      Indian_anydiff = Indian_any - Indian,
+      Pakistani_anydiff = Pakistani_any - Pakistani,
+      Bangladeshi_anydiff = Bangladeshi_any - Bangladeshi,
+      Other_Asian_anydiff = Other_Asian_any - Other_Asian,
+      Caribbean_anydiff = Caribbean_any - Caribbean,
+      African_anydiff = African_any - African,
+      Other_Black_anydiff = Other_Black_any - Other_Black,
+      Chinese_anydiff = Chinese_any - Chinese,
+      Any_other_ethnic_group_anydiff = Any_other_ethnic_group_any - Any_other_ethnic_group
+    )
+
+  ethnicity_cat_pivot <- ethnicity_cat %>%
+    pivot_longer(
+      cols = c(contains("_")),
+      names_to = c("ethnicity", "codelist"),
+      names_pattern = "(.*)_(.*)",
+      values_to = "n"
+    ) %>%
+    filter(codelist == "new", group == "all") %>%
+    summarise(
+      ethnicity,
+      population = n
+    ) %>%
+    bind_rows(population)
+
+
+  df_sus_new_cross_perc <- df_sus_new_cross %>%
+    left_join(ethnicity_cat_pivot, by = "ethnicity") %>%
+    mutate(
+      percentage = round(`0` / population * 100, 1),
+      ethnicity = fct_relevel(
+        ethnicity,
+        c(levels_16, "Unknown")
+      ),
+      ethnicity_sus_16 = fct_relevel(
+        ethnicity_sus_16,
+        c(levels_16, "Unknown")
+      ),
+      left_paren = " (",
+      right_paren = ")",
+      N = scales::comma(as.numeric(`0`)),
+      population = scales::comma(as.numeric(population))
+    ) %>%
+    arrange(ethnicity, ethnicity_sus_16) %>%
+    unite("labl", N, left_paren, percentage, right_paren, sep = "", remove = F) %>%
+    unite("ethnicity", ethnicity, left_paren, population, right_paren, sep = "") %>%
+    select(-`0`, -percentage, -N) %>%
+    pivot_wider(names_from = c("ethnicity_sus_16"), values_from = labl) %>%
+    select(-year, -country)
+
+  my_cols <- setNames(c(codelist_name, "Indian", "Pakistani", "Bangladeshi", "Other Asian", "Caribbean", "African", "Other Black", "White and Black Caribbean", "White and Black African", "White and Asian", "Other Mixed", "White British", "White Irish", "Other White", "Chinese", "Any other ethnic group", "Unknown"), names(df_sus_new_cross_perc))
+
+  df_sus_new_cross_table <- df_sus_new_cross_perc %>%
+    mutate(ethnicity = gsub("_", " ", ethnicity)) %>%
+    gt(groupname_col = "") %>%
+    tab_spanner(label = "Primary Care ethnicity", columns = c(1)) %>%
+    tab_spanner(label = "Secondary Care ethnicity", columns = c(2:7)) %>%
+    cols_label(!!!my_cols) %>%
+    tab_style(
+      style = list(
+        cell_fill(color = "gray96")
+      ),
+      locations = cells_body()
+    ) %>%
+    tab_style(
+      style = list(
+        cell_text(weight = "bold")
+      ),
+      locations = cells_column_labels(everything())
+    ) %>%
+    tab_options(
+      table.align = "left",
+      # row_group.as_column = TRUE option not available on the OS R image
+      table.font.size = 8,
+      column_labels.border.top.width = px(3),
+      column_labels.border.top.color = "transparent",
+      table.border.top.color = "transparent",
+      heading.align = "left"
+    ) %>%
+    tab_header(
+      title = md("Table 5:  Count of patients with a recorded ethnicity in Secondary Care by ethnicity group (proportion of Primary Care population). All counts are rounded to the nearest 5. "),
+    ) %>%
+    tab_options(
+      data_row.padding = px(0)
+    )
+
+  assign(glue("df_sus_new_cross_table_{codelist}"), df_sus_new_cross_table)
+}
+```
+
+```{r}
+df_sus_new_cross_table_new
+```
+<br>
+
+```{r}
+df_sus_new_cross_table_ctv3
+```
+<br>
+
+
+# Comparison with the 2021 UK census population
+## 5 Group
+
+```{r}
+ethnicity_na_2001 <-
+  read_csv(here::here("output", "sus", "simplified_output", "5_group", "tables", "ethnic_group_2021_registered_with_2001_categories.csv")) %>%
+  mutate(Ethnic_Group = fct_relevel(Ethnic_Group, "Asian", "Black", "Mixed", "White", "Other"))
+
+ONS_tab_2001 <- ethnicity_na_2001 %>%
+  mutate(
+    left_paren = " (",
+    right_paren = ")",
+    percentage = round(percentage, 2),
+    N = comma(N)
+  ) %>%
+  unite("N_perc", N, left_paren, percentage, right_paren, sep = "") %>%
+  select(cohort, Ethnic_Group, region, N_perc) %>%
+  arrange(Ethnic_Group) %>%
+  pivot_wider(names_from = c("Ethnic_Group", "cohort"), values_from = N_perc) %>%
+  mutate(region = fct_relevel(region, "England")) %>%
+  arrange(region)
+
+my_cols_ons <- setNames(c("Region", rep(c("CTV3 2020", "CTV3 2020 with SUS data", "SNOMED 2022", "SNOMED 2022 with SUS data", "2021 ONS Census*"), 5)), names(ONS_tab_2001))
+
+ONS_tab_2001 %>%
+  gt(groupname_col = "region") %>%
+  tab_spanner(label = "Asian", columns = c(2:6)) %>%
+  tab_spanner(label = "Black", columns = c(7:11)) %>%
+  tab_spanner(label = "Mixed", columns = c(12:16)) %>%
+  tab_spanner(label = "White", columns = c(17:21)) %>%
+  tab_spanner(label = "Other", columns = c(22:26)) %>%
+  cols_label(!!!my_cols_ons) %>%
+  tab_style(
+    style = list(
+      cell_fill(color = "gray96")
+    ),
+    locations = cells_body()
+  ) %>%
+  tab_style(
+    style = list(
+      cell_text(weight = "bold")
+    ),
+    locations = cells_column_labels(everything())
+  ) %>%
+  tab_options(
+    table.align = "left",
+    # row_group.as_column = TRUE option not available on the OS R image
+    table.font.size = 8,
+    column_labels.border.top.width = px(3),
+    column_labels.border.top.color = "transparent",
+    table.border.top.color = "transparent",
+    heading.align = "left"
+  ) %>%
+  tab_header(
+    title = md("Table 7:  Count of patients with a recorded ethnicity in OpenSAFELY TPP by ethnicity group (proportion of registered TPP population) and 2021 ONS Census counts [amended to 2001 grouping] (proportion of 2021 ONS Census population). All counts are rounded to the nearest 5. "),
+  ) %>%
+  tab_options(
+    data_row.padding = px(0)
+  ) %>%
+  tab_options(., container.width = 1600)
+```
+
+
+### England
+```{r, fig.width=24, fig.height=10}
+ons_na_removed <-
+  read_csv(here::here("output", "sus", "simplified_output", "5_group", "tables", "ethnic_group_2021_registered_with_2001_categories.csv")) %>%
+  mutate(
+    cohort = case_when(
+      cohort == "ONS" ~ "2021 Census\n[amended to 2001 grouping]",
+      cohort == "new" ~ "SNOMED:2022",
+      cohort == "new_supp" ~ "SNOMED:2022with secondary care data",
+      cohort == "ctv3" ~ "CTV3:2020",
+      cohort == "ctv3_supp" ~ "CTV3:2020 with secondary care data"
+    ),
+    cohort = fct_relevel(cohort, "2021 Census\n[amended to 2001 grouping]", "SNOMED:2022", "SNOMED:2022 with secondary care data", "CTV3:2020", "CTV3:2020 with secondary care data"),
+    Ethnic_Group = fct_relevel(
+      Ethnic_Group,
+      "Asian", "Black", "Mixed", "White", "Other"
+    )
+  )
+
+
+## create difference in percentage between ONS and TPP (for plotting)
+ons_ethnicity_plot_na_diff <- ons_na_removed %>%
+  group_by(Ethnic_Group, region, group) %>%
+  arrange(cohort) %>%
+  mutate(diff = percentage - first(percentage)) %>%
+  select(region, Ethnic_Group, cohort, diff, group)
+
+ons_na_removed <- ons_na_removed %>%
+  left_join(ons_ethnicity_plot_na_diff, by = c("region", "Ethnic_Group", "cohort", "group"))
+
+ons_ethnicity_plot_eng_na <- ons_na_removed %>%
+  filter(region == "England", group == "5") %>%
+  ggplot(aes(x = Ethnic_Group, y = percentage, fill = cohort)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  theme_classic() +
+  theme(text = element_text(size = 20)) +
+  theme(axis.text.x = element_text(
+    size = 20,
+    hjust = 0,
+    vjust = 0
+  )) +
+  coord_flip() +
+  scale_fill_manual(values = bennett_pal[c(1, 2:5)]) +
+  xlab("") +
+  ylab("\nProportion of ethnicities") +
+  theme(
+    legend.position = "bottom",
+    legend.title = element_blank()
+  ) +
+  geom_text(aes(x = Ethnic_Group, y = percentage, label = ifelse(cohort == "2021 Census\n[amended to 2001 grouping]", "", paste0(round(diff, digits = 1), "%"))), size = 3.4, position = position_dodge(width = 0.9), vjust = 0.3, hjust = -0.2)
+
+ons_ethnicity_plot_eng_na
+```
+
+### Region
+
+```{r, fig.width=20, fig.height=15}
+## 5 group ethnicity plot NA removed for Regions
+ons_ethnicity_plot_na <- ons_na_removed %>%
+  filter(region != "England", group == "5") %>%
+  ggplot(aes(x = Ethnic_Group, y = percentage, fill = cohort)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  facet_wrap(~region) +
+  theme_classic() +
+  theme(text = element_text(size = 20)) +
+  theme(axis.text.x = element_text(
+    size = 12,
+    hjust = 0.75,
+    vjust = 0
+  )) +
+  coord_flip() +
+  scale_fill_manual(values = bennett_pal[c(1, 2:5)]) +
+  xlab("") +
+  ylab("\nProportion of ethnicities") +
+  theme(
+    legend.position = "bottom",
+    legend.title = element_blank()
+  ) +
+  geom_text(aes(x = Ethnic_Group, y = percentage, label = ifelse(cohort == "2021 Census\n[amended to 2001 grouping]", "", paste0(round(diff, digits = 1), "%"))), size = 3.4, position = position_dodge(width = 0.9), vjust = 0.3, hjust = -0.2)
+
+ons_ethnicity_plot_na
+```
+
+## 16 Group
+```{r}
+ethnicity_na_2001 <-
+  read_csv(here::here("output", "sus", "simplified_output", "16_group", "tables", "ethnic_group_2021_registered_with_2001_categories.csv")) %>%
+  mutate(
+    Ethnic_Group = gsub(" ", "_", Ethnic_Group),
+    Ethnic_Group = fct_relevel(Ethnic_Group, "Indian", "Pakistani", "Bangladeshi", "Other_Asian", "Caribbean", "African", "Other_Black", "White_and_Black_Caribbean", "White_and_Black_African", "White_and_Asian", "Other_Mixed", "White_British", "White_Irish", "Other_White", "Chinese", "Any_other_ethnic_group")
+  )
+
+ONS_tab_2001 <- ethnicity_na_2001 %>%
+  mutate(
+    left_paren = " (",
+    right_paren = ")",
+    percentage = round(percentage, 2),
+    N = comma(N)
+  ) %>%
+  unite("N_perc", N, left_paren, percentage, right_paren, sep = "") %>%
+  select(cohort, Ethnic_Group, region, N_perc) %>%
+  arrange(Ethnic_Group) %>%
+  pivot_wider(names_from = c("Ethnic_Group", "cohort"), values_from = N_perc) %>%
+  mutate(region = fct_relevel(region, "England")) %>%
+  arrange(region)
+
+my_cols_ons <- setNames(c("Region", rep(c("CTV3 2020", "CTV3 2020 with SUS data", "SNOMED 2022", "SNOMED 2022 with  SUS data", "2021 ONS Census*"), 16)), names(ONS_tab_2001))
+
+ONS_tab_2001 %>%
+  gt(groupname_col = "region") %>%
+  tab_spanner(label = "Indian", columns = c(2:6)) %>%
+  tab_spanner(label = "Pakistani", columns = c(7:11)) %>%
+  tab_spanner(label = "Bangladeshi", columns = c(12:16)) %>%
+  tab_spanner(label = "Other Asian", columns = c(17:21)) %>%
+  tab_spanner(label = "Caribbean", columns = c(22:26)) %>%
+  tab_spanner(label = "African", columns = c(27:31)) %>%
+  tab_spanner(label = "Other Black", columns = c(32:36)) %>%
+  tab_spanner(label = "White and Black Caribbean", columns = c(37:41)) %>%
+  tab_spanner(label = "White and Black African", columns = c(42:46)) %>%
+  tab_spanner(label = "White and Asian", columns = c(47:51)) %>%
+  tab_spanner(label = "Other Mixed", columns = c(52:56)) %>%
+  tab_spanner(label = "White British", columns = c(57:61)) %>%
+  tab_spanner(label = "White Irish", columns = c(62:66)) %>%
+  tab_spanner(label = "Other White", columns = c(67:71)) %>%
+  tab_spanner(label = "Chinese", columns = c(72:76)) %>%
+  tab_spanner(label = "Any other ethnic group", columns = c(77:81)) %>%
+  cols_label(!!!my_cols_ons) %>%
+  tab_style(
+    style = list(
+      cell_fill(color = "gray96")
+    ),
+    locations = cells_body()
+  ) %>%
+  tab_style(
+    style = list(
+      cell_text(weight = "bold")
+    ),
+    locations = cells_column_labels(everything())
+  ) %>%
+  tab_options(
+    table.align = "left",
+    # row_group.as_column = TRUE option not available on the OS R image
+    table.font.size = 8,
+    column_labels.border.top.width = px(3),
+    column_labels.border.top.color = "transparent",
+    table.border.top.color = "transparent",
+    heading.align = "left"
+  ) %>%
+  tab_header(
+    title = md("Table 7:  Count of patients with a recorded ethnicity in OpenSAFELY TPP by ethnicity group (proportion of registered TPP population) and 2021 ONS Census counts [amended to 2001 grouping] (proportion of 2021 ONS Census population). All counts are rounded to the nearest 5. "),
+  ) %>%
+  tab_options(
+    data_row.padding = px(0)
+  ) %>%
+  tab_options(., container.width = 3200)
+```
+
+
+### England
+```{r, fig.width=24, fig.height=20}
+ons_na_removed <-
+  read_csv(here::here("output", "sus", "simplified_output", "16_group", "tables", "ethnic_group_2021_registered_with_2001_categories.csv")) %>%
+  mutate(
+    cohort = case_when(
+      cohort == "ONS" ~ "2021 Census\n[amended to 2001 grouping]",
+      cohort == "new" ~ "SNOMED:2022",
+      cohort == "new_supp" ~ "SNOMED:2022 with secondary care data",
+      cohort == "ctv3" ~ "CTV3:2020",
+      cohort == "ctv3_supp" ~ "CTV3:2020 with secondary care data"
+    ),
+    cohort = fct_relevel(cohort, "2021 Census\n[amended to 2001 grouping]", "SNOMED:2022", "SNOMED:2022 with secondary care data", "CTV3:2020", "CTV3:2020 with secondary care data"),
+    Ethnic_Group = gsub("_", " ", Ethnic_Group),
+    Ethnic_Group = fct_relevel(
+      Ethnic_Group, "Indian", "Pakistani", "Bangladeshi", "Other Asian", "Caribbean", "African", "Other Black", "White and Black Caribbean", "White and Black African", "White and Asian", "Other Mixed", "White British", "White Irish", "Other White", "Chinese", "Any other ethnic group"
+    )
+  )
+
+
+## create difference in percentage between ONS and TPP (for plotting)
+ons_ethnicity_plot_na_diff <- ons_na_removed %>%
+  group_by(Ethnic_Group, region, group) %>%
+  arrange(cohort) %>%
+  mutate(diff = percentage - first(percentage)) %>%
+  select(region, Ethnic_Group, cohort, diff, group)
+
+ons_na_removed <- ons_na_removed %>%
+  left_join(ons_ethnicity_plot_na_diff, by = c("region", "Ethnic_Group", "cohort", "group"))
+
+ons_ethnicity_plot_eng_na <- ons_na_removed %>%
+  filter(region == "England", group == "16") %>%
+  ggplot(aes(x = Ethnic_Group, y = percentage, fill = cohort)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  theme_classic() +
+  theme(text = element_text(size = 20)) +
+  theme(axis.text.x = element_text(
+    size = 20,
+    hjust = 0,
+    vjust = 0
+  )) +
+  coord_flip() +
+  scale_fill_manual(values = bennett_pal[c(1, 2:5)]) +
+  xlab("") +
+  ylab("\nProportion of ethnicities") +
+  theme(
+    legend.position = "bottom",
+    legend.title = element_blank()
+  ) +
+  geom_text(aes(x = Ethnic_Group, y = percentage, label = ifelse(cohort == "2021 Census\n[amended to 2001 grouping]", "", paste0(round(diff, digits = 1), "%"))), size = 3.4, position = position_dodge(width = 0.9), vjust = 0.3, hjust = -0.2)
+
+ons_ethnicity_plot_eng_na
+```
+
+
+### Region
+```{r, fig.width=25, fig.height=20}
+## 16 group ethnicity plot NA removed for Regions
+ons_ethnicity_plot_na <- ons_na_removed %>%
+  filter(region != "England", group == "16") %>%
+  ggplot(aes(x = Ethnic_Group, y = percentage, fill = cohort)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  facet_wrap(~region) +
+  theme_classic() +
+  theme(text = element_text(size = 20)) +
+  theme(axis.text.x = element_text(
+    size = 12,
+    hjust = 0.75,
+    vjust = 0
+  )) +
+  coord_flip() +
+  scale_fill_manual(values = bennett_pal[c(1, 2:5)]) +
+  xlab("") +
+  ylab("\nProportion of ethnicities") +
+  theme(
+    legend.position = "bottom",
+    legend.title = element_blank()
+  ) +
+  geom_text(aes(x = Ethnic_Group, y = percentage, label = ifelse(cohort == "2021 Census\n[amended to 2001 grouping]", "", paste0(round(diff, digits = 1), "%"))), size = 3.4, position = position_dodge(width = 0.9), vjust = 0.3, hjust = -0.2)
+
+ons_ethnicity_plot_na
+```
+
+
+
+# Discussion
+This study has shown that primary care ethnicity data made available via OpenSAFELY is complete for around three quarters of all patients. However, recording ethnicity is not straightforward. Indeed, despite often being used as a key variable to describe health, the idea of "ethnicity" has been disputed. Self-identified ethnicity is not a fixed concept and evolving socio-cultural trends could contribute to changes in a person's self-identified ethnic group, particularly for those with mixed heritage. It is therefore perhaps not surprising to see lower levels of concordance between latest ethnicity and most common ethnicity in those with latest ethnicity grouped as mixed.
+
+In OpenSAFELY ethnicity in primary care was originally grouped using the CTV3:2020 codelist. However, this codelist does not strictly follow the grouping of the 2001 Census, which is the NHS standard for ethnicity. The common practice of supplementing CTV3:2020 coded ethnicity with SUS data has been shown to provide ethnicity data for 90.6% of patients, however could lead to inconsistent classification as SUS data follow the 2001 census groups.
+
+We believe that the SNOMED:2022 codelist provides a more consistent representation of ethnicity as defined by the 2001 census groups and should be the preferred codelist for primary care ethnicity.
+
+# Limitations
+It is common for OpenSAFELY studies to supplement the primary care recorded ethnicity, where missing, with ethnicity data from the Secondary Uses Service (SUS). This study has focussed solely on the primary care recorded ethnicity. Due to the way that non-native data, such as GP2GP data and historical data, are imported into TPP the date of ethnicity recorded is not always available therefore chronology is unreliable for ethnicity data.
+
+# Conclusion
+This report describes existing methods to derive primary care ethnicity in OpenSAFELY-TPP and suggests the adoption of the SNOMED:2022 codelist as the new standard method. It is a living document that can be periodically re-run to evaluate the most current best practices for research. If you have improvements or forks, please contact the OpenSAFELY data team.
+
+# Technical details
+This notebook was run on 2023-02-16. The information below is based on data extracted from the OpenSAFELY-TPP database on 2023-02-16.
+
+If a clinical code appears in the primary care record on multiple dates, the latest date is used.
+
+Only patients registered at their practice on January 1 2022 are included.
