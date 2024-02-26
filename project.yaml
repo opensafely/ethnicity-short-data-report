@@ -90,13 +90,6 @@ actions:
         tables: output/sus/simplified_output/5_group/tables/*.csv
 #        figures: output/sus/simplified_output/5_group/figures/*.png
 
-  execute_simple_validation_analyses_ctv3_sus:
-    run: python:latest python analysis/sus/simple_validation_script_ctv3_sus.py
-    needs: [generate_study_population_5]
-    outputs:
-      moderately_sensitive: 
-        tables: output/sus/simplified_output/5_group/tables/*ctv3*.csv
-#        figures: output/sus/simplified_output/5_group/figures/*.png
 
   execute_simple_validation_analyses_16_sus:
     run: python:latest python analysis/sus/simple_validation_script_16_sus.py
@@ -876,7 +869,7 @@ actions:
 
   report_tables:
     run: python:latest python analysis/report_tables.py
-    needs: [execute_simple_validation_analyses_16_sus, execute_simple_validation_analyses_ctv3_sus,execute_simple_validation_analyses_sus,execute_simple_validation_analyses,execute_simple_validation_analyses_16]
+    needs: [execute_simple_validation_analyses_16_sus, execute_simple_validation_analyses_sus,execute_simple_validation_analyses,execute_simple_validation_analyses_16]
     outputs:
       moderately_sensitive: 
         tables: output/report_tables/*.csv
