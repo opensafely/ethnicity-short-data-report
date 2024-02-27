@@ -24,7 +24,7 @@ code_dict = {
         4: "4",
         5: "5 Least deprived",
     },
-    "ethnicity_5": {1: "Asian", 2: "Black", 3: "Mixed", 4: "White", 5: "Other"},
+    "ethnicity_5": {1: "White", 2: "Mixed", 3: "Asian", 4: "Black", 5: "Other"},
     "ethnicity_new_5": {1: "White", 2: "Mixed", 3: "Asian", 4: "Black", 5: "Other"},
     "ethnicity_primis_5": {1: "White", 2: "Mixed", 3: "Asian", 4: "Black", 5: "Other"},
     "ethnicity_sus_5": {1: "White", 2: "Mixed", 3: "Asian", 4: "Black", 5: "Other"},
