@@ -12,21 +12,22 @@ definitions_snomed_16 = ["ethnicity_new_16", "ethnicity_primis_16"]
 
 other_vars = ["white", "mixed", "asian", "black", "other"]
 other_vars_16 = [
-"Pakistani",
-"Bangladeshi",
-"Other_Asian",
-"Caribbean",
-"African",
-"Other_Black",
-"White_and_Black_Caribbean",
-"White_and_Black_African",
-"White_and_Asian",
-"Other_Mixed",
-"White_British",
-"White_Irish",
-"Other_White",
-"Chinese",
-"Any_other_ethnic_group",
+    "Indian",
+    "Pakistani",
+    "Bangladeshi",
+    "Other_Asian",
+    "Caribbean",
+    "African",
+    "Other_Black",
+    "White_and_Black_Caribbean",
+    "White_and_Black_African",
+    "White_and_Asian",
+    "Other_Mixed",
+    "White_British",
+    "White_Irish",
+    "Other_White",
+    "Chinese",
+    "Any_other_ethnic_group",
 ]
 
 ethnicity_combinations_ctv3 = [
@@ -55,13 +56,21 @@ ethnicity_combinations_snomed = (
 )
 
 codelists_ctv3 = {
-    name: codelist_from_csv(f"codelists/{name}.csv", system="ctv3", column="Code",)
+    name: codelist_from_csv(
+        f"codelists/{name}.csv",
+        system="ctv3",
+        column="Code",
+    )
     for name in ethnicity_combinations_ctv3
 }
 locals().update(codelists_ctv3)
 
 codelists_snomed = {
-    name: codelist_from_csv(f"codelists/{name}.csv", system="snomed", column="Code",)
+    name: codelist_from_csv(
+        f"codelists/{name}.csv",
+        system="snomed",
+        column="Code",
+    )
     for name in ethnicity_combinations_snomed
 }
 locals().update(codelists_snomed)

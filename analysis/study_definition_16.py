@@ -5,7 +5,11 @@ from cohortextractor import (
     codelist_from_csv,
     combine_codelists,
 )  # NOQA
-from create_variables import demographic_variables, clinical_variables, ethnicity_16_variables
+from create_variables import (
+    demographic_variables,
+    clinical_variables,
+    ethnicity_16_variables,
+)
 from codelists import *
 from config import *
 
@@ -47,7 +51,7 @@ ethnicity_combinations_16 = [
     f"{definition}_{other_var}"
     for definition, other_var in product(definitions_16, other_vars_16)
 ]
-ethnicity_combinations = ethnicity_combinations_5 + ethnicity_combinations_16
+ethnicity_combinations = ethnicity_combinations_16
 
 codelists = {
     name: patients.with_these_clinical_events(
