@@ -109,45 +109,45 @@ These codes were grouped into one of two ethnicity groups based on the 2001 Cens
 
 - Asian or Asian British
 
-    - Indian
+  - Indian
 
-    - Pakistani
+  - Pakistani
 
-    - Bangladeshi
+  - Bangladeshi
 
-    - Any other Asian background
+  - Any other Asian background
 
 - Black or Black British 
 
-    - Caribbean
+  - Caribbean
 
-    - African
+  - African
 
-    - Any other Black background
+  - Any other Black background
 
 - Mixed 
 
-    - White and Black Caribbean
+  - White and Black Caribbean
 
-    - White and Black African
+  - White and Black African
 
-    - White and Asian
+  - White and Asian
 
-    - Any other Mixed background
+  - Any other Mixed background
 
 - White 
 
-    - British
+  - British
 
-    - Irish
+  - Irish
 
-    - Any other White background
+  - Any other White background
 
 - Chinese or other ethnic group 
 
-    - Chinese
+  - Chinese
 
-    - Any other
+  - Any other
 
 For patients with multiple ethnicity records, the most recent record was chosen (even if this is later than the cohort date). The proportion of patients with each ethnicity groups was calculated, within each clinical and demographic subgroup.
 
@@ -163,7 +163,8 @@ All patient counts are rounded to the nearest 5. Percentages may not add to exac
 
 # Results
 
-## Completeness of ethnicity data  
+## Completeness of ethnicity data 
+
 ```{r}
 codelist_counts <- read_csv(here::here("output", "simplified_output", "5_group", "tables", "simple_patient_counts_5_group_new_ctv3_registered.csv"))
 ```
@@ -438,6 +439,7 @@ prop_reg_plot
 ## Ethnicity by group  
 
 ### 5 Group
+
 ```{r}
 codelist_counts_categories <- read_csv(here::here("output", "simplified_output", "5_group", "tables", "simple_patient_counts_categories_5_group_new_ctv3_registered.csv"))
 ```
@@ -502,12 +504,11 @@ combined_prop_5_table <- ctv3_SUS5 %>%
   left_join(new_SUS5, by = c("group", "subgroup")) %>%
   rename_with(~ gsub(" 5", "", .)) %>% # remove extra 5
   rename_with(~ gsub("CTV3 ", "CTV3:2020 ", .)) %>% # remove extra 5
-  select("group", "subgroup", sort(names(.)))
+  select("group", "subgroup", sort(names(.))) %>% 
+  relocate(contains("Other"), .after = last_col())
 
-
-
+    
 my_cols <- setNames(c("group", "", rep(c("CTV3 2020", "CTV3 2020 with SUS", "SNOMED 2022", "SNOMED 2022 with SUS"), 5)), names(combined_prop_5_table))
-
 
 SUS5 <- combined_prop_5_table %>%
   gt(groupname_col = "group") %>%
@@ -827,8 +828,11 @@ SUS16 <- combined_prop_16_table %>%
 
 SUS16
 ```
+
 ## Changes in coded ethnicity groups
+
 ### 5 Group
+
 ```{r}
 change_new <- read_csv(here::here("output", "report_tables", glue("report_state_change_new_5_registered.csv"))) %>%
   rename(
@@ -842,6 +846,7 @@ change_ctv3 <- read_csv(here::here("output", "report_tables", glue("report_state
     discordant = contains("Supplemented")
   )
 ```
+
 Patients whose latest recorded ethnicity were grouped as Mixed were most likely to have a discordant ethnicity recording (`r stringr::str_extract(change_new %>% filter(str_detect(latest, "Mixed")) %>%pull(discordant), pattern = "(?<=\\().*(?=\\))")`% SNOMED:2022, `r stringr::str_extract(change_ctv3 %>% filter(str_detect(latest, "Mixed")) %>%pull(discordant), pattern = "(?<=\\().*(?=\\))")` CTV3:2020). Both codelists had patients with latest recorded ethnicity grouped as Black who also had a recorded ethnicity of White (`r stringr::str_extract(change_new %>% filter(str_detect(latest, "Black")) %>%pull(white), pattern = "(?<=\\().*(?=\\))")`% SNOMED:2022, `r stringr::str_extract(change_ctv3 %>% filter(str_detect(latest, "Black")) %>%pull(white), pattern = "(?<=\\().*(?=\\))")`% CTV3:2020).
 
 
@@ -946,6 +951,7 @@ anyrepeated_new
 ```{r}
 anyrepeated_ctv3
 ```
+
 ## Comparison of 'Latest' and 'Most Frequent' coded ethnicity
 
 
@@ -1032,7 +1038,9 @@ latestcommon_new_16 %>%
 latestcommon_ctv3_16 %>%
   tab_options(., container.width = 1600)
 ```
+
 # Consistency of ethnicity recording across data sources (primary care versus secondary care)
+
 ```{r}
 for (codelist in c("new", "ctv3")) {
   ifelse(codelist == "new", codelist_name <- "SNOMED:2022", codelist_name <- "CTV3:2020")
@@ -1338,6 +1346,7 @@ df_sus_new_cross_table_ctv3
 
 
 # Comparison with the 2021 UK census population
+
 ## 5 Group
 
 ```{r}
@@ -1401,6 +1410,7 @@ ONS_tab_2001 %>%
 
 
 ### England
+
 ```{r, fig.width=24, fig.height=10}
 ons_na_removed <-
   read_csv(here::here("output", "sus", "simplified_output", "5_group", "tables", "ethnic_group_2021_registered_with_2001_categories.csv")) %>%
@@ -1484,6 +1494,7 @@ ons_ethnicity_plot_na
 ```
 
 ## 16 Group
+
 ```{r}
 ethnicity_na_2001 <-
   read_csv(here::here("output", "sus", "simplified_output", "16_group", "tables", "ethnic_group_2021_registered_with_2001_categories.csv")) %>%
@@ -1559,6 +1570,7 @@ ONS_tab_2001 %>%
 
 
 ### England
+
 ```{r, fig.width=24, fig.height=20}
 ons_na_removed <-
   read_csv(here::here("output", "sus", "simplified_output", "16_group", "tables", "ethnic_group_2021_registered_with_2001_categories.csv")) %>%
@@ -1614,6 +1626,7 @@ ons_ethnicity_plot_eng_na
 
 
 ### Region
+
 ```{r, fig.width=25, fig.height=20}
 ## 16 group ethnicity plot NA removed for Regions
 ons_ethnicity_plot_na <- ons_na_removed %>%
@@ -1644,6 +1657,7 @@ ons_ethnicity_plot_na
 
 
 # Discussion
+
 This study has shown that primary care ethnicity data made available via OpenSAFELY is complete for around three quarters of all patients. However, recording ethnicity is not straightforward. Indeed, despite often being used as a key variable to describe health, the idea of "ethnicity" has been disputed. Self-identified ethnicity is not a fixed concept and evolving socio-cultural trends could contribute to changes in a person's self-identified ethnic group, particularly for those with mixed heritage. It is therefore perhaps not surprising to see lower levels of concordance between latest ethnicity and most common ethnicity in those with latest ethnicity grouped as mixed.
 
 In OpenSAFELY ethnicity in primary care was originally grouped using the CTV3:2020 codelist. However, this codelist does not strictly follow the grouping of the 2001 Census, which is the NHS standard for ethnicity. The common practice of supplementing CTV3:2020 coded ethnicity with SUS data has been shown to provide ethnicity data for 90.6% of patients, however could lead to inconsistent classification as SUS data follow the 2001 census groups.
@@ -1651,12 +1665,15 @@ In OpenSAFELY ethnicity in primary care was originally grouped using the CTV3:20
 We believe that the SNOMED:2022 codelist provides a more consistent representation of ethnicity as defined by the 2001 census groups and should be the preferred codelist for primary care ethnicity.
 
 # Limitations
+
 It is common for OpenSAFELY studies to supplement the primary care recorded ethnicity, where missing, with ethnicity data from the Secondary Uses Service (SUS). This study has focussed solely on the primary care recorded ethnicity. Due to the way that non-native data, such as GP2GP data and historical data, are imported into TPP the date of ethnicity recorded is not always available therefore chronology is unreliable for ethnicity data.
 
 # Conclusion
+
 This report describes existing methods to derive primary care ethnicity in OpenSAFELY-TPP and suggests the adoption of the SNOMED:2022 codelist as the new standard method. It is a living document that can be periodically re-run to evaluate the most current best practices for research. If you have improvements or forks, please contact the OpenSAFELY data team.
 
 # Technical details
+
 This notebook was run on 2023-02-16. The information below is based on data extracted from the OpenSAFELY-TPP database on 2023-02-16.
 
 If a clinical code appears in the primary care record on multiple dates, the latest date is used.
