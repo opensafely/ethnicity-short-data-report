@@ -169,7 +169,7 @@ All patient counts are rounded to the nearest 5. Percentages may not add to exac
 codelist_counts <- read_csv(here::here("output", "simplified_output", "5_group", "tables", "simple_patient_counts_5_group_new_ctv3_registered.csv"))
 ```
 
-Around `r codelist_counts %>% filter(group=="all")%>%pull(all_filled)/1000000` million patients who have been registered in OpenSAFELY-TPP are identified in all three codelists. CTV3:2020 is the most well-populated with `r codelist_counts %>% filter(group=="all")%>%pull(ethnicity_5_filled)/1000000` million patients having at least one CTV3:2020 recording of ethnicity.
+Around `r round(codelist_counts %>% filter(group=="all")%>%pull(all_filled)/1000000,0)` million patients who have been registered in OpenSAFELY-TPP are identified in both codelists. CTV3:2020 is the most well-populated with `r round(codelist_counts %>% filter(group=="all")%>%pull(ethnicity_5_filled)/1000000,0)` million patients having at least one CTV3:2020 recording of ethnicity.
 
 ```{r}
 # # patient counts
@@ -196,7 +196,7 @@ new_sus_prop_table <- read_csv(here::here("output", "report_tables", "report_pat
       F = "Female",
       M = "Male"
     ),
-    population = as.character(scales::comma(round(as.numeric(population), 0))),
+    population = as.character(comma(round(as.numeric(population), 0))),
     left_paren = "(",
     right_paren = ")"
   ) %>%
@@ -228,7 +228,7 @@ ctv3_sus_prop_table <- read_csv(here::here("output", "report_tables", "report_pa
       F = "Female",
       M = "Male"
     ),
-    population = as.character(scales::comma(round(as.numeric(population), 0))),
+    population = as.character(comma(round(as.numeric(population), 0))),
     left_paren = "(",
     right_paren = ")"
   ) %>%
@@ -259,7 +259,7 @@ new_ctv3_prop_table <- read_csv(here::here("output", "report_tables", "report_pa
       F = "Female",
       M = "Male"
     ),
-    population = as.character(scales::comma(round(as.numeric(population), 0))),
+    population = as.character(comma(round(as.numeric(population), 0))),
   ) %>%
   filter(`5 CTV3:2020` != "- (-)") %>%
   select(group, subgroup, `all filled`, population)
@@ -554,7 +554,7 @@ SUS5
 
 <br>
 
-```{r, fig.width=25, fig.height=30}
+```{r, fig.width=60, fig.height=40}
 new_prop_reg_cat <-
   read_csv(here::here("output", "sus", "simplified_output", "5_group", "tables", "simple_patient_counts_categories_5_group_new_sus_registered.csv"), col_types = (cols())) %>%
   rename_with(~ sub("ethnicity_", "", .), contains("ethnicity_")) %>%
@@ -971,7 +971,7 @@ for (codelist in c("new", "ctv3")) {
       replace(., col(.) == row(.) + 1, NA) %>%
       mutate(
         any_discordant = rowSums(across(where(is.numeric)), na.rm = T) - sum,
-        any_discordant_perc = round(any_discordant / sum * 100, 0),
+        any_discordant_perc = comma(round(any_discordant / sum * 100, 1)),
         discordantcombined = glue("{any_discordant} ({any_discordant_perc})")
       )
 
@@ -1012,17 +1012,17 @@ for (codelist in c("new", "ctv3")) {
 
 ### 5 Group
 
-Overall `r round((1 - (sum(discordant_new_5$any_discordant)/sum(discordant_new_5$sum))) *100,0)`% of the latest 5 group ethnicity matched the most frequent 5 group ethnicity for all codelists. `r round((1 - (discordant_new_5 %>% filter(ethnicity_new_5=="White") %>% select(any_discordant) / discordant_new_5 %>% filter(ethnicity_new_5=="White") %>% select(sum))) *100,0)`% of those with the most recent ethnicity classified as White also had the most frequent ethnicity White for both codelists. Mixed was the least concordant for all both codelists with `r round(((discordant_new_5 %>% filter(ethnicity_new_5=="Mixed") %>% select(any_discordant) / discordant_new_5 %>% filter(ethnicity_new_5=="Mixed") %>% select(sum))) *100,0)`% of those with the most recent ethnicity Mixed also had the most frequent ethnicity Mixed. Of those with latest ethnicity Black `r round(((discordant_new_5 %>% filter(ethnicity_new_5=="Black") %>% select(ethnicity_new_5_white) / discordant_new_5 %>% filter(ethnicity_new_5=="Black") %>% select(sum))) *100,0)`% also had the most frequent ethnicity White.
+Overall `r round((1 - (sum(discordant_new_5$any_discordant)/sum(discordant_new_5$sum))) *100,0)`% of the latest 5 group ethnicity matched the most frequent 5 group ethnicity for both codelists. `r round((1 - (discordant_new_5 %>% filter(ethnicity_new_5=="White") %>% select(any_discordant) / discordant_new_5 %>% filter(ethnicity_new_5=="White") %>% select(sum))) *100,0)`% of those with the most recent ethnicity classified as White also had the most frequent ethnicity White for both codelists. Mixed was the least concordant for both codelists with `r round(((discordant_new_5 %>% filter(ethnicity_new_5=="Mixed") %>% select(any_discordant) / discordant_new_5 %>% filter(ethnicity_new_5=="Mixed") %>% select(sum))) *100,0)`% of those with the most recent ethnicity Mixed also had the most frequent ethnicity Mixed. Of those with latest ethnicity Black `r round(((discordant_new_5 %>% filter(ethnicity_new_5=="Black") %>% select(ethnicity_new_5_white) / discordant_new_5 %>% filter(ethnicity_new_5=="Black") %>% select(sum))) *100,0)`% also had the most frequent ethnicity White.
 
 
 
 
 ```{r}
-latestcommon_new_5
+latestcommon_ctv3_5
 ```
 <br>
 ```{r}
-latestcommon_ctv3_5
+latestcommon_new_5
 ```
 
 ### 16 group
@@ -1030,12 +1030,12 @@ latestcommon_ctv3_5
 Expanding to the 16 group the percentage of latest ethnicity that match the most frequent ethnicity falls to `r round((1 - (sum(discordant_new_16$any_discordant)/sum(discordant_new_16$sum))) *100,0)`% for both SNOMED:2022 and CTV3:2020. White British was the most concordant for both SNOMED:2022 and CTV3:2020 with `r round((1 - (discordant_new_16 %>% filter(ethnicity_new_16=="White_British") %>% select(any_discordant) / discordant_new_16 %>% filter(ethnicity_new_16=="White_British") %>% select(sum))) *100,0)`% and `r round((1 - (discordant_ctv3_16 %>% filter(ethnicity_16=="White_British") %>% select(any_discordant) / discordant_ctv3_16 %>% filter(ethnicity_16=="White_British") %>% select(sum))) *100,0)`%, respectively, of those with the most recent ethnicity classified as White British also had the most frequent ethnicity White British. For both SNOMED:2022 and CTV3:2020 Other Black was the least concordant, `r round((1 - (discordant_new_16 %>% filter(ethnicity_new_16=="Other_Black") %>% select(any_discordant) / discordant_new_16 %>% filter(ethnicity_new_16=="Other_Black") %>% select(sum))) *100,0)`% of those with the most recent ethnicity Other Black also had the most frequent ethnicity Other Black.
 
 ```{r}
-latestcommon_new_16 %>%
+latestcommon_ctv3_16 %>%
   tab_options(., container.width = 1600)
 ```
 <br>
 ```{r}
-latestcommon_ctv3_16 %>%
+latestcommon_new_16 %>%
   tab_options(., container.width = 1600)
 ```
 
@@ -1091,8 +1091,8 @@ for (codelist in c("new", "ctv3")) {
       ),
       left_paren = " (",
       right_paren = ")",
-      N = scales::comma(as.numeric(`0`)),
-      population = scales::comma(as.numeric(population))
+      N = comma(as.numeric(`0`)),
+      population = comma(as.numeric(population))
     ) %>%
     arrange(ethnicity, ethnicity_sus_5) %>%
     unite("labl", N, left_paren, percentage, right_paren, sep = "", remove = F) %>%
@@ -1198,24 +1198,24 @@ for (codelist in c("new", "ctv3")) {
 
 
 ```{r}
-df_sus_new_cross_table_new
+df_sus_new_cross_table_ctv3
 ```
 
 <br>
 
-```{r, fig.width=12, fig.height=10}
-alluvial_new
+```{r, fig.width=20, fig.height=15}
+# alluvial_new
 ```
 
 <br>
 
 ```{r}
-df_sus_new_cross_table_ctv3
+df_sus_new_cross_table_new
 ```
 <br>
 
-```{r, fig.width=12, fig.height=10}
-alluvial_new
+```{r, fig.width=20, fig.height=15}
+# alluvial_new
 ```
 
 <br>
@@ -1284,8 +1284,8 @@ for (codelist in c("new", "ctv3")) {
       ),
       left_paren = " (",
       right_paren = ")",
-      N = scales::comma(as.numeric(`0`)),
-      population = scales::comma(as.numeric(population))
+      N = comma(as.numeric(`0`)),
+      population = comma(as.numeric(population))
     ) %>%
     arrange(ethnicity, ethnicity_sus_16) %>%
     unite("labl", N, left_paren, percentage, right_paren, sep = "", remove = F) %>%
@@ -1335,12 +1335,12 @@ for (codelist in c("new", "ctv3")) {
 ```
 
 ```{r}
-df_sus_new_cross_table_new
+df_sus_new_cross_table_ctv3
 ```
 <br>
 
 ```{r}
-df_sus_new_cross_table_ctv3
+df_sus_new_cross_table_new
 ```
 <br>
 
@@ -1368,10 +1368,11 @@ ONS_tab_2001 <- ethnicity_na_2001 %>%
   mutate(region = fct_relevel(region, "England")) %>%
   arrange(region)
 
-my_cols_ons <- setNames(c("Region", rep(c("CTV3 2020", "CTV3 2020 with SUS data", "SNOMED 2022", "SNOMED 2022 with SUS data", "2021 ONS Census*"), 5)), names(ONS_tab_2001))
+my_cols_ons <- setNames(c("", rep(c("CTV3 2020", "CTV3 2020 with SUS data", "SNOMED 2022", "SNOMED 2022 with SUS data", "2021 ONS Census*"), 5)), names(ONS_tab_2001))
 
 ONS_tab_2001 %>%
-  gt(groupname_col = "region") %>%
+  gt() %>%
+  tab_spanner(label = "Region", columns = c(1)) %>%
   tab_spanner(label = "Asian", columns = c(2:6)) %>%
   tab_spanner(label = "Black", columns = c(7:11)) %>%
   tab_spanner(label = "Mixed", columns = c(12:16)) %>%
@@ -1517,10 +1518,11 @@ ONS_tab_2001 <- ethnicity_na_2001 %>%
   mutate(region = fct_relevel(region, "England")) %>%
   arrange(region)
 
-my_cols_ons <- setNames(c("Region", rep(c("CTV3 2020", "CTV3 2020 with SUS data", "SNOMED 2022", "SNOMED 2022 with  SUS data", "2021 ONS Census*"), 16)), names(ONS_tab_2001))
+my_cols_ons <- setNames(c("", rep(c("CTV3 2020", "CTV3 2020 with SUS data", "SNOMED 2022", "SNOMED 2022 with  SUS data", "2021 ONS Census*"), 16)), names(ONS_tab_2001))
 
 ONS_tab_2001 %>%
-  gt(groupname_col = "region") %>%
+  gt() %>%
+  tab_spanner(label = "Region", columns = c(1)) %>%
   tab_spanner(label = "Indian", columns = c(2:6)) %>%
   tab_spanner(label = "Pakistani", columns = c(7:11)) %>%
   tab_spanner(label = "Bangladeshi", columns = c(12:16)) %>%
@@ -1627,7 +1629,7 @@ ons_ethnicity_plot_eng_na
 
 ### Region
 
-```{r, fig.width=25, fig.height=20}
+```{r, fig.width=50, fig.height=30}
 ## 16 group ethnicity plot NA removed for Regions
 ons_ethnicity_plot_na <- ons_na_removed %>%
   filter(region != "England", group == "16") %>%
@@ -1674,7 +1676,7 @@ This report describes existing methods to derive primary care ethnicity in OpenS
 
 # Technical details
 
-This notebook was run on 2023-02-16. The information below is based on data extracted from the OpenSAFELY-TPP database on 2023-02-16.
+This notebook was run on `r Sys.Date()`. The information is based on data extracted from the OpenSAFELY-TPP database on `r date(file.info(here::here("output","extract_5","input_5.feather"))$ctime)`.
 
 If a clinical code appears in the primary care record on multiple dates, the latest date is used.
 
