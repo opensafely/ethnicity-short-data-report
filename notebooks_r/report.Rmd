@@ -282,7 +282,7 @@ SUS_gt <- combined_prop_table %>%
   cols_label(!!!table_cols) %>%
   tab_style(
     style = list(
-      cell_fill(color = "gray96")
+      # cell_fill(color = "gray96")
     ),
     locations = cells_body()
   ) %>%
@@ -300,9 +300,9 @@ SUS_gt <- combined_prop_table %>%
     table.border.top.color = "transparent",
     heading.align = "left",
     data_row.padding = px(0)
-  ) %>%
-  tab_header(
-    title = md("Table 1: Count of patients with a recorded ethnicity in OpenSAFELY-TPP (proportion of registered TPP population) by clinical and demographic subgroups. All counts are rounded to the nearest 5."),
+  # ) %>%
+  # tab_header(
+  #   title = md("Table 1: Count of patients with a recorded ethnicity in OpenSAFELY-TPP (proportion of registered TPP population) by clinical and demographic subgroups. All counts are rounded to the nearest 5."),
   )
 
 SUS_gt
@@ -310,7 +310,7 @@ SUS_gt
 
 <br>
 
-```{r, fig.width=25, fig.height=18}
+```{r, fig.width=18, fig.height=19}
 ctv3_prop_reg <-
   read_csv(here::here("output", "sus", "simplified_output", "5_group", "tables", "simple_patient_counts_5_group_ctv3_sus_registered.csv"), col_types = (cols())) %>%
   select("group", "subgroup", starts_with("ethnicity_5"), starts_with("any"), "population") %>%
@@ -521,7 +521,7 @@ SUS5 <- combined_prop_5_table %>%
   cols_label(!!!my_cols) %>%
   tab_style(
     style = list(
-      cell_fill(color = "gray96")
+      # cell_fill(color = "gray96")
     ),
     locations = cells_body()
   ) %>%
@@ -539,9 +539,9 @@ SUS5 <- combined_prop_5_table %>%
     column_labels.border.top.color = "transparent",
     table.border.top.color = "transparent",
     heading.align = "left"
-  ) %>%
-  tab_header(
-    title = md("Table 2:  Count of patients with a recorded ethnicity in OpenSAFELY TPP by ethnicity group (proportion of registered TPP population) and clinical and demographic subgroups. All counts are rounded to the nearest 5. "),
+  # ) %>%
+  # tab_header(
+  #   title = md("Table 2:  Count of patients with a recorded ethnicity in OpenSAFELY TPP by ethnicity group (proportion of registered TPP population) and clinical and demographic subgroups. All counts are rounded to the nearest 5. "),
   ) %>%
   tab_options(., container.width = 1200) %>%
   tab_options(
@@ -555,7 +555,7 @@ SUS5
 
 <br>
 
-```{r, fig.width=60, fig.height=40}
+```{r, fig.width=30, fig.height=27}
 new_prop_reg_cat <-
   read_csv(here::here("output", "sus", "simplified_output", "5_group", "tables", "simple_patient_counts_categories_5_group_new_sus_registered.csv"), col_types = (cols())) %>%
   rename_with(~ sub("ethnicity_", "", .), contains("ethnicity_")) %>%
@@ -800,7 +800,7 @@ SUS16 <- combined_prop_16_table %>%
   cols_label(!!!my_cols) %>%
   tab_style(
     style = list(
-      cell_fill(color = "gray96")
+      # cell_fill(color = "gray96")
     ),
     locations = cells_body()
   ) %>%
@@ -818,9 +818,9 @@ SUS16 <- combined_prop_16_table %>%
     column_labels.border.top.color = "transparent",
     table.border.top.color = "transparent",
     heading.align = "left"
-  ) %>%
-  tab_header(
-    title = md("Count of patients with a recorded ethnicity in OpenSAFELY TPP by ethnicity group (proportion of registered TPP population) and clinical and demographic subgroups. All counts are rounded to the nearest 5."),
+  # ) %>%
+  # tab_header(
+  #   title = md("Count of patients with a recorded ethnicity in OpenSAFELY TPP by ethnicity group (proportion of registered TPP population) and clinical and demographic subgroups. All counts are rounded to the nearest 5."),
   ) %>%
   tab_options(., container.width = 3000) %>%
   tab_options(
@@ -871,9 +871,9 @@ for (codelist in c("new", "ctv3")) {
       column_labels.border.top.color = "transparent",
       table.border.top.color = "transparent",
       heading.align = "left"
-    ) %>%
-    tab_header(
-      title = md("Table 4: Count of patients with at least one recording of each ethnicity (proportion of latest ethnicity)."),
+    # ) %>%
+    # tab_header(
+    #   title = md("Table 4: Count of patients with at least one recording of each ethnicity (proportion of latest ethnicity)."),
     ) %>%
     tab_options(
       data_row.padding = px(0)
@@ -932,9 +932,9 @@ for (codelist in c("new", "ctv3")) {
       column_labels.border.top.color = "transparent",
       table.border.top.color = "transparent",
       heading.align = "left"
-    ) %>%
-    tab_header(
-      title = md("Table 4: Count of patients with at least one recording of each ethnicity (proportion of latest ethnicity)."),
+    # ) %>%
+    # tab_header(
+    #   title = md("Table 4: Count of patients with at least one recording of each ethnicity (proportion of latest ethnicity)."),
     ) %>%
     tab_options(
       data_row.padding = px(0)
@@ -1045,6 +1045,7 @@ latestcommon_new_16 %>%
 ```{r}
 for (codelist in c("new", "ctv3")) {
   ifelse(codelist == "new", codelist_name <- "SNOMED:2022", codelist_name <- "CTV3:2020")
+   ifelse(codelist == "new", codelist_path <- glue("ethnicity_new_5"), codelist_path <- glue("ethnicity_5"))
   df_sus_new_cross <- read_csv(here::here("output", "sus", "simplified_output", "5_group", "tables", glue("simple_{codelist}_sus_crosstab_long_registered.csv"))) %>%
     rename_with(~"ethnicity", contains("ethnicity_") & !contains("sus"))
 
@@ -1062,6 +1063,13 @@ for (codelist in c("new", "ctv3")) {
       White_anydiff = White_any - White,
       Other_anydiff = Other_any - Other,
     )
+  
+  population <- read_csv(here::here("output", "sus", "simplified_output", "5_group", "tables", glue("simple_patient_counts_5_group_{codelist}_sus_registered.csv")), col_types = (cols())) %>%
+  filter(group == "all") %>%
+  summarise(
+    ethnicity = "Unknown",
+    population = population - !!as.name(glue("{codelist_path}_filled"))
+  )
 
   ethnicity_cat_pivot <- ethnicity_cat %>%
     pivot_longer(
@@ -1074,7 +1082,8 @@ for (codelist in c("new", "ctv3")) {
     summarise(
       ethnicity,
       population = n
-    ) 
+    ) %>%
+    bind_rows(population)
 
 
   df_sus_new_cross_perc <- df_sus_new_cross %>%
@@ -1109,7 +1118,7 @@ for (codelist in c("new", "ctv3")) {
     cols_label(!!!my_cols) %>%
     tab_style(
       style = list(
-        cell_fill(color = "gray96")
+        # cell_fill(color = "gray96")
       ),
       locations = cells_body()
     ) %>%
@@ -1127,9 +1136,9 @@ for (codelist in c("new", "ctv3")) {
       column_labels.border.top.color = "transparent",
       table.border.top.color = "transparent",
       heading.align = "left"
-    ) %>%
-    tab_header(
-      title = md("Table 5:  Count of patients with a recorded ethnicity in Secondary Care by ethnicity group (proportion of Primary Care population). All counts are rounded to the nearest 5. "),
+    # ) %>%
+    # tab_header(
+    #   title = md("Table 5:  Count of patients with a recorded ethnicity in Secondary Care by ethnicity group (proportion of Primary Care population). All counts are rounded to the nearest 5. "),
     ) %>%
     tab_options(
       data_row.padding = px(0)
@@ -1202,7 +1211,7 @@ df_sus_new_cross_table_ctv3
 
 <br>
 
-```{r, fig.width=20, fig.height=15}
+```{r, fig.width=15, fig.height=10}
 alluvial_new
 ```
 
@@ -1213,7 +1222,7 @@ df_sus_new_cross_table_new
 ```
 <br>
 
-```{r, fig.width=20, fig.height=15}
+```{r, fig.width=15, fig.height=10}
 alluvial_new
 ```
 
@@ -1223,9 +1232,18 @@ alluvial_new
 ```{r}
 for (codelist in c("new", "ctv3")) {
   ifelse(codelist == "new", codelist_name <- "SNOMED:2022", codelist_name <- "CTV3:2020")
+  ifelse(codelist == "new", codelist_path <- glue("ethnicity_new_16"), codelist_path <- glue("ethnicity_16"))
   df_sus_new_cross <- read_csv(here::here("output", "sus", "simplified_output", "16_group", "tables", glue("simple_{codelist}_sus_crosstab_long_registered.csv"))) %>%
     rename_with(~"ethnicity", contains("ethnicity_") & !contains("sus"))
 
+  
+    population <- read_csv(here::here("output", "sus", "simplified_output", "16_group", "tables", glue("simple_patient_counts_16_group_{codelist}_sus_registered.csv")), col_types = (cols())) %>%
+  filter(group == "all") %>%
+  summarise(
+    ethnicity = "Unknown",
+    population = population - !!as.name(glue("{codelist_path}_filled"))
+  )
+  
   cols <- c("White_British", "White_Irish", "Other_White", "White_and_Black_Caribbean", "White_and_Black_African", "White_and_Asian", "Other_Mixed", "Indian", "Pakistani", "Bangladeshi", "Other_Asian", "Caribbean", "African", "Other_Black", "Chinese", "Any_other_ethnic_group")
 
   ethnicity_cat <-
@@ -1254,6 +1272,8 @@ for (codelist in c("new", "ctv3")) {
       Any_other_ethnic_group_anydiff = Any_other_ethnic_group_any - Any_other_ethnic_group
     )
 
+
+  
   ethnicity_cat_pivot <- ethnicity_cat %>%
     pivot_longer(
       cols = c(contains("_")),
@@ -1265,7 +1285,8 @@ for (codelist in c("new", "ctv3")) {
     summarise(
       ethnicity,
       population = n
-    ) 
+    ) %>%
+    bind_rows(population)
 
 
   df_sus_new_cross_perc <- df_sus_new_cross %>%
@@ -1301,7 +1322,7 @@ for (codelist in c("new", "ctv3")) {
     cols_label(!!!my_cols) %>%
     tab_style(
       style = list(
-        cell_fill(color = "gray96")
+        # cell_fill(color = "gray96")
       ),
       locations = cells_body()
     ) %>%
@@ -1319,9 +1340,9 @@ for (codelist in c("new", "ctv3")) {
       column_labels.border.top.color = "transparent",
       table.border.top.color = "transparent",
       heading.align = "left"
-    ) %>%
-    tab_header(
-      title = md("Table 5:  Count of patients with a recorded ethnicity in Secondary Care by ethnicity group (proportion of Primary Care population). All counts are rounded to the nearest 5. "),
+    # ) %>%
+    # tab_header(
+    #   title = md("Table 5:  Count of patients with a recorded ethnicity in Secondary Care by ethnicity group (proportion of Primary Care population). All counts are rounded to the nearest 5. "),
     ) %>%
     tab_options(
       data_row.padding = px(0)
@@ -1380,7 +1401,7 @@ ONS_tab_2001 %>%
   cols_label(!!!my_cols_ons) %>%
   tab_style(
     style = list(
-      cell_fill(color = "gray96")
+      # cell_fill(color = "gray96")
     ),
     locations = cells_body()
   ) %>%
@@ -1398,9 +1419,9 @@ ONS_tab_2001 %>%
     column_labels.border.top.color = "transparent",
     table.border.top.color = "transparent",
     heading.align = "left"
-  ) %>%
-  tab_header(
-    title = md("Table 7:  Count of patients with a recorded ethnicity in OpenSAFELY TPP by ethnicity group (proportion of registered TPP population) and 2021 ONS Census counts [amended to 2001 grouping] (proportion of 2021 ONS Census population). All counts are rounded to the nearest 5. "),
+  # ) %>%
+  # tab_header(
+  #   title = md("Table 7:  Count of patients with a recorded ethnicity in OpenSAFELY TPP by ethnicity group (proportion of registered TPP population) and 2021 ONS Census counts [amended to 2001 grouping] (proportion of 2021 ONS Census population). All counts are rounded to the nearest 5. "),
   ) %>%
   tab_options(
     data_row.padding = px(0)
@@ -1467,7 +1488,7 @@ ons_ethnicity_plot_eng_na
 
 ### Region
 
-```{r, fig.width=14, fig.height=16}
+```{r, fig.width=18, fig.height=16}
 ## 5 group ethnicity plot NA removed for Regions
 ons_ethnicity_plot_na <- ons_na_removed %>%
   filter(region != "England", group == "5") %>%
@@ -1542,7 +1563,7 @@ ONS_tab_2001 %>%
   cols_label(!!!my_cols_ons) %>%
   tab_style(
     style = list(
-      cell_fill(color = "gray96")
+      # cell_fill(color = "gray96")
     ),
     locations = cells_body()
   ) %>%
@@ -1561,9 +1582,9 @@ ONS_tab_2001 %>%
     table.border.top.color = "transparent",
     heading.align = "left"
   ) %>%
-  tab_header(
-    title = md("Table 7:  Count of patients with a recorded ethnicity in OpenSAFELY TPP by ethnicity group (proportion of registered TPP population) and 2021 ONS Census counts [amended to 2001 grouping] (proportion of 2021 ONS Census population). All counts are rounded to the nearest 5. "),
-  ) %>%
+  # tab_header(
+  #   title = md("Table 7:  Count of patients with a recorded ethnicity in OpenSAFELY TPP by ethnicity group (proportion of registered TPP population) and 2021 ONS Census counts [amended to 2001 grouping] (proportion of 2021 ONS Census population). All counts are rounded to the nearest 5. "),
+  # ) %>%
   tab_options(
     data_row.padding = px(0)
   ) %>%
@@ -1630,7 +1651,7 @@ ons_ethnicity_plot_eng_na
 
 ### Region
 
-```{r, fig.width=14, fig.height=34}
+```{r, fig.width=19, fig.height=34}
 ## 16 group ethnicity plot NA removed for Regions
 ons_ethnicity_plot_na <- 
   ons_na_removed %>%
