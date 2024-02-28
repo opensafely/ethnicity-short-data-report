@@ -1204,7 +1204,7 @@ df_sus_new_cross_table_ctv3
 <br>
 
 ```{r, fig.width=20, fig.height=15}
-# alluvial_new
+alluvial_new
 ```
 
 <br>
@@ -1215,7 +1215,7 @@ df_sus_new_cross_table_new
 <br>
 
 ```{r, fig.width=20, fig.height=15}
-# alluvial_new
+alluvial_new
 ```
 
 <br>
