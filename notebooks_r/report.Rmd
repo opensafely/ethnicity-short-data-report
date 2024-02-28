@@ -972,8 +972,8 @@ for (codelist in c("new", "ctv3")) {
       replace(., col(.) == row(.) + 1, NA) %>%
       mutate(
         any_discordant = rowSums(across(where(is.numeric)), na.rm = T) - sum,
-        any_discordant_perc = comma(round(any_discordant / sum * 100, 1)),
-        discordantcombined = glue("{any_discordant} ({any_discordant_perc})")
+        any_discordant_perc = round(any_discordant / sum * 100, 1),
+        discordantcombined = glue("{comma(any_discordant)} ({any_discordant_perc})")
       )
 
     assign(glue("discordant_{codelist}_{group}"), discordant_full)
@@ -1070,12 +1070,11 @@ for (codelist in c("new", "ctv3")) {
       names_pattern = "(.*)_(.*)",
       values_to = "n"
     ) %>%
-    filter(codelist == "new", group == "all") %>%
+    filter(codelist == "any", group == "all") %>%
     summarise(
       ethnicity,
       population = n
-    ) %>%
-    bind_rows(population)
+    ) 
 
 
   df_sus_new_cross_perc <- df_sus_new_cross %>%
@@ -1099,8 +1098,7 @@ for (codelist in c("new", "ctv3")) {
     unite("labl", N, left_paren, percentage, right_paren, sep = "", remove = F) %>%
     unite("ethnicity", ethnicity, left_paren, population, right_paren, sep = "") %>%
     select(-`0`, -percentage, -N) %>%
-    pivot_wider(names_from = c("ethnicity_sus_5"), values_from = labl) %>%
-    select(-year, -country)
+    pivot_wider(names_from = c("ethnicity_sus_5"), values_from = labl) 
 
   my_cols <- setNames(c(codelist_name, "Asian", "Black", "Mixed", "White", "Other", "Unknown"), names(df_sus_new_cross_perc))
 
@@ -1263,12 +1261,11 @@ for (codelist in c("new", "ctv3")) {
       names_pattern = "(.*)_(.*)",
       values_to = "n"
     ) %>%
-    filter(codelist == "new", group == "all") %>%
+    filter(codelist == "any", group == "all") %>%
     summarise(
       ethnicity,
       population = n
-    ) %>%
-    bind_rows(population)
+    ) 
 
 
   df_sus_new_cross_perc <- df_sus_new_cross %>%
@@ -1292,8 +1289,7 @@ for (codelist in c("new", "ctv3")) {
     unite("labl", N, left_paren, percentage, right_paren, sep = "", remove = F) %>%
     unite("ethnicity", ethnicity, left_paren, population, right_paren, sep = "") %>%
     select(-`0`, -percentage, -N) %>%
-    pivot_wider(names_from = c("ethnicity_sus_16"), values_from = labl) %>%
-    select(-year, -country)
+    pivot_wider(names_from = c("ethnicity_sus_16"), values_from = labl) 
 
   my_cols <- setNames(c(codelist_name, "Indian", "Pakistani", "Bangladeshi", "Other Asian", "Caribbean", "African", "Other Black", "White and Black Caribbean", "White and Black African", "White and Asian", "Other Mixed", "White British", "White Irish", "Other White", "Chinese", "Any other ethnic group", "Unknown"), names(df_sus_new_cross_perc))
 
@@ -1351,6 +1347,8 @@ df_sus_new_cross_table_new
 ## 5 Group
 
 ```{r}
+n_str_wrap<-15
+
 ethnicity_na_2001 <-
   read_csv(here::here("output", "sus", "simplified_output", "5_group", "tables", "ethnic_group_2021_registered_with_2001_categories.csv")) %>%
   mutate(Ethnic_Group = fct_relevel(Ethnic_Group, "Asian", "Black", "Mixed", "White", "Other"))
@@ -1413,18 +1411,18 @@ ONS_tab_2001 %>%
 
 ### England
 
-```{r, fig.width=24, fig.height=10}
+```{r, fig.width=14, fig.height=7}
 ons_na_removed <-
   read_csv(here::here("output", "sus", "simplified_output", "5_group", "tables", "ethnic_group_2021_registered_with_2001_categories.csv")) %>%
   mutate(
     cohort = case_when(
-      cohort == "ONS" ~ "2021 Census\n[amended to 2001 grouping]",
+      cohort == "ONS" ~ "2021 Census [amended to 2001 grouping]",
       cohort == "new" ~ "SNOMED:2022",
-      cohort == "new_supp" ~ "SNOMED:2022with secondary care data",
+      cohort == "new_supp" ~ "SNOMED:2022 with secondary care data",
       cohort == "ctv3" ~ "CTV3:2020",
       cohort == "ctv3_supp" ~ "CTV3:2020 with secondary care data"
     ),
-    cohort = fct_relevel(cohort, "2021 Census\n[amended to 2001 grouping]", "SNOMED:2022", "SNOMED:2022 with secondary care data", "CTV3:2020", "CTV3:2020 with secondary care data"),
+    cohort = fct_relevel(cohort, "2021 Census [amended to 2001 grouping]", "SNOMED:2022", "SNOMED:2022 with secondary care data", "CTV3:2020", "CTV3:2020 with secondary care data"),
     Ethnic_Group = fct_relevel(
       Ethnic_Group,
       "Asian", "Black", "Mixed", "White", "Other"
@@ -1440,7 +1438,8 @@ ons_ethnicity_plot_na_diff <- ons_na_removed %>%
   select(region, Ethnic_Group, cohort, diff, group)
 
 ons_na_removed <- ons_na_removed %>%
-  left_join(ons_ethnicity_plot_na_diff, by = c("region", "Ethnic_Group", "cohort", "group"))
+  left_join(ons_ethnicity_plot_na_diff, by = c("region", "Ethnic_Group", "cohort", "group")) %>% 
+  mutate(cohort = str_wrap(cohort,n_str_wrap))
 
 ons_ethnicity_plot_eng_na <- ons_na_removed %>%
   filter(region == "England", group == "5") %>%
@@ -1454,21 +1453,21 @@ ons_ethnicity_plot_eng_na <- ons_na_removed %>%
     vjust = 0
   )) +
   coord_flip() +
-  scale_fill_manual(values = bennett_pal[c(1, 2:5)]) +
+  scale_fill_manual(values = bennett_pal[c(1, 2,3,5,4)]) +
   xlab("") +
   ylab("\nProportion of ethnicities") +
   theme(
-    legend.position = "bottom",
+    legend.position = "right",
     legend.title = element_blank()
   ) +
-  geom_text(aes(x = Ethnic_Group, y = percentage, label = ifelse(cohort == "2021 Census\n[amended to 2001 grouping]", "", paste0(round(diff, digits = 1), "%"))), size = 3.4, position = position_dodge(width = 0.9), vjust = 0.3, hjust = -0.2)
+  geom_text(aes(x = Ethnic_Group, y = percentage, label = ifelse(cohort == str_wrap("2021 Census [amended to 2001 grouping]",n_str_wrap), "", paste0(round(diff, digits = 1), "%"))), size = 3.4, position = position_dodge(width = 0.9), vjust = 0.3, hjust = -0.2)
 
 ons_ethnicity_plot_eng_na
 ```
 
 ### Region
 
-```{r, fig.width=20, fig.height=15}
+```{r, fig.width=14, fig.height=16}
 ## 5 group ethnicity plot NA removed for Regions
 ons_ethnicity_plot_na <- ons_na_removed %>%
   filter(region != "England", group == "5") %>%
@@ -1483,14 +1482,14 @@ ons_ethnicity_plot_na <- ons_na_removed %>%
     vjust = 0
   )) +
   coord_flip() +
-  scale_fill_manual(values = bennett_pal[c(1, 2:5)]) +
+  scale_fill_manual(values = bennett_pal[c(1, 2,3,5,4)]) +
   xlab("") +
   ylab("\nProportion of ethnicities") +
   theme(
-    legend.position = "bottom",
+    legend.position = "right",
     legend.title = element_blank()
   ) +
-  geom_text(aes(x = Ethnic_Group, y = percentage, label = ifelse(cohort == "2021 Census\n[amended to 2001 grouping]", "", paste0(round(diff, digits = 1), "%"))), size = 3.4, position = position_dodge(width = 0.9), vjust = 0.3, hjust = -0.2)
+  geom_text(aes(x = Ethnic_Group, y = percentage, label = ifelse(cohort == str_wrap("2021 Census [amended to 2001 grouping]",n_str_wrap), "", paste0(round(diff, digits = 1), "%"))), size = 3.4, position = position_dodge(width = 0.9), vjust = 0.3, hjust = -0.2)
 
 ons_ethnicity_plot_na
 ```
@@ -1574,18 +1573,18 @@ ONS_tab_2001 %>%
 
 ### England
 
-```{r, fig.width=24, fig.height=20}
+```{r, fig.width=14, fig.height=14}
 ons_na_removed <-
   read_csv(here::here("output", "sus", "simplified_output", "16_group", "tables", "ethnic_group_2021_registered_with_2001_categories.csv")) %>%
   mutate(
     cohort = case_when(
-      cohort == "ONS" ~ "2021 Census\n[amended to 2001 grouping]",
+      cohort == "ONS" ~ "2021 Census [amended to 2001 grouping]",
       cohort == "new" ~ "SNOMED:2022",
       cohort == "new_supp" ~ "SNOMED:2022 with secondary care data",
       cohort == "ctv3" ~ "CTV3:2020",
       cohort == "ctv3_supp" ~ "CTV3:2020 with secondary care data"
     ),
-    cohort = fct_relevel(cohort, "2021 Census\n[amended to 2001 grouping]", "SNOMED:2022", "SNOMED:2022 with secondary care data", "CTV3:2020", "CTV3:2020 with secondary care data"),
+    cohort = fct_relevel(cohort, "2021 Census [amended to 2001 grouping]", "SNOMED:2022", "SNOMED:2022 with secondary care data", "CTV3:2020", "CTV3:2020 with secondary care data"),
     Ethnic_Group = gsub("_", " ", Ethnic_Group),
     Ethnic_Group = fct_relevel(
       Ethnic_Group, "Indian", "Pakistani", "Bangladeshi", "Other Asian", "Caribbean", "African", "Other Black", "White and Black Caribbean", "White and Black African", "White and Asian", "Other Mixed", "White British", "White Irish", "Other White", "Chinese", "Any other ethnic group"
@@ -1601,7 +1600,8 @@ ons_ethnicity_plot_na_diff <- ons_na_removed %>%
   select(region, Ethnic_Group, cohort, diff, group)
 
 ons_na_removed <- ons_na_removed %>%
-  left_join(ons_ethnicity_plot_na_diff, by = c("region", "Ethnic_Group", "cohort", "group"))
+  left_join(ons_ethnicity_plot_na_diff, by = c("region", "Ethnic_Group", "cohort", "group")) %>% 
+  mutate(cohort = str_wrap(cohort,n_str_wrap))
 
 ons_ethnicity_plot_eng_na <- ons_na_removed %>%
   filter(region == "England", group == "16") %>%
@@ -1615,14 +1615,14 @@ ons_ethnicity_plot_eng_na <- ons_na_removed %>%
     vjust = 0
   )) +
   coord_flip() +
-  scale_fill_manual(values = bennett_pal[c(1, 2:5)]) +
+  scale_fill_manual(values = bennett_pal[c(1, 2,3,5,4)]) +
   xlab("") +
   ylab("\nProportion of ethnicities") +
   theme(
-    legend.position = "bottom",
+    legend.position = "right",
     legend.title = element_blank()
   ) +
-  geom_text(aes(x = Ethnic_Group, y = percentage, label = ifelse(cohort == "2021 Census\n[amended to 2001 grouping]", "", paste0(round(diff, digits = 1), "%"))), size = 3.4, position = position_dodge(width = 0.9), vjust = 0.3, hjust = -0.2)
+  geom_text(aes(x = Ethnic_Group, y = percentage, label = ifelse(cohort == str_wrap("2021 Census [amended to 2001 grouping]",n_str_wrap), "", paste0(round(diff, digits = 1), "%"))), size = 3.4, position = position_dodge(width = 0.9), vjust = 0.3, hjust = -0.2)
 
 ons_ethnicity_plot_eng_na
 ```
@@ -1630,9 +1630,10 @@ ons_ethnicity_plot_eng_na
 
 ### Region
 
-```{r, fig.width=50, fig.height=30}
+```{r, fig.width=14, fig.height=34}
 ## 16 group ethnicity plot NA removed for Regions
-ons_ethnicity_plot_na <- ons_na_removed %>%
+ons_ethnicity_plot_na <- 
+  ons_na_removed %>%
   filter(region != "England", group == "16") %>%
   ggplot(aes(x = Ethnic_Group, y = percentage, fill = cohort)) +
   geom_bar(stat = "identity", position = "dodge") +
@@ -1645,14 +1646,14 @@ ons_ethnicity_plot_na <- ons_na_removed %>%
     vjust = 0
   )) +
   coord_flip() +
-  scale_fill_manual(values = bennett_pal[c(1, 2:5)]) +
+  scale_fill_manual(values = bennett_pal[c(1, 2,3,5,4)]) + 
   xlab("") +
   ylab("\nProportion of ethnicities") +
   theme(
-    legend.position = "bottom",
+    legend.position = "right",
     legend.title = element_blank()
   ) +
-  geom_text(aes(x = Ethnic_Group, y = percentage, label = ifelse(cohort == "2021 Census\n[amended to 2001 grouping]", "", paste0(round(diff, digits = 1), "%"))), size = 3.4, position = position_dodge(width = 0.9), vjust = 0.3, hjust = -0.2)
+  geom_text(aes(x = Ethnic_Group, y = percentage, label = ifelse(cohort == str_wrap("2021 Census [amended to 2001 grouping]",n_str_wrap), "", paste0(round(diff, digits = 1), "%"))), size = 3.4, position = position_dodge(width = 0.9), vjust = 0.3, hjust = -0.2)
 
 ons_ethnicity_plot_na
 ```
