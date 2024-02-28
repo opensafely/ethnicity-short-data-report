@@ -18,6 +18,7 @@ library("ggsci")
 library("glue")
 library("ggalluvial")
 library("ggrepel")
+library("lubridate")
 library("scales")
 
 label_number_n <- label_number(1, 1, big.mark = ",")
@@ -268,12 +269,12 @@ new_ctv3_prop_table <- read_csv(here::here("output", "report_tables", "report_pa
 ### combine tables
 combined_prop_table <- new_sus_prop_table %>%
   left_join(ctv3_sus_prop_table, by = c("group", "subgroup", "population")) %>%
-  left_join(new_ctv3_prop_table, by = c("group", "subgroup", "population"))  %>% 
+  left_join(new_ctv3_prop_table, by = c("group", "subgroup", "population")) %>%
   relocate(population, .after = last_col())
 
 
 
-table_cols <- setNames(c("group", "", "SNOMED 2022", "SNOMED 2022 with SUS data", "SNOMED 2022 Percentage point increase\n with SUS data", "CTV3 2020", "CTV3 2020 with SUS data", "CTV3 2020 Percentage point increase\n with SUS data", "In both SNOMED and CTV3","Population"), names(combined_prop_table))
+table_cols <- setNames(c("group", "", "SNOMED 2022", "SNOMED 2022 with SUS data", "SNOMED 2022 Percentage point increase\n with SUS data", "CTV3 2020", "CTV3 2020 with SUS data", "CTV3 2020 Percentage point increase\n with SUS data", "In both SNOMED and CTV3", "Population"), names(combined_prop_table))
 
 
 SUS_gt <- combined_prop_table %>%
@@ -302,7 +303,7 @@ SUS_gt <- combined_prop_table %>%
   ) %>%
   tab_header(
     title = md("Table 1: Count of patients with a recorded ethnicity in OpenSAFELY-TPP (proportion of registered TPP population) by clinical and demographic subgroups. All counts are rounded to the nearest 5."),
-  ) 
+  )
 
 SUS_gt
 ```
@@ -504,10 +505,10 @@ combined_prop_5_table <- ctv3_SUS5 %>%
   left_join(new_SUS5, by = c("group", "subgroup")) %>%
   rename_with(~ gsub(" 5", "", .)) %>% # remove extra 5
   rename_with(~ gsub("CTV3 ", "CTV3:2020 ", .)) %>% # remove extra 5
-  select("group", "subgroup", sort(names(.))) %>% 
+  select("group", "subgroup", sort(names(.))) %>%
   relocate(contains("Other"), .after = last_col())
 
-    
+
 my_cols <- setNames(c("group", "", rep(c("CTV3 2020", "CTV3 2020 with SUS", "SNOMED 2022", "SNOMED 2022 with SUS"), 5)), names(combined_prop_5_table))
 
 SUS5 <- combined_prop_5_table %>%
@@ -1204,7 +1205,7 @@ df_sus_new_cross_table_ctv3
 <br>
 
 ```{r, fig.width=20, fig.height=15}
-# alluvial_new
+alluvial_new
 ```
 
 <br>
@@ -1215,7 +1216,7 @@ df_sus_new_cross_table_new
 <br>
 
 ```{r, fig.width=20, fig.height=15}
-# alluvial_new
+alluvial_new
 ```
 
 <br>
@@ -1676,7 +1677,10 @@ This report describes existing methods to derive primary care ethnicity in OpenS
 
 # Technical details
 
-This notebook was run on `r Sys.Date()`. The information is based on data extracted from the OpenSAFELY-TPP database on `r date(file.info(here::here("output","extract_5","input_5.feather"))$ctime)`.
+```{r}
+extract_date <- file.info(here::here("output", "extract_5", "input_5.feather"))$ctime
+```
+This notebook was run on `r Sys.Date()`. The information is based on data extracted from the OpenSAFELY-TPP database on `r date(extract_date)`.
 
 If a clinical code appears in the primary care record on multiple dates, the latest date is used.
 
