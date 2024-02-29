@@ -33,6 +33,8 @@ eth_ons_2021 <- eth_ons_input_2021 %>%
   bind_rows(eth_ons_input_2021)
 
 # get total population per region for OS data
+
+######### Use if proportion of population with known ethnicity per codelist
 for (codelist in c("new", "ctv3")) {
   ifelse(codelist == "new", ethnicity <- "ethnicity_new_5_filled", ethnicity <- "ethnicity_5_filled")
   # get total population per region for OS data
@@ -51,6 +53,12 @@ for (codelist in c("new", "ctv3")) {
 }
 population <- population_new %>%
   bind_rows(population_ctv3)
+
+######### Use if proportion of registered TPP population
+# population <-read_csv(here::here("output", "sus", "simplified_output", "5_group", "tables", "simple_patient_counts_5_group_new_sus_registered.csv"), col_types = (cols())) %>%
+#   filter(group == "region" | group == "all") %>%
+#   summarise(subgroup,
+#             Total = population)
 
 # filter OS data to regions
 
@@ -169,6 +177,9 @@ eth_ons_2021 <- eth_ons_input_2021 %>%
   ) %>%
   bind_rows(eth_ons_input_2021)
 
+
+
+######### Use if proportion of population with known ethnicity per codelist
 for (codelist in c("new", "ctv3")) {
   ifelse(codelist == "new", ethnicity <- "ethnicity_new_16_filled", ethnicity <- "ethnicity_16_filled")
   # get total population per region for OS data
@@ -187,6 +198,12 @@ for (codelist in c("new", "ctv3")) {
 }
 population <- population_new %>%
   bind_rows(population_ctv3)
+
+######### Use if proportion of registered TPP population
+# population <-read_csv(here::here("output", "sus", "simplified_output", "16_group", "tables", glue("simple_patient_counts_16_group_new_sus_registered.csv")), col_types = (cols())) %>%
+#   filter(group == "region" | group == "all") %>%
+#   summarise(subgroup,
+#             Total = population)
 
 
 # filter OS data to regions
