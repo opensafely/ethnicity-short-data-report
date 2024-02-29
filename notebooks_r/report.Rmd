@@ -946,11 +946,11 @@ for (codelist in c("new", "ctv3")) {
 
 
 ```{r}
-anyrepeated_new
+anyrepeated_ctv3
 ```
 <br>
 ```{r}
-anyrepeated_ctv3
+anyrepeated_new
 ```
 
 ## Comparison of 'Latest' and 'Most Frequent' coded ethnicity
@@ -1309,6 +1309,9 @@ for (codelist in c("new", "ctv3")) {
 
   df_sus_new_cross_perc <- df_sus_new_cross %>%
     left_join(ethnicity_cat_pivot, by = "ethnicity") %>%
+     group_by(ethnicity ) %>%
+      mutate(population=sum(na.omit(`0`))) %>%
+      ungroup() %>%
     mutate(
       percentage = round(`0` / population * 100, 1),
       ethnicity = fct_relevel(
