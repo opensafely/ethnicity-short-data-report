@@ -555,7 +555,7 @@ SUS5
 
 <br>
 
-```{r, fig.width=30, fig.height=27}
+```{r, fig.width=40, fig.height=27}
 new_prop_reg_cat <-
   read_csv(here::here("output", "sus", "simplified_output", "5_group", "tables", "simple_patient_counts_categories_5_group_new_sus_registered.csv"), col_types = (cols())) %>%
   rename_with(~ sub("ethnicity_", "", .), contains("ethnicity_")) %>%
@@ -884,11 +884,11 @@ for (codelist in c("new", "ctv3")) {
 ```
 
 ```{r}
-anyrepeated_new
+anyrepeated_ctv3
 ```
 <br>
 ```{r}
-anyrepeated_ctv3
+anyrepeated_new
 ```
 
 ### 16 Group
@@ -1044,163 +1044,172 @@ latestcommon_new_16 %>%
 
 ```{r}
 for (codelist in c("new", "ctv3")) {
-  ifelse(codelist == "new", codelist_name <- "SNOMED:2022", codelist_name <- "CTV3:2020")
-   ifelse(codelist == "new", codelist_path <- glue("ethnicity_new_5"), codelist_path <- glue("ethnicity_5"))
-  df_sus_new_cross <- read_csv(here::here("output", "sus", "simplified_output", "5_group", "tables", glue("simple_{codelist}_sus_crosstab_long_registered.csv"))) %>%
-    rename_with(~"ethnicity", contains("ethnicity_") & !contains("sus"))
-
-  ethnicity_cat <-
-    read_csv(here::here("output", "sus", "simplified_output", "5_group", "tables", glue("simple_patient_counts_categories_5_group_{codelist}_sus_registered.csv")), col_types = (cols())) %>%
-    rename_with(~ sub("ethnicity_", "", .), contains("ethnicity_")) %>%
-    rename_with(~ sub("_new", "", .), contains("_new")) %>%
-    rename_with(~ sub("_ctv3", "", .), contains("_ctv3")) %>%
-    rename_with(~ sub("_5_filled", "", .), contains("_5_filled")) %>%
-    select(-contains("filled"), -contains("missing"), -contains("sus")) %>%
-    mutate(
-      Asian_anydiff = Asian_any - Asian,
-      Black_anydiff = Black_any - Black,
-      Mixed_anydiff = Mixed_any - Mixed,
-      White_anydiff = White_any - White,
-      Other_anydiff = Other_any - Other,
+  for (known in c("_known","")){
+    ifelse(codelist == "new", codelist_name <- "SNOMED:2022", codelist_name <- "CTV3:2020")
+     ifelse(codelist == "new", codelist_path <- glue("ethnicity_new_5"), codelist_path <- glue("ethnicity_5"))
+    
+     
+     df_sus_new_cross <- read_csv(here::here("output", "sus", "simplified_output", "5_group", "tables", glue("simple_{codelist}_sus_crosstab_long_registered.csv"))) %>%
+      rename_with(~"ethnicity", contains("ethnicity_") & !contains("sus"))
+    
+    if(known == "_known"){df_sus_new_cross <- df_sus_new_cross %>%
+  filter(
+    ethnicity != "Unknown",
+    ethnicity_sus_5 != "Unknown"
+  ) 
+    }
+  
+    ethnicity_cat <-
+      read_csv(here::here("output", "sus", "simplified_output", "5_group", "tables", glue("simple_patient_counts_categories_5_group_{codelist}_sus_registered.csv")), col_types = (cols())) %>%
+      rename_with(~ sub("ethnicity_", "", .), contains("ethnicity_")) %>%
+      rename_with(~ sub("_new", "", .), contains("_new")) %>%
+      rename_with(~ sub("_ctv3", "", .), contains("_ctv3")) %>%
+      rename_with(~ sub("_5_filled", "", .), contains("_5_filled")) %>%
+      select(-contains("filled"), -contains("missing"), -contains("sus"))
+    
+    
+    population <- read_csv(here::here("output", "sus", "simplified_output", "5_group", "tables", glue("simple_patient_counts_5_group_{codelist}_sus_registered.csv")), col_types = (cols())) %>%
+    filter(group == "all") %>%
+    summarise(
+      ethnicity = "Unknown",
+      population = population - !!as.name(glue("{codelist_path}_filled"))
     )
   
-  population <- read_csv(here::here("output", "sus", "simplified_output", "5_group", "tables", glue("simple_patient_counts_5_group_{codelist}_sus_registered.csv")), col_types = (cols())) %>%
-  filter(group == "all") %>%
-  summarise(
-    ethnicity = "Unknown",
-    population = population - !!as.name(glue("{codelist_path}_filled"))
-  )
-
-  ethnicity_cat_pivot <- ethnicity_cat %>%
-    pivot_longer(
-      cols = c(contains("_")),
-      names_to = c("ethnicity", "codelist"),
-      names_pattern = "(.*)_(.*)",
-      values_to = "n"
-    ) %>%
-    filter(codelist == "any", group == "all") %>%
-    summarise(
-      ethnicity,
-      population = n
-    ) %>%
-    bind_rows(population)
-
-
-  df_sus_new_cross_perc <- df_sus_new_cross %>%
-    left_join(ethnicity_cat_pivot, by = "ethnicity") %>%
-    mutate(
-      percentage = round(`0` / population * 100, 1),
-      ethnicity = fct_relevel(
-        ethnicity,
-        levels_5
-      ),
-      ethnicity_sus_5 = fct_relevel(
-        ethnicity_sus_5,
-        levels_5
-      ),
-      left_paren = " (",
-      right_paren = ")",
-      N = comma(as.numeric(`0`)),
-      population = comma(as.numeric(population))
-    ) %>%
-    arrange(ethnicity, ethnicity_sus_5) %>%
-    unite("labl", N, left_paren, percentage, right_paren, sep = "", remove = F) %>%
-    unite("ethnicity", ethnicity, left_paren, population, right_paren, sep = "") %>%
-    select(-`0`, -percentage, -N) %>%
-    pivot_wider(names_from = c("ethnicity_sus_5"), values_from = labl) 
-
-  my_cols <- setNames(c(codelist_name, "Asian", "Black", "Mixed", "White", "Other", "Unknown"), names(df_sus_new_cross_perc))
-
-  df_sus_new_cross_table <- df_sus_new_cross_perc %>%
-    gt(groupname_col = "") %>%
-    tab_spanner(label = "Primary Care ethnicity", columns = c(1)) %>%
-    tab_spanner(label = "Secondary Care ethnicity", columns = c(2:7)) %>%
-    cols_label(!!!my_cols) %>%
-    tab_style(
-      style = list(
-        # cell_fill(color = "gray96")
-      ),
-      locations = cells_body()
-    ) %>%
-    tab_style(
-      style = list(
-        cell_text(weight = "bold")
-      ),
-      locations = cells_column_labels(everything())
-    ) %>%
-    tab_options(
-      table.align = "left",
-      # row_group.as_column = TRUE option not available on the OS R image
-      table.font.size = 8,
-      column_labels.border.top.width = px(3),
-      column_labels.border.top.color = "transparent",
-      table.border.top.color = "transparent",
-      heading.align = "left"
-    # ) %>%
-    # tab_header(
-    #   title = md("Table 5:  Count of patients with a recorded ethnicity in Secondary Care by ethnicity group (proportion of Primary Care population). All counts are rounded to the nearest 5. "),
-    ) %>%
-    tab_options(
-      data_row.padding = px(0)
-    )
-
-  assign(glue("df_sus_new_cross_table_{codelist}"), df_sus_new_cross_table)
-
-  ### sankey plot
-
-  df_secondary_new_cross_perc <- df_sus_new_cross %>%
-    mutate(
-      ethnicity = fct_relevel(
-        ethnicity,
-        "Unknown", "Other", "White", "Mixed", "Black", "Asian"
-      ),
-      ethnicity_sus_5 = fct_relevel(
-        ethnicity_sus_5,
-        "Asian", "Black", "Mixed", "White", "Other"
+    ethnicity_cat_pivot <- ethnicity_cat %>%
+      filter( group == "all") %>%
+      select(levels_5) %>%
+      pivot_longer(
+        cols = levels_5,
+        names_to = c("ethnicity"),
+        values_to = "population"
+      )  %>%
+      bind_rows(population)
+  
+  
+    df_sus_new_cross_perc <- df_sus_new_cross %>%
+      left_join(ethnicity_cat_pivot, by = "ethnicity") %>%
+      group_by(ethnicity ) %>%
+      mutate(population=sum(na.omit(`0`))) %>%
+      ungroup() %>%
+      mutate(
+        percentage = round(`0` / population * 100, 1),
+        ethnicity = fct_relevel(
+          ethnicity,
+          levels_5
+        ),
+        ethnicity_sus_5 = fct_relevel(
+          ethnicity_sus_5,
+          levels_5
+        ),
+        left_paren = " (",
+        right_paren = ")",
+        N = comma(as.numeric(`0`)),
+        population = comma(as.numeric(population))
+      ) %>%
+      arrange(ethnicity, ethnicity_sus_5) %>%
+      unite("labl", N, left_paren, percentage, right_paren, sep = "", remove = F) %>%
+      unite("ethnicity", ethnicity, left_paren, population, right_paren, sep = "") %>%
+      select(-`0`, -percentage, -N) %>%
+      pivot_wider(names_from = c("ethnicity_sus_5"), values_from = labl) 
+  
+    ifelse(known=="_known",
+    my_cols <- setNames(c(codelist_name, "Asian", "Black", "Mixed", "White", "Other"), names(df_sus_new_cross_perc)),
+    my_cols <- setNames(c(codelist_name, "Asian", "Black", "Mixed", "White", "Other", "Unknown"), names(df_sus_new_cross_perc)))
+    
+  
+    df_sus_new_cross_table <- df_sus_new_cross_perc %>%
+      gt(groupname_col = "") %>%
+      tab_spanner(label = "Primary Care ethnicity", columns = c(1)) %>%
+      tab_spanner(label = "Secondary Care ethnicity", columns = c(2:ncol(df_sus_new_cross_perc))) %>%
+      cols_label(!!!my_cols) %>%
+      tab_style(
+        style = list(
+          # cell_fill(color = "gray96")
+        ),
+        locations = cells_body()
+      ) %>%
+      tab_style(
+        style = list(
+          cell_text(weight = "bold")
+        ),
+        locations = cells_column_labels(everything())
+      ) %>%
+      tab_options(
+        table.align = "left",
+        # row_group.as_column = TRUE option not available on the OS R image
+        table.font.size = 8,
+        column_labels.border.top.width = px(3),
+        column_labels.border.top.color = "transparent",
+        table.border.top.color = "transparent",
+        heading.align = "left"
+      # ) %>%
+      # tab_header(
+      #   title = md("Table 5:  Count of patients with a recorded ethnicity in Secondary Care by ethnicity group (proportion of Primary Care population). All counts are rounded to the nearest 5. "),
+      ) %>%
+      tab_options(
+        data_row.padding = px(0)
       )
-    )
-
-  bennett_pal <- c("#FFB700", "#F20D52", "#FF369C", "#FF7CFE", "#9C54E6", "#5323B3")
-
-
-  assign(glue("alluvial_{codelist}"), ggplot(
-    as.data.frame(df_secondary_new_cross_perc),
-    aes(y = `0`, axis1 = ethnicity, axis2 = ethnicity_sus_5)
-  ) +
-    geom_alluvium(aes(fill = ethnicity)) +
-    geom_stratum(aes(fill = ethnicity_sus_5)) +
-    # geom_text(stat = "stratum", aes(label = after_stat(stratum)), colour = "white",size = 10) +
-    scale_x_discrete(limits = c("ethnicity", "ethnicity_sus_5"), expand = c(.05, .05), labels = c("ethnicity" = "Primary Care ethnicity", "ethnicity_sus_5" = "Secondary Care ethnicity"), position = "top") +
-    scale_fill_manual(values = rev(c("#FFD23B", "#808080", "#FF7C00", "#5323B3", "#5A71F3", "#17D7E6")), na.value = NA) +
-    # theme_minimal() +
-    ggtitle("") +
-    theme(
-      axis.title.y = element_blank(),
-      axis.text.y = element_blank(),
-      axis.ticks.y = element_blank(),
-      axis.text.x = element_text(size = 20)
+  
+    assign(glue("df_sus_new_cross_table_{codelist}{known}"), df_sus_new_cross_table)
+  
+    ### sankey plot
+  
+    df_secondary_new_cross_perc <- df_sus_new_cross %>%
+      mutate(
+        ethnicity = fct_relevel(
+          ethnicity,
+          "Unknown", "Other", "White", "Mixed", "Black", "Asian"
+        ),
+        ethnicity_sus_5 = fct_relevel(
+          ethnicity_sus_5,
+          "Asian", "Black", "Mixed", "White", "Other"
+        )
+      )
+  
+    bennett_pal <- c("#FFB700", "#F20D52", "#FF369C", "#FF7CFE", "#9C54E6", "#5323B3")
+  
+    ifelse(known=="",fill_list<-rev(c("#FFD23B", "#808080", "#FF7C00", "#5323B3", "#5A71F3", "#17D7E6")),
+           fill_list<-rev(c("#FFD23B", "#FF7C00", "#5323B3", "#5A71F3", "#17D7E6")))
+  
+    assign(glue("alluvial_{codelist}{known}"), ggplot(
+      as.data.frame(df_secondary_new_cross_perc),
+      aes(y = `0`, axis1 = ethnicity, axis2 = ethnicity_sus_5)
     ) +
-    theme(
-      panel.background = element_rect(fill = "white"),
-      panel.grid.major = element_blank(),
-      panel.grid.minor = element_blank()
-    ) +
-    theme(
-      legend.position = "bottom",
-      legend.title = element_blank()
-    ) +
-    geom_label_repel(
-      stat = "stratum",
-      aes(
-        label = after_stat(stratum),
-        fill = after_stat(stratum)
-      ),
-      colour = "white",
-      size = 10,
-      fontface = "bold",
-      direction = "x",
-      show.legend = F
-    ))
+      geom_alluvium(aes(fill = ethnicity)) +
+      geom_stratum(aes(fill = ethnicity_sus_5)) +
+      # geom_text(stat = "stratum", aes(label = after_stat(stratum)), colour = "white",size = 10) +
+      scale_x_discrete(limits = c("ethnicity", "ethnicity_sus_5"), expand = c(.05, .05), labels = c("ethnicity" = "Primary Care ethnicity", "ethnicity_sus_5" = "Secondary Care ethnicity"), position = "top") +
+      scale_fill_manual(values = fill_list, na.value = NA) +
+      # theme_minimal() +
+      ggtitle("") +
+      theme(
+        axis.title.y = element_blank(),
+        axis.text.y = element_blank(),
+        axis.ticks.y = element_blank(),
+        axis.text.x = element_text(size = 20)
+      ) +
+      theme(
+        panel.background = element_rect(fill = "white"),
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank()
+      ) +
+      theme(
+        legend.position = "bottom",
+        legend.title = element_blank()
+      ) +
+      geom_label_repel(
+        stat = "stratum",
+        aes(
+          label = after_stat(stratum),
+          fill = after_stat(stratum)
+        ),
+        colour = "white",
+        size = 10,
+        fontface = "bold",
+        direction = "x",
+        show.legend = F
+      ))
+  }
 }
 ```
 
@@ -1209,10 +1218,22 @@ for (codelist in c("new", "ctv3")) {
 df_sus_new_cross_table_ctv3
 ```
 
+
 <br>
 
 ```{r, fig.width=15, fig.height=10}
-alluvial_new
+alluvial_ctv3
+```
+
+<br>
+
+```{r}
+df_sus_new_cross_table_ctv3_known
+```
+
+
+```{r, fig.width=15, fig.height=10}
+alluvial_ctv3_known
 ```
 
 <br>
@@ -1220,6 +1241,7 @@ alluvial_new
 ```{r}
 df_sus_new_cross_table_new
 ```
+
 <br>
 
 ```{r, fig.width=15, fig.height=10}
@@ -1228,14 +1250,34 @@ alluvial_new
 
 <br>
 
+<br>
+
+```{r}
+df_sus_new_cross_table_new_known
+```
+
+```{r, fig.width=15, fig.height=10}
+alluvial_new_known
+```
+
+<br>
+
 ## 16 Group
 ```{r}
 for (codelist in c("new", "ctv3")) {
+  for (known in c("_known","")){
   ifelse(codelist == "new", codelist_name <- "SNOMED:2022", codelist_name <- "CTV3:2020")
   ifelse(codelist == "new", codelist_path <- glue("ethnicity_new_16"), codelist_path <- glue("ethnicity_16"))
+  
   df_sus_new_cross <- read_csv(here::here("output", "sus", "simplified_output", "16_group", "tables", glue("simple_{codelist}_sus_crosstab_long_registered.csv"))) %>%
     rename_with(~"ethnicity", contains("ethnicity_") & !contains("sus"))
 
+  if(known == "_known"){df_sus_new_cross <- df_sus_new_cross %>%
+  filter(
+    ethnicity != "Unknown",
+    ethnicity_sus_16 != "Unknown"
+  ) 
+    }
   
     population <- read_csv(here::here("output", "sus", "simplified_output", "16_group", "tables", glue("simple_patient_counts_16_group_{codelist}_sus_registered.csv")), col_types = (cols())) %>%
   filter(group == "all") %>%
@@ -1252,42 +1294,18 @@ for (codelist in c("new", "ctv3")) {
     rename_with(~ sub("_new", "", .), contains("_new")) %>%
     rename_with(~ sub("_ctv3", "", .), contains("_ctv3")) %>%
     rename_with(~ sub("_16_filled", "", .), contains("_16_filled")) %>%
-    select(-contains("filled"), -contains("missing"), -contains("sus")) %>%
-    mutate(
-      White_British_anydiff = White_British_any - White_British,
-      White_Irish_anydiff = White_Irish_any - White_Irish,
-      Other_White_anydiff = Other_White_any - Other_White,
-      White_and_Black_Caribbean_anydiff = White_and_Black_Caribbean_any - White_and_Black_Caribbean,
-      White_and_Black_African_anydiff = White_and_Black_African_any - White_and_Black_African,
-      White_and_Asian_anydiff = White_and_Asian_any - White_and_Asian,
-      Other_Mixed_anydiff = Other_Mixed_any - Other_Mixed,
-      Indian_anydiff = Indian_any - Indian,
-      Pakistani_anydiff = Pakistani_any - Pakistani,
-      Bangladeshi_anydiff = Bangladeshi_any - Bangladeshi,
-      Other_Asian_anydiff = Other_Asian_any - Other_Asian,
-      Caribbean_anydiff = Caribbean_any - Caribbean,
-      African_anydiff = African_any - African,
-      Other_Black_anydiff = Other_Black_any - Other_Black,
-      Chinese_anydiff = Chinese_any - Chinese,
-      Any_other_ethnic_group_anydiff = Any_other_ethnic_group_any - Any_other_ethnic_group
-    )
+    select(-contains("filled"), -contains("missing"), -contains("sus")) 
 
-
-  
-  ethnicity_cat_pivot <- ethnicity_cat %>%
+    ethnicity_cat_pivot <- ethnicity_cat %>%
+    filter( group == "all") %>%
+    select(levels_16) %>%
     pivot_longer(
-      cols = c(contains("_")),
-      names_to = c("ethnicity", "codelist"),
-      names_pattern = "(.*)_(.*)",
-      values_to = "n"
-    ) %>%
-    filter(codelist == "any", group == "all") %>%
-    summarise(
-      ethnicity,
-      population = n
-    ) %>%
+      cols = levels_16,
+      names_to = c("ethnicity"),
+      values_to = "population"
+    )  %>%
     bind_rows(population)
-
+    
 
   df_sus_new_cross_perc <- df_sus_new_cross %>%
     left_join(ethnicity_cat_pivot, by = "ethnicity") %>%
@@ -1312,13 +1330,15 @@ for (codelist in c("new", "ctv3")) {
     select(-`0`, -percentage, -N) %>%
     pivot_wider(names_from = c("ethnicity_sus_16"), values_from = labl) 
 
-  my_cols <- setNames(c(codelist_name, "Indian", "Pakistani", "Bangladeshi", "Other Asian", "Caribbean", "African", "Other Black", "White and Black Caribbean", "White and Black African", "White and Asian", "Other Mixed", "White British", "White Irish", "Other White", "Chinese", "Any other ethnic group", "Unknown"), names(df_sus_new_cross_perc))
+  ifelse(known=="_known",
+  my_cols <- setNames(c(codelist_name, "Indian", "Pakistani", "Bangladeshi", "Other Asian", "Caribbean", "African", "Other Black", "White and Black Caribbean", "White and Black African", "White and Asian", "Other Mixed", "White British", "White Irish", "Other White", "Chinese", "Any other ethnic group"), names(df_sus_new_cross_perc)),
+  my_cols <- setNames(c(codelist_name, "Indian", "Pakistani", "Bangladeshi", "Other Asian", "Caribbean", "African", "Other Black", "White and Black Caribbean", "White and Black African", "White and Asian", "Other Mixed", "White British", "White Irish", "Other White", "Chinese", "Any other ethnic group", "Unknown"), names(df_sus_new_cross_perc)))
 
   df_sus_new_cross_table <- df_sus_new_cross_perc %>%
     mutate(ethnicity = gsub("_", " ", ethnicity)) %>%
     gt(groupname_col = "") %>%
     tab_spanner(label = "Primary Care ethnicity", columns = c(1)) %>%
-    tab_spanner(label = "Secondary Care ethnicity", columns = c(2:7)) %>%
+    tab_spanner(label = "Secondary Care ethnicity", columns = c(2:ncol(df_sus_new_cross_perc))) %>%
     cols_label(!!!my_cols) %>%
     tab_style(
       style = list(
@@ -1348,7 +1368,8 @@ for (codelist in c("new", "ctv3")) {
       data_row.padding = px(0)
     )
 
-  assign(glue("df_sus_new_cross_table_{codelist}"), df_sus_new_cross_table)
+  assign(glue("df_sus_new_cross_table_{codelist}{known}"), df_sus_new_cross_table)
+  }
 }
 ```
 
@@ -1358,10 +1379,20 @@ df_sus_new_cross_table_ctv3
 <br>
 
 ```{r}
+df_sus_new_cross_table_ctv3_known
+```
+<br>
+
+```{r}
 df_sus_new_cross_table_new
 ```
 <br>
 
+```{r}
+df_sus_new_cross_table_new_known
+```
+
+<br>
 
 # Comparison with the 2021 UK census population
 
@@ -1588,7 +1619,7 @@ ONS_tab_2001 %>%
   tab_options(
     data_row.padding = px(0)
   ) %>%
-  tab_options(., container.width = 3200)
+  tab_options(., container.width = 3300)
 ```
 
 
