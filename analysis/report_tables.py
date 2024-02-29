@@ -324,10 +324,7 @@ definitions_sus_5 = ["ethnicity_new_5", "any"]
 definitions_sus_5_ctv3 = ["ethnicity_5", "any"]
 definitions_sus_16 = ["ethnicity_new_16", "any"]
 definitions_sus_16_ctv3 = ["ethnicity_16", "any"]
-definitions_supplemented_ctv3_5 = ["ethnicity_5", "supplemented"]
-definitions_supplemented_5 = ["ethnicity_new_5", "supplemented"]
-definitions_supplemented_16 = ["ethnicity_new_16", "supplemented"]
-definitions_supplemented_ctv3_16 = ["ethnicity_16", "supplemented"]
+
 covariates = [
     "_age_band",
     "_sex",
@@ -547,7 +544,7 @@ def main():
         missing=False,
     )
     report_patient_counts(
-        definitions_supplemented_ctv3_5,
+        definitions_sus_5_ctv3,
         group_5,
         "ctv3_sus",
         input_path_sus,
@@ -593,7 +590,7 @@ def main():
         missing=False,
     )
     report_patient_counts(
-        definitions_supplemented_ctv3_16,
+        definitions_sus_16_ctv3,
         group_16,
         "ctv3_sus",
         input_path_sus,
@@ -605,7 +602,7 @@ def main():
     )
 
     report_patient_counts(
-        definitions_supplemented_16,
+        definitions_sus_16,
         group_16,
         "new_sus",
         input_path_sus,
