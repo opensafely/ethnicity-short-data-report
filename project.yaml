@@ -121,6 +121,14 @@ actions:
       moderately_sensitive:
         html: output/report/report.html
 
+#### reviewer comments
+  practice_completeness:
+    run: r:latest analysis/practice_completeness.R
+    needs: [generate_study_population_5]
+    outputs:
+      moderately_sensitive:
+        csvs: output/extract_5/practice_completeness.csv
+
 #### move released files to output/released
 ###### run locally for manuscript
 ##### local notebook
