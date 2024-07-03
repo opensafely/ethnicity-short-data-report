@@ -10,4 +10,6 @@ venv/
 */Rhistory
 .Rhistory
 */test.ipynb
+.devcontainer/ehrql-main/
+.DS_Store
 notebooks_jupyter/local_report_ethnicity.ipynb
